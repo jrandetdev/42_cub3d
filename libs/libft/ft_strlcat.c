@@ -6,11 +6,11 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 11:56:02 by jrandet           #+#    #+#             */
-/*   Updated: 2024/10/18 14:02:51 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/16 17:50:37 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../include/libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {

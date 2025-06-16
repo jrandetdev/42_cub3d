@@ -6,11 +6,11 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 22:18:05 by jrandet           #+#    #+#             */
-/*   Updated: 2024/10/18 15:54:51 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/16 17:50:37 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../include/libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {

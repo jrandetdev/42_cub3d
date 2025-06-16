@@ -6,11 +6,11 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 11:56:32 by jrandet           #+#    #+#             */
-/*   Updated: 2024/11/02 15:57:43 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/16 17:50:39 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../include/libft.h"
 
 int	ft_lstsize(t_list *lst)
 {
