@@ -45,7 +45,7 @@ $(DIR_BUILD):
 
 clean:
 	@make clean -C $(LIBFT_PATH)
-	@make clean -C $(MLX_PATH)
+	@make clean -C $(MLX_PATH) > /dev/null 2>&1
 	@rm -rf $(DIR_BUILD)
 
 fclean: clean
