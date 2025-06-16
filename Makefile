@@ -32,10 +32,10 @@ endif
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	@make -sC $(MLX_PATH)
+	@make -sC $(MLX_PATH) > /dev/null 2>&1
 	@make -sC $(LIBFT_PATH)
 	@$(CC) $(CFLAGS) $(OBJECTS) $(LIBRARY_PATHS) $(LIBRARIES) -o $@
-	@echo "Make succesfull, can execute ./cub3d"
+	@echo "Cube3d: Make succesfull, can execute ./cub3d"
 
 $(DIR_BUILD)/%.o: $(DIR_SRC)/%.c | $(DIR_BUILD)
 	@$(CC) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
@@ -48,9 +48,10 @@ clean:
 	@make clean -C $(MLX_PATH)
 	@rm -rf $(DIR_BUILD)
 
-fclean:
+fclean: clean
+	@echo "Cube3d: fclean complete."
 	@rm -rf $(NAME)
-	@rm -rf $(LIBFT)
+	@make fclean -C $(LIBFT_PATH)
 
 re: fclean all
 
