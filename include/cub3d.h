@@ -7,6 +7,7 @@
 #include <string.h>
 #include <fcntl.h>
 #include <stdbool.h>
+#include <errno.h>
 #include "libft.h"
 
 typedef struct	s_main t_main;
