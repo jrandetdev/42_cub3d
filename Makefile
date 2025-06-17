@@ -12,7 +12,8 @@ LIBFT_PATH		:=			./libs/libft/
 LIBFT_NAME		:=			libft.a
 LIBFT			:=			$(LIBFT_PATH)$(LIBFT_NAME)
 
-SOURCES			:=			main.c
+SOURCES			:=			main.c \
+							exit_and_error.c
 
 SOURCE_NAME		:=			$(basename $(SOURCES))
 OBJECTS			:= 			$(addsuffix .o, $(addprefix $(DIR_BUILD)/, $(SOURCE_NAME)))
