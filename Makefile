@@ -2,6 +2,7 @@ NAME			=			cub3d
 
 DIR_BUILD		=			./build
 DIR_INCLUDE		=			./include
+DIR_DEBUG		=			./src/debug
 DIR_SRC			=			./src
 
 MLX_PATH		:=			./libs/minilibx-linux/
@@ -13,7 +14,8 @@ LIBFT_NAME		:=			libft.a
 LIBFT			:=			$(LIBFT_PATH)$(LIBFT_NAME)
 
 SOURCES			:=			main.c \
-							exit_and_error.c
+							exit_and_error.c \
+							print_grid.c
 
 SOURCE_NAME		:=			$(basename $(SOURCES))
 OBJECTS			:= 			$(addsuffix .o, $(addprefix $(DIR_BUILD)/, $(SOURCE_NAME)))
