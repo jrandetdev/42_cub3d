@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 17:27:08 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/18 16:18:25 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/18 16:50:49 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,28 @@
 		//jamais atteindrele /0 et jamais un index -1 
 		//condition d'arret: tout ce qui n'est pas 1 (si 0 a la fin de la map)
 
-//static int	read_from_fd
+static int	get_fd_for_reading(char *s)
+{
+	int		fd;
+	int		bytes_read;
+	char	buffer[1];
 
-
+	fd = open(s, O_RDONLY);
+	printf("fd is worth %d\n", fd);
+	if (fd == -1)
+		return (-1);
+	bytes_read = read(fd, buffer, 1);
+	if (bytes_read == -1)
+	{
+		if (errno == EISDIR)
+		{
+			print_error_and_message("Input is a directory.\n");
+			close (fd);
+		}
+		return (-1);
+	}
+	return (fd);
+}
 
 static bool	cub_extension_is_valid(char	*s, int len)
 {
