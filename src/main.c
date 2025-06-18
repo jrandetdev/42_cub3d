@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 17:27:08 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/17 17:17:46 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/18 12:15:38 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include <mlx.h>
 
 //floodfill
 	// faire un floodfill 
@@ -83,10 +84,15 @@ int main(int argc, char **argv)
 	fd = get_fd_for_reading(argv[1]);
 	if (fd == -1)
 		return (EXIT_FAILURE);
+
+	main.mlx = mlx_init();
+	main.window = mlx_new_window(main.mlx, 1500, 1000, "Random title");
+	mlx_loop(main.mlx);
+
 	//read_fd_and_extract(&main, fd);
 	//tableau de char ou de int, plus grande longeur
 	//tableau 2 dimenssions "buffer ou map"
 
-	// espaces gardes en tant qu-espace isspace 
+	// espaces gardes en tant qu-espace isspace
 	return (0);
 }

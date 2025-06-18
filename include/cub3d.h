@@ -16,6 +16,8 @@ void			print_error_and_message(char *error_message);
 
 typedef struct	s_main
 {
+	void	*mlx;
+	void	*window;
 	char	**map;
 }				t_main;
 

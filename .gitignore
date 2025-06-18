@@ -1,3 +1,7 @@
 *.o
+*.d
+*.a
+*.swp
+*.DS_Store
 cub3d
 .vscode
