@@ -15,7 +15,12 @@ LIBFT			:=			$(LIBFT_PATH)$(LIBFT_NAME)
 
 SOURCES			:=			main.c \
 							exit_and_error.c \
-							print_grid.c
+							print_grid.c \
+							get_next_line.c \
+							map_building.c \
+							free_utils.c \
+							parse_entire_map.c \
+							debug.c
 
 SOURCE_NAME		:=			$(basename $(SOURCES))
 OBJECTS			:= 			$(addsuffix .o, $(addprefix $(DIR_BUILD)/, $(SOURCE_NAME)))
@@ -35,30 +40,32 @@ endif
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	@make -sC $(MLX_PATH) > /dev/null 2>&1
-	@make -sC $(LIBFT_PATH)
-	@$(CC) $(CFLAGS) $(OBJECTS) $(LIBRARY_PATHS) $(LIBRARIES) -o $@
-	@echo "Cube3d: Make succesfull, can execute ./cub3d"
+	make -sC $(MLX_PATH) > /dev/null 2>&1
+	make -sC $(LIBFT_PATH)
+	$(CC) $(CFLAGS) $(OBJECTS) $(LIBRARY_PATHS) $(LIBRARIES) -o $@
+	echo "Cube3d: Make succesfull, can execute ./cub3d"
 
 $(DIR_BUILD)/%.o: $(DIR_SRC)/%.c | $(DIR_BUILD)
-	@$(CC) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
 
 $(DIR_BUILD):
-	@mkdir -p $@
+	mkdir -p $@
 
 clean:
-	@make clean -C $(LIBFT_PATH)
-	@make clean -C $(MLX_PATH) > /dev/null 2>&1
-	@rm -rf $(DIR_BUILD)
+	make clean -C $(LIBFT_PATH)
+	make clean -C $(MLX_PATH) > /dev/null 2>&1
+	rm -rf $(DIR_BUILD)
 
 fclean: clean
-	@echo "Cube3d: fclean complete."
-	@rm -rf $(NAME)
-	@make fclean -C $(LIBFT_PATH)
+	echo "Cube3d: fclean complete."
+	rm -rf $(NAME)
+	make fclean -C $(LIBFT_PATH)
 
 re: fclean all
 
 .PHONY: all clean fclean re
+
+.SILENT:
 
 -include $(DEPS)
 

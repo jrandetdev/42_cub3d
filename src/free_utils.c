@@ -1,19 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_and_error.c                                   :+:      :+:    :+:   */
+/*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/17 11:56:50 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/18 14:15:18 by jrandet          ###   ########.fr       */
+/*   Created: 2025/06/18 13:28:20 by jrandet           #+#    #+#             */
+/*   Updated: 2025/06/18 14:15:22 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	print_error_and_message(char *error_message)
+void	free_ptr_and_set_to_null(char *ptr)
 {
-	printf("Error\n");
-	ft_putstr_fd(error_message, 2);
+	free(ptr);
+	ptr = NULL;
+}
+
+void	free_string_array(char ***array)
+{
+	int	i;
+
+	i = 0;
+	if (!array || !(*array))
+		return ;
+	i = 0;
+	while ((*array)[i])
+	{
+		free((*array)[i]);
+		(*array)[i] = NULL;
+		i++;
+	}
+	free(*array);
+	*array = NULL;
 }
