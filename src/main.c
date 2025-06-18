@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 17:27:08 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/17 17:07:39 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/18 16:18:25 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,7 @@
 
 //static int	read_from_fd
 
-static int	get_fd_for_reading(char *s)
-{
-	int	fd;
 
-	fd = open(s, O_RDONLY);
-	printf("fd is worth %d\n", fd);
-	if (fd == -1)
-		return (-1);
-	return (fd);
-}
 
 static bool	cub_extension_is_valid(char	*s, int len)
 {
@@ -65,19 +56,11 @@ static bool	arguments_are_valid(int argc, char **argv)
 int main(int argc, char **argv)
 {
 	t_main	main;
-	int		fd;
 
 	ft_bzero(&main, sizeof(t_main));
 	if (!arguments_are_valid(argc, argv))
 		return (EXIT_FAILURE);
-	fd = get_fd_for_reading(argv[1]);
-	if (fd == -1)
-		return (EXIT_FAILURE);
-	printf("file is successfully openned, fd is %d\n", fd);
-	//read_fd_and_extract(&main, fd);
-	//tableau de char ou de int, plus grande longeur
-	//tableau 2 dimenssions "buffer ou map"
-
-	// espaces gardes en tant qu-espace isspace 
+	parsing(&main, argv[1]);
 	return (0);
 }
+
