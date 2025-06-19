@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_entire_map.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 15:31:51 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/18 16:38:40 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/19 13:23:27 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,7 @@ bool	parsing(t_main *main, char *file)
 	main->map = build_map(fd, file);
 	if (!main->map)
 		return (false);
+	//add textures and color
+	grep_map_descritpion(main);
 	return (true);
 }

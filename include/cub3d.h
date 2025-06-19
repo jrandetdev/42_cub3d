@@ -15,9 +15,6 @@
 # define BUFFERSIZE 20
 # endif
 
-# define WIN_WIDTH 1250
-# define WIN_HEIGHT 750
-
 typedef struct	s_main t_main;
 
 /*------------------------------------ DEBUG ---------------------------------*/
@@ -34,17 +31,39 @@ typedef struct	s_myimage
 	long	addr;
 }	t_myimage;
 
+typedef struct s_texture
+{
+	void	*texture;
+	int		x_size;
+	int		y_size;
+}	t_texture;
+
+
+typedef struct s_color
+{
+	int	r;
+	int	g;
+	int	b;
+}	t_color;
+
 typedef struct	s_main
 {
 	void		*mlx_ptr;
 	void		*mlx_win;
 	char		**map;
 	int			debug;
+	t_texture	no;
+	t_texture	so;
+	t_texture	ea;
+	t_texture	we;
+	t_color		c;
+	t_color		f;
 	t_myimage	image;
 }				t_main;
 
 // MAP AND PARSING//
 char	**build_map(int fd, char *file);
+void	grep_map_descritpion(t_main *main);
 
 // ERROR HANDLING //
 void	print_error_and_message(char *error_message);

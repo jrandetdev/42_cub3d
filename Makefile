@@ -36,8 +36,9 @@ SRC_MAIN		=			main.c \
 MAIN			=			$(addprefix $(DIR_MAIN)/, $(SRC_MAIN))
 
 DIR_PARSING		=			./src/parsing
-SRC_PARCING		=			parse_entire_map.c\
-							map_building.c
+SRC_PARCING		=			map_building.c \
+							map_desription.c \
+							parse_entire_map.c
 PARCING			=			$(addprefix $(DIR_PARSING)/, $(SRC_PARCING))
 
 DIR_UTILS		=			./src/utils

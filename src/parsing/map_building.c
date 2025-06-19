@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_building.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:11:58 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/18 16:46:03 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/19 13:15:44 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,6 @@ char	**build_map(int fd, char *file)
 		free(line);
 	}
 	map[i] = NULL;
-	print_array(map);
+	//print_array(map);
 	return (map);
 }

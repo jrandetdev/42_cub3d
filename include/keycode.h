@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keycode.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 00:13:20 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/06/19 10:48:22 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/19 10:52:38 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,14 @@ enum
 	K_CTRL = 256
 };
 
-# elif __linux__ 
-#	include <mlx.h>
-#	include <X11/X.h>
 #	define WIN_WIDTH 800
 #	define WIN_HEIGHT 800
-#	define SCALE 4
-#	define ZOOM 0.2
-#	define COL_TAB_SIZE 16
-#	define MAX_ITER	250
+
+# elif __linux__ 
+#	include <X11/X.h>
+# define WIN_WIDTH 1250
+# define WIN_HEIGHT 750
+
 enum // events for macos 
 {
 	ON_KEYDOWN		= KeyPress,

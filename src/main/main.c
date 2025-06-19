@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 17:27:08 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/19 12:24:49 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/19 10:52:13 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ int main(int argc, char **argv)
 	main.mlx_ptr = mlx_init();
 	main.mlx_win = mlx_new_window(main.mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "Random title");
 	draw_square(main.mlx_ptr, main.mlx_win, (WIN_WIDTH/2) - 50, (WIN_HEIGHT/2) - 50);
-	print_grid(&main);
 	mlx_hook(main.mlx_win, 2, 1L<<0, keyhandler, &main);
 	mlx_loop(main.mlx_ptr);
 	return (0);
