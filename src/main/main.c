@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 17:27:08 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/19 10:52:13 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/19 15:55:57 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static bool	arguments_are_valid(int argc, char **argv)
 	return (true);
 }
 
-
 int	keyhandler(int keycode, t_main *main)
 {
 	mlx_clear_window(main->mlx_ptr, main->mlx_win);
@@ -70,7 +69,7 @@ int	keyhandler(int keycode, t_main *main)
 	return (0);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_main	main;
 
