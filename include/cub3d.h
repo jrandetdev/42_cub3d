@@ -67,13 +67,15 @@ typedef struct	s_main
 }				t_main;
 
 // MAP AND PARSING//
+bool	is_map_valid(char **map);
+bool	parsing(t_main *main, char *file);
+void	get_map_descritpion(t_main *main);
 void	build_map(t_main *main, int fd, char *file);
 
 // ERROR HANDLING //
 void	print_error_and_message(char *error_message);
 
 // UTILS //
-bool	parsing(t_main *main, char *file);
 char	*get_next_line(int fd);
 int		get_fd(t_main *main, char *s);
 
