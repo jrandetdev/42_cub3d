@@ -69,7 +69,7 @@ $(NAME): $(OBJECTS)
 	make -sC $(MLX_PATH) > /dev/null 2>&1
 	make -sC $(LIBFT_PATH)
 	$(CC) $(CFLAGS) $(OBJECTS) $(LIBRARY_PATHS) $(LIBRARIES) -o $@
-	@cp $(MLX_PATH)/libmlx.dylib .
+#@cp $(MLX_PATH)/libmlx.dylib .
 	echo "Cube3d: Make succesfull, can execute ./cub3d"
 
 $(DIR_BUILD)/%.o: %.c | $(DIR_BUILD)
