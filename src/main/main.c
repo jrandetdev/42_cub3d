@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 17:27:08 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/18 17:11:36 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/19 12:24:49 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,33 +50,23 @@ static bool	arguments_are_valid(int argc, char **argv)
 	return (true);
 }
 
-void	draw_square(void *mlx_ptr, void *mlx_win, int start_x, int	start_y) //DEBUG
-{
-	int		x = start_x;
-	int		y = start_y;
-	int	end_x = start_x + 100;
-	int	end_y = start_y + 100;
-
-	while(end_y > y)
-	{
-		while (end_x > x)
-		{
-			mlx_pixel_put(mlx_ptr, mlx_win, x, y, 0xFFFFFF);
-			x++;
-		}
-		x = start_x;
-		y++;
-	}
-}
 
 int	keyhandler(int keycode, t_main *main)
 {
-	(void) main;
-	(void) keycode;
-	if (keycode == W)
-		printf("W\n");
-	else
-		printf("Hello\n");
+	mlx_clear_window(main->mlx_ptr, main->mlx_win);
+	printf("KEYCODE %d\n", keycode);
+	if (keycode == K_W)
+	{
+		printf("debug ON\n");
+		main->debug = 1;
+	}
+	if (keycode == K_S)
+	{
+		printf("debug OFF\n");
+		main->debug = 0;
+	}
+	if (main->debug == 1)
+		print_grid(main);
 	return (0);
 }
 

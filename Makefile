@@ -1,41 +1,67 @@
 NAME			=			cub3d
+CC				=			cc
+
+UNAME			=			$(shell uname)
 
 DIR_BUILD		=			./build
 DIR_INCLUDE		=			./include
-DIR_DEBUG		=			./src/debug
-DIR_SRC			=			./src
 
-MLX_PATH		:=			./libs/minilibx-linux/
-MLX_NAME		:=			libmlx.a
-MLX				:=			$(MLX_PATH)$(MLX_NAME)
+MLX_PATH_UNIX	:=			./libs/minilibx-linux/
+MLX_NAME_UNIX	:=			libmlx.a
+MLX_PATH_OSX	:=			./libs/minilibx-macos
+MLX_NAME_OSX	:=			libmlx.dylib
 
 LIBFT_PATH		:=			./libs/libft/
 LIBFT_NAME		:=			libft.a
 LIBFT			:=			$(LIBFT_PATH)$(LIBFT_NAME)
 
-SOURCES			:=			main.c \
+ifeq ($(UNAME), Darwin)
+	MLX_PATH	= $(MLX_PATH_OSX)
+	MLX_NAME	= $(MLX_NAME_OSX)
+	LIBRARIES	= -lft -lmlx -framework Metal -framework MetalKit -framework AppKit -lz
+else ifeq ($(UNAME), Linux)
+	MLX_PATH	= $(MLX_PATH_UNIX)
+	MLX_NAME	= $(MLX_NAME_UNIX)
+	LIBRARIES	= -lft -lmlx -lX11 -lXext -lm -lz
+endif
+
+MLX = $(MLX_PATH)$(MLX_NAME)
+
+#------------ SOURCES ------------#
+
+DIR_MAIN		=			./src/main
+SRC_MAIN		=			main.c \
 							exit_and_error.c \
+							free_utils.c
+MAIN			=			$(addprefix $(DIR_MAIN)/, $(SRC_MAIN))
+
+DIR_PARSING		=			./src/parsing
+SRC_PARCING		=			parse_entire_map.c\
+							map_building.c
+PARCING			=			$(addprefix $(DIR_PARSING)/, $(SRC_PARCING))
+
+DIR_UTILS		=			./src/utils
+SRC_UTILS		=			get_next_line.c
+UTILS			=			$(addprefix $(DIR_UTILS)/, $(SRC_UTILS))
+
+DIR_DEBUG		=			./src/debug
+SRC_DEBUG		=			debug.c \
 							print_grid.c \
-							get_next_line.c \
-							map_building.c \
-							free_utils.c \
-							parse_entire_map.c \
-							debug.c
+							square.c
+DEBUG 			=			$(addprefix $(DIR_DEBUG)/, $(SRC_DEBUG))
+
+SOURCES			=			$(MAIN) $(PARCING) $(UTILS) $(DEBUG)
+vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG)
 
 SOURCE_NAME		:=			$(basename $(SOURCES))
-OBJECTS			:= 			$(addsuffix .o, $(addprefix $(DIR_BUILD)/, $(SOURCE_NAME)))
+OBJECTS			:= 			$(addprefix $(DIR_BUILD)/, $(notdir $(SOURCES:.c=.o)))
 DEPS			:=			$(OBJECTS:.o=.d)
 
+CFLAGS			=			-Wall -Werror -Wextra $(INC_FLAGS) -g -MMD -MP
 INC_FLAGS		:=			-I $(DIR_INCLUDE) -I $(LIBFT_PATH) -I $(MLX_PATH)
-
 LIBRARY_PATHS	:=			-L$(LIBFT_PATH) -L$(MLX_PATH)
-LIBRARIES		:=			-lft -lmlx -lX11 -lXext -lm -lz
 
-CC				= cc
-CFLAGS			= -Wall -Werror -Wextra $(INC_FLAGS) -g -MMD -MP
-ifeq ($(UNAME), Darwin)
-	CFLAGS += -fsanitize=address
-endif
+#------------- RULES -------------#
 
 all: $(NAME)
 
@@ -43,9 +69,10 @@ $(NAME): $(OBJECTS)
 	make -sC $(MLX_PATH) > /dev/null 2>&1
 	make -sC $(LIBFT_PATH)
 	$(CC) $(CFLAGS) $(OBJECTS) $(LIBRARY_PATHS) $(LIBRARIES) -o $@
+#@cp $(MLX_PATH)/libmlx.dylib .
 	echo "Cube3d: Make succesfull, can execute ./cub3d"
 
-$(DIR_BUILD)/%.o: $(DIR_SRC)/%.c | $(DIR_BUILD)
+$(DIR_BUILD)/%.o: %.c | $(DIR_BUILD)
 	$(CC) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
 
 $(DIR_BUILD):
@@ -55,11 +82,12 @@ clean:
 	make clean -C $(LIBFT_PATH)
 	make clean -C $(MLX_PATH) > /dev/null 2>&1
 	rm -rf $(DIR_BUILD)
+	rm -rf libmlx.dylib
 
 fclean: clean
-	echo "Cube3d: fclean complete."
 	rm -rf $(NAME)
 	make fclean -C $(LIBFT_PATH)
+	echo "Cube3d: fclean complete."
 
 re: fclean all
 
