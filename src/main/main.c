@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 17:27:08 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/19 00:30:16 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/19 12:44:45 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,16 @@ static bool	arguments_are_valid(int argc, char **argv)
 	return (true);
 }
 
-
 int	keyhandler(int keycode, t_main *main)
 {
 	mlx_clear_window(main->mlx_ptr, main->mlx_win);
 	printf("KEYCODE %d\n", keycode);
-	if (keycode == W)
+	if (keycode == K_W)
 	{
 		printf("debug ON\n");
 		main->debug = 1;
 	}
-	if (keycode == S)
+	if (keycode == K_S)
 	{
 		printf("debug OFF\n");
 		main->debug = 0;
@@ -70,7 +69,7 @@ int	keyhandler(int keycode, t_main *main)
 	return (0);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_main	main;
 

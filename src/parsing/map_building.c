@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:11:58 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/18 16:46:03 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/19 15:47:27 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,40 @@ static void	null_terminate_line(char **line)
 	*cursor = '\0';
 }
 
-static void	count_lines(char *file, int *line_counter)
+void	fill_map(t_main *main, int fd)
 {
 	char	*line;
+	int		i;
+
+	i = 0;
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (line == NULL)
+			break;
+		null_terminate_line(&line);
+		if (!is_only_spaces(line))
+		{
+			main->map[i] = ft_strdup(line);
+			if (!main->map[i])
+			{
+				free(line);
+				exit_cub3d(main, 1);
+			}
+			i++;
+		}
+		free(line);
+	}
+ 
+}
+
+static void	count_lines(char *file, int *line_counter)
+{
 	int		fd;
+	char	*line;
 
 	fd = open(file, O_RDONLY);
+	*line_counter = 0;
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -55,46 +83,18 @@ static void	count_lines(char *file, int *line_counter)
 	close (fd);
 }
 
-char	**build_map(int fd, char *file)
+void	build_map(t_main *main, int fd, char *file)
 {
 	int		line_counter;
-	char	**map;
-	char	*line;
-	int		i;
 
-	line_counter = 0;
 	count_lines(file, &line_counter);
-	printf("line counter is worth %d\n", line_counter);
-	map = ft_calloc(line_counter + 1, sizeof(char *));
-	if (!map)
-	{
-		print_error_and_message("Malloc Error\n");
-		return (NULL);
-	}
+	main->map = ft_calloc(line_counter + 1, sizeof(char *));
+	if (!main->map)
+		exit_cub3d(main, 1);
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		return (NULL);
-	i = 0;
-	while (1)
-	{
-		line = get_next_line(fd);
-		if (line == NULL)
-			break;
-		null_terminate_line(&line);
-		if (!is_only_spaces(line))
-		{
-			map[i] = ft_strdup(line);
-			if (!map[i])
-			{
-				free(line);
-				free_string_array(&map);
-				return (NULL);
-			}
-			i++;
-		}
-		free(line);
-	}
-	map[i] = NULL;
-	print_array(map);
-	return (map);
+		exit_cub3d(main, 1);
+	fill_map(main, fd);
+	close(fd);
+	print_array(main->map);
 }

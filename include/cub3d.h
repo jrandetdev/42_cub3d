@@ -15,9 +15,6 @@
 # define BUFFERSIZE 20
 # endif
 
-# define WIN_WIDTH 1250
-# define WIN_HEIGHT 750
-
 typedef struct	s_main t_main;
 
 /*------------------------------------ DEBUG ---------------------------------*/
@@ -44,7 +41,7 @@ typedef struct	s_main
 }				t_main;
 
 // MAP AND PARSING//
-char	**build_map(int fd, char *file);
+void	build_map(t_main *main, int fd, char *file);
 
 // ERROR HANDLING //
 void	print_error_and_message(char *error_message);
@@ -52,12 +49,14 @@ void	print_error_and_message(char *error_message);
 // UTILS //
 bool	parsing(t_main *main, char *file);
 char	*get_next_line(int fd);
-int		get_fd_for_reading(char *s);
+int		get_fd(t_main *main, char *s);
+
+
+void	print_array(char **array);
 
 // FREE FUNCTIONS //
 void	free_ptr_and_set_to_null(char *ptr);
 void	free_string_array(char ***array);
-
-void	print_array(char **array);
+void	exit_cub3d(t_main *main, int error_status);
 
 #endif

@@ -1,3 +1,5 @@
+GREEN = \033[0;32m
+
 NAME			=			cub3d
 CC				=			cc
 
@@ -14,6 +16,7 @@ MLX_NAME_OSX	:=			libmlx.dylib
 LIBFT_PATH		:=			./libs/libft/
 LIBFT_NAME		:=			libft.a
 LIBFT			:=			$(LIBFT_PATH)$(LIBFT_NAME)
+
 
 ifeq ($(UNAME), Darwin)
 	MLX_PATH	= $(MLX_PATH_OSX)
@@ -70,7 +73,7 @@ $(NAME): $(OBJECTS)
 	make -sC $(LIBFT_PATH)
 	$(CC) $(CFLAGS) $(OBJECTS) $(LIBRARY_PATHS) $(LIBRARIES) -o $@
 #@cp $(MLX_PATH)/libmlx.dylib .
-	echo "Cube3d: Make succesfull, can execute ./cub3d"
+	echo "$(GREEN)Cube3d: Make succesfull, can execute ./cub3d"
 
 $(DIR_BUILD)/%.o: %.c | $(DIR_BUILD)
 	$(CC) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
@@ -87,7 +90,7 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 	make fclean -C $(LIBFT_PATH)
-	echo "Cube3d: fclean complete."
+	echo "$(GREEN)Cube3d: fclean complete."
 
 re: fclean all
 
