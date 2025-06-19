@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 13:28:20 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/19 12:44:20 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/19 18:01:11 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	safe_free_tab(void ***ptr)
+{
+	int	i;
+
+	i = 0;
+	while ((*ptr)[i])
+	{
+		free((*ptr)[i]);
+		(*ptr)[i++] = NULL;
+	}
+	if (*ptr)
+		free(*ptr);
+	*ptr = NULL;
+}
 
 void	free_ptr_and_set_to_null(char *ptr)
 {

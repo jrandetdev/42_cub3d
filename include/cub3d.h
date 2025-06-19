@@ -77,15 +77,16 @@ void	print_error_and_message(char *error_message);
 
 // UTILS //
 char	*get_next_line(int fd);
+
 int		get_fd(t_main *main, char *s);
 
 void	init_img(t_main *main);
-
 void	print_array(char **array);
 
 // FREE FUNCTIONS //
-void	free_ptr_and_set_to_null(char *ptr);
+void	safe_free_tab(void ***ptr);
 void	free_string_array(char ***array);
+void	free_ptr_and_set_to_null(char *ptr);
 void	exit_cub3d(t_main *main, int error_status);
 
 #endif

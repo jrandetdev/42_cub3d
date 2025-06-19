@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 13:39:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/06/19 14:44:59 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/19 18:04:01 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	draw_square(void *mlx_ptr, void *mlx_win, int start_x, int	start_y)
 	{
 		while (end_x > x)
 		{
-			mlx_pixel_put(mlx_ptr, mlx_win, x, y, 0xFFFFF);
+			mlx_pixel_put(mlx_ptr, mlx_win, x, y, 0xFFFFFF);
 			x++;
 		}
 		x = start_x;
