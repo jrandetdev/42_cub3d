@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:11:58 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/19 15:56:11 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/19 16:59:32 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,4 @@ void	build_map(t_main *main, int fd, char *file)
 		exit_cub3d(main, 1);
 	fill_map(main, fd);
 	close(fd);
-	print_array(main->map);
 }

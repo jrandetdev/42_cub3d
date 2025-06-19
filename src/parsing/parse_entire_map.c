@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 15:31:51 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/19 15:55:01 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/19 16:47:02 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,7 @@ bool	parsing(t_main *main, char *file)
 
 	fd = get_fd(main, file);
 	build_map(main, fd, file);
+	get_map_descritpion(main);
+	is_map_valid(main->map);
 	return (true);
 }

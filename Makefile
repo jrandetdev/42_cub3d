@@ -1,4 +1,5 @@
 GREEN = \033[0;32m
+RESET = \033[0m
 
 NAME			=			cub3d
 CC				=			cc
@@ -73,8 +74,11 @@ $(NAME): $(OBJECTS)
 	make -sC $(MLX_PATH) > /dev/null 2>&1
 	make -sC $(LIBFT_PATH)
 	$(CC) $(CFLAGS) $(OBJECTS) $(LIBRARY_PATHS) $(LIBRARIES) -o $@
-#@cp $(MLX_PATH)/libmlx.dylib .
-	echo "$(GREEN)Cube3d: Make succesfull, can execute ./cub3d"
+	echo "$(GREEN)Cube3d: Make succesfull, can execute ./cub3d$(RESET)"
+
+ifeq ($(UNAME), Darwin)
+	@cp $(MLX_PATH)/libmlx.dylib .
+endif
 
 $(DIR_BUILD)/%.o: %.c | $(DIR_BUILD)
 	$(CC) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
@@ -91,7 +95,7 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 	make fclean -C $(LIBFT_PATH)
-	echo "$(GREEN)Cube3d: fclean complete."
+	echo "$(GREEN)Cube3d: fclean complete.$(RESET)"
 
 re: fclean all
 
