@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 11:56:50 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/19 16:44:36 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/19 17:19:43 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	exit_cub3d(t_main *main, int error_status)
 			main->mlx_ptr = NULL;
 		}
 	}
-	if (errno > 0)
+	if (error_status > 0)
 	{
 		perror("Error ");
 	}
