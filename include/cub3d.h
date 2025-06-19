@@ -10,6 +10,7 @@
 #include <stdbool.h>
 #include "libft.h"
 #include "keycode.h"
+#include <mlx.h>
 
 # ifndef BUFFERSIZE
 # define BUFFERSIZE 20
@@ -25,10 +26,14 @@ void	draw_square(void *mlx_ptr, void *mlx_win, int start_x, int	start_y);
 /*------------------------------------ STRUCT --------------------------------*/
 typedef struct	s_myimage
 {
+	void	*data_img;
+	void	*addr;
 	int		size_line;
+	int		bitspp;
 	int		bytespp;
 	int		total_bytes;
-	long	addr;
+	int		pixels_per_line;
+	int		endian;
 }	t_myimage;
 
 typedef struct s_texture
@@ -72,6 +77,7 @@ bool	parsing(t_main *main, char *file);
 char	*get_next_line(int fd);
 int		get_fd(t_main *main, char *s);
 
+void	init_img(t_main *main);
 
 void	print_array(char **array);
 

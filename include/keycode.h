@@ -3,17 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   keycode.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 00:13:20 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/06/19 10:52:38 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/19 17:11:08 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef KEYCODE_H
 # define KEYCODE_H
 
+#include "cub3d.h"
+
 #if defined(__APPLE__)
+
+enum // events for macos 
+{
+	ON_KEYDOWN = 2,
+	ON_KEYUP = 3,
+	ON_MOUSEDOWN = 4,
+	ON_MOUSEUP = 5,
+	ON_MOUSEMOVE = 6,
+	ON_EXPOSE = 12,
+	ON_DESTROY = 17
+};
+
+enum // mouse clicks for macos 
+{
+	M_LEFT_CLICK = 1,
+	M_RIGHT_CLICK = 2,
+	M_MIDDLE_CLICK = 3,
+	M_SCROLL_BACKWARD = 4,
+	M_SCROLL_FORWARD = 5
+};
 
 enum
 {
@@ -40,13 +62,13 @@ enum
 
 enum // events for macos 
 {
-	ON_KEYDOWN		= KeyPress,
-	ON_KEYUP		= KeyRelease,
-	ON_MOUSEDOWN	= ButtonPress,
-	ON_MOUSEUP		= ButtonRelease,
-	ON_MOUSEMOVE	= MotionNotify,
-	ON_EXPOSE		= Expose,
-	ON_DESTROY		= DestroyNotify,
+	ON_KEYDOWN			= KeyPress,
+	ON_KEYUP			= KeyRelease,
+	ON_MOUSEDOWN		= ButtonPress,
+	ON_MOUSEUP			= ButtonRelease,
+	ON_MOUSEMOVE		= MotionNotify,
+	ON_EXPOSE			= Expose,
+	ON_DESTROY			= DestroyNotify,
 };
 
 enum // mouse clicks for macos 
@@ -60,16 +82,21 @@ enum // mouse clicks for macos
 
 enum
 {
-	K_W		= 119,
-	K_S		= 115,
-	K_LEFT	= 65361,
-	K_UP	= 65362,
-	K_RIGHT	= 65363,
-	K_DOWN	= 65364,
-	K_ESCP	= 65307,
-	K_C		= 99,
-	K_CTRL	= 65507,
+	K_W					= 119,
+	K_S					= 115,
+	K_LEFT				= 65361,
+	K_UP				= 65362,
+	K_RIGHT				= 65363,
+	K_DOWN				= 65364,
+	K_ESCP				= 65307,
+	K_C					= 99,
+	K_CTRL				= 65507,
 };
 # endif
+
+typedef struct	s_main t_main;
+
+void	init_keyboard_events(t_main *main);
+int		key_handler(int key_code, t_main *main);
 
 #endif

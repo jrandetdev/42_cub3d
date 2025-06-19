@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   map_desription.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 12:10:09 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/06/19 15:52:11 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/19 16:15:33 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-bool	flood_fill(char **map, int player, int x, int y)
-{
+// bool	flood_fill(char **map, int player, int x, int y)
+// {
 	
-}
+// }
 
 static size_t	count_map_height(char **map)
 {

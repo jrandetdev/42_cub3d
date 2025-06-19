@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 17:27:08 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/19 15:55:57 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/19 17:11:34 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,15 @@ static bool	arguments_are_valid(int argc, char **argv)
 	return (true);
 }
 
-int	keyhandler(int keycode, t_main *main)
+static void	init_cub3d(t_main *main)
 {
-	mlx_clear_window(main->mlx_ptr, main->mlx_win);
-	printf("KEYCODE %d\n", keycode);
-	if (keycode == K_W)
-	{
-		printf("debug ON\n");
-		main->debug = 1;
-	}
-	if (keycode == K_S)
-	{
-		printf("debug OFF\n");
-		main->debug = 0;
-	}
-	if (main->debug == 1)
-		print_grid(main);
-	return (0);
+	main->mlx_ptr = mlx_init();
+	if (!main->mlx_ptr)
+		exit_cub3d(main, 1);
+	main->mlx_win = mlx_new_window(main->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "Random title");
+	if (!main->mlx_win)
+		exit_cub3d(main, 1);
+	init_img(main);
 }
 
 int	main(int argc, char **argv)
@@ -77,10 +69,10 @@ int	main(int argc, char **argv)
 	if (!arguments_are_valid(argc, argv))
 		return (EXIT_FAILURE);
 	parsing(&main, argv[1]);
-	main.mlx_ptr = mlx_init();
-	main.mlx_win = mlx_new_window(main.mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "Random title");
+	init_cub3d(&main);
+	init_keyboard_events(&main);
 	draw_square(main.mlx_ptr, main.mlx_win, (WIN_WIDTH/2) - 50, (WIN_HEIGHT/2) - 50);
-	mlx_hook(main.mlx_win, 2, 1L<<0, keyhandler, &main);
+	mlx_hook(main.mlx_win, 2, 1L<<0, key_handler, &main);
 	mlx_loop(main.mlx_ptr);
 	return (0);
 }

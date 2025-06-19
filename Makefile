@@ -39,10 +39,10 @@ SRC_MAIN		=			main.c \
 MAIN			=			$(addprefix $(DIR_MAIN)/, $(SRC_MAIN))
 
 DIR_PARSING		=			./src/parsing
-SRC_PARCING		=			map_building.c \
+SRC_PARSING		=			map_building.c \
 							map_desription.c \
 							parse_entire_map.c
-PARCING			=			$(addprefix $(DIR_PARSING)/, $(SRC_PARCING))
+PARCING			=			$(addprefix $(DIR_PARSING)/, $(SRC_PARSING))
 
 DIR_UTILS		=			./src/utils
 SRC_UTILS		=			get_next_line.c
@@ -54,8 +54,16 @@ SRC_DEBUG		=			debug.c \
 							square.c
 DEBUG 			=			$(addprefix $(DIR_DEBUG)/, $(SRC_DEBUG))
 
-SOURCES			=			$(MAIN) $(PARCING) $(UTILS) $(DEBUG)
-vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG)
+DIR_EVENTS		=			./src/events
+SRC_EVENTS		=			keyboard_events.c
+EVENTS			=			$(addprefix $(DIR_EVENTS)/, $(SRC_EVENTS))
+
+DIR_IMG			=			./src/img
+SRC_IMG			=			init_img.c
+IMG				=			$(addprefix $(DIR_IMG)/, $(SRC_IMG))
+
+SOURCES			=			$(MAIN) $(PARCING) $(UTILS) $(DEBUG) $(EVENTS) $(IMG)
+vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS) $(DIR_IMG)
 
 SOURCE_NAME		:=			$(basename $(SOURCES))
 OBJECTS			:= 			$(addprefix $(DIR_BUILD)/, $(notdir $(SOURCES:.c=.o)))
