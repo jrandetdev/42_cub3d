@@ -1,34 +1,29 @@
 #ifndef	CUB3D_H
 # define CUB3D_H
 
+#include <errno.h>
+#include <fcntl.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
-#include <fcntl.h>
 #include <stdbool.h>
-#include <errno.h>
 #include "libft.h"
+#include "keycode.h"
 
 # ifndef BUFFERSIZE
 # define BUFFERSIZE 20
 # endif
 
-# define WIN_WIDTH 2000
-# define WIN_HEIGHT 1500
-
-/*---------------------------------- KEYCODE ---------------------------------*/
-
-# define W 17
-# define A 30
-# define S 31
-# define D 32
+# define WIN_WIDTH 1250
+# define WIN_HEIGHT 750
 
 typedef struct	s_main t_main;
 
 /*------------------------------------ DEBUG ---------------------------------*/
 
 void	print_grid(t_main *main);
+void	draw_square(void *mlx_ptr, void *mlx_win, int start_x, int	start_y);
 
 /*------------------------------------ STRUCT --------------------------------*/
 typedef struct	s_myimage
@@ -44,6 +39,7 @@ typedef struct	s_main
 	void		*mlx_ptr;
 	void		*mlx_win;
 	char		**map;
+	int			debug;
 	t_myimage	image;
 }				t_main;
 
