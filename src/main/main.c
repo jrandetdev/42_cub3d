@@ -3,23 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 17:27:08 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/19 17:11:34 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/20 15:51:47 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <mlx.h>
-
-//floodfill
-	// faire un floodfill 
-	//point de depart, un seul N S W E 
-		// toutes conditions a respecter 
-		//si c'est un V, si c'est un mur, ou un esapce
-		//jamais atteindrele /0 et jamais un index -1 
-		//condition d'arret: tout ce qui n'est pas 1 (si 0 a la fin de la map)
 
 static bool	cub_extension_is_valid(char	*s, int len)
 {
@@ -58,6 +50,7 @@ static void	init_cub3d(t_main *main)
 	main->mlx_win = mlx_new_window(main->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "Random title");
 	if (!main->mlx_win)
 		exit_cub3d(main, 1);
+	main->final_colour = 0xFFFFF; //for now, just for debugging and testing
 	init_img(main);
 }
 
@@ -71,9 +64,8 @@ int	main(int argc, char **argv)
 	parsing(&main, argv[1]);
 	init_cub3d(&main);
 	init_keyboard_events(&main);
-	draw_square(main.mlx_ptr, main.mlx_win, (WIN_WIDTH/2) - 50, (WIN_HEIGHT/2) - 50);
+	draw_square(&main, (WIN_WIDTH/2) - 50, (WIN_HEIGHT/2) - 50);
 	mlx_hook(main.mlx_win, 2, 1L<<0, key_handler, &main);
 	mlx_loop(main.mlx_ptr);
 	return (0);
 }
-

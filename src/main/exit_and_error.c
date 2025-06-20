@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_and_error.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 11:56:50 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/19 16:44:36 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/20 15:56:59 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,18 @@ void	exit_cub3d(t_main *main, int error_status)
 			mlx_destroy_window(main->mlx_ptr, main->mlx_win);
 			main->mlx_win = NULL;
 		}
+		#ifdef __linux__
 		if (main->mlx_ptr)
 		{
 			mlx_destroy_display(main->mlx_ptr);
-			main->mlx_ptr = NULL;
+			free(main->mlx_ptr);
 		}
+		#elif __APPLE__
+		if (main->mlx_ptr)
+		{
+			free(main->mlx_ptr);
+		}
+		#endif
 	}
 	if (errno > 0)
 	{

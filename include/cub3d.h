@@ -21,7 +21,7 @@ typedef struct	s_main t_main;
 /*------------------------------------ DEBUG ---------------------------------*/
 
 void	print_grid(t_main *main);
-void	draw_square(void *mlx_ptr, void *mlx_win, int start_x, int	start_y);
+void	draw_square(t_main *main, int start_x, int	start_y);
 
 /*------------------------------------ STRUCT --------------------------------*/
 typedef struct	s_myimage
@@ -53,17 +53,18 @@ typedef struct s_color
 
 typedef struct	s_main
 {
-	void		*mlx_ptr;
-	void		*mlx_win;
-	char		**map;
-	int			debug;
-	t_texture	no;
-	t_texture	so;
-	t_texture	ea;
-	t_texture	we;
-	t_color		c;
-	t_color		f;
-	t_myimage	image;
+	void			*mlx_ptr;
+	void			*mlx_win;
+	char			**map;
+	int				debug;
+	t_texture		no;
+	t_texture		so;
+	t_texture		ea;
+	t_texture		we;
+	t_color			c;
+	t_color			f;
+	int				final_colour;
+	t_myimage		image;
 }				t_main;
 
 // MAP AND PARSING//
@@ -72,6 +73,10 @@ bool	parsing(t_main *main, char *file);
 void	get_map_descritpion(t_main *main);
 void	build_map(t_main *main, int fd, char *file);
 
+// RENDERING //
+void	put_pixel_to_image(t_main *main, int x, int y);
+void	init_img(t_main *main);
+
 // ERROR HANDLING //
 void	print_error_and_message(char *error_message);
 
@@ -79,7 +84,6 @@ void	print_error_and_message(char *error_message);
 char	*get_next_line(int fd);
 int		get_fd(t_main *main, char *s);
 
-void	init_img(t_main *main);
 
 void	print_array(char **array);
 

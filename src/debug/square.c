@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   square.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 13:39:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/06/19 14:44:59 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/20 16:21:00 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
+#include "cub3d.h"
 
-void	draw_square(void *mlx_ptr, void *mlx_win, int start_x, int	start_y)
+void	draw_square(t_main *main, int start_x, int	start_y)
 {
 	int		x = start_x;
 	int		y = start_y;
@@ -23,7 +23,8 @@ void	draw_square(void *mlx_ptr, void *mlx_win, int start_x, int	start_y)
 	{
 		while (end_x > x)
 		{
-			mlx_pixel_put(mlx_ptr, mlx_win, x, y, 0xFFFFF);
+			//mlx_pixel_put(mlx_ptr, mlx_win, x, y, 0xFFFFF);
+			put_pixel_to_image(main, x, y);
 			x++;
 		}
 		x = start_x;
