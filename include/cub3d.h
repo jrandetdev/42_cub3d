@@ -43,13 +43,20 @@ typedef struct s_texture
 	int		y_size;
 }	t_texture;
 
-
 typedef struct s_color
 {
 	int	r;
 	int	g;
 	int	b;
 }	t_color;
+
+typedef struct s_map
+{
+	char			**map;
+	unsigned int	height;
+	unsigned int	width;
+}	t_map; // Replaces the map array with the map structure ?
+
 
 typedef struct	s_main
 {
@@ -68,6 +75,7 @@ typedef struct	s_main
 }				t_main;
 
 // MAP AND PARSING//
+
 bool	is_map_valid(char **map);
 bool	parsing(t_main *main, char *file);
 void	get_map_descritpion(t_main *main);
@@ -77,19 +85,22 @@ void	build_map(t_main *main, int fd, char *file);
 void	put_pixel_to_image(t_main *main, int x, int y);
 void	init_img(t_main *main);
 
+size_t	count_map_height(char **map);
+
 // ERROR HANDLING //
 void	print_error_and_message(char *error_message);
 
 // UTILS //
 char	*get_next_line(int fd);
-int		get_fd(t_main *main, char *s);
 
+int		get_fd(t_main *main, char *s);
 
 void	print_array(char **array);
 
 // FREE FUNCTIONS //
-void	free_ptr_and_set_to_null(char *ptr);
+void	safe_free_tab(void ***ptr);
 void	free_string_array(char ***array);
+void	free_ptr_and_set_to_null(char *ptr);
 void	exit_cub3d(t_main *main, int error_status);
 
 #endif

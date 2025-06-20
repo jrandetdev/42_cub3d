@@ -3,118 +3,81 @@
 /*                                                        :::      ::::::::   */
 /*   map_desription.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 12:10:09 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/06/19 17:17:40 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/20 14:41:13 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "cub3d.h"
 
-// bool	flood_fill(char **map, int player, int x, int y)
-// {
-	
-// }
-
-static size_t	count_map_height(char **map)
+size_t	count_map_height(char **map)
 {
 	int	i;
 
 	i = 0;
-	while(map[i])
+	while (map[i])
 		i++;
 	return (i);
 }
 
-static void	flood_fill(char **map, int player, int x, int y, int *valid)
+static char *max_strdup(const char *s1, int max_size)
 {
-	if (*valid == 0)
-		return ;
-	if (x < 0 || y < 0 || map[y][x] == '\0' || map[y][x] == ' ')
-	{
-		*(valid) = 0;
-		return ;
-	}
-	if (map[y][x] == '1' || map[y][x] == 'V')
-		return;
-	if (map[y][x] == 'N' || map[y][x] == 'S'
-		|| map[y][x] == 'E' || map[y][x] == 'W')
-		player++;
-	map[y][x] = 'V';
-	flood_fill(map, player, x++, y, valid);
-	flood_fill(map, player, x, y++, valid);
-	flood_fill(map, player, --x, y, valid);
-	flood_fill(map, player, x, --y, valid);
-	//corner not be good
+
+	char	*pointer;
+	size_t	len;
+
+	if (*s1 == '\0')
+		return (ft_calloc(1, 1));
+	len = ft_strlen(s1);
+	pointer = ft_calloc(max_size, sizeof(char));
+	if (!pointer)
+		return (NULL);
+	ft_memcpy(pointer, s1, len + 1);
+	return (pointer);
 }
 
-static char	**copy_map(char **map, char **new_map)
+static size_t	get_max_row_size(char **map)
 {
-	int	i;
-	int	j;
+	size_t	len;
+	size_t	max_len;
 
-	i = 0;
-	j = 0;
-	new_map = ft_calloc(count_map_height(map) + 1, sizeof(char*));
-	if (!new_map)
-		exit(EXIT_FAILURE); //exit cub3d
-	while (map[i])
+	max_len = 0;
+	while(*map)
 	{
-		new_map[j++] = ft_strdup(map[i++]);
-		if (!new_map)
-		{
-			//free new_map
-			exit(EXIT_FAILURE);//exit cub3d
-		}
+		len = ft_strlen(*map);
+		if (len > max_len)
+			max_len = len;
+		map++;
 	}
-	return (new_map);
+	printf("%ld\n", len);
+	return (len);
 }
 
-bool	is_map_valid(char **map)
-{
-	int		valid;
-	int		player;
-	char	**reviewed_map;
-
-	valid = 1;
-	player = 0;
-	reviewed_map = NULL;
-	reviewed_map = copy_map(map, reviewed_map);
-	flood_fill(reviewed_map, player, 10, 3, &valid);
-	
-	if (player != 1)
-	{
-		printf("wrong player number %d\n", player);
-		return (false);
-	}
-	printf("map valid\n");
-	return (true);
-}
-
-void get_map_descritpion(t_main *main)
+void	get_map_descritpion(t_main *main)
 {
 	int		i;
 	int		j;
+	int		max_len;
 	char	**new_map;
 
 	i = 6;
 	j = 0;
-	new_map = ft_calloc(count_map_height(main->map) - 5, sizeof(char*));
+	new_map = ft_calloc(count_map_height(main->map) - 5, sizeof(char *));
 	if (!new_map)
-		exit(EXIT_FAILURE);//exit cub3d
-	while(main->map[i])
+		exit_cub3d(main, EXIT_FAILURE);
+	max_len = get_max_row_size(main->map);
+	while (main->map[i])
 	{
-		new_map[j] = ft_strdup(main->map[i++]);
+		new_map[j] = max_strdup(main->map[i++], max_len);
 		if (!new_map[j++])
 		{
-			//free new_map
-			exit(EXIT_FAILURE);//exit cub3d
+			safe_free_tab((void ***)&new_map);
+			exit_cub3d(main, EXIT_FAILURE);
 		}
 	}
 	i = 0;
-	while(main->map[i])
-		free(main->map[i++]);
-	free(main->map);
-	main->map = new_map;}
+	safe_free_tab((void ***)&main->map);
+	main->map = new_map;
+}
