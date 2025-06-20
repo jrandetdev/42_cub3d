@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 14:06:49 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/06/20 14:48:11 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/20 15:05:01 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static size_t	get_max_row_size(char **map) //double commande
 	return (len);
 }
 
-static void	print_colum(t_main *main, int x)
+static void	print_colum(t_main *main, float x)
 {
 	int	y;
 
@@ -42,7 +42,7 @@ static void	print_colum(t_main *main, int x)
 	}
 }
 
-void	print_lines(t_main *main, int y)
+void	print_lines(t_main *main, float y)
 {
 	int	x;
 
@@ -56,9 +56,9 @@ void	print_lines(t_main *main, int y)
 
 void	print_grid(t_main *main)
 {
-	int x;
-	int	y;
-	int	separator;
+	float	x;
+	float	y;
+	float	separator;
 	int	height = count_map_height(main->map); //debug
 	int	width = get_max_row_size(main->map); //debug
 

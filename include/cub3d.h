@@ -50,6 +50,14 @@ typedef struct s_color
 	int	b;
 }	t_color;
 
+typedef struct s_map
+{
+	char			**map;
+	unsigned int	height;
+	unsigned int	width;
+}	t_map; // Replaces the map array with the map structure ?
+
+
 typedef struct	s_main
 {
 	void		*mlx_ptr;
