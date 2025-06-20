@@ -6,13 +6,13 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 13:39:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/06/20 16:30:22 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/20 16:34:58 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	draw_square(t_main *main, int start_x, int	start_y)
+void	draw_square(void *mlx_ptr, void *mlx_win, int start_x, int	start_y)
 {
 	int		x = start_x;
 	int		y = start_y;

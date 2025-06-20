@@ -21,7 +21,7 @@ typedef struct	s_main t_main;
 /*------------------------------------ DEBUG ---------------------------------*/
 
 void	print_grid(t_main *main);
-void	draw_square(t_main *main, int start_x, int	start_y);
+void	draw_square(void *mlx_ptr, void *mlx_win, int start_x, int	start_y);
 
 /*------------------------------------ STRUCT --------------------------------*/
 typedef struct	s_myimage
