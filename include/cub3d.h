@@ -43,7 +43,6 @@ typedef struct s_texture
 	int		y_size;
 }	t_texture;
 
-
 typedef struct s_color
 {
 	int	r;

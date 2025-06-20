@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 10:28:19 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/06/20 12:09:18 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/20 14:20:32 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ static bool	get_players(char **map, int *x, int *y, int *player)
 		while (map[j][i])
 		{
 			if (!ft_strchr("01NSWE' ", map[j][i]))
-				return (print_error_and_message("unrecognized character"), false);
+				return (print_error_and_message("unknown character"), false);
 			if (map[j][i] == 'N' || map[j][i] == 'S'
 				|| map[j][i] == 'W' || map[j][i] == 'E')
 			{
 				*x = i;
 				*y = j;
-				(*player)++; 
+				(*player)++;
 			}
 			i++;
 		}
@@ -48,14 +48,15 @@ static bool	get_players(char **map, int *x, int *y, int *player)
 
 static bool	find_player_postion(char **map, int *x, int *y, int *player)
 {
-	if (get_players(map, x, y, player))
+	if (!get_players(map, x, y, player))
 		return (false);
 	if (*player != 1)
 	{
 		if (*player < 1)
 			print_error_and_message("No player found");
 		else if (*player > 1)
-			print_error_and_message("Too much player : is a SinglePlayer game");
+			print_error_and_message("Too many players," \
+				"it's a single-player game");
 		return (false);
 	}
 	return (true);

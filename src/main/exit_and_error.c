@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_and_error.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 11:56:50 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/19 17:19:43 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/20 14:28:14 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void	print_error_and_message(char *error_message)
 {
 	printf("Error\n");
-	ft_putstr_fd(error_message, 2);
+	ft_putendl_fd(error_message, 2); //Add red color ??
+	//ft_putstr_fd(error_message, 2);
 }
 
 void	exit_cub3d(t_main *main, int error_status)
@@ -39,7 +40,8 @@ void	exit_cub3d(t_main *main, int error_status)
 	}
 	if (error_status > 0)
 	{
-		perror("Error ");
+		if (errno)
+			perror("Error ");
 	}
 	exit(error_status);
 }

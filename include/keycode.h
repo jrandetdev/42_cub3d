@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keycode.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 00:13:20 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/06/19 17:11:08 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/20 14:48:50 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ enum
 
 # elif __linux__ 
 #	include <X11/X.h>
-# define WIN_WIDTH 1250
-# define WIN_HEIGHT 750
+# define WIN_WIDTH 1500
+# define WIN_HEIGHT 1000
 
 enum // events for macos 
 {
@@ -84,12 +84,16 @@ enum
 {
 	K_W					= 119,
 	K_S					= 115,
+	K_A					= 97,
+	K_D					= 100,
 	K_LEFT				= 65361,
 	K_UP				= 65362,
 	K_RIGHT				= 65363,
 	K_DOWN				= 65364,
 	K_ESCP				= 65307,
 	K_C					= 99,
+	K_G					= 103,
+	K_K					= 107,
 	K_CTRL				= 65507,
 };
 # endif

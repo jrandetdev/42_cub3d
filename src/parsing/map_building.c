@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:11:58 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/19 16:59:32 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/20 14:07:36 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static void	count_lines(char *file, int *line_counter)
 		line = get_next_line(fd);
 		if (line == NULL)
 		{
-			print_error_and_message("EOF is reached.\n");
+			//print_error_and_message("EOF is reached.\n");
 			break ;
 		}
 		if (!is_only_spaces(line))
