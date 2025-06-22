@@ -12,17 +12,16 @@ DIR_INCLUDE		=			./include
 MLX_PATH_UNIX	:=			./libs/minilibx-linux/
 MLX_NAME_UNIX	:=			libmlx.a
 MLX_PATH_OSX	:=			./libs/minilibx-macos
-MLX_NAME_OSX	:=			libmlx.dylib
+MLX_NAME_OSX	:=			libmlx.a
 
 LIBFT_PATH		:=			./libs/libft/
 LIBFT_NAME		:=			libft.a
 LIBFT			:=			$(LIBFT_PATH)$(LIBFT_NAME)
 
-
 ifeq ($(UNAME), Darwin)
 	MLX_PATH	= $(MLX_PATH_OSX)
 	MLX_NAME	= $(MLX_NAME_OSX)
-	LIBRARIES	= -lft -lmlx -framework Metal -framework MetalKit -framework AppKit -lz
+	LIBRARIES	= -lft -Lmlx -lmlx -framework OpenGL -framework AppKit
 else ifeq ($(UNAME), Linux)
 	MLX_PATH	= $(MLX_PATH_UNIX)
 	MLX_NAME	= $(MLX_NAME_UNIX)
@@ -44,7 +43,7 @@ SRC_PARSING		=			flood_fill.c \
 							map_building.c \
 							map_desription.c \
 							parse_entire_map.c
-PARCING			=			$(addprefix $(DIR_PARSING)/, $(SRC_PARSING))
+PARSING			=			$(addprefix $(DIR_PARSING)/, $(SRC_PARSING))
 
 DIR_UTILS		=			./src/utils
 SRC_UTILS		=			get_next_line.c
@@ -64,7 +63,7 @@ DIR_IMG			=			./src/img
 SRC_IMG			=			init_img.c
 IMG				=			$(addprefix $(DIR_IMG)/, $(SRC_IMG))
 
-SOURCES			=			$(MAIN) $(PARCING) $(UTILS) $(DEBUG) $(EVENTS) $(IMG)
+SOURCES			=			$(MAIN) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(IMG)
 vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS) $(DIR_IMG)
 
 SOURCE_NAME		:=			$(basename $(SOURCES))
@@ -79,32 +78,32 @@ LIBRARY_PATHS	:=			-L$(LIBFT_PATH) -L$(MLX_PATH)
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS)
-	make -sC $(MLX_PATH) > /dev/null 2>&1
-	make -sC $(LIBFT_PATH)
+$(NAME): $(LIBFT) $(MLX) $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) $(LIBRARY_PATHS) $(LIBRARIES) -o $@
-	echo "$(GREEN)Cube3d: Make succesfull, can execute ./cub3d$(RESET)"
+	@echo "$(GREEN)Cube3d: Make successful, can execute ./cub3d$(RESET)"
 
-ifeq ($(UNAME), Darwin)
-	@cp $(MLX_PATH)/libmlx.dylib .
-endif
+$(LIBFT):
+	@make -C $(LIBFT_PATH)
+
+$(MLX):
+	@make -C $(MLX_PATH)
 
 $(DIR_BUILD)/%.o: %.c | $(DIR_BUILD)
 	$(CC) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
 
 $(DIR_BUILD):
-	mkdir -p $@
+	@mkdir -p $@
 
 clean:
-	make clean -C $(LIBFT_PATH)
-	make clean -C $(MLX_PATH) > /dev/null 2>&1
-	rm -rf $(DIR_BUILD)
-	rm -rf libmlx.dylib
+	@make clean -C $(LIBFT_PATH)
+	@make clean -C $(MLX_PATH) 2>/dev/null || true
+	@rm -rf $(DIR_BUILD)
+	@rm -f libmlx.dylib
 
 fclean: clean
-	rm -rf $(NAME)
-	make fclean -C $(LIBFT_PATH)
-	echo "$(GREEN)Cube3d: fclean complete.$(RESET)"
+	@rm -f $(NAME)
+	@make fclean -C $(LIBFT_PATH)
+	@echo "$(GREEN)Cube3d: fclean complete.$(RESET)"
 
 re: fclean all
 
@@ -113,6 +112,3 @@ re: fclean all
 .SILENT:
 
 -include $(DEPS)
-
-#example to base myself off of
-#cc -Wall -Werror -Wextra jojo.c -L library -l link the libraries -o jojo
