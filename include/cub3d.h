@@ -101,6 +101,7 @@ void	print_array(char **array);
 void	safe_free_tab(void ***ptr);
 void	free_string_array(char ***array);
 void	free_ptr_and_set_to_null(char *ptr);
+int		handle_destroy(t_main *main);
 void	exit_cub3d(t_main *main, int error_status);
 
 #endif

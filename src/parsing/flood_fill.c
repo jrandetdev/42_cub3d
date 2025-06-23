@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 10:28:19 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/06/20 14:20:32 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/23 10:44:31 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,6 @@ bool	is_map_valid(char **map)
 	flood_fill(&parsing, x, y);
 	if ((parsing.patern) == 1)
 		return (print_error_and_message("Map : Wrong patern"), false);
-	printf("map valid\n");
+	//printf("map valid\n");
 	return (true);
 }

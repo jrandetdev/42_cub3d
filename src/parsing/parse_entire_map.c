@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_entire_map.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 15:31:51 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/23 00:13:12 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/23 10:44:18 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,9 @@ bool	parsing(t_main *main, char *file)
 
 	fd = get_fd(main, file);
 	build_map(main, fd, file);
+	print_array(main->map);
+	//parse the first couple of maps with their description  
 	get_map_descritpion(main);
-	printf("GOT HERE\n");
 	if (!is_map_valid(main->map))
 		exit_cub3d(main, EXIT_FAILURE);
 	return (true);
