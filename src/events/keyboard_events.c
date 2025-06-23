@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard_events.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 16:22:34 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/23 11:33:24 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/23 11:57:23 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ static int	key_pressed(int keycode, t_main *main)
 		main->keys.s = 1;
 	if (keycode == K_D)
 		main->keys.d = 1;
-	if (keycode == K_ESCP)
-		main->keys.escp = 1;
 	if (keycode == K_G)
 		main->keys.g = 1;
+	if (keycode == K_ESCP)
+		exit_cub3d(main, 0);
 	return (1);
 }
 
@@ -39,8 +39,8 @@ static int	key_released(int keycode, t_main *main)
 		main->keys.s = 0;
 	if (keycode == K_D)
 		main->keys.d = 0;
-	if (keycode == K_ESCP)
-		main->keys.escp = 0;
+	// if (keycode == K_ESCP)
+	// 	main->keys.escp = 0;
 	if (keycode == K_G)
 		main->keys.g = 0;
 	return (0);

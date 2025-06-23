@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 11:56:50 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/23 11:01:20 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/23 11:54:42 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	exit_cub3d(t_main *main, int error_status)
 {
 	if (main)
 	{
-		if (main->map)
+		if (main->map_struct.map)
 		{
-			free_string_array(&main->map);
+			free_string_array(&main->map_struct.map);
 		}
 		if (main->mlx_win)
 		{
