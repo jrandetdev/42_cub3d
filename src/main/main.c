@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 17:27:08 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/23 14:46:22 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/23 16:12:05 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static void	init_cub3d(t_main *main)
 	main->mlx_win = mlx_new_window(main->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "Random title");
 	if (!main->mlx_win)
 		exit_cub3d(main, 1);
-	main->final_colour = 0xFFFFFF; //for now, just for debugging and testing
 	mlx_hook(main->mlx_win, 17, 0, handle_destroy, &main);
 	init_img(main);
 }

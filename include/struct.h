@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 11:59:43 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/23 15:04:12 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/23 16:13:44 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct	s_player
 {
 	double	x;
 	double	y;
+	double	angle;
 }				t_player;
 
 typedef struct s_keys
@@ -91,13 +92,6 @@ typedef struct	s_main
 	int				debug;
 	t_player		player;
 	t_keys			keys;
-	t_texture		no;
-	t_texture		so;
-	t_texture		ea;
-	t_texture		we;
-	t_color			c;
-	t_color			f;
-	int				final_colour;
 	t_myimage		image;
 }				t_main;
 

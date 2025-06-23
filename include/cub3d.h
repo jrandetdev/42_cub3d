@@ -17,7 +17,7 @@
 # define BUFFERSIZE 20
 # endif
 
-# define PLAYER_SPEED 0.5
+# define PLAYER_SPEED 1.5
 
 typedef struct	s_main t_main;
 typedef struct s_map t_map;
@@ -26,6 +26,7 @@ typedef struct s_texture t_texture;
 typedef struct	s_myimage t_myimage;
 typedef struct s_vec2 t_vec2;
 typedef struct s_keys t_keys;
+
 
 /*------------------------------------ DEBUG ---------------------------------*/
 
@@ -41,7 +42,7 @@ char	**get_file_content(t_main *main, int fd, char *file);
 
 // RENDERING //
 int		render_next_frame(t_main *main);
-void	put_pixel_to_image(t_main *main, int x, int y);
+void	put_pixel_to_image(t_main *main, int x, int y, int color);
 void	init_img(t_main *main);
 
 size_t	count_map_height(char **map);

@@ -6,21 +6,12 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 16:22:34 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/23 14:49:06 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/23 16:20:03 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_keys(t_main *main)
-{
-	main->keys.w = 0;
-	main->keys.a = 0;
-	main->keys.s = 0;
-	main->keys.d = 0;
-	main->keys.g = 0;
-	main->keys.escp = 0;
-}
 
 static int	key_pressed(int keycode, t_main *main)
 {
@@ -33,7 +24,7 @@ static int	key_pressed(int keycode, t_main *main)
 	if (keycode == K_D)
 		main->keys.d = 1;
 	if (keycode == K_G)
-		main->keys.g = 1;
+		main->keys.g = -main->keys.g;
 	if (keycode == K_ESCP)
 		exit_cub3d(main, 0);
 	printf("keycode : %d\n", keycode);
@@ -50,8 +41,6 @@ static int	key_released(int keycode, t_main *main)
 		main->keys.s = 0;
 	if (keycode == K_D)
 		main->keys.d = 0;
-	if (keycode == K_G)
-		main->keys.g = 0;
 	return (0);
 }
 

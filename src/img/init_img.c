@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 16:46:30 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/23 09:49:38 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/23 16:10:03 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
  * edge cases : if the offset you calculates is bigger than the 
  * buffer, then you are out of bounds. 
  */
-void	put_pixel_to_image(t_main *main, int x, int y)
+void	put_pixel_to_image(t_main *main, int x, int y, int color)
 {
 	unsigned char		*dst;
 	long				pixel_offset;
@@ -50,7 +50,7 @@ void	put_pixel_to_image(t_main *main, int x, int y)
 		exit_cub3d(main, 1);
 	}
 	dst = img->addr + pixel_offset;
-	*(unsigned int *)dst = main->final_colour; // here we dereference the destination (imahge buffer)
+	*(unsigned int *)dst = color; // here we dereference the destination (imahge buffer)
 	//we cast the dereferenced value :)
 }
 
