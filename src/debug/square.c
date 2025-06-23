@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 13:39:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/06/23 11:41:57 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/23 15:10:34 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,19 @@
 void	draw_square(t_main *main, int start_x, int start_y)
 {
 	int		size;
+	int		ray;
 	int		x;
 	int		y;
 
+	ray = 0;
 	size = 20;
 	y = start_y - size;
+	(void) ray;
+	// while(ray <= 30)
+	// {
+	// 	put_pixel_to_image(main, start_x, y - ray);
+	// 	ray++;
+	// }
 	while (y <= start_y + size)
 	{
 		x = start_x - size;
