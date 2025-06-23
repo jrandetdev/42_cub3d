@@ -6,29 +6,28 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 13:39:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/06/20 16:34:58 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/23 11:12:31 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	draw_square(void *mlx_ptr, void *mlx_win, int start_x, int	start_y)
+void	draw_square(t_main *main, int start_x, int start_y)
 {
-	int		x = start_x;
-	int		y = start_y;
-	int	end_x = start_x + 65;
-	int	end_y = start_y + 65;
+	int		size;
+	int		x;
+	int		y;
 
-	while(end_y > y)
+	size = 20;
+	y = start_y - size;
+	while (y <= start_y + size)
 	{
-		while (end_x > x)
+		x = start_x - size;
+		while (x <= start_x + size)
 		{
-			mlx_pixel_put(mlx_ptr, mlx_win, x, y, 0xFF0000);
+			put_pixel_to_image(main, x, y);
 			x++;
 		}
-		x = start_x;
 		y++;
 	}
-	for(int i = 0; i < 50; i++)
-		mlx_pixel_put(mlx_ptr, mlx_win, start_x + 32, start_y - 2 - i, 0xFFFFFF);
 }
