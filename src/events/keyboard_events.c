@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 16:22:34 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/23 16:20:03 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/23 16:41:29 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	key_pressed(int keycode, t_main *main)
 	if (keycode == K_D)
 		main->keys.d = 1;
 	if (keycode == K_G)
-		main->keys.g = -main->keys.g;
+		main->keys.g = !main->keys.g;
 	if (keycode == K_ESCP)
 		exit_cub3d(main, 0);
 	printf("keycode : %d\n", keycode);

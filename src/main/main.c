@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 17:27:08 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/23 16:12:05 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/23 16:53:20 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int	main(int argc, char **argv)
 	main.player.x = 600;  //debug
 	main.player.y = 400; //debug
 	parsing(&main, argv[1]);
+	printf("MAP HEIGHT %d\n", main.map_struct.height); //debug
+	printf("MAP WIDTH %d\n", main.map_struct.width); //debug
 	init_cub3d(&main);
 	init_keyboard_events(&main);
 	mlx_loop_hook(main.mlx_ptr, render_next_frame, &main);

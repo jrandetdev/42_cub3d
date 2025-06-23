@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_desription.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 12:10:09 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/06/23 14:59:57 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/23 16:50:00 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,6 @@ void	get_map_descritpion(t_main *main, char **file_content)
 		j++;
 		i++;
 	}
+	main->map_struct.height = count_map_height(main->map_struct.map);
+	main->map_struct.width = get_max_row_size(main->map_struct.map);
 }

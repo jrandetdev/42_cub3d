@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 13:39:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/06/23 16:17:22 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/23 16:41:32 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ void	draw_square(t_main *main, int start_x, int start_y)
 			x++;
 		}
 		y++;
+	}
+	if (main->keys.g)
+	{
+		print_grid(main);
 	}
 	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, main->image.data_img, 0, 0);
 }
