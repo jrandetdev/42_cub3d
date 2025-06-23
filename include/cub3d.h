@@ -24,6 +24,13 @@ void	print_grid(t_main *main);
 void	draw_square(void *mlx_ptr, void *mlx_win, int start_x, int	start_y);
 
 /*------------------------------------ STRUCT --------------------------------*/
+
+typedef struct s_vec2
+{
+	double	x;
+	double	y;
+}	t_vec2;
+
 typedef struct	s_myimage
 {
 	void	*data_img;
