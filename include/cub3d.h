@@ -57,12 +57,12 @@ typedef struct s_map
 	unsigned int	width;
 }	t_map; // Replaces the map array with the map structure ?
 
-
 typedef struct	s_main
 {
 	void			*mlx_ptr;
 	void			*mlx_win;
 	char			**map;
+	t_map			map_struct;
 	int				debug;
 	t_texture		no;
 	t_texture		so;

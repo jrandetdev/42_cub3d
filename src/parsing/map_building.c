@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_building.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:11:58 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/20 14:07:36 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/23 11:15:55 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	fill_map(t_main *main, int fd)
 		null_terminate_line(&line);
 		if (!is_only_spaces(line))
 		{
-			main->map[i] = ft_strdup(line);
-			if (!main->map[i])
+			main->map_struct.map[i] = ft_strdup(line);
+			if (!main->map_struct.map[i])
 			{
 				free(line);
 				exit_cub3d(main, 1);
@@ -88,8 +88,8 @@ void	build_map(t_main *main, int fd, char *file)
 	int		line_counter;
 
 	count_lines(file, &line_counter);
-	main->map = ft_calloc(line_counter + 1, sizeof(char *));
-	if (!main->map)
+	main->map_struct.map = ft_calloc(line_counter + 1, sizeof(char *));
+	if (!main->map_struct.map)
 		exit_cub3d(main, 1);
 	fd = open(file, O_RDONLY);
 	if (fd == -1)

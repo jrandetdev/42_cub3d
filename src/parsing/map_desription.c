@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_desription.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 12:10:09 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/06/23 00:23:13 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/23 11:19:25 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,13 @@ void	get_map_descritpion(t_main *main)
 
 	i = 6;
 	j = 0;
-	new_map = ft_calloc(count_map_height(main->map) - 5, sizeof(char *));
+	new_map = ft_calloc(count_map_height(main->map_struct.map) - 5, sizeof(char *));
 	if (!new_map)
 		exit_cub3d(main, EXIT_FAILURE);
-	max_len = get_max_row_size(main->map);
-	while (main->map[i])
+	max_len = get_max_row_size(main->map_struct.map);
+	while (main->map_struct.map[i])
 	{
-		new_map[j] = max_strdup(main->map[i++], max_len);
+		new_map[j] = max_strdup(main->map_struct.map[i++], max_len);
 		if (!new_map[j++])
 		{
 			safe_free_tab((void ***)&new_map);
@@ -78,6 +78,6 @@ void	get_map_descritpion(t_main *main)
 		}
 	}
 	i = 0;
-	safe_free_tab((void ***)&main->map);
+	safe_free_tab((void ***)&main->map_struct.map);
 	main->map = new_map;
 }
