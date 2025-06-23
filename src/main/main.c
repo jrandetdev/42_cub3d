@@ -3,29 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 17:27:08 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/23 16:53:20 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/24 17:20:31 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "cub3d.h"
 #include <mlx.h>
-
-static bool	cub_extension_is_valid(char	*s, int len)
-{
-	while (*s)
-		s++;
-	s--;
-	if (*s != 'b')
-		return (false);
-	while (len--)
-		s--;
-	if (ft_strncmp(s, ".cub", 4) == 0)
-		return (true);
-	return (false);
-}
 
 static bool	arguments_are_valid(int argc, char **argv)
 {

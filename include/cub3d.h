@@ -38,6 +38,7 @@ void	draw_square(t_main *main, int start_x, int	start_y);
 bool	is_map_valid(char **map);
 bool	parsing(t_main *main, char *file);
 void	get_map_descritpion(t_main *main, char **file_content);
+void	extract_info_array(t_main *main, char **file);
 char	**get_file_content(t_main *main, int fd, char *file);
 
 // RENDERING //
@@ -52,6 +53,9 @@ void	print_error_and_message(char *error_message);
 
 // UTILS //
 char	*get_next_line(int fd);
+size_t	string_array_len(char **str);
+bool	xmp_extension_is_valid(char	*s, int len);
+bool	cub_extension_is_valid(char	*s, int len);
 
 int		get_fd(t_main *main, char *s);
 

@@ -41,12 +41,15 @@ MAIN			=			$(addprefix $(DIR_MAIN)/, $(SRC_MAIN))
 DIR_PARSING		=			./src/parsing
 SRC_PARSING		=			flood_fill.c \
 							get_file_content.c \
+							check_extension.c \
 							map_desription.c \
-							parse_entire_map.c
+							parse_entire_map.c \
+							parse_player_and_texture.c
 PARSING			=			$(addprefix $(DIR_PARSING)/, $(SRC_PARSING))
 
 DIR_UTILS		=			./src/utils
-SRC_UTILS		=			get_next_line.c
+SRC_UTILS		=			get_next_line.c \
+							string_array_len.c
 UTILS			=			$(addprefix $(DIR_UTILS)/, $(SRC_UTILS))
 
 DIR_DEBUG		=			./src/debug
