@@ -21,9 +21,26 @@ typedef struct	s_main t_main;
 /*------------------------------------ DEBUG ---------------------------------*/
 
 void	print_grid(t_main *main);
-void	draw_square(void *mlx_ptr, void *mlx_win, int start_x, int	start_y);
+void	draw_square(t_main *main, int start_x, int	start_y);
 
 /*------------------------------------ STRUCT --------------------------------*/
+
+typedef struct s_keys
+{
+	int	w;
+	int	a;
+	int	s;
+	int	d;
+	int escp;
+	int	g;
+}	t_keys;
+
+typedef struct s_vec2
+{
+	double	x;
+	double	y;
+}	t_vec2;
+
 typedef struct	s_myimage
 {
 	void	*data_img;
@@ -64,6 +81,7 @@ typedef struct	s_main
 	char			**map;
 	t_map			map_struct;
 	int				debug;
+	t_keys			keys;
 	t_texture		no;
 	t_texture		so;
 	t_texture		ea;

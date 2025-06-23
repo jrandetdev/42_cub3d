@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   square.c                                           :+:      :+:    :+:   */
+/*   vector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/18 13:39:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/06/23 11:41:57 by hdougoud         ###   ########.fr       */
+/*   Created: 2025/06/23 09:05:05 by hdougoud          #+#    #+#             */
+/*   Updated: 2025/06/23 10:30:58 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include <math.h>
 
-void	draw_square(t_main *main, int start_x, int start_y)
+/**
+ * @brief 
+ */
+t_vec2	get_vector(double x1, double y1, double x2, double y2)
 {
-	int		size;
-	int		x;
-	int		y;
+	t_vec2	vector;
 
-	size = 20;
-	y = start_y - size;
-	while (y <= start_y + size)
-	{
-		x = start_x - size;
-		while (x <= start_x + size)
-		{
-			put_pixel_to_image(main, x, y);
-			x++;
-		}
-		y++;
-	}
-	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, main->image.data_img, 0, 0);
+	vector.x = x2 - x1;
+	vector.y = y2 - y1;
+	return (vector);
+}
+
+double	get_vector_norm(t_vec2 *vec1, t_vec2 *vec2)
+{
+	return sqrt((pow(vec2->x - vec1->x, 2) - pow(vec2->y - vec1->x, 2)));
 }

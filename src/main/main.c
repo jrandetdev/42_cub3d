@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 17:27:08 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/23 11:06:04 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/23 11:39:58 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	main(int argc, char **argv)
 	parsing(&main, argv[1]);
 	init_cub3d(&main);
 	init_keyboard_events(&main);
-	draw_square(main.mlx_ptr, main.mlx_win, (WIN_WIDTH/2) - 50, (WIN_HEIGHT/2) - 50);//debug
+	draw_square(&main, (WIN_WIDTH/2) - 50, (WIN_HEIGHT/2) - 50);//debug
 	mlx_loop(main.mlx_ptr);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 16:46:30 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/20 15:42:49 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/23 09:49:38 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,13 @@ void	put_pixel_to_image(t_main *main, int x, int y)
 	{
 		printf("Coordinates %d and %d out of bounds: bigger than \
 			%d bytes (total_image_bytes by %ld bytes\n", \
-			 x, y, img->total_bytes, pixel_offset);
+			x, y, img->total_bytes, pixel_offset);
 		exit_cub3d(main, 1);
 	}
 	dst = img->addr + pixel_offset;
 	*(unsigned int *)dst = main->final_colour; // here we dereference the destination (imahge buffer)
 	//we cast the dereferenced value :)
 }
-
 
 /**
  * @param addr contains all the information about the image. 
