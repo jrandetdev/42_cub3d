@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 12:10:09 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/06/23 11:19:25 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/23 11:24:08 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,18 @@ void	get_map_descritpion(t_main *main)
 {
 	int		i;
 	int		j;
-	int		max_len;
 	char	**new_map;
 
 	i = 6;
 	j = 0;
-	new_map = ft_calloc(count_map_height(main->map_struct.map) - 5, sizeof(char *));
+	main->map_struct.height = count_map_height(main->map_struct.map) - 5;
+	new_map = ft_calloc(main->map_struct.height, sizeof(char *));
 	if (!new_map)
 		exit_cub3d(main, EXIT_FAILURE);
-	max_len = get_max_row_size(main->map_struct.map);
+	main->map_struct.width = get_max_row_size(main->map_struct.map);
 	while (main->map_struct.map[i])
 	{
-		new_map[j] = max_strdup(main->map_struct.map[i++], max_len);
+		new_map[j] = max_strdup(main->map_struct.map[i++], main->map_struct.width);
 		if (!new_map[j++])
 		{
 			safe_free_tab((void ***)&new_map);
