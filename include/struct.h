@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 11:59:43 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/23 14:39:55 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/23 15:04:12 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ typedef struct	s_main t_main;
 
 typedef struct	s_player
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 }				t_player;
 
 typedef struct s_keys

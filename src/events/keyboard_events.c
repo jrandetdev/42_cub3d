@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard_events.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 16:22:34 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/23 14:09:29 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/23 14:49:06 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static int	key_pressed(int keycode, t_main *main)
 		main->keys.g = 1;
 	if (keycode == K_ESCP)
 		exit_cub3d(main, 0);
+	printf("keycode : %d\n", keycode);
 	return (1);
 }
 
@@ -57,6 +58,6 @@ static int	key_released(int keycode, t_main *main)
 void	init_keyboard_events(t_main *main)
 {
 	mlx_hook(main->mlx_win, ON_KEYDOWN, 1L<<0, key_pressed, main);
-	mlx_hook(main->mlx_win, ON_KEYUP, 1L<<0, key_released, main);
+	mlx_hook(main->mlx_win, ON_KEYUP, 1L<<1, key_released, main);
 
 }
