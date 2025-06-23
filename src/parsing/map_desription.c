@@ -6,36 +6,35 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 12:10:09 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/06/23 14:09:29 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/23 14:59:57 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-size_t	count_map_height(char **map)
+size_t	count_map_height(char **file)
 {
 	int	i;
 
 	i = 0;
-	while (map[i])
+	while (file[i])
 		i++;
 	return (i);
 }
 
-static size_t	get_max_row_size(char **map)
+static size_t	get_max_row_size(char **file_content)
 {
 	size_t	len;
 	size_t	max_len;
 
 	max_len = 0;
-	while(*map)
+	while(*file_content)
 	{
-		len = ft_strlen(*map);
+		len = ft_strlen(*file_content);
 		if (len > max_len)
 			max_len = len;
-		map++;
+		file_content++;
 	}
-	printf("%ld\n", max_len);
 	return (max_len + 1);
 }
 
@@ -55,31 +54,27 @@ static char *max_strdup(const char *s1, int max_size)
 	return (pointer);
 }
 
-void	get_map_descritpion(t_main *main)
+void	get_map_descritpion(t_main *main, char **file_content)
 {
 	int		i;
 	int		j;
-	char	**new_map;
 
 	i = 6;
 	j = 0;
-	main->map_struct.height = count_map_height(main->map_struct.map) - 5;
-	new_map = ft_calloc(main->map_struct.height, sizeof(char *));
-	if (!new_map)
+	main->map_struct.height = count_map_height(file_content) - 5;
+	main->map_struct.width = get_max_row_size(file_content);
+	main->map_struct.map = ft_calloc(main->map_struct.height, sizeof(char *));
+	if (!main->map_struct.map)
 		exit_cub3d(main, EXIT_FAILURE);
-	main->map_struct.width = get_max_row_size(main->map_struct.map);
-	while (main->map_struct.map[i])
+	while (file_content[i])
 	{
-		new_map[j] = max_strdup(main->map_struct.map[i++], main->map_struct.width);
-		if (!new_map[j++])
+		main->map_struct.map[j] = max_strdup(file_content[i], main->map_struct.width);
+		if (!main->map_struct.map[j])
 		{
-			safe_free_tab((void ***)&new_map);
+			safe_free_tab((void ***)&main->map_struct.map);
 			exit_cub3d(main, EXIT_FAILURE);
 		}
+		j++;
+		i++;
 	}
-	i = 0;
-	//safe_free_tab((void ***)&main->map_struct.map);
-	//free_string_array(&main->map_struct.map);
-	main->map_struct.map = new_map;
-	printf("GOT HERE\n");
 }

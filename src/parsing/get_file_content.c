@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_building.c                                     :+:      :+:    :+:   */
+/*   get_file_content.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:11:58 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/23 13:36:27 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/23 14:57:54 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	null_terminate_line(char **line)
 	*cursor = '\0';
 }
 
-static void	fill_parse_buffer(t_main *main, int fd)
+static bool	fill_parse_buffer(char	***file_content, int fd)
 {
 	char	*line;
 	int		i;
@@ -48,17 +48,18 @@ static void	fill_parse_buffer(t_main *main, int fd)
 		null_terminate_line(&line);
 		if (!is_only_spaces(line))
 		{
-			main->map_struct.map[i] = ft_strdup(line);
-			if (!main->map_struct.map[i])
+			(*file_content)[i] = ft_strdup(line);
+			if (!(*file_content)[i])
 			{
 				free(line);
-				exit_cub3d(main, 1);
+				free_string_array(file_content);
+				return (false);
 			}
 			i++;
 		}
 		free(line);
 	}
- 
+	return (true);
 }
 
 static void	count_lines(char *file, int *line_counter)
@@ -73,7 +74,6 @@ static void	count_lines(char *file, int *line_counter)
 		line = get_next_line(fd);
 		if (line == NULL)
 		{
-			//print_error_and_message("EOF is reached.\n");
 			break ;
 		}
 		if (!is_only_spaces(line))
@@ -83,17 +83,23 @@ static void	count_lines(char *file, int *line_counter)
 	close (fd);
 }
 
-void	get_file_content(t_main *main, int fd, char *file)
+char	**get_file_content(t_main *main, int fd, char *file)
 {
 	int		line_counter;
+	char	**file_content;
 
 	count_lines(file, &line_counter);
-	main->map_struct.map = ft_calloc(line_counter + 1, sizeof(char *));
-	if (!main->map_struct.map)
+	file_content = ft_calloc(line_counter + 1, sizeof(char *));
+	if (!file_content)
 		exit_cub3d(main, 1);
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
+	{
+		free_string_array(&file_content);
 		exit_cub3d(main, 1);
-	fill_parse_buffer(main, fd);
+	}
+	if (!fill_parse_buffer(&file_content, fd))
+		exit_cub3d(main, 1);
 	close(fd);
+	return (file_content);
 }

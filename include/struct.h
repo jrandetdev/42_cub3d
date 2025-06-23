@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 11:59:43 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/23 14:09:29 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/23 14:39:55 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ typedef struct	s_main
 {
 	void			*mlx_ptr;
 	void			*mlx_win;
-	char			**map;
 	t_map			map_struct;
 	int				debug;
 	t_player		player;

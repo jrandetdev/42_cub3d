@@ -36,8 +36,8 @@ void	draw_square(t_main *main, int start_x, int	start_y);
 
 bool	is_map_valid(char **map);
 bool	parsing(t_main *main, char *file);
-void	get_map_descritpion(t_main *main);
-void	get_file_content(t_main *main, int fd, char *file);
+void	get_map_descritpion(t_main *main, char **file_content);
+char	**get_file_content(t_main *main, int fd, char *file);
 
 // RENDERING //
 int		render_next_frame(t_main *main);
