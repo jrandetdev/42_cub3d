@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_desription.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 12:10:09 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/06/20 14:41:13 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/23 00:23:13 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ static size_t	get_max_row_size(char **map)
 			max_len = len;
 		map++;
 	}
-	printf("%ld\n", len);
-	return (len);
+	printf("%ld\n", max_len);
+	return (max_len);
 }
 
 void	get_map_descritpion(t_main *main)
