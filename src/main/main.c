@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 17:27:08 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/23 11:39:58 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/23 13:36:26 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	init_cub3d(t_main *main)
 	main->mlx_win = mlx_new_window(main->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "Random title");
 	if (!main->mlx_win)
 		exit_cub3d(main, 1);
-	main->final_colour = 0xFFFFF; //for now, just for debugging and testing
+	main->final_colour = 0xFFFFFF; //for now, just for debugging and testing
 	mlx_hook(main->mlx_win, 17, 0, handle_destroy, &main);
 	init_img(main);
 }
@@ -66,6 +66,7 @@ int	main(int argc, char **argv)
 	init_cub3d(&main);
 	init_keyboard_events(&main);
 	draw_square(&main, (WIN_WIDTH/2) - 50, (WIN_HEIGHT/2) - 50);//debug
+	mlx_loop_hook(main.mlx_ptr, render_next_frame, &main);
 	mlx_loop(main.mlx_ptr);
 	return (0);
 }

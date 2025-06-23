@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 15:31:51 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/23 11:32:09 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/23 14:09:28 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,11 @@ bool	parsing(t_main *main, char *file)
 	int		fd;
 
 	fd = get_fd(main, file);
-	build_map(main, fd, file);
+	get_file_content(main, fd, file);
 	print_array(main->map_struct.map);
-	//get_player_direction(main);
 	//parse the first couple of maps with their description  
 	get_map_descritpion(main);
-	if (!is_map_valid(main->map))
+	if (!is_map_valid(main->map_struct.map))
 		exit_cub3d(main, EXIT_FAILURE);
 	return (true);
 }

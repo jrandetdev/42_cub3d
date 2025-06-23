@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:11:58 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/23 11:30:43 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/23 13:36:27 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	null_terminate_line(char **line)
 	*cursor = '\0';
 }
 
-void	fill_map(t_main *main, int fd)
+static void	fill_parse_buffer(t_main *main, int fd)
 {
 	char	*line;
 	int		i;
@@ -83,7 +83,7 @@ static void	count_lines(char *file, int *line_counter)
 	close (fd);
 }
 
-void	build_map(t_main *main, int fd, char *file)
+void	get_file_content(t_main *main, int fd, char *file)
 {
 	int		line_counter;
 
@@ -94,6 +94,6 @@ void	build_map(t_main *main, int fd, char *file)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		exit_cub3d(main, 1);
-	fill_map(main, fd);
+	fill_parse_buffer(main, fd);
 	close(fd);
 }

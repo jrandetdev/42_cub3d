@@ -40,7 +40,7 @@ MAIN			=			$(addprefix $(DIR_MAIN)/, $(SRC_MAIN))
 
 DIR_PARSING		=			./src/parsing
 SRC_PARSING		=			flood_fill.c \
-							map_building.c \
+							get_file_content.c \
 							map_desription.c \
 							parse_entire_map.c
 PARSING			=			$(addprefix $(DIR_PARSING)/, $(SRC_PARSING))
@@ -60,7 +60,8 @@ SRC_EVENTS		=			keyboard_events.c
 EVENTS			=			$(addprefix $(DIR_EVENTS)/, $(SRC_EVENTS))
 
 DIR_IMG			=			./src/img
-SRC_IMG			=			init_img.c
+SRC_IMG			=			render.c \
+							init_img.c
 IMG				=			$(addprefix $(DIR_IMG)/, $(SRC_IMG))
 
 SOURCES			=			$(MAIN) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(IMG)

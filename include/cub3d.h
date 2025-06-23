@@ -10,96 +10,37 @@
 #include <stdbool.h>
 #include "libft.h"
 #include "keycode.h"
+#include "struct.h"
 #include <mlx.h>
 
 # ifndef BUFFERSIZE
 # define BUFFERSIZE 20
 # endif
 
+# define PLAYER_SPEED 0.5
+
 typedef struct	s_main t_main;
+typedef struct s_map t_map;
+typedef struct s_color t_color;
+typedef struct s_texture t_texture;
+typedef struct	s_myimage t_myimage;
+typedef struct s_vec2 t_vec2;
+typedef struct s_keys t_keys;
 
 /*------------------------------------ DEBUG ---------------------------------*/
 
 void	print_grid(t_main *main);
 void	draw_square(t_main *main, int start_x, int	start_y);
 
-/*------------------------------------ STRUCT --------------------------------*/
-
-typedef struct s_keys
-{
-	int	w;
-	int	a;
-	int	s;
-	int	d;
-	int escp;
-	int	g;
-}	t_keys;
-
-typedef struct s_vec2
-{
-	double	x;
-	double	y;
-}	t_vec2;
-
-typedef struct	s_myimage
-{
-	void	*data_img;
-	void	*addr;
-	int		size_line;
-	int		bitspp;
-	int		bytespp;
-	int		total_bytes;
-	int		pixels_per_line;
-	int		endian;
-}	t_myimage;
-
-typedef struct s_texture
-{
-	void	*texture;
-	int		x_size;
-	int		y_size;
-}	t_texture;
-
-typedef struct s_color
-{
-	int	r;
-	int	g;
-	int	b;
-}	t_color;
-
-typedef struct s_map
-{
-	char			**map;
-	unsigned int	height;
-	unsigned int	width;
-}	t_map; // Replaces the map array with the map structure ?
-
-typedef struct	s_main
-{
-	void			*mlx_ptr;
-	void			*mlx_win;
-	char			**map;
-	t_map			map_struct;
-	int				debug;
-	t_keys			keys;
-	t_texture		no;
-	t_texture		so;
-	t_texture		ea;
-	t_texture		we;
-	t_color			c;
-	t_color			f;
-	int				final_colour;
-	t_myimage		image;
-}				t_main;
-
 // MAP AND PARSING//
 
 bool	is_map_valid(char **map);
 bool	parsing(t_main *main, char *file);
 void	get_map_descritpion(t_main *main);
-void	build_map(t_main *main, int fd, char *file);
+void	get_file_content(t_main *main, int fd, char *file);
 
 // RENDERING //
+int		render_next_frame(t_main *main);
 void	put_pixel_to_image(t_main *main, int x, int y);
 void	init_img(t_main *main);
 
