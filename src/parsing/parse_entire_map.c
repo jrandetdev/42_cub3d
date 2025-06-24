@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_entire_map.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 15:31:51 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/23 15:00:59 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/24 17:09:57 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ bool	parsing(t_main *main, char *file)
 	print_array(file_content);
 	get_map_descritpion(main, file_content);
 	free_string_array(&file_content);
-	if (!is_map_valid(main->map_struct.map))
-		exit_cub3d(main, EXIT_FAILURE);
+	is_map_valid(main);
 	return (true);
 }

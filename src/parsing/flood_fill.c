@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 10:28:19 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/06/23 14:09:28 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/24 17:15:14 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ static bool	get_players(char **map, int *x, int *y, int *player)
 	return (true);
 }
 
-static bool	find_player_postion(char **map, int *x, int *y, int *player)
+static bool	find_player_postion(t_main *main, int *x, int *y, int *player)
 {
-	if (!get_players(map, x, y, player))
+	if (!get_players(main->map_struct.map, x, y, player))
 		return (false);
 	if (*player != 1)
 	{
@@ -59,6 +59,8 @@ static bool	find_player_postion(char **map, int *x, int *y, int *player)
 				"it's a single-player game");
 		return (false);
 	}
+	main->player.x = *x;
+	main->player.y = *y;
 	return (true);
 }
 
@@ -107,7 +109,7 @@ static char	**copy_map(char **map)
 	return (new_map);
 }
 
-bool	is_map_valid(char **map)
+void	is_map_valid(t_main *main)
 {
 	int			x;
 	int			y;
@@ -116,15 +118,17 @@ bool	is_map_valid(char **map)
 	x = 0;
 	y = 0;
 	ft_bzero(&parsing, sizeof(t_parsing));
-	if (!find_player_postion(map, &x, &y, &parsing.player))
-		return (false);
-	parsing.map = copy_map(map);
+	if (!find_player_postion(main, &x, &y, &parsing.player))
+		exit_cub3d(main, EXIT_FAILURE);
+	parsing.map = copy_map(main->map_struct.map);
 	if (!parsing.map)
-		return (false);
+		exit_cub3d(main, EXIT_FAILURE);
 	flood_fill(&parsing, x, y);
 	safe_free_tab((void ***)&parsing.map);
 	if ((parsing.patern) == 1)
-		return (print_error_and_message("Map : Wrong patern"), false);
+	{
+		print_error_and_message("Map : Wrong patern");
+		exit_cub3d(main, EXIT_SUCCESS);
+	}
 	//printf("map valid\n");
-	return (true);
 }

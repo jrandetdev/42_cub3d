@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 12:10:09 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/06/23 16:50:00 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/24 16:58:43 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static size_t	get_max_row_size(char **file_content)
 			max_len = len;
 		file_content++;
 	}
-	return (max_len + 1);
+	return (max_len);
 }
 
 static char *max_strdup(const char *s1, int max_size)

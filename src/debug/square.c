@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 13:39:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/06/24 12:55:07 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/24 17:02:13 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	draw_square(t_main *main, int start_x, int start_y)
 	int		y;
 
 	ray = 0;
-	size = 25;
+	size = main->debug.tile_size / 4;
 	y = start_y - size;
 	(void) ray;
 	while(ray <= 50)

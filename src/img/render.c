@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 13:17:18 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/06/24 12:55:32 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/24 14:37:23 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	render_next_frame(t_main *main)
 	mlx_destroy_image(main->mlx_ptr, main->image.data_img);
 	init_img(main);
 	player_movement(main);
+	print_wall(main);
 	draw_square(main, main->player.x, main->player.y);
 	if (main->keys.g)
 		print_grid(main);

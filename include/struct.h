@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 11:59:43 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/24 13:51:23 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/24 16:51:41 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct	s_main t_main;
 typedef struct s_debug
 {
 	bool	debug;
+	int		grid_separator;
 	int		tile_size;
 }	t_debug;
 

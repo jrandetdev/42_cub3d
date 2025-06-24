@@ -29,11 +29,12 @@ typedef struct s_keys t_keys;
 
 void	print_grid(t_main *main);
 void	init_debug(t_main *main);
+void	print_wall(t_main *main);
 void	draw_square(t_main *main, int start_x, int	start_y);
 
 // MAP AND PARSING//
 
-bool	is_map_valid(char **map);
+void	is_map_valid(t_main *main);
 bool	parsing(t_main *main, char *file);
 void	get_map_descritpion(t_main *main, char **file_content);
 char	**get_file_content(t_main *main, int fd, char *file);

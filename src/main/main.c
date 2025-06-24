@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 17:27:08 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/24 14:01:23 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/24 17:03:25 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ int	main(int argc, char **argv)
 	ft_bzero(&main, sizeof(t_main));
 	if (!arguments_are_valid(argc, argv))
 		return (EXIT_FAILURE);
-	main.player.x = 600;  //debug
-	main.player.y = 400; //debug
 	parsing(&main, argv[1]);
 	init_cub3d(&main);
 	init_keyboard_events(&main);
