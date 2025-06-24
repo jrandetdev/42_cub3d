@@ -50,10 +50,10 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	main.player.x = 600;  //debug
 	main.player.y = 400; //debug
+	init_cub3d(&main);
 	parsing(&main, argv[1]);
 	printf("MAP HEIGHT %d\n", main.map_struct.height); //debug
 	printf("MAP WIDTH %d\n", main.map_struct.width); //debug
-	init_cub3d(&main);
 	init_keyboard_events(&main);
 	mlx_loop_hook(main.mlx_ptr, render_next_frame, &main);
 	mlx_loop(main.mlx_ptr);

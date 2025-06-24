@@ -38,7 +38,7 @@ void	extract_map_elements(t_main *main, char **file)
 	char	**splitted_elements;
 
 	i = 0;
-	while (i <= 5)
+	while (i <= 3)
 	{
 		splitted_elements = ft_split(file[i], ' ');
 		if (!splitted_elements)
@@ -50,12 +50,13 @@ void	extract_map_elements(t_main *main, char **file)
 				the R,G,B colour codes for ceiling/floor\n");
 			free_string_array(&splitted_elements);
 			exit_cub3d(main, 1);
-		}	
+		}
 		if (!parse_texture_or_colour(main, splitted_elements))
 		{
 			free_string_array(&splitted_elements);
 			exit_cub3d(main, 1);
 		}
+		free_string_array(&splitted_elements);
 		i++;
 	}
 }

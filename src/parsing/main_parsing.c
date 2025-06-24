@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   main_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrandet <jrandet@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 15:31:51 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/24 16:28:27 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/24 18:55:24 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ bool	parsing(t_main *main, char *file_relative_path)
 	fd = get_fd(main, file_relative_path);
 	file_content = get_file_content(main, fd, file_relative_path);
 	print_array(file_content);
-	get_map_descritpion(main, file_content);
 	extract_map_elements(main, file_content);
+	get_map_descritpion(main, file_content);
 	free_string_array(&file_content);
 	if (!is_map_valid(main->map_struct.map))
 		exit_cub3d(main, EXIT_FAILURE);
