@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 11:59:43 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/23 16:13:44 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/24 13:51:23 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 #include "cub3d.h"
 
 typedef struct	s_main t_main;
+
+typedef struct s_debug
+{
+	bool	debug;
+	int		tile_size;
+}	t_debug;
 
 typedef struct	s_player
 {
@@ -89,7 +95,7 @@ typedef struct	s_main
 	void			*mlx_ptr;
 	void			*mlx_win;
 	t_map			map_struct;
-	int				debug;
+	t_debug			debug;
 	t_player		player;
 	t_keys			keys;
 	t_myimage		image;

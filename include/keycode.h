@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keycode.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 00:13:20 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/06/23 00:01:14 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/24 12:48:38 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ enum e_keys
 	K_CTRL = 256
 };
 
+# define PLAYER_SPEED 7.0
+
 #elif defined(__linux__)
 
 # include <X11/X.h>
@@ -116,6 +118,8 @@ enum e_keys
 	K_K = 107,
 	K_CTRL = 65507
 };
+
+# define PLAYER_SPEED 1.5
 
 #endif
 

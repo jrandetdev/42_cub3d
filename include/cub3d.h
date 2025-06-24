@@ -17,8 +17,6 @@
 # define BUFFERSIZE 20
 # endif
 
-# define PLAYER_SPEED 1.5
-
 typedef struct	s_main t_main;
 typedef struct s_map t_map;
 typedef struct s_color t_color;
@@ -27,10 +25,10 @@ typedef struct	s_myimage t_myimage;
 typedef struct s_vec2 t_vec2;
 typedef struct s_keys t_keys;
 
-
 /*------------------------------------ DEBUG ---------------------------------*/
 
 void	print_grid(t_main *main);
+void	init_debug(t_main *main);
 void	draw_square(t_main *main, int start_x, int	start_y);
 
 // MAP AND PARSING//
