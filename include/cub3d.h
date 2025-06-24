@@ -39,7 +39,11 @@ bool	is_map_valid(char **map);
 bool	parsing(t_main *main, char *file);
 void	get_map_descritpion(t_main *main, char **file_content);
 void	extract_map_elements(t_main *main, char **file);
+bool	extract_texture(t_main *main, char *identifier, char *xpm_file);
 char	**get_file_content(t_main *main, int fd, char *file);
+bool	xmp_extension_is_valid(char	*s, int len);
+bool	cub_extension_is_valid(char	*s, int len);
+bool	is_dir(char *file_relative_path);
 
 // RENDERING //
 int		render_next_frame(t_main *main);
@@ -54,8 +58,6 @@ void	print_error_and_message(char *error_message);
 // UTILS //
 char	*get_next_line(int fd);
 size_t	string_array_len(char **str);
-bool	xmp_extension_is_valid(char	*s, int len);
-bool	cub_extension_is_valid(char	*s, int len);
 
 int		get_fd(t_main *main, char *file_relative_path);
 

@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 18:19:28 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/24 13:18:40 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/24 13:37:33 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
  * GOAL: use the open function with O_DIRECTORY to check if the file is a dir.
  * if it opens the file and the fd is positive, then it succeeded and the file
  * is a directory. In this case we return true because it is dir.
+ * We close the fd only if it is dir, otherwise open failed
  */
 bool	is_dir(char *file_relative_path)
 {
@@ -26,7 +27,7 @@ bool	is_dir(char *file_relative_path)
 	fd = open(file_relative_path, O_DIRECTORY);
 	if (fd > 0)
 	{
-		print_error_and_message("The named file is a directory.\n");
+		print_error_and_message("The file is a directory.\n");
 		close(fd);
 		return (true);
 	}

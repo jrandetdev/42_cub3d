@@ -40,11 +40,12 @@ MAIN			=			$(addprefix $(DIR_MAIN)/, $(SRC_MAIN))
 
 DIR_PARSING		=			./src/parsing
 SRC_PARSING		=			flood_fill.c \
-							get_file_content.c \
-							check_extension.c \
 							map_desription.c \
-							parse_entire_map.c \
-							parse_player_and_texture.c
+							main_parsing.c \
+							check_file.c \
+							extract_texture.c \
+							get_file_content.c \
+							parse_texture_and_color.c
 PARSING			=			$(addprefix $(DIR_PARSING)/, $(SRC_PARSING))
 
 DIR_UTILS		=			./src/utils
@@ -70,7 +71,6 @@ IMG				=			$(addprefix $(DIR_IMG)/, $(SRC_IMG))
 SOURCES			=			$(MAIN) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(IMG)
 vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS) $(DIR_IMG)
 
-SOURCE_NAME		:=			$(basename $(SOURCES))
 OBJECTS			:= 			$(addprefix $(DIR_BUILD)/, $(notdir $(SOURCES:.c=.o)))
 DEPS			:=			$(OBJECTS:.o=.d)
 
@@ -90,7 +90,7 @@ $(LIBFT):
 	@make -C $(LIBFT_PATH)
 
 $(MLX):
-	@make -C $(MLX_PATH)
+	@make -C $(MLX_PATH) 2> /dev/null
 
 $(DIR_BUILD)/%.o: %.c | $(DIR_BUILD)
 	$(CC) $(CFLAGS) $(INC_FLAGS) -c $< -o $@

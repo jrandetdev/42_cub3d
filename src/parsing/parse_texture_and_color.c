@@ -1,38 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_player_and_texture.c                         :+:      :+:    :+:   */
+/*   parse_texture_and_color.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrandet <jrandet@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 16:10:38 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/24 13:21:42 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/24 16:09:46 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	extract_texture(char *identifier, char *info)
-{
-	int fd;
-
-	
-	if (ft_strcmp(identifier, "NO") == 0)
-		mlx_xpm_to_image()
-	else if (ft_strcmp(identifier, "SO") == 0)
-		
-	else if (ft_strcmp(identifier, "WE") == 0)
-		
-	else if (ft_strcmp(identifier, "EA") == 0)
-		
-}
-
-static bool	parse_texture_or_colour(char **splitted_elements)
+bool	parse_texture_or_colour(t_main *main, char **splitted_elements)
 {
 	char	*identifier;
 	char	*information;
 	int		id_len;
-	int		info_len;
 
 	if (splitted_elements[1] == NULL)
 		return (false);
@@ -42,9 +26,10 @@ static bool	parse_texture_or_colour(char **splitted_elements)
 	if (id_len > 2 || id_len < 1)
 		return (false);
 	if (id_len == 2)
-		extract_texture(identifier, information);
-	else
-		extract_floor_or_ceiling(identifier, information);
+		return (extract_texture(main, identifier, information));
+	//else
+		//extract_floor_or_ceiling(identifier, information);
+	return (true);
 }
 
 void	extract_map_elements(t_main *main, char **file)
@@ -55,7 +40,7 @@ void	extract_map_elements(t_main *main, char **file)
 	i = 0;
 	while (i <= 5)
 	{
-		splitted_elements = ft_split(&file[i], ' ');
+		splitted_elements = ft_split(file[i], ' ');
 		if (!splitted_elements)
 			exit_cub3d(main, 1);
 		if (string_array_len(splitted_elements) != 2)
@@ -66,7 +51,7 @@ void	extract_map_elements(t_main *main, char **file)
 			free_string_array(&splitted_elements);
 			exit_cub3d(main, 1);
 		}	
-		if (!parse_texture_or_colour(splitted_elements))
+		if (!parse_texture_or_colour(main, splitted_elements))
 		{
 			free_string_array(&splitted_elements);
 			exit_cub3d(main, 1);

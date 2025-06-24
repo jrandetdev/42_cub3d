@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrandet <jrandet@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/23 11:59:43 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/24 17:18:57 by jrandet          ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2025/06/24 17:22:32 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef STRUCT_H
 #define STRUCT_H
@@ -52,29 +53,27 @@ typedef struct	s_myimage
 	int		endian;
 }	t_myimage;
 
-typedef struct s_texture
+typedef struct	s_texture
 {
-	void	*texture;
-	int		x_size;
-	int		y_size;
-}	t_texture;
+	void	*img_ptr;
+	int		width;
+	int		height;
+}				t_texture;
 
-typedef struct s_color
+typedef struct	s_scene_color
 {
 	int	r;
 	int	g;
 	int	b;
-}	t_color;
+}				t_scene_color;
 
-typedef struct s_textures_bank
+typedef struct	s_wall_texture
 {
 	t_texture		no;
 	t_texture		so;
 	t_texture		ea;
 	t_texture		we;
-	t_color			c;
-	t_color			f;
-}	t_textures_bank;
+}				t_wall_texture;
 
 typedef struct s_map
 {
@@ -82,7 +81,7 @@ typedef struct s_map
 	unsigned int	height;
 	unsigned int	width;
 
-}	t_map; // Replaces the map array with the map structure ?
+}				t_map; // Replaces the map array with the map structure ?
 
 typedef struct	s_main
 {
@@ -92,6 +91,10 @@ typedef struct	s_main
 	int				debug;
 	t_player		player;
 	t_keys			keys;
+	t_wall_texture	wall;
+	t_scene_color	ceiling;
+	t_scene_color	floor;
+	int				final_colour;
 	t_myimage		image;
 }				t_main;
 
