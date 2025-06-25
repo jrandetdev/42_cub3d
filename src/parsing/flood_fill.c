@@ -76,7 +76,7 @@ static char	**copy_map(char **map, int height)
 
 	i = 0;
 	j = 0;
-	new_map = ft_calloc(height, sizeof(char *));
+	new_map = ft_calloc(height + 1, sizeof(char *));
 	if (!new_map)
 		return (NULL);
 	while (map[i])
