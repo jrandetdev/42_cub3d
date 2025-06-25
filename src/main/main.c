@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jrandet <jrandet@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/16 17:27:08 by jrandet           #+#    #+#             */
+/*   Updated: 2025/06/25 11:48:41 by jrandet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #include "cub3d.h"
 
@@ -26,6 +38,7 @@ static void	init_cub3d(t_main *main)
 		exit_cub3d(main, 1);
 	mlx_hook(main->mlx_win, 17, 0, handle_destroy, &main);
 	init_img(main);
+	init_debug(main); //debug
 }
 
 int	main(int argc, char **argv)
@@ -35,12 +48,8 @@ int	main(int argc, char **argv)
 	ft_bzero(&main, sizeof(t_main));
 	if (!arguments_are_valid(argc, argv))
 		return (EXIT_FAILURE);
-	main.player.x = 600;  //debug
-	main.player.y = 400; //debug
-	init_cub3d(&main);
 	parsing(&main, argv[1]);
-	printf("MAP HEIGHT %d\n", main.map_struct.height); //debug
-	printf("MAP WIDTH %d\n", main.map_struct.width); //debug
+	init_cub3d(&main);
 	init_keyboard_events(&main);
 	mlx_loop_hook(main.mlx_ptr, render_next_frame, &main);
 	mlx_loop(main.mlx_ptr);

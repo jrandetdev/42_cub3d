@@ -49,7 +49,8 @@ SRC_PARSING		=			flood_fill.c \
 PARSING			=			$(addprefix $(DIR_PARSING)/, $(SRC_PARSING))
 
 DIR_UTILS		=			./src/utils
-SRC_UTILS		=			get_next_line.c \
+SRC_UTILS		=			vector.c \
+							get_next_line.c \
 							get_next_line_utils.c \
 							string_array_len.c
 UTILS			=			$(addprefix $(DIR_UTILS)/, $(SRC_UTILS))

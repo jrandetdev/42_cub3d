@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 15:31:51 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/24 18:55:24 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/25 11:38:30 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ bool	parsing(t_main *main, char *file_relative_path)
 	extract_map_elements(main, file_content);
 	get_map_descritpion(main, file_content);
 	free_string_array(&file_content);
-	if (!is_map_valid(main->map_struct.map))
-		exit_cub3d(main, EXIT_FAILURE);
+	is_map_valid(main);
 	return (true);
 }

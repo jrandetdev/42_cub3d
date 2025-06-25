@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/06/24 17:22:32 by jrandet          ###   ########.fr       */
+/*   Created: 2025/06/23 11:59:43 by jrandet           #+#    #+#             */
+/*   Updated: 2025/06/25 11:38:21 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@
 #include "cub3d.h"
 
 typedef struct	s_main t_main;
+
+typedef struct s_debug
+{
+	bool	debug;
+	int		grid_separator;
+	int		tile_size;
+}	t_debug;
 
 typedef struct	s_player
 {
@@ -88,7 +95,7 @@ typedef struct	s_main
 	void			*mlx_ptr;
 	void			*mlx_win;
 	t_map			map_struct;
-	int				debug;
+	t_debug			debug;
 	t_player		player;
 	t_keys			keys;
 	t_wall_texture	wall;
