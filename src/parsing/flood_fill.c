@@ -102,11 +102,7 @@ void	is_map_valid(t_main *main)
 	ft_bzero(&parsing, sizeof(t_parsing));
 	if (!find_player_postion(main, &x, &y, &parsing.player))
 		exit_cub3d(main, EXIT_FAILURE);
-	print_array(main->map_struct.map);
-	printf("\n");
 	parsing.map = copy_map(main->map_struct.map, main->map_struct.height);
-	print_array(parsing.map);
-	printf("\n");
 	if (!parsing.map)
 		exit_cub3d(main, EXIT_FAILURE);
 	flood_fill(&parsing, x, y);
