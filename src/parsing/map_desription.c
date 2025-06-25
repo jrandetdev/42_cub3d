@@ -18,7 +18,7 @@ static size_t	get_max_row_size(char **file_content)
 
 	max_len = 0;
 	file_content += 6;
-	while(*file_content)
+	while (*file_content)
 	{
 		len = ft_strlen(*file_content);
 		if (len > max_len)
@@ -28,9 +28,8 @@ static size_t	get_max_row_size(char **file_content)
 	return (max_len);
 }
 
-static char *max_strdup(const char *s1, int max_size)
+static char	*max_strdup(const char *s1, int max_size)
 {
-
 	char	*pointer;
 	size_t	len;
 
@@ -48,17 +47,19 @@ void	get_map_descritpion(t_main *main, char **file_content)
 {
 	int		i;
 	int		j;
+	int		height;
+	int		width;
 
 	i = 6;
 	j = 0;
-	main->map_struct.height = count_map_height(file_content);
-	main->map_struct.width = get_max_row_size(file_content);
-	main->map_struct.map = ft_calloc(main->map_struct.height + 1, sizeof(char *));
+	height = count_map_height(file_content);
+	width = get_max_row_size(file_content);
+	main->map_struct.map = ft_calloc(height + 1, sizeof(char *));
 	if (!main->map_struct.map)
 		exit_cub3d(main, EXIT_FAILURE);
 	while (file_content[i])
 	{
-		main->map_struct.map[j] = max_strdup(file_content[i], main->map_struct.width);
+		main->map_struct.map[j] = max_strdup(file_content[i], width);
 		if (!main->map_struct.map[j])
 		{
 			safe_free_tab((void ***)&main->map_struct.map);
@@ -67,6 +68,6 @@ void	get_map_descritpion(t_main *main, char **file_content)
 		j++;
 		i++;
 	}
-	printf("HEIGHT %d\n", main->map_struct.height); //debug
-	printf("WIDTH %d\n", main->map_struct.width); //debug
+	main->map_struct.width = width;
+	main->map_struct.height = height;
 }

@@ -1,7 +1,6 @@
 
 #include "cub3d.h"
 
-
 static int	key_pressed(int keycode, t_main *main)
 {
 	if (keycode == K_W)
@@ -35,6 +34,6 @@ static int	key_released(int keycode, t_main *main)
 
 void	init_keyboard_events(t_main *main)
 {
-	mlx_hook(main->mlx_win, ON_KEYDOWN, 1L<<0, key_pressed, main);
-	mlx_hook(main->mlx_win, ON_KEYUP, 1L<<1, key_released, main);
+	mlx_hook(main->mlx_win, ON_KEYDOWN, 1L << 0, key_pressed, main);
+	mlx_hook(main->mlx_win, ON_KEYUP, 1L << 1, key_released, main);
 }

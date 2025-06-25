@@ -2,9 +2,6 @@
 #include "cub3d.h"
 #include <math.h>
 
-/**
- * @brief 
- */
 t_vec2	get_vector(double x1, double y1, double x2, double y2)
 {
 	t_vec2	vector;
@@ -16,5 +13,5 @@ t_vec2	get_vector(double x1, double y1, double x2, double y2)
 
 double	get_vector_norm(t_vec2 *vec1, t_vec2 *vec2)
 {
-	return sqrt((pow(vec2->x - vec1->x, 2) - pow(vec2->y - vec1->x, 2)));
+	return (sqrt((pow(vec2->x - vec1->x, 2) - pow(vec2->y - vec1->x, 2))));
 }

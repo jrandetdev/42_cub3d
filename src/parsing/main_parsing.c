@@ -9,7 +9,8 @@ int	get_fd(t_main *main, char *file_relative_path)
 	if (fd == -1)
 	{
 		if (errno == EACCES)
-			print_error_and_message("The required permissions are denied for the file.\n");
+			print_error_and_message("The required permissions"
+				"are denied for the file.\n");
 		exit_cub3d(main, 1);
 	}
 	return (fd);

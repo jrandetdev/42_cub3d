@@ -19,9 +19,10 @@ int	render_next_frame(t_main *main)
 	init_img(main);
 	player_movement(main);
 	print_wall(main);
-	//draw_square(main, main->player.x, main->player.y);
+	draw_square(main, main->player.x, main->player.y);
 	if (main->keys.g)
 		print_grid(main);
-	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, main->image.data_img, 0, 0);
+	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win,
+		main->image.data_img, 0, 0);
 	return (0);
 }

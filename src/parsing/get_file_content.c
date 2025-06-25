@@ -33,7 +33,7 @@ static bool	fill_parse_buffer(char	***file_content, int fd)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
-			break;
+			break ;
 		null_terminate_line(&line);
 		if (!is_only_spaces(line))
 		{

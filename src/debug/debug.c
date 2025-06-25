@@ -1,16 +1,15 @@
 
 #include "cub3d.h"
 
-
 static void	print_tile(t_main *main, int idx_x, int idx_y)
 {
-	int x;
+	int	x;
 	int	y;
 	int	start_x;
 
 	y = idx_y * main->debug.tile_size;
 	start_x = idx_x * main->debug.tile_size;
-	while(y < idx_y * main->debug.tile_size + main->debug.tile_size)
+	while (y < idx_y * main->debug.tile_size + main->debug.tile_size)
 	{
 		x = start_x;
 		while (x < start_x + main->debug.tile_size)
@@ -28,10 +27,10 @@ void	print_wall(t_main *main)
 	int	j;
 
 	j = 0;
-	while(main->map_struct.map[j])
+	while (main->map_struct.map[j])
 	{
 		i = 0;
-		while(main->map_struct.map[j][i])
+		while (main->map_struct.map[j][i])
 		{
 			if (main->map_struct.map[j][i] == '1')
 			{
@@ -51,7 +50,7 @@ static void	get_tile_size(t_main *main)
 	}
 	else
 	{
-		main->debug.tile_size = WIN_WIDTH / main->map_struct.width;	
+		main->debug.tile_size = WIN_WIDTH / main->map_struct.width;
 	}
 }
 
@@ -64,7 +63,7 @@ void	init_debug(t_main *main)
 
 void	print_array(char **array)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (array[i])
