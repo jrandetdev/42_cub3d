@@ -33,8 +33,8 @@ void	put_pixel_to_image(t_main *main, int x, int y, int color)
 	pixel_offset = y * img->size_line + x * img->bytespp;
 	if (pixel_offset > img->total_bytes)
 	{
-		printf("Coordinates %d and %d out of bounds: bigger than \
-			%d bytes (total_image_bytes by %ld bytes\n", \
+		printf("Coordinates %d and %d out of bounds: bigger than"
+			"%d bytes (total_image_bytes by %ld bytes\n",
 			x, y, img->total_bytes, pixel_offset);
 		exit_cub3d(main, 1);
 	}

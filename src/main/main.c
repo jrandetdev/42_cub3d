@@ -18,10 +18,15 @@ static bool	arguments_are_valid(int argc, char **argv)
 
 static void	init_cub3d(t_main *main)
 {
+	int	x;
+	int	y;
+
+	x = WIN_WIDTH;
+	y = WIN_HEIGHT;
 	main->mlx_ptr = mlx_init();
 	if (!main->mlx_ptr)
 		exit_cub3d(main, 1);
-	main->mlx_win = mlx_new_window(main->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "Random title");
+	main->mlx_win = mlx_new_window(main->mlx_ptr, x, y, "Cub3d");
 	if (!main->mlx_win)
 		exit_cub3d(main, 1);
 	mlx_hook(main->mlx_win, 17, 0, handle_destroy, &main);

@@ -11,3 +11,4 @@ cub3d
 *.swiftdoc
 *.dylib
 *.json
+*.log

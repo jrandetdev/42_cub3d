@@ -19,7 +19,7 @@ void	print_lines(t_main *main, float y)
 	int	x;
 
 	x = 0;
-	while(x < WIN_WIDTH)
+	while (x < WIN_WIDTH)
 	{
 		put_pixel_to_image(main, x, y, 0xFFFFFF);
 		x++;
@@ -33,12 +33,12 @@ void	print_grid(t_main *main)
 
 	x = 0;
 	y = 0;
-	while(x < WIN_WIDTH)
+	while (x < WIN_WIDTH)
 	{
 		print_colum(main, x);
 		x += main->debug.tile_size;
 	}
-	while(y < WIN_HEIGHT)
+	while (y < WIN_HEIGHT)
 	{
 		print_lines(main, y);
 		y += main->debug.tile_size;

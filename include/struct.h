@@ -6,6 +6,13 @@
 
 typedef struct	s_main t_main;
 
+typedef struct s_parsing
+{
+	int		player;
+	int		patern;
+	char	**map;
+}	t_parsing;
+
 typedef struct s_debug
 {
 	bool	debug;

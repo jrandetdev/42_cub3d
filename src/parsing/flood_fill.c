@@ -1,13 +1,6 @@
 
 #include "cub3d.h"
 
-typedef struct s_parsing
-{
-	int		player;
-	int		patern;
-	char	**map;
-}	t_parsing;
-
 static bool	get_players(char **map, int *x, int *y, int *player)
 {
 	int	i;
@@ -44,7 +37,7 @@ static bool	find_player_postion(t_main *main, int *x, int *y, int *player)
 		if (*player < 1)
 			print_error_and_message("No player found");
 		else if (*player > 1)
-			print_error_and_message("Too many players," \
+			print_error_and_message("Too many players,"
 				"it's a single-player game");
 		return (false);
 	}
@@ -123,5 +116,4 @@ void	is_map_valid(t_main *main)
 		print_error_and_message("Map : Wrong patern");
 		exit_cub3d(main, EXIT_SUCCESS);
 	}
-	//printf("map valid\n");
 }

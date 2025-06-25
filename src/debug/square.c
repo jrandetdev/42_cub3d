@@ -11,8 +11,7 @@ void	draw_square(t_main *main, int start_x, int start_y)
 	ray = 0;
 	size = main->debug.tile_size / 4;
 	y = start_y - size;
-	(void) ray;
-	while(ray <= 50)
+	while (ray <= 50)
 	{
 		put_pixel_to_image(main, start_x, y - ray, 0xFFFFF);
 		ray++;
