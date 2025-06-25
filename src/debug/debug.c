@@ -6,11 +6,12 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 14:24:08 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/24 17:14:42 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/06/24 18:13:21 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
 
 static void	print_tile(t_main *main, int idx_x, int idx_y)
 {
@@ -68,7 +69,7 @@ static void	get_tile_size(t_main *main)
 void	init_debug(t_main *main)
 {
 	get_tile_size(main);
-	main->player.x *= main->debug.tile_size;
+	main->player.x *= main->debug.tile_size; //The player is not centered, is at the top right of his square.
 	main->player.y *= main->debug.tile_size;
 }
 
