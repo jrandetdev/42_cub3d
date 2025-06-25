@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 15:10:27 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/25 17:59:07 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/25 19:48:05 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ bool	extract_fc_colour(t_main *main, char *id, char *colours_info)
 	splitted_colours = ft_split(colours_info, ',');
 	if (!splitted_colours)
 		return (false);
-	print_array(splitted_colours);
 	if (!(ft_strncmp(id, "F", 1) == 0))
 	{
 		if (!(ft_strncmp(id, "C", 1) == 0))
