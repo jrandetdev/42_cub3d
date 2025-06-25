@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   init_img.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/19 16:46:30 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/23 16:10:03 by hdougoud         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "cub3d.h"
 
@@ -50,8 +39,7 @@ void	put_pixel_to_image(t_main *main, int x, int y, int color)
 		exit_cub3d(main, 1);
 	}
 	dst = img->addr + pixel_offset;
-	*(unsigned int *)dst = color; // here we dereference the destination (imahge buffer)
-	//we cast the dereferenced value :)
+	*(unsigned int *)dst = color;
 }
 
 /**
