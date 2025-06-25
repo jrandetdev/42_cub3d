@@ -5,7 +5,6 @@ size_t	count_map_height(char **file)
 {
 	int	i;
 
-	print_array(file);
 	i = 6;
 	while (file[i])
 		i++;

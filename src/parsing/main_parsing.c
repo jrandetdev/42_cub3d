@@ -24,8 +24,7 @@ bool	parsing(t_main *main, char *file_relative_path)
 		exit_cub3d(main, 1);
 	fd = get_fd(main, file_relative_path);
 	file_content = get_file_content(main, fd, file_relative_path);
-	print_array(file_content);
-	//extract_map_elements(main, file_content);
+	extract_map_elements(main, file_content);
 	get_map_descritpion(main, file_content);
 	free_string_array(&file_content);
 	is_map_valid(main);

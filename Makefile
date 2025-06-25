@@ -21,7 +21,7 @@ LIBFT			:=			$(LIBFT_PATH)$(LIBFT_NAME)
 ifeq ($(UNAME), Darwin)
 	MLX_PATH	= $(MLX_PATH_OSX)
 	MLX_NAME	= $(MLX_NAME_OSX)
-	LIBRARIES	= -lft -Lmlx -lmlx -framework OpenGL -framework AppKit
+	LIBRARIES	= -fsanitize=address -lft -Lmlx -lmlx -framework OpenGL -framework AppKit
 else ifeq ($(UNAME), Linux)
 	MLX_PATH	= $(MLX_PATH_UNIX)
 	MLX_NAME	= $(MLX_NAME_UNIX)

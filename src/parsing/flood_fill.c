@@ -75,7 +75,7 @@ static void	flood_fill(t_parsing *p, int x, int y)
 	flood_fill(p, x - 1, y + 1);
 }
 
-static char	**copy_map(char **map)
+static char	**copy_map(char **map, int height)
 {
 	int		i;
 	int		j;
@@ -83,7 +83,7 @@ static char	**copy_map(char **map)
 
 	i = 0;
 	j = 0;
-	new_map = ft_calloc(count_map_height(map) + 1, sizeof(char *));
+	new_map = ft_calloc(height, sizeof(char *));
 	if (!new_map)
 		return (NULL);
 	while (map[i])
@@ -109,7 +109,11 @@ void	is_map_valid(t_main *main)
 	ft_bzero(&parsing, sizeof(t_parsing));
 	if (!find_player_postion(main, &x, &y, &parsing.player))
 		exit_cub3d(main, EXIT_FAILURE);
-	parsing.map = copy_map(main->map_struct.map);
+	print_array(main->map_struct.map);
+	printf("\n");
+	parsing.map = copy_map(main->map_struct.map, main->map_struct.height);
+	print_array(parsing.map);
+	printf("\n");
 	if (!parsing.map)
 		exit_cub3d(main, EXIT_FAILURE);
 	flood_fill(&parsing, x, y);
