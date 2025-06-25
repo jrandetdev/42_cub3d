@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_file_content.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 12:11:58 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/23 14:57:54 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/24 16:52:42 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,15 +91,15 @@ char	**get_file_content(t_main *main, int fd, char *file)
 	count_lines(file, &line_counter);
 	file_content = ft_calloc(line_counter + 1, sizeof(char *));
 	if (!file_content)
-		exit_cub3d(main, 1);
+		return (exit_cub3d(main, 1), NULL);
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{
 		free_string_array(&file_content);
-		exit_cub3d(main, 1);
+		return (exit_cub3d(main, 1), NULL);
 	}
 	if (!fill_parse_buffer(&file_content, fd))
-		exit_cub3d(main, 1);
+		return (exit_cub3d(main, 1), NULL);
 	close(fd);
 	return (file_content);
 }
