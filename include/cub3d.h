@@ -56,6 +56,9 @@ void	print_error_and_message(char *error_message);
 
 // UTILS //
 char	*get_next_line(int fd);
+int		has_new_line(char *buffer);
+char	*join_and_free(char *line, char *tmp2);
+void	ft_strcpy(char *dest, char *src, int start, int end);
 size_t	string_array_len(char **str);
 
 int		get_fd(t_main *main, char *file_relative_path);

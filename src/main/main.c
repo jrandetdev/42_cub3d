@@ -1,18 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/16 17:27:08 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/25 11:37:48 by hdougoud         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 
 #include "cub3d.h"
-#include <mlx.h>
 
 static bool	arguments_are_valid(int argc, char **argv)
 {
@@ -49,8 +36,8 @@ int	main(int argc, char **argv)
 	ft_bzero(&main, sizeof(t_main));
 	if (!arguments_are_valid(argc, argv))
 		return (EXIT_FAILURE);
-	parsing(&main, argv[1]);
 	init_cub3d(&main);
+	parsing(&main, argv[1]);
 	init_keyboard_events(&main);
 	mlx_loop_hook(main.mlx_ptr, render_next_frame, &main);
 	mlx_loop(main.mlx_ptr);

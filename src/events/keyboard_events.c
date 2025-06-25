@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   keyboard_events.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/19 16:22:34 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/24 20:55:23 by hdougoud         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "cub3d.h"
 
@@ -48,5 +37,4 @@ void	init_keyboard_events(t_main *main)
 {
 	mlx_hook(main->mlx_win, ON_KEYDOWN, 1L<<0, key_pressed, main);
 	mlx_hook(main->mlx_win, ON_KEYUP, 1L<<1, key_released, main);
-
 }
