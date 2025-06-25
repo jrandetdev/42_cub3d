@@ -62,12 +62,17 @@ typedef struct	s_texture
 	int		height;
 }				t_texture;
 
-typedef struct	s_scene_color
+typedef union
 {
-	int	r;
-	int	g;
-	int	b;
-}				t_scene_color;
+	int	value;
+	struct
+	{
+		unsigned char r;
+		unsigned char g;
+		unsigned char b;
+		unsigned char a;
+	};
+}	t_colour;
 
 typedef struct	s_wall_texture
 {
@@ -76,7 +81,7 @@ typedef struct	s_wall_texture
 	t_texture		ea;
 	t_texture		we;
 }				t_wall_texture;
-
+ 
 typedef struct s_map
 {
 	char			**map;
@@ -94,8 +99,8 @@ typedef struct	s_main
 	t_player		player;
 	t_keys			keys;
 	t_wall_texture	wall;
-	t_scene_color	ceiling;
-	t_scene_color	floor;
+	t_colour		c_colour;
+	t_colour		f_colour;
 	int				final_colour;
 	t_myimage		image;
 }				t_main;

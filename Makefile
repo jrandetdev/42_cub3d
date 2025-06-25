@@ -44,8 +44,10 @@ SRC_PARSING		=			flood_fill.c \
 							main_parsing.c \
 							check_file.c \
 							extract_texture.c \
+							extract_colour.c \
+							is_valid_colour.c \
 							get_file_content.c \
-							parse_texture_and_color.c
+							parse_texture_and_colour.c
 PARSING			=			$(addprefix $(DIR_PARSING)/, $(SRC_PARSING))
 
 DIR_UTILS		=			./src/utils

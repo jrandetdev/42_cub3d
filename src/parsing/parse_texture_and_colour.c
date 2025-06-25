@@ -16,9 +16,8 @@ bool	parse_texture_or_colour(t_main *main, char **splitted_elements)
 		return (false);
 	if (id_len == 2)
 		return (extract_texture(main, identifier, information));
-	//else
-		//extract_floor_or_ceiling(identifier, information);
-	return (true);
+	else
+		return (extract_fc_colour(main, identifier, information));
 }
 
 void	extract_map_elements(t_main *main, char **file)
@@ -27,7 +26,7 @@ void	extract_map_elements(t_main *main, char **file)
 	char	**splitted_map_line;
 
 	i = 0;
-	while (i <= 3)
+	while (i <= 5)
 	{
 		splitted_map_line = ft_split(file[i], ' ');
 		if (!splitted_map_line)

@@ -18,12 +18,11 @@
 # endif
 
 typedef struct	s_main t_main;
-typedef struct s_map t_map;
-typedef struct s_color t_color;
-typedef struct s_texture t_texture;
+typedef struct	s_map t_map;
+typedef struct	s_texture t_texture;
 typedef struct	s_myimage t_myimage;
-typedef struct s_vec2 t_vec2;
-typedef struct s_keys t_keys;
+typedef struct	s_vec2 t_vec2;
+typedef struct	s_keys t_keys;
 
 /*------------------------------------ DEBUG ---------------------------------*/
 
@@ -39,6 +38,8 @@ bool	parsing(t_main *main, char *file);
 void	get_map_descritpion(t_main *main, char **file_content);
 void	extract_map_elements(t_main *main, char **file);
 bool	extract_texture(t_main *main, char *identifier, char *xpm_file);
+bool	extract_fc_colour(t_main *main, char *identifier, char *info);
+bool	is_valid_colours(t_main *main, char **splitted_colours);
 char	**get_file_content(t_main *main, int fd, char *file);
 bool	xmp_extension_is_valid(char	*s, int len);
 bool	cub_extension_is_valid(char	*s, int len);
@@ -46,7 +47,7 @@ bool	is_dir(char *file_relative_path);
 
 // RENDERING //
 int		render_next_frame(t_main *main);
-void	put_pixel_to_image(t_main *main, int x, int y, int color);
+void	put_pixel_to_image(t_main *main, int x, int y, int colour);
 void	init_img(t_main *main);
 
 size_t	count_map_height(char **map);

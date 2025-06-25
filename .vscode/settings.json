@@ -1,0 +1,8 @@
+{
+	"files.associations": {
+		"__locale": "c",
+		"cctype": "c",
+		"locale": "c",
+		"struct.h": "c"
+	}
+}

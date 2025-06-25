@@ -4,11 +4,8 @@
 *.swp
 *.DS_Store
 cub3d
-.vscode
 *.swiftmodule
 *.swiftsourceinfo
 *.swiftinfo
 *.swiftdoc
 *.dylib
-*.json
-*.log

@@ -23,7 +23,7 @@
  * edge cases : if the offset you calculates is bigger than the 
  * buffer, then you are out of bounds. 
  */
-void	put_pixel_to_image(t_main *main, int x, int y, int color)
+void	put_pixel_to_image(t_main *main, int x, int y, int colour)
 {
 	unsigned char		*dst;
 	long				pixel_offset;
@@ -39,7 +39,7 @@ void	put_pixel_to_image(t_main *main, int x, int y, int color)
 		exit_cub3d(main, 1);
 	}
 	dst = img->addr + pixel_offset;
-	*(unsigned int *)dst = color;
+	*(unsigned int *)dst = colour;
 }
 
 /**
