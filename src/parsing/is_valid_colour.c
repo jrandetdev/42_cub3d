@@ -3,14 +3,16 @@
 
 static bool	is_in_char_range(char *s)
 {
-	if (s[0] > 2 || s[1] > 5 || s[2] > 5)
+	if (ft_strlen(s) == 3)
 	{
-		print_error_and_message("Floor or Ceiling: please only \
-			give colours between 0 and 255.\n");
-		return false;
+		if (s[0] > '2' || s[1] > '5' || s[2] > '5')
+		{
+			print_error_and_message("Floor or Ceiling: please only \
+				give colours between 0 and 255.\n");
+			return false;
+		}
 	}
-	else
-		return (true);
+	return (true);
 }
 
 static bool	is_only_digit(char *colour)

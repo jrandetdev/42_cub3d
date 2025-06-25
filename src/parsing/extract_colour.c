@@ -28,11 +28,14 @@ bool	extract_fc_colour(t_main *main, char *id, char *colours_info)
 	splitted_colours = ft_split(colours_info, ',');
 	if (!splitted_colours)
 		return (false);
-	if (!(ft_strncmp(id, "F", 1) == 0) || !(ft_strncmp(id, "C", 1) == 0))
+	print_array(splitted_colours);
+	if (!(ft_strncmp(id, "F", 1) == 0))
 	{
-		print_error_and_message("Invalid identifier for Floor or Ceiling, \
-			please use F or C");
-		return (false);
+		if (!(ft_strncmp(id, "C", 1) == 0))
+		{
+			print_error_and_message("Floor or Ceiling: please use id F or C\n");
+			return (false);
+		}
 	}
 	if (!is_valid_colours(main, splitted_colours))
 		return (false);
