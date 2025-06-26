@@ -3,6 +3,7 @@
 
 void	dda_algo(double x1, double y1, double x2, double y2)
 {
+	double m; //angle
 	double dx;
 	double dy;
 
