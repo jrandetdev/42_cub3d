@@ -34,7 +34,8 @@ MLX = $(MLX_PATH)$(MLX_NAME)
 
 DIR_MAIN		=			./src/main
 SRC_MAIN		=			main.c \
-							exit_and_error.c \
+							exit_cub3d.c \
+							error_handling.c \
 							free_utils.c
 MAIN			=			$(addprefix $(DIR_MAIN)/, $(SRC_MAIN))
 
@@ -45,7 +46,7 @@ SRC_PARSING		=			flood_fill.c \
 							check_file.c \
 							extract_texture.c \
 							extract_colour.c \
-							is_valid_colour.c \
+							validate_colour.c \
 							get_file_content.c \
 							parse_texture_and_colour.c
 PARSING			=			$(addprefix $(DIR_PARSING)/, $(SRC_PARSING))

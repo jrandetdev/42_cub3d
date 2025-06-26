@@ -32,12 +32,7 @@ void	put_pixel_to_image(t_main *main, int x, int y, int colour)
 	img = &main->image;
 	pixel_offset = y * img->size_line + x * img->bytespp;
 	if (pixel_offset > img->total_bytes)
-	{
-		printf("Coordinates %d and %d out of bounds: bigger than"
-			"%d bytes (total_image_bytes by %ld bytes\n",
-			x, y, img->total_bytes, pixel_offset);
-		exit_cub3d(main, 1);
-	}
+		return (exit_cub3d(main, "Coordinates are outside of map capacity."));
 	dst = img->addr + pixel_offset;
 	*(unsigned int *)dst = colour;
 }
@@ -61,19 +56,14 @@ void	init_img(t_main *main)
 	img = &main->image;
 	img->data_img = mlx_new_image(main->mlx_ptr, WIN_WIDTH, WIN_HEIGHT);
 	if (!main->image.data_img)
-	{
-		exit_cub3d(main, 1);
-	}
+		return (exit_cub3d(main, "Mlx_new_image failed."));
 	img->addr = mlx_get_data_addr(
 			img->data_img,
 			&img->bitspp,
 			&img->size_line,
 			&img->endian);
 	if (!img->addr)
-	{
-		exit_cub3d(main, 1);
-		return ;
-	}
+		return (exit_cub3d(main, "Mlx_get_data_addr failed."));
 	img->bytespp = img->bitspp / 8;
 	img->pixels_per_line = img->size_line / img->bytespp;
 	img->total_bytes = img->size_line * WIN_HEIGHT;

@@ -23,7 +23,7 @@ static void	null_terminate_line(char **line)
 	*cursor = '\0';
 }
 
-static bool	fill_parse_buffer(char	***file_content, int fd)
+static bool	fill_parse_buffer(char ***file_content, int fd)
 {
 	char	*line;
 	int		i;
@@ -80,15 +80,23 @@ char	**get_file_content(t_main *main, int fd, char *file)
 	count_lines(file, &line_counter);
 	file_content = ft_calloc(line_counter + 1, sizeof(char *));
 	if (!file_content)
-		return (exit_cub3d(main, 1), NULL);
+	{
+		exit_cub3d(main, "Malloc failed in get_file_content.");
+		return (NULL);
+	}	
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{
 		free_string_array(&file_content);
-		return (exit_cub3d(main, 1), NULL);
+		exit_cub3d(main, "Open failed in get_file_content");
+		return (NULL);
 	}
 	if (!fill_parse_buffer(&file_content, fd))
-		return (exit_cub3d(main, 1), NULL);
+	{
+		close(fd);
+		exit_cub3d(main, "Malloc failed in fill parse buffer.");
+		return (NULL);
+	}
 	close(fd);
 	return (file_content);
 }

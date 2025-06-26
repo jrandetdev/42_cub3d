@@ -3,6 +3,7 @@
 		"__locale": "c",
 		"cctype": "c",
 		"locale": "c",
-		"struct.h": "c"
+		"struct.h": "c",
+		"stdlib.h": "c"
 	}
 }

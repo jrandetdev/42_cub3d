@@ -94,6 +94,8 @@ typedef struct	s_main
 {
 	void			*mlx_ptr;
 	void			*mlx_win;
+	char			**file_content;
+	char			**id_and_info;
 	t_map			map_struct;
 	t_debug			debug;
 	t_player		player;

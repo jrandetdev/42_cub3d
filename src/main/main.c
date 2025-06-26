@@ -25,10 +25,10 @@ static void	init_cub3d(t_main *main)
 	y = WIN_HEIGHT;
 	main->mlx_ptr = mlx_init();
 	if (!main->mlx_ptr)
-		exit_cub3d(main, 1);
+		exit_cub3d(main, "Mlx init failed.");
 	main->mlx_win = mlx_new_window(main->mlx_ptr, x, y, "Cub3d");
 	if (!main->mlx_win)
-		exit_cub3d(main, 1);
+		exit_cub3d(main, "Mlx window failed");
 	mlx_hook(main->mlx_win, 17, 0, handle_destroy, &main);
 	init_img(main);
 }

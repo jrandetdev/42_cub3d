@@ -35,10 +35,9 @@ static bool	find_player_postion(t_main *main, int *x, int *y, int *player)
 	if (*player != 1)
 	{
 		if (*player < 1)
-			print_error_and_message("No player found");
+			exit_cub3d(main, "No player found");
 		else if (*player > 1)
-			print_error_and_message("Too many players,"
-				"it's a single-player game");
+			exit_cub3d(main,"Too many players, it's a single-player game");
 		return (false);
 	}
 	main->player.x = *x;
@@ -101,15 +100,16 @@ void	is_map_valid(t_main *main)
 	y = 0;
 	ft_bzero(&parsing, sizeof(t_parsing));
 	if (!find_player_postion(main, &x, &y, &parsing.player))
-		exit_cub3d(main, EXIT_FAILURE);
+		exit_cub3d(main, "Player not found.");
 	parsing.map = copy_map(main->map_struct.map, main->map_struct.height);
 	if (!parsing.map)
-		exit_cub3d(main, EXIT_FAILURE);
+		exit_cub3d(main, "Map could not be copied in is_map_valid.");
 	flood_fill(&parsing, x, y);
 	safe_free_tab((void ***)&parsing.map);
 	if ((parsing.patern) == 1)
 	{
-		print_error_and_message("Map : Wrong patern");
-		exit_cub3d(main, EXIT_SUCCESS);
+		// print_error_and_message("Map : Wrong patern");
+		// exit_cub3d(main, EXIT_SUCCESS);
+		exit_cub3d(main, "Parsing patern equal to 1."); // hesite pas a changer j'ai fait de mon mieux hahaha
 	}
 }

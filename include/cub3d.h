@@ -35,11 +35,11 @@ void	draw_square(t_main *main, int start_x, int	start_y);
 
 void	is_map_valid(t_main *main);
 bool	parsing(t_main *main, char *file);
-void	get_map_descritpion(t_main *main, char **file_content);
-void	extract_map_elements(t_main *main, char **file);
-bool	extract_texture(t_main *main, char *identifier, char *xpm_file);
-bool	extract_fc_colour(t_main *main, char *identifier, char *info);
-bool	is_valid_colours(t_main *main, char **splitted_colours);
+void	get_map_descritpion(t_main *main);
+void	parse_map_elements(t_main *main);
+void	extract_texture(t_main *main, char *id, char *xpm_f);
+void	extract_colour(t_main *main, char *id, char *info);
+void	validate_colour(t_main *main, char **splitted_colours);
 char	**get_file_content(t_main *main, int fd, char *file);
 bool	xmp_extension_is_valid(char	*s, int len);
 bool	cub_extension_is_valid(char	*s, int len);
@@ -69,8 +69,10 @@ void	print_array(char **array);
 // FREE FUNCTIONS //
 void	safe_free_tab(void ***ptr);
 void	free_string_array(char ***array);
+void	free_all_pointer_arrays(t_main *main);
+void	free_mlx_pointers(t_main *main);
 void	free_ptr_and_set_to_null(char *ptr);
 int		handle_destroy(t_main *main);
-void	exit_cub3d(t_main *main, int error_status);
+void	exit_cub3d(t_main *main, char *error_message);
 
 #endif

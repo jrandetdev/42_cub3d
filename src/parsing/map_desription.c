@@ -43,7 +43,7 @@ static char	*max_strdup(const char *s1, int max_size)
 	return (pointer);
 }
 
-void	get_map_descritpion(t_main *main, char **file_content)
+void	get_map_descritpion(t_main *main)
 {
 	int		i;
 	int		j;
@@ -52,18 +52,18 @@ void	get_map_descritpion(t_main *main, char **file_content)
 
 	i = 6;
 	j = 0;
-	height = count_map_height(file_content);
-	width = get_max_row_size(file_content);
+	height = count_map_height(main->file_content);
+	width = get_max_row_size(main->file_content);
 	main->map_struct.map = ft_calloc(height + 1, sizeof(char *));
 	if (!main->map_struct.map)
-		exit_cub3d(main, EXIT_FAILURE);
-	while (file_content[i])
+		return (exit_cub3d(main, "Malloc failed in get_map_description."));
+	while (main->file_content[i])
 	{
-		main->map_struct.map[j] = max_strdup(file_content[i], width);
+		main->map_struct.map[j] = max_strdup(main->file_content[i], width);
 		if (!main->map_struct.map[j])
 		{
 			safe_free_tab((void ***)&main->map_struct.map);
-			exit_cub3d(main, EXIT_FAILURE);
+			return (exit_cub3d(main, "Max_strdup failed in get_map_des."));
 		}
 		j++;
 		i++;
