@@ -57,8 +57,8 @@ static void	get_tile_size(t_main *main)
 void	init_debug(t_main *main)
 {
 	get_tile_size(main);
-	main->player.x *= main->debug.tile_size; //The player is not centered, is at the top right of his square.
-	main->player.y *= main->debug.tile_size;
+	//main->player.x *= main->debug.tile_size; //The player is not centered, is at the top right of his square.
+	//main->player.y *= main->debug.tile_size;
 }
 
 void	print_array(char **array)
