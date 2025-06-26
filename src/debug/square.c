@@ -1,21 +1,16 @@
 
 #include "cub3d.h"
 
-void	draw_square(t_main *main, int start_x, int start_y)
+void	draw_square(t_main *main, double start_x, double start_y)
 {
 	int		size;
-	int		ray;
 	int		x;
 	int		y;
 
-	ray = 0;
+	start_x *= main->debug.tile_size;
+	start_y *= main->debug.tile_size;
 	size = main->debug.tile_size / 4;
 	y = start_y - size;
-	while (ray <= 50)
-	{
-		put_pixel_to_image(main, start_x, y - ray, 0xFFFFF);
-		ray++;
-	}
 	while (y <= start_y + size)
 	{
 		x = start_x - size;

@@ -61,7 +61,8 @@ UTILS			=			$(addprefix $(DIR_UTILS)/, $(SRC_UTILS))
 DIR_DEBUG		=			./src/debug
 SRC_DEBUG		=			debug.c \
 							print_grid.c \
-							square.c
+							square.c \
+							debug2.c
 DEBUG 			=			$(addprefix $(DIR_DEBUG)/, $(SRC_DEBUG))
 
 DIR_EVENTS		=			./src/events

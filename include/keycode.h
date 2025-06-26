@@ -50,7 +50,7 @@ enum e_keys
 	K_CTRL = 256
 };
 
-# define PLAYER_SPEED 7.0
+# define PLAYER_SPEED 0.08
 
 #elif defined(__linux__)
 
@@ -96,7 +96,7 @@ enum e_keys
 	K_CTRL = 65507
 };
 
-# define PLAYER_SPEED 1.5
+# define PLAYER_SPEED 0.04
 
 #endif
 
