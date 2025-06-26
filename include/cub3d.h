@@ -30,6 +30,7 @@ typedef struct s_keys t_keys;
 void	print_grid(t_main *main);
 void	init_debug(t_main *main);
 void	print_wall(t_main *main);
+void	print_vector(t_main *main);
 void	draw_square(t_main *main, double start_x, double start_y);
 
 // MAP AND PARSING//

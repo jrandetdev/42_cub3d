@@ -18,6 +18,8 @@ typedef struct s_debug
 	bool	debug;
 	int		grid_separator;
 	int		tile_size;
+	int		last_keycode;
+	double	last_vector_size;
 }	t_debug;
 
 typedef struct	s_player
