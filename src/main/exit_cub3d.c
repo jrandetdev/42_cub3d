@@ -15,21 +15,21 @@ void	free_mlx_pointers(t_main *main)
 {
 	if (main->image.data_img)
 			mlx_destroy_image(main->mlx_ptr, main->image.data_img);
-		if (main->mlx_win)
-		{
-			mlx_destroy_window(main->mlx_ptr, main->mlx_win);
-			main->mlx_win = NULL;
-		}
-		#ifdef __linux__
-		if (main->mlx_ptr)
-		{
-			mlx_destroy_display(main->mlx_ptr);
-			free(main->mlx_ptr);
-		}
-		#elif __APPLE__
-		if (main->mlx_ptr)
-			free(main->mlx_ptr);
-		#endif
+	if (main->mlx_win)
+	{
+		mlx_destroy_window(main->mlx_ptr, main->mlx_win);
+		main->mlx_win = NULL;
+	}
+	#ifdef __linux__
+	if (main->mlx_ptr)
+	{
+		mlx_destroy_display(main->mlx_ptr);
+		free(main->mlx_ptr);
+	}
+	#elif __APPLE__
+	if (main->mlx_ptr)
+		free(main->mlx_ptr);
+	#endif
 }
 	
 void	exit_cub3d(t_main *main, char *error_message)

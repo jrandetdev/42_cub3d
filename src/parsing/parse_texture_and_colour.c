@@ -11,7 +11,7 @@ static void	extract_colour_or_texture(t_main *main)
 	information = main->id_and_info[1];
 	id_len = ft_strlen(identifier);
 	if (id_len > 2 || id_len < 1)
-		return (exit_cub3d(main, "Identifier for texture and colour is 2 char max."));
+		return (exit_cub3d(main, "Identifier 2 char max."));
 	if (id_len == 2)
 		extract_texture(main, identifier, information);
 	else
@@ -29,7 +29,7 @@ void	parse_map_elements(t_main *main)
 		if (!main->id_and_info)
 			return (exit_cub3d(main, "Ft_split failed in texture function."));
 		if (string_array_len(main->id_and_info) != 2)
-			return (exit_cub3d(main, "Please input correct colour or texture format."));
+			return (exit_cub3d(main, "Incorrect texture or colour format."));
 		extract_colour_or_texture(main);
 		free_string_array(&main->id_and_info);
 		i++;

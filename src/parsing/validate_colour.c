@@ -6,7 +6,7 @@ static bool	is_in_char_range(char *s)
 	if (ft_strlen(s) == 3)
 	{
 		if (s[0] > '2' || s[1] > '5' || s[2] > '5')
-			return false;
+			return (false);
 	}
 	return (true);
 }
@@ -47,9 +47,9 @@ void	validate_colour(t_main *main, char **splitted_colours)
 		if (!is_only_digit(splitted_colours[i]))
 		{
 			free_string_array(&splitted_colours);
-			exit_cub3d(main, "Colour cannot contain other characters than digits.");
+			exit_cub3d(main, "Colour contains other characters than digits.");
 		}
-		if(!is_in_char_range(splitted_colours[i]))
+		if (!is_in_char_range(splitted_colours[i]))
 		{
 			free_string_array(&splitted_colours);
 			exit_cub3d(main, "RGB values must be between 0 - 255");

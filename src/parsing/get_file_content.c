@@ -1,7 +1,7 @@
 
 #include "cub3d.h"
 
-static bool is_only_spaces(char *line)
+static bool	is_only_spaces(char *line)
 {
 	while (*line)
 	{
@@ -83,7 +83,7 @@ char	**get_file_content(t_main *main, int fd, char *file)
 	{
 		exit_cub3d(main, "Malloc failed in get_file_content.");
 		return (NULL);
-	}	
+	}
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{

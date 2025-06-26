@@ -20,5 +20,5 @@ void	extract_texture(t_main *main, char *id, char *xpm_f)
 	else if (ft_strncmp(id, "EA", 2) == 0)
 		return (get_texture_data(main, &main->wall.ea, xpm_f));
 	else
-		return (exit_cub3d(main, "Wrong texture format, need NO, SO, WE, EA + .xpm file."));
+		return (exit_cub3d(main, "Texture id needs NO, SO, WE, EA"));
 }

@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 15:10:27 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/26 15:04:11 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/06/26 15:35:40 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	extract_colour(t_main *main, char *id, char *info)
 	if (!(ft_strncmp(id, "F", 1) == 0))
 	{
 		if (!(ft_strncmp(id, "C", 1) == 0))
-			return (exit_cub3d(main, "Floor or Ceiling: please use id F or C."));
+			return (exit_cub3d(main, "Colour: please use F and C."));
 	}
 	rgb_colours = ft_split(info, ',');
 	if (!rgb_colours)

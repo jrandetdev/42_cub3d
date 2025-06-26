@@ -1,7 +1,6 @@
 
 #include "cub3d.h"
 
-
 int	get_fd(t_main *main, char *file_relative_path)
 {
 	int			fd;
