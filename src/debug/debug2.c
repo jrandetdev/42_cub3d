@@ -20,9 +20,9 @@ void	print_vector(t_main *main)
 			break ;
 		y--;
 	}
-	len = (main->player.y - y) * size - size - size / 4;
+	len = (main->player.y - y);
 	y = main->player.y * size - size / 4;
-	while (i < len)
+	while (i < len * size - size - size / 4)
 	{
 		put_pixel_to_image(main, main->player.x * size, y - i, 0xFFFFFF);
 		i++;
