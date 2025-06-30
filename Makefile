@@ -62,7 +62,6 @@ UTILS			=			$(addprefix $(DIR_UTILS)/, $(SRC_UTILS))
 DIR_DEBUG		=			./src/debug
 SRC_DEBUG		=			debug.c \
 							print_grid.c \
-							square.c \
 							debug2.c
 DEBUG 			=			$(addprefix $(DIR_DEBUG)/, $(SRC_DEBUG))
 
@@ -70,10 +69,14 @@ DIR_EVENTS		=			./src/events
 SRC_EVENTS		=			keyboard_events.c
 EVENTS			=			$(addprefix $(DIR_EVENTS)/, $(SRC_EVENTS))
 
-DIR_IMG			=			./src/img
-SRC_IMG			=			render.c \
-							init_img.c
-IMG				=			$(addprefix $(DIR_IMG)/, $(SRC_IMG))
+DIR_RENDER_IMG	=			./src/render_img
+SRC_RENDER_IMG	=			init_img.c \
+							render.c 
+RENDER_IMG		=			$(addprefix $(DIR_RENDER_IMG)/, $(SRC_RENDER_IMG))
+
+DIR_MINIMAP		=			./src/minimap
+SRC_MINIMAP		=			print_square.c
+MINIMAP 		=			$(addprefix $(DIR_DEBUG)/, $(SRC_DEBUG))
 
 SOURCES			=			$(MAIN) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(IMG)
 vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS) $(DIR_IMG)
