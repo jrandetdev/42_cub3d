@@ -49,7 +49,7 @@ static void	flood_fill(t_parsing *p, int x, int y)
 {
 	if (p->patern == 1)
 		return ;
-	if (x < 0 || y < 0 || p->map[y][x] == '\0' || p->map[y][x] == ' ')
+	if (x < 0 || y < 0 || p->map || p->map[y][x] == '\0' || p->map[y][x] == ' ')
 	{
 		p->patern = 1;
 		return ;

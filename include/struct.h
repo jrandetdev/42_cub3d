@@ -6,6 +6,9 @@
 
 typedef struct	s_main t_main;
 
+
+//enum for the compas direction 
+
 typedef struct s_parsing
 {
 	int		player;
@@ -27,6 +30,8 @@ typedef struct	s_player
 	double	x;
 	double	y;
 	double	angle;
+	//Standard — 90deg [π/2] is upward, 270deg [3π/2] is downward.
+	//MinilibX — 90deg [π/2] is downward, 270deg [3π/2] is upward.
 }				t_player;
 
 typedef struct s_keys
