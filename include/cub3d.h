@@ -17,6 +17,8 @@
 # define BUFFERSIZE 20
 # endif
 
+# define TILE_SIZE 1
+
 typedef struct	s_main t_main;
 typedef struct	s_map t_map;
 typedef struct	s_texture t_texture;

@@ -2,6 +2,11 @@
 #include "cub3d.h"
 #include <math.h>
 
+// t_vec2	get_vector_from_angle()
+// {
+
+// }
+
 t_vec2	get_vector(double x1, double y1, double x2, double y2)
 {
 	t_vec2	vector;
