@@ -27,13 +27,6 @@ typedef struct s_debug
 	double	last_vector_size;
 }	t_debug;
 
-// typedef struct	s_angle
-// {
-// 	double	sin; // O/H
-// 	double	cos; // A/H
-// 	double	tan; // O/A
-// }				t_angle;
-
 typedef struct	s_player
 {
 	double	x;
