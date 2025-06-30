@@ -22,7 +22,6 @@ void	dda_case_1(t_main *main, t_dda *dda_struct)
 	x = dda_struct->x_1;
 	y = dda_struct->y_1;
 	step = dda_struct->delta_x;
-	printf("delta x %f", dda_struct->delta_x);
 
 	while (step > 0)
 	{
@@ -42,7 +41,6 @@ void	dda_case_2(t_main *main, t_dda *dda_struct)
 	x = dda_struct->x_1;
 	y = dda_struct->y_1;
 	step = dda_struct->delta_y;
-	printf("delta y %f", dda_struct->delta_y);
 	while (step > 0)
 	{
 		put_pixel_to_image(main, x, y, 0xF4E700);

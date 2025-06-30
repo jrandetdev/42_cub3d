@@ -29,7 +29,7 @@ static void	init_cub3d(t_main *main)
 	main->mlx_win = mlx_new_window(main->mlx_ptr, x, y, "Cub3d");
 	if (!main->mlx_win)
 		exit_cub3d(main, "Mlx window failed");
-	mlx_hook(main->mlx_win, 17, 0, handle_destroy, &main);
+	mlx_hook(main->mlx_win, 17, 0, handle_destroy, main);
 	init_img(main);
 }
 

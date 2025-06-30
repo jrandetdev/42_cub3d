@@ -50,6 +50,8 @@ typedef struct s_keys
 	int	s;
 	int	d;
 	int	g;
+	int left;
+	int right;
 	int escp;
 }	t_keys;
 

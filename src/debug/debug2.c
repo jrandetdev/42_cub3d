@@ -14,7 +14,6 @@ void	print_vector_from_angle(t_main *main, double angle)
 	angle_in_radians = angle * M_PI / 180;
 	vector.x = main->player.x + (magnitude * cos(angle_in_radians));
 	vector.y = main->player.y + (magnitude * sin(angle_in_radians));
-	printf("vector_x %f and vector y %f\n", vector.x, vector.y);
 	digital_differential_analyzer(main, vector.x, vector.y);
 }
 
@@ -22,12 +21,11 @@ void	print_fov(t_main *main)
 {
 	double	angle_degrees;
 
-	main->player.angle = -180;
 	angle_degrees = main->player.angle - 45;
 	while (angle_degrees < (main->player.angle + 45))
 	{
 		print_vector_from_angle(main, angle_degrees);
-		angle_degrees += 1;
+		angle_degrees += 0.1;
 	}
 }
 

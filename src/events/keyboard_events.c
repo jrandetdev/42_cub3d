@@ -13,6 +13,10 @@ static int	key_pressed(int keycode, t_main *main)
 		main->keys.d = 1;
 	if (keycode == K_G)
 		main->keys.g = !main->keys.g;
+	if (keycode == K_LEFT)
+		main->keys.left = 1;
+	if (keycode == K_RIGHT)
+		main->keys.right = 1;
 	if (keycode == K_ESCP)
 		exit_cub3d(main, 0);
 	if (main->debug.last_keycode != keycode) //debug
@@ -31,6 +35,10 @@ static int	key_released(int keycode, t_main *main)
 		main->keys.s = 0;
 	if (keycode == K_D)
 		main->keys.d = 0;
+	if (keycode == K_LEFT)
+		main->keys.left = 0;
+	if (keycode == K_RIGHT)
+		main->keys.right = 0;
 	return (0);
 }
 
