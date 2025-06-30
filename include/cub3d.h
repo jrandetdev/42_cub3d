@@ -34,17 +34,20 @@ void	draw_square(t_main *main, double start_x, double start_y);
 
 // MAP AND PARSING//
 
-void	is_map_valid(t_main *main);
-bool	parsing(t_main *main, char *file);
-void	get_map_descritpion(t_main *main);
-void	parse_map_elements(t_main *main);
-void	extract_texture(t_main *main, char *id, char *xpm_f);
-void	extract_colour(t_main *main, char *id, char *info);
-void	validate_colour(t_main *main, char **splitted_colours);
-char	**get_file_content(t_main *main, int fd, char *file);
-bool	xmp_extension_is_valid(char	*s, int len);
-bool	cub_extension_is_valid(char	*s, int len);
 bool	is_dir(char *file_relative_path);
+bool	parsing(t_main *main, char *file);
+bool	cub_extension_is_valid(char	*s, int len);
+bool	xmp_extension_is_valid(char	*s, int len);
+
+char	*max_strdup(const char *s1, int max_size);
+char	**get_file_content(t_main *main, int fd, char *file);
+
+void	is_map_valid(t_main *main);
+void	parse_map_elements(t_main *main);
+void	get_map_descritpion(t_main *main);
+void	extract_colour(t_main *main, char *id, char *info);
+void	extract_texture(t_main *main, char *id, char *xpm_f);
+void	validate_colour(t_main *main, char **splitted_colours);
 
 // RENDERING //
 int		render_next_frame(t_main *main);
@@ -60,7 +63,10 @@ void	print_error_and_message(char *error_message);
 char	*get_next_line(int fd);
 int		has_new_line(char *buffer);
 char	*join_and_free(char *line, char *tmp2);
+
+void	dda_algo(t_main *main, double x2, double y2);
 void	ft_strcpy(char *dest, char *src, int start, int end);
+
 size_t	string_array_len(char **str);
 
 int		get_fd(t_main *main, char *file_relative_path);

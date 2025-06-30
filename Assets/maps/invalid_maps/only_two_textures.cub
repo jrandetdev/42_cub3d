@@ -1,0 +1,11 @@
+NO ./assets/textures/Brick_Wall_Cracked.xpm
+SO ./assets/textures/Brick_Wall.xpm
+
+F 220,100,0
+C 225,30,0
+
+11111111
+10000001
+100N0001
+10010001
+11111111

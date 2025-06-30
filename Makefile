@@ -55,7 +55,8 @@ DIR_UTILS		=			./src/utils
 SRC_UTILS		=			vector.c \
 							get_next_line.c \
 							get_next_line_utils.c \
-							string_array_len.c
+							string_array_len.c \
+							dda_algorithm.c
 UTILS			=			$(addprefix $(DIR_UTILS)/, $(SRC_UTILS))
 
 DIR_DEBUG		=			./src/debug

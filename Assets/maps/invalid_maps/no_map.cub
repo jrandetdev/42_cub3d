@@ -1,0 +1,7 @@
+NO ./assets/textures/Brick_Wall_Cracked.xpm
+SO ./assets/textures/Brick_Wall.xpm
+WE ./assets/textures/Green_Wall_Rock.xpm
+EA ./assets/textures/Rocky_Road.xpm
+
+F 200,10,50
+C 225,30,10
