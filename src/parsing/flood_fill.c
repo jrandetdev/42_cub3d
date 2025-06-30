@@ -49,7 +49,7 @@ static void	flood_fill(t_parsing *p, int x, int y)
 {
 	if (p->patern == 1)
 		return ;
-	if (x < 0 || y < 0 || p->map[y][x] == '\0' || p->map[y][x] == ' ')
+	if (x < 0 || y < 0 || y >= p->map_height || p->map[y][x] == '\0' || p->map[y][x] == ' ')
 	{
 		p->patern = 1;
 		return ;
@@ -67,7 +67,7 @@ static void	flood_fill(t_parsing *p, int x, int y)
 	flood_fill(p, x - 1, y + 1);
 }
 
-static char	**copy_map(char **map, int height)
+static char	**copy_map(char **map, t_parsing *parsing)
 {
 	int		i;
 	int		j;
@@ -75,17 +75,18 @@ static char	**copy_map(char **map, int height)
 
 	i = 0;
 	j = 0;
-	new_map = ft_calloc(height + 1, sizeof(char *));
+	new_map = ft_calloc(parsing->map_height + 1, sizeof(char *));
 	if (!new_map)
 		return (NULL);
 	while (map[i])
 	{
-		new_map[j++] = ft_strdup(map[i++]);
-		if (!new_map)
+		new_map[j] = max_strdup(map[i++], parsing->map_width); //add ft_strdup_max
+		if (!new_map[j])
 		{
 			safe_free_tab((void ***)&new_map);
 			return (NULL);
 		}
+		j++;
 	}
 	return (new_map);
 }
@@ -98,18 +99,19 @@ void	is_map_valid(t_main *main)
 
 	x = 0;
 	y = 0;
+	printf("\nHEIGT %d, WIDTH %d\n\n", main->map_struct.height, main->map_struct.width);
+	if (main->map_struct.height < 3 || main->map_struct.width < 3)
+		exit_cub3d(main, "map too small");
 	ft_bzero(&parsing, sizeof(t_parsing));
 	if (!find_player_postion(main, &x, &y, &parsing.player))
 		exit_cub3d(main, "Player not found.");
-	parsing.map = copy_map(main->map_struct.map, main->map_struct.height);
+	parsing.map_height = main->map_struct.height;
+	parsing.map_width = main->map_struct.width;
+	parsing.map = copy_map(main->map_struct.map, &parsing);
 	if (!parsing.map)
 		exit_cub3d(main, "Map could not be copied in is_map_valid.");
 	flood_fill(&parsing, x, y);
 	safe_free_tab((void ***)&parsing.map);
 	if ((parsing.patern) == 1)
-	{
-		// print_error_and_message("Map : Wrong patern");
-		// exit_cub3d(main, EXIT_SUCCESS);
-		exit_cub3d(main, "Parsing patern equal to 1."); // hesite pas a changer j'ai fait de mon mieux hahaha
-	}
+		exit_cub3d(main, "Map invalid");
 }

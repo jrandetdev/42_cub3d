@@ -14,6 +14,8 @@ typedef struct s_parsing
 	int		player;
 	int		patern;
 	char	**map;
+	int		map_width;
+	int		map_height;
 }	t_parsing;
 
 typedef struct s_debug

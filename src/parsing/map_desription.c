@@ -28,7 +28,7 @@ static size_t	get_max_row_size(char **file_content)
 	return (max_len);
 }
 
-static char	*max_strdup(const char *s1, int max_size)
+char	*max_strdup(const char *s1, int max_size)
 {
 	char	*pointer;
 	size_t	len;
@@ -54,7 +54,7 @@ void	get_map_descritpion(t_main *main)
 	j = 0;
 	height = count_map_height(main->file_content);
 	width = get_max_row_size(main->file_content);
-	main->map_struct.map = ft_calloc(height + 1, sizeof(char *));
+	main->map_struct.map = ft_calloc(height + 2, sizeof(char *));
 	if (!main->map_struct.map)
 		return (exit_cub3d(main, "Malloc failed in get_map_description."));
 	while (main->file_content[i])

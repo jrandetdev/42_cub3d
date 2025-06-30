@@ -1,0 +1,13 @@
+NO ./assets/textures/Brick_Wall_Cracked.xpm
+SO ./assets/textures/Brick_Wall.xpm
+WE ./assets/textures/Green_Wall_Rock.xpm
+EA ./assets/textures/Rocky_Road.xpm
+
+F 256,10,50
+C 225,30,0
+
+11111111
+10000001
+100N0001
+10010001
+11111111
