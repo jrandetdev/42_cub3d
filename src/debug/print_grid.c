@@ -1,6 +1,6 @@
 
 #include <mlx.h>
-#include "../../include/cub3d.h"
+#include "cub3d.h"
 
 static void	print_colum(t_main *main, float x)
 {
