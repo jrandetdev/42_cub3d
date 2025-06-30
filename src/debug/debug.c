@@ -42,22 +42,21 @@ void	print_wall(t_main *main)
 	}
 }
 
-// static void	get_tile_size(t_main *main)
-// {
-// 	if (main->map_struct.height > main->map_struct.width)
-// 	{
-// 		main->debug.tile_size = WIN_HEIGHT;
-// 	}
-// 	else
-// 	{
-// 		main->debug.tile_size = WIN_WIDTH;
-// 	}
-// }
+static void	get_tile_size(t_main *main)
+{
+	if (main->map_struct.height > main->map_struct.width)
+	{
+		main->debug.tile_size = WIN_HEIGHT / main->map_struct.height;
+	}
+	else
+	{
+		main->debug.tile_size = WIN_WIDTH / main->map_struct.width;
+	}
+}
 
 void	init_debug(t_main *main)
 {
-	//get_tile_size(main);
-	main->debug.tile_size = TILE_SIZE;
+	get_tile_size(main);
 	//main->player.x *= main->debug.tile_size; //The player is not centered, is at the top right of his square.
 	//main->player.y *= main->debug.tile_size;
 }

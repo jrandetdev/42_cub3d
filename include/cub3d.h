@@ -1,6 +1,8 @@
 #ifndef	CUB3D_H
 # define CUB3D_H
 
+# define _USE_MATH_DEFINES
+
 #include <errno.h>
 #include <fcntl.h>
 #include <stdio.h>
@@ -18,6 +20,7 @@
 # endif
 
 # define TILE_SIZE 1
+# define M_PI 3.14159265358979323846
 
 typedef struct	s_main t_main;
 typedef struct	s_map t_map;
@@ -31,8 +34,8 @@ typedef struct	s_keys t_keys;
 void	print_grid(t_main *main);
 void	init_debug(t_main *main);
 void	print_wall(t_main *main);
-void	print_vector(t_main *main);
 void	draw_square(t_main *main, double start_x, double start_y);
+void	print_fov(t_main *main);
 
 // MAP AND PARSING//
 
@@ -66,7 +69,7 @@ char	*get_next_line(int fd);
 int		has_new_line(char *buffer);
 char	*join_and_free(char *line, char *tmp2);
 
-void	dda_algo(t_main *main, double x2, double y2);
+void	digital_differential_analyzer(t_main *main, double dst_x, double dst_y);
 void	ft_strcpy(char *dest, char *src, int start, int end);
 
 size_t	string_array_len(char **str);

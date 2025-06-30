@@ -9,7 +9,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/cub3d",
-			"args": ["Assets/maps/invalid_maps/invalid_permission.cub"],
+			"args": ["Assets/maps/test_map.cub"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],

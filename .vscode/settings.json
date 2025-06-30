@@ -4,6 +4,7 @@
 		"cctype": "c",
 		"locale": "c",
 		"struct.h": "c",
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"mlx.h": "c"
 	}
 }
