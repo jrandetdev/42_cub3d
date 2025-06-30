@@ -1,16 +1,16 @@
 
 #include "cub3d.h"
 
-static void	render_fov_player(t_main *main)
-{
-	double	x;
-	double	y;
+// static void	render_fov_player(t_main *main)
+// {
+// 	double	x;
+// 	double	y;
 
-	x = main->player.x;
-	y = main->player.y;
-	dda_algo(main, x + 1, y + 1);
+// 	x = main->player.x;
+// 	y = main->player.y;
+// 	dda_algo(main, x + 1, y + 1);
 
-}
+// }
 
 static void	player_movement(t_main *main)
 {
