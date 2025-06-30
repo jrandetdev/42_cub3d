@@ -28,7 +28,7 @@ static bool	get_players(char **map, int *x, int *y, int *player)
 	return (true);
 }
 
-static bool	find_player_postion(t_main *main, int *x, int *y, int *player)
+static bool	find_player_position(t_main *main, int *x, int *y, int *player)
 {
 	if (!get_players(main->map_struct.map, x, y, player))
 		return (false);
@@ -49,7 +49,7 @@ static void	flood_fill(t_parsing *p, int x, int y)
 {
 	if (p->patern == 1)
 		return ;
-	if (x < 0 || y < 0 || y >= p->map_height || p->map[y][x] == '\0' || p->map[y][x] == ' ')
+	if (x < 0 || y < 0 || y >= p->map_height || x >= p->map_width || p->map[y][x] == '\0' || p->map[y][x] == ' ')
 	{
 		p->patern = 1;
 		return ;
@@ -57,6 +57,8 @@ static void	flood_fill(t_parsing *p, int x, int y)
 	if (p->map[y][x] == '1' || p->map[y][x] == 'V')
 		return ;
 	p->map[y][x] = 'V';
+	if (p->patern == 1)
+		return ;
 	flood_fill(p, x + 1, y);
 	flood_fill(p, x, y + 1);
 	flood_fill(p, x - 1, y);
@@ -99,11 +101,10 @@ void	is_map_valid(t_main *main)
 
 	x = 0;
 	y = 0;
-	printf("\nHEIGT %d, WIDTH %d\n\n", main->map_struct.height, main->map_struct.width);
 	if (main->map_struct.height < 3 || main->map_struct.width < 3)
 		exit_cub3d(main, "map too small");
 	ft_bzero(&parsing, sizeof(t_parsing));
-	if (!find_player_postion(main, &x, &y, &parsing.player))
+	if (!find_player_position(main, &x, &y, &parsing.player))
 		exit_cub3d(main, "Player not found.");
 	parsing.map_height = main->map_struct.height;
 	parsing.map_width = main->map_struct.width;

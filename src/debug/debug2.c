@@ -25,7 +25,7 @@ void	print_fov(t_main *main)
 	while (angle_degrees < (main->player.angle + 45))
 	{
 		print_vector_from_angle(main, angle_degrees);
-		angle_degrees += 0.1;
+		angle_degrees += 5.0;
 	}
 }
 

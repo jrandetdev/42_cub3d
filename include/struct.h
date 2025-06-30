@@ -31,6 +31,10 @@ typedef struct	s_player
 {
 	double	x;
 	double	y;
+	double	dirX;
+	double	dirY;
+	double	plane_x;
+	double	plane_y;
 	double	angle;
 	//Standard — 90deg [π/2] is upward, 270deg [3π/2] is downward.
 	//MinilibX — 90deg [π/2] is downward, 270deg [3π/2] is upward.

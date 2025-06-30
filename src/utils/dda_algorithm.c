@@ -15,38 +15,47 @@ typedef struct s_dda
 
 void	dda_case_1(t_main *main, t_dda *dda_struct)
 {
-	int	step;
+	int		count_steps;
+	int		step_in_x;
 	double	x;
 	double	y;
 
 	x = dda_struct->x_1;
 	y = dda_struct->y_1;
-	step = dda_struct->delta_x;
-
-	while (step > 0)
+	count_steps = fabs(dda_struct->delta_x);
+	if (dda_struct->delta_x > 0)
+		step_in_x = 1;
+	else
+		step_in_x = -1;
+	while (count_steps > 0)
 	{
 		put_pixel_to_image(main, x, y, 0xF4E700);
-		x += 1;
+		x += step_in_x;
 		y += dda_struct->delta_y / dda_struct->delta_x;
-		step--;
+		count_steps--;
 	}
 }
 
 void	dda_case_2(t_main *main, t_dda *dda_struct)
 {
-	int	step;
+	int		count_steps;
+	int		step_in_y;
 	double	x;
 	double	y;
 
 	x = dda_struct->x_1;
 	y = dda_struct->y_1;
-	step = dda_struct->delta_y;
-	while (step > 0)
+	if (dda_struct->delta_y > 0)
+		step_in_y = 1;
+	else
+		step_in_y = -1;
+	count_steps = fabs(dda_struct->delta_y);
+	while (count_steps > 0)
 	{
 		put_pixel_to_image(main, x, y, 0xF4E700);
-		y += 1;
+		y += step_in_y;
 		x += dda_struct->delta_x / dda_struct->delta_y;
-		step--;
+		count_steps--;
 	}
 }
 
@@ -62,11 +71,14 @@ void	digital_differential_analyzer(t_main *main, double dst_x, double dst_y)
 	dda_struct.y_2 = dst_y * size; 
 	dda_struct.delta_x = dda_struct.x_2 - dda_struct.x_1;
 	dda_struct.delta_y = dda_struct.y_2 - dda_struct.y_1;
-	if (dda_struct.delta_y <= dda_struct.delta_x)
+	if (fabs(dda_struct.delta_y) <=  fabs(dda_struct.delta_x))
 		dda_case_1(main, &dda_struct);
 	else
 		dda_case_2(main, &dda_struct);
 }
+
+
+
 
 // void	dda_algo(t_main *main, double dst_x, double dst_y)
 // {
