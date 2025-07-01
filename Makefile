@@ -61,8 +61,7 @@ UTILS			=			$(addprefix $(DIR_UTILS)/, $(SRC_UTILS))
 
 DIR_DEBUG		=			./src/debug
 SRC_DEBUG		=			debug.c \
-							print_grid.c \
-							debug2.c
+							print_grid.c
 DEBUG 			=			$(addprefix $(DIR_DEBUG)/, $(SRC_DEBUG))
 
 DIR_EVENTS		=			./src/events
@@ -75,7 +74,8 @@ SRC_RENDER_IMG	=			init_img.c \
 RENDER_IMG		=			$(addprefix $(DIR_RENDER_IMG)/, $(SRC_RENDER_IMG))
 
 DIR_MINIMAP		=			./src/minimap
-SRC_MINIMAP		=			print_square.c
+SRC_MINIMAP		=			print_square.c \
+							fov.c
 MINIMAP 		=			$(addprefix $(DIR_DEBUG)/, $(SRC_MINIMAP))
 
 SOURCES			=			$(MAIN) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(RENDER_IMG) $(MINIMAP)
