@@ -10,7 +10,7 @@ void	print_vector_from_angle(t_main *main, double angle)
 	t_vec2	vector;
 
 	(void) size;
-	magnitude = 5.0;
+	magnitude = 50.0;
 	angle_in_radians = angle * M_PI / 180;
 	vector.x = main->player.x + (magnitude * cos(angle_in_radians));
 	vector.y = main->player.y + (magnitude * sin(angle_in_radians));
@@ -25,7 +25,7 @@ void	print_fov(t_main *main)
 	while (angle_degrees < (main->player.angle + 45))
 	{
 		print_vector_from_angle(main, angle_degrees);
-		angle_degrees += 5.0;
+		angle_degrees += 0.1;
 	}
 }
 

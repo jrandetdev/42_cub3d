@@ -29,6 +29,10 @@ void	dda_case_1(t_main *main, t_dda *dda_struct)
 		step_in_x = -1;
 	while (count_steps > 0)
 	{
+		int	xm = x / main->debug.tile_size;
+		int	ym = y / main->debug.tile_size;
+		if (main->map_struct.map[ym][xm] == '1')
+			break;
 		put_pixel_to_image(main, x, y, 0xF4E700);
 		x += step_in_x;
 		y += dda_struct->delta_y / dda_struct->delta_x;
@@ -52,6 +56,10 @@ void	dda_case_2(t_main *main, t_dda *dda_struct)
 	count_steps = fabs(dda_struct->delta_y);
 	while (count_steps > 0)
 	{
+		int	xm = x / main->debug.tile_size;
+		int	ym = y / main->debug.tile_size;
+		if (main->map_struct.map[ym][xm] == '1')
+			break;
 		put_pixel_to_image(main, x, y, 0xF4E700);
 		y += step_in_y;
 		x += dda_struct->delta_x / dda_struct->delta_y;

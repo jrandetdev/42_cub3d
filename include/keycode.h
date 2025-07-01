@@ -51,6 +51,7 @@ enum e_keys
 };
 
 # define PLAYER_SPEED 0.08
+# define ROTATION_SPEED 0.5
 
 #elif defined(__linux__)
 

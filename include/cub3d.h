@@ -20,7 +20,9 @@
 # endif
 
 # define TILE_SIZE 1
-# define M_PI 3.14159265358979323846
+# ifndef M_PI
+#  define M_PI 3.14159265358979323846
+# endif
 
 typedef struct	s_main t_main;
 typedef struct	s_map t_map;
