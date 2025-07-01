@@ -1,5 +1,6 @@
 
 #include "cub3d.h"
+#include <math.h>
 
 // static void	render_fov_player(t_main *main)
 // {
@@ -14,14 +15,45 @@
 
 static void	player_movement(t_main *main)
 {
+	int	rx;
+	int	ry;
+
 	if (main->keys.w == 1)
-		main->player.y -= PLAYER_SPEED;
+	{
+		rx = main->player.x;
+		ry = trunc(main->player.y - PLAYER_SPEED);
+		if (main->map_struct.map[ry][rx] == '1')
+			main->player.y += 0.01;
+		else
+			main->player.y -= PLAYER_SPEED;
+	}
 	if (main->keys.s == 1)
-		main->player.y += PLAYER_SPEED;
+	{
+		rx = main->player.x;
+		ry = trunc(main->player.y + PLAYER_SPEED);
+		if (main->map_struct.map[ry][rx] == '1')
+			main->player.y -= 0.01;
+		else
+			main->player.y += PLAYER_SPEED;
+	}
 	if (main->keys.a == 1)
-		main->player.x -= PLAYER_SPEED;
+	{
+		rx = (main->player.x - PLAYER_SPEED);
+		ry = main->player.y;
+		if (main->map_struct.map[ry][rx] == '1')
+			main->player.x += 0.01;
+		else
+			main->player.x -= PLAYER_SPEED;
+	}
 	if (main->keys.d == 1)
-		main->player.x += PLAYER_SPEED;
+	{
+		rx = (main->player.x + PLAYER_SPEED);
+		ry = main->player.y;
+		if (main->map_struct.map[ry][rx] == '1')
+			main->player.x -= 0.01;
+		else
+			main->player.x += PLAYER_SPEED;
+	}
 	if (main->keys.right == 1)
 		main->player.angle += ROTATION_SPEED;
 	if (main->keys.left == 1)
