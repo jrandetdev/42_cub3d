@@ -33,4 +33,5 @@ void	print_minimap(t_main *main)
 	init_minimap(main); //init in right file later
 	print_minimap_background(main);
 	print_obstacles(main);
+	draw_player(main);
 }
