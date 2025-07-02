@@ -42,7 +42,6 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	init_cub3d(&main);
 	parsing(&main, argv[1]);
-	init_debug(&main); //debug
 	init_keyboard_events(&main);
 	mlx_loop_hook(main.mlx_ptr, render_next_frame, &main);
 	mlx_loop(main.mlx_ptr);

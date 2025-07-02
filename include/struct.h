@@ -9,6 +9,15 @@ typedef struct	s_main t_main;
 
 //enum for the compas direction 
 
+typedef struct s_minimap
+{
+	int	start_px;
+	int	start_py;
+	int	tile_size;
+	int	map_size_x;
+	int	map_size_y;
+}	t_minimap;
+
 enum start_angle
 {
 	N = 0,
@@ -127,7 +136,7 @@ typedef struct	s_main
 	t_wall_texture	wall;
 	t_colour		c_colour;
 	t_colour		f_colour;
-	int				final_colour;
+	t_minimap		minimap;
 	t_myimage		image;
 }				t_main;
 

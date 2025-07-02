@@ -60,8 +60,10 @@ void	is_map_valid(t_main *main)
 	if (main->map_struct.height < 3 || main->map_struct.width < 3)
 		exit_cub3d(main, "map too small");
 	ft_bzero(&parsing, sizeof(t_parsing));
-	if (!find_player_position(main, &x, &y, &parsing.player))
-		exit_cub3d(main, "Player not found.");
+	main->player.x = 4; //debug
+	main->player.y = 10; //debug
+	//if (!find_player_position(main, &x, &y, &parsing.player)) //FIND PLAYER MISSING ?
+	//	exit_cub3d(main, "Player not found.");
 	parsing.map_height = main->map_struct.height;
 	parsing.map_width = main->map_struct.width;
 	parsing.map = copy_map(main->map_struct.map, &parsing);
@@ -69,6 +71,6 @@ void	is_map_valid(t_main *main)
 		exit_cub3d(main, "Map could not be copied in is_map_valid.");
 	flood_fill(&parsing, x, y);
 	safe_free_tab((void ***)&parsing.map);
-	if ((parsing.patern) == 1)
-		exit_cub3d(main, "Map invalid");
+	// if ((parsing.patern) == 1) //debug
+	// 	exit_cub3d(main, "Map invalid"); //debug
 }

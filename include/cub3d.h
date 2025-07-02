@@ -33,11 +33,8 @@ typedef struct	s_keys t_keys;
 
 /*------------------------------------ DEBUG ---------------------------------*/
 
-void	print_grid(t_main *main);
+
 void	init_debug(t_main *main);
-void	print_wall(t_main *main);
-void	draw_square(t_main *main, double start_x, double start_y);
-void	print_fov(t_main *main);
 
 // MAP AND PARSING//
 
@@ -56,9 +53,14 @@ void	extract_colour(t_main *main, char *id, char *info);
 void	extract_texture(t_main *main, char *id, char *xpm_f);
 void	validate_colour(t_main *main, char **splitted_colours);
 
-bool	find_player_position(t_main *main, int *x, int *y, int *player);
-bool	get_players(t_main *main, char **map, int *x, int *y, int *player);
-
+// MINIMAP //
+void	print_fov(t_main *main);
+void	print_grid(t_main *main);
+void	draw_player(t_main *main);
+void	print_minifov(t_main *main);
+void	print_minimap(t_main *main);
+void	print_obstacles(t_main *main);
+void	mini_dda(t_main *main, double dst_x, double dst_y);
 
 // RENDERING //
 int		render_next_frame(t_main *main);

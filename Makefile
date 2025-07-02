@@ -45,11 +45,11 @@ SRC_PARSING		=			flood_fill.c \
 							main_parsing.c \
 							check_file.c \
 							extract_texture.c \
-							init_data.c \
 							extract_colour.c \
 							validate_colour.c \
 							get_file_content.c \
 							parse_texture_and_colour.c
+#init_data.c
 PARSING			=			$(addprefix $(DIR_PARSING)/, $(SRC_PARSING))
 
 DIR_UTILS		=			./src/utils
@@ -75,8 +75,12 @@ SRC_RENDER_IMG	=			init_img.c \
 RENDER_IMG		=			$(addprefix $(DIR_RENDER_IMG)/, $(SRC_RENDER_IMG))
 
 DIR_MINIMAP		=			./src/minimap
-SRC_MINIMAP		=			print_square.c \
-							fov.c
+SRC_MINIMAP		=			draw_player.c \
+							fov.c \
+							minimap.c \
+							print_obstacles.c \
+							minifov.c \
+							mini_dda.c
 MINIMAP 		=			$(addprefix $(DIR_DEBUG)/, $(SRC_MINIMAP))
 
 SOURCES			=			$(MAIN) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(RENDER_IMG) $(MINIMAP)
