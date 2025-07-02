@@ -77,7 +77,9 @@ DIR_MINIMAP		=			./src/minimap
 SRC_MINIMAP		=			draw_player.c \
 							fov.c \
 							minimap.c \
-							print_obstacles.c
+							print_obstacles.c \
+							minifov.c \
+							mini_dda.c
 MINIMAP 		=			$(addprefix $(DIR_DEBUG)/, $(SRC_MINIMAP))
 
 SOURCES			=			$(MAIN) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(RENDER_IMG) $(MINIMAP)

@@ -57,8 +57,10 @@ void	validate_colour(t_main *main, char **splitted_colours);
 void	print_fov(t_main *main);
 void	print_grid(t_main *main);
 void	draw_player(t_main *main);
+void	print_minifov(t_main *main);
 void	print_minimap(t_main *main);
 void	print_obstacles(t_main *main);
+void	mini_dda(t_main *main, double dst_x, double dst_y);
 
 // RENDERING //
 int		render_next_frame(t_main *main);

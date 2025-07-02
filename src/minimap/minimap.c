@@ -21,7 +21,7 @@ static void print_minimap_background(t_main *main)
 
 void	init_minimap(t_main *main)
 {
-	main->minimap.tile_size = 10;
+	main->minimap.tile_size = 20;
 	main->minimap.map_size_x = main->map_struct.width * main->minimap.tile_size;
 	main->minimap.map_size_y = main->map_struct.height * main->minimap.tile_size;
 	main->minimap.start_px = WIN_WIDTH - main->minimap.map_size_x - 10; // -10 is only for "design"
@@ -33,5 +33,6 @@ void	print_minimap(t_main *main)
 	init_minimap(main); //init in right file later
 	print_minimap_background(main);
 	print_obstacles(main);
+	print_minifov(main);
 	draw_player(main);
 }
