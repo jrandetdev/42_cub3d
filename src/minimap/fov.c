@@ -10,7 +10,7 @@ void	print_vector_from_angle(t_main *main, double angle)
 	t_vec2	vector;
 
 	(void) size;
-	magnitude = 50.0;
+	magnitude = 2;
 	angle_in_radians = angle * M_PI / 180;
 	vector.x = main->player.x + (magnitude * cos(angle_in_radians));
 	vector.y = main->player.y + (magnitude * sin(angle_in_radians));
@@ -19,44 +19,17 @@ void	print_vector_from_angle(t_main *main, double angle)
 
 void	print_fov(t_main *main)
 {
-	double	angle_degrees;
+	if (main->player.angle > 360)
+		main->player.angle = 0;
+	if (main->player.angle < 0)
+		main->player.angle = 360;
+	print_vector_from_angle(main, main->player.angle);
+	// double	angle_degrees;
 
-	angle_degrees = main->player.angle - 45;
-	while (angle_degrees < (main->player.angle + 45))
-	{
-		print_vector_from_angle(main, angle_degrees);
-		angle_degrees += 0.1;
-	}
+	// angle_degrees = main->player.angle - 45;
+	// while (angle_degrees < (main->player.angle + 45))
+	// {
+	// 	print_vector_from_angle(main, angle_degrees);
+	// 	angle_degrees += 0.1;
+	// }
 }
-
-// void	print_vector(t_main *main)
-// {
-// 	int		x;
-// 	int		y;
-// 	int		i;
-// 	int		size;
-// 	double	len;
-
-// 	i = 0;
-// 	x = trunc(main->player.x);
-// 	y = trunc(main->player.y);
-// 	size = main->debug.tile_size;
-// 	while (main->map_struct.map[y][x])
-// 	{
-// 		if (main->map_struct.map[y][x] == '1')
-// 			break ;
-// 		y--;
-// 	}
-// 	len = (main->player.y - y);
-// 	y = main->player.y * size - size / 4;
-// 	while (i < len * size - size - size / 4)
-// 	{
-// 		put_pixel_to_image(main, main->player.x * size, y - i, 0xFFFFFF);
-// 		i++;
-// 	}
-// 	if (len != main->debug.last_vector_size)
-// 	{
-// 		printf("Vector Len : %f\n", len);
-// 		main->debug.last_vector_size = len;
-// 	}
-// }
