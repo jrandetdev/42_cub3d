@@ -55,9 +55,9 @@ static void	player_movement(t_main *main)
 			main->player.x += PLAYER_SPEED;
 	}
 	if (main->keys.right == 1)
-		main->player.angle += ROTATION_SPEED;
+		main->player.direction += ROTATION_SPEED;
 	if (main->keys.left == 1)
-		main->player.angle -= ROTATION_SPEED;
+		main->player.direction -= ROTATION_SPEED;
 }
 
 int	render_next_frame(t_main *main)

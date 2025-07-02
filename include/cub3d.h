@@ -21,7 +21,7 @@
 
 # define TILE_SIZE 1
 # ifndef M_PI
-#  define M_PI 3.14159265358979323846
+# define M_PI 3.14159265358979323846
 # endif
 
 typedef struct	s_main t_main;
@@ -56,6 +56,10 @@ void	extract_colour(t_main *main, char *id, char *info);
 void	extract_texture(t_main *main, char *id, char *xpm_f);
 void	validate_colour(t_main *main, char **splitted_colours);
 
+bool	find_player_position(t_main *main, int *x, int *y, int *player);
+bool	get_players(t_main *main, char **map, int *x, int *y, int *player);
+
+
 // RENDERING //
 int		render_next_frame(t_main *main);
 void	put_pixel_to_image(t_main *main, int x, int y, int colour);
@@ -70,6 +74,7 @@ void	print_error_and_message(char *error_message);
 char	*get_next_line(int fd);
 int		has_new_line(char *buffer);
 char	*join_and_free(char *line, char *tmp2);
+void 	normalize_angle(double *angle);
 
 void	digital_differential_analyzer(t_main *main, double dst_x, double dst_y);
 void	ft_strcpy(char *dest, char *src, int start, int end);
