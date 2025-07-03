@@ -62,8 +62,8 @@ void	is_map_valid(t_main *main)
 	ft_bzero(&parsing, sizeof(t_parsing));
 	main->player.x = 4; //debug
 	main->player.y = 10; //debug
-	//if (!find_player_position(main, &x, &y, &parsing.player)) //FIND PLAYER MISSING ?
-	//	exit_cub3d(main, "Player not found.");
+	if (!find_player_position(main, &x, &y, &parsing.player)) //FIND PLAYER MISSING ?
+		exit_cub3d(main, "Player not found.");
 	parsing.map_height = main->map_struct.height;
 	parsing.map_width = main->map_struct.width;
 	parsing.map = copy_map(main->map_struct.map, &parsing);

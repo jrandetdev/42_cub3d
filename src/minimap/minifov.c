@@ -4,28 +4,30 @@
 static void	print_mini_vector_from_angle(t_main *main, double angle)
 {
 	double	magnitude;
-	double	angle_in_radians;
 	t_vec2	vector;
 
 	magnitude = sqrt(pow(main->map_struct.height, 2) + pow(main->map_struct.width, 2)); //max_map_size
-	angle_in_radians = angle * M_PI / 180;
-	vector.x = main->player.x + (magnitude * cos(angle_in_radians));
-	vector.y = main->player.y + (magnitude * sin(angle_in_radians));
+	vector.x = main->player.x + (magnitude * cos(angle));
+	vector.y = main->player.y + (magnitude * sin(angle));
 	mini_dda(main, vector.x, vector.y);
 }
 
 void	print_minifov(t_main *main)
 {
-	double angle_degrees;
+	double	angle_degrees;
+	double	start_fov;
+	double	end_fov;
 
-	if (main->player.direction > 360)
-		main->player.direction = 0;
-	if (main->player.direction < 0)
-		main->player.direction = 360;
-	angle_degrees = main->player.direction - 45;
-	while (angle_degrees < (main->player.direction + 45))
+	angle_degrees = atan2(main->player.forward_y, main->player.forward_x);//move to render !!
+	printf("angle degree is worth %f\n", angle_degrees);
+	start_fov = angle_degrees - (M_PI / 6);
+	end_fov = angle_degrees + M_PI / 6;
+	printf("start fov %f\n", start_fov);
+	printf("end fov %f\n", end_fov);
+	while (start_fov < end_fov)
 	{
-		print_mini_vector_from_angle(main, angle_degrees);
-		angle_degrees += 0.1;
+		print_mini_vector_from_angle(main, start_fov);
+		start_fov += 0.01;
+		printf("start fov added is %f\n", start_fov);
 	}
 }

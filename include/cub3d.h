@@ -52,6 +52,7 @@ void	get_map_descritpion(t_main *main);
 void	extract_colour(t_main *main, char *id, char *info);
 void	extract_texture(t_main *main, char *id, char *xpm_f);
 void	validate_colour(t_main *main, char **splitted_colours);
+bool	find_player_position(t_main *main, int *x, int *y, int *player);
 
 // MINIMAP //
 void	print_fov(t_main *main);

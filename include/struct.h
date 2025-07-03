@@ -48,10 +48,10 @@ typedef struct	s_player
 {
 	double	x;
 	double	y;
-	double	dirX;
-	double	dirY;
-	double	plane_x;
-	double	plane_y;
+	double	forward_x;
+	double	forward_y;
+	double	right_x;
+	double	right_y;
 	double	direction;
 	char	*orientation;
 	//Standard — 90deg [π/2] is upward, 270deg [3π/2] is downward.

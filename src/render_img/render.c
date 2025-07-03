@@ -26,35 +26,60 @@ static void	 backgroud_color(t_main *main)
 	}
 }
 
+// static void	player_movement(t_main *main)
+// {
+// 	double radian;
+
+// 	radian = main->player.direction * (M_PI / 180);
+// 	if (main->keys.w == 1)
+// 	{
+// 		main->player.x += (PLAYER_SPEED * cos(radian));
+// 		main->player.y += (PLAYER_SPEED * sin(radian));
+// 	}
+// 	if (main->keys.s == 1)
+// 	{
+// 		main->player.x -= (PLAYER_SPEED * cos(radian));
+// 		main->player.y -= (PLAYER_SPEED * sin(radian));
+// 	}
+// 	if (main->keys.a == 1)
+// 	{
+// 		main->player.x += (PLAYER_SPEED * cos(main->player.direction * (M_PI / 90)));
+// 		main->player.y += (PLAYER_SPEED * sin(main->player.direction * (M_PI / 90)));
+// 	}
+// 	if (main->keys.d == 1)
+// 	{
+// 		main->player.x -= (PLAYER_SPEED * cos(main->player.direction * (M_PI / 90)));
+// 		main->player.y -= (PLAYER_SPEED * sin(main->player.direction * (M_PI / 90)));
+// 	}
+// 	if (main->keys.right == 1)
+// 		main->player.direction += ROTATION_SPEED;
+// 	if (main->keys.left == 1)
+// 		main->player.direction -= ROTATION_SPEED;
+// }
+
 static void	player_movement(t_main *main)
 {
-	double radian;
-
-	radian = main->player.direction * (M_PI / 180);
 	if (main->keys.w == 1)
 	{
-		main->player.x += (PLAYER_SPEED * cos(radian));
-		main->player.y += (PLAYER_SPEED * sin(radian));
+		main->player.x += (main->player.forward_x * PLAYER_SPEED);
+		printf("main->player.x is worth %f\n", main->player.x);
+		main->player.y += (main->player.forward_y * PLAYER_SPEED);
 	}
 	if (main->keys.s == 1)
 	{
-		main->player.x -= (PLAYER_SPEED * cos(radian));
-		main->player.y -= (PLAYER_SPEED * sin(radian));
-	}
-	if (main->keys.a == 1)
-	{
-		main->player.x += (PLAYER_SPEED * cos(main->player.direction * (M_PI / 90)));
-		main->player.y += (PLAYER_SPEED * sin(main->player.direction * (M_PI / 90)));
+		main->player.x -= (main->player.forward_x * PLAYER_SPEED);
+		main->player.y -= (main->player.forward_y * PLAYER_SPEED);
 	}
 	if (main->keys.d == 1)
 	{
-		main->player.x -= (PLAYER_SPEED * cos(main->player.direction * (M_PI / 90)));
-		main->player.y -= (PLAYER_SPEED * sin(main->player.direction * (M_PI / 90)));
+		main->player.x += (main->player.right_x * PLAYER_SPEED);
+		main->player.y += (main->player.right_y * PLAYER_SPEED);
 	}
-	if (main->keys.right == 1)
-		main->player.direction += ROTATION_SPEED;
-	if (main->keys.left == 1)
-		main->player.direction -= ROTATION_SPEED;
+	if (main->keys.a == 1)
+	{
+		main->player.x -= (main->player.right_x * PLAYER_SPEED);
+		main->player.y -= (main->player.right_y * PLAYER_SPEED);
+	}
 }
 
 int	render_next_frame(t_main *main)
