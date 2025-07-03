@@ -4,11 +4,9 @@
 
 void	print_vector_from_angle(t_main *main, double direction)
 {
-	int size = main->debug.tile_size;
 	double	magnitude;
 	t_vec2	vector;
 
-	(void) size;
 	magnitude = 50.0;
 	vector.x = main->player.x + (magnitude * cos(direction));
 	vector.y = main->player.y + (magnitude * sin(direction));

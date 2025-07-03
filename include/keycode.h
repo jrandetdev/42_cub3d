@@ -97,8 +97,8 @@ enum e_keys
 	K_CTRL = 65507
 };
 
-# define PLAYER_SPEED 0.04
-# define ROTATION_SPEED 0.5
+# define PLAYER_SPEED 0.06
+# define ROTATION_SPEED 1.5
 
 #endif
 

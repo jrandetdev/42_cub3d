@@ -28,14 +28,29 @@ static void	 backgroud_color(t_main *main)
 
 static void	player_movement(t_main *main)
 {
+	double radian;
+
+	radian = main->player.direction * (M_PI / 180);
 	if (main->keys.w == 1)
-		main->player.y -= PLAYER_SPEED;
+	{
+		main->player.x += (PLAYER_SPEED * cos(radian));
+		main->player.y += (PLAYER_SPEED * sin(radian));
+	}
 	if (main->keys.s == 1)
-		main->player.y += PLAYER_SPEED;
+	{
+		main->player.x -= (PLAYER_SPEED * cos(radian));
+		main->player.y -= (PLAYER_SPEED * sin(radian));
+	}
 	if (main->keys.a == 1)
-		main->player.x -= PLAYER_SPEED;
+	{
+		main->player.x += (PLAYER_SPEED * cos(main->player.direction * (M_PI / 90)));
+		main->player.y += (PLAYER_SPEED * sin(main->player.direction * (M_PI / 90)));
+	}
 	if (main->keys.d == 1)
-		main->player.x += PLAYER_SPEED;
+	{
+		main->player.x -= (PLAYER_SPEED * cos(main->player.direction * (M_PI / 90)));
+		main->player.y -= (PLAYER_SPEED * sin(main->player.direction * (M_PI / 90)));
+	}
 	if (main->keys.right == 1)
 		main->player.direction += ROTATION_SPEED;
 	if (main->keys.left == 1)

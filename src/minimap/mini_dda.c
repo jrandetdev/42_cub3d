@@ -13,6 +13,20 @@ typedef struct s_dda
 	double	delta_y;
 }	t_dda;
 
+static bool	check_outside_minimap(t_minimap minimap, t_map map, double x, double y)
+{
+	int	xm;
+	int	ym;
+
+	xm = (x - minimap.start_px) / minimap.tile_size;
+	ym = (y - minimap.start_py) / minimap.tile_size;
+	if (xm < 0 || ym < 0 || xm > (int)map.width || ym > (int)map.height)
+		return (false);
+	if (map.map[ym][xm] == '1')
+		return (false);
+	return (true);
+}
+
 static void	dda_case_1(t_main *main, t_dda *dda_struct)
 {
 	int		count_steps;
@@ -28,9 +42,7 @@ static void	dda_case_1(t_main *main, t_dda *dda_struct)
 		step_in_x = -1;
 	while (count_steps > 0)
 	{
-		int	xm = (x - main->minimap.start_px) / main->minimap.tile_size;
-		int	ym = (y - main->minimap.start_py) / main->minimap.tile_size;
-		if (main->map_struct.map[ym][xm] == '1')
+		if (!check_outside_minimap(main->minimap, main->map_struct, x, y))
 			break;
 		put_pixel_to_image(main, x, y, 0xF4E700);
 		x += step_in_x;
@@ -54,9 +66,7 @@ static void	dda_case_2(t_main *main, t_dda *dda_struct)
 	count_steps = fabs(dda_struct->delta_y);
 	while (count_steps > 0)
 	{
-		int	xm = (x - main->minimap.start_px) / main->minimap.tile_size;
-		int	ym = (y - main->minimap.start_py) / main->minimap.tile_size;
-		if (main->map_struct.map[ym][xm] == '1')
+		if (!check_outside_minimap(main->minimap, main->map_struct, x, y))
 			break;
 		put_pixel_to_image(main, x, y, 0xF4E700);
 		y += step_in_y;
