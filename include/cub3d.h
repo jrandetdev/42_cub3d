@@ -14,6 +14,7 @@
 #include "keycode.h"
 #include "struct.h"
 #include <mlx.h>
+#include <math.h>
 
 # ifndef BUFFERSIZE
 # define BUFFERSIZE 20

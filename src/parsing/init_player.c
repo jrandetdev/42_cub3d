@@ -40,6 +40,7 @@ static void	init_player_direction(t_main *main)
 {
 	initialise_north_and_south(main);
 	initialise_east_and_west(main);
+	main->player.angle = atan2(main->player.forward_y, main->player.forward_x);
 }
 
 static bool	get_players(t_main *main, char **map, int *x, int *y, int *player)

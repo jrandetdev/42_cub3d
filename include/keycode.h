@@ -98,7 +98,7 @@ enum e_keys
 };
 
 # define PLAYER_SPEED 0.06
-# define ROTATION_SPEED 1.5
+# define ROTATION_SPEED 0.015
 
 #endif
 

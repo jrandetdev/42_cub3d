@@ -14,14 +14,13 @@ static void	print_mini_vector_from_angle(t_main *main, double angle)
 
 void	print_minifov(t_main *main)
 {
-	double	angle_degrees;
 	double	start_fov;
 	double	end_fov;
 
-	angle_degrees = atan2(main->player.forward_y, main->player.forward_x);//move to render !!
-	printf("angle degree is worth %f\n", angle_degrees);
-	start_fov = angle_degrees - (M_PI / 6);
-	end_fov = angle_degrees + M_PI / 6;
+	
+	printf("angle degree is worth %f\n", main->player.angle);
+	start_fov = main->player.angle - (M_PI / 6);
+	end_fov = main->player.angle + M_PI / 6;
 	printf("start fov %f\n", start_fov);
 	printf("end fov %f\n", end_fov);
 	while (start_fov < end_fov)
