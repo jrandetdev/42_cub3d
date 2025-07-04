@@ -62,8 +62,9 @@ void	get_step_and_sidedist(t_main *main, t_dda_struct *dda_struct)
 }
 
 
-void	digital_differential_analyzer(t_main *main, double dst_x, double dst_y)
+t_vec2	digital_differential_analyzer(t_main *main)
 {
+	t_vec2			wall_hited;
 	t_dda_struct	dda_struct;
 
 	dda_struct.origin_x = (int)main->player.x;
@@ -71,16 +72,15 @@ void	digital_differential_analyzer(t_main *main, double dst_x, double dst_y)
 	if (main->ray.dirX == 0)
 		dda_struct.delta_x = pow(10, 30);
 	else
-		dda_struct.delta_x = abs(1 / main->ray.dirY);
+		dda_struct.delta_x = fabs(1 / main->ray.dirY);
 	if (main->ray.dirY == 0)
 		dda_struct.delta_y = pow(10, 30);
 	else
-		dda_struct.delta_y = abs(1 / main->ray.dirY);
+		dda_struct.delta_y = fabs(1 / main->ray.dirY);
 	dda_struct.hit = 0;
 	get_step_and_sidedist(main, &dda_struct);
 	dda_main_loop(main, &dda_struct);
-	// if (fabs(dda_struct.delta_y) <= fabs(dda_struct.delta_x))
-	// 	dda_case_1(main, &dda_struct);
-	// else
-	// 	dda_case_2(main, &dda_struct);
+	wall_hited.x = dda_struct.origin_x;
+	wall_hited.y = dda_struct.origin_y;
+	return (wall_hited);
 }
