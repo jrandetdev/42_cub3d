@@ -26,35 +26,48 @@ static void	 backgroud_color(t_main *main)
 	}
 }
 
+static void	player_rotation(t_main *main)
+{
+	if (main->keys.left == 1)
+	{
+		main->player.angle -= ROTATION_SPEED;
+		if (main->player.angle < 0)
+			main->player.angle += 2 * M_PI;
+		main->player.dir_x = cos(main->player.angle);
+		main->player.dir_y = sin(main->player.angle);
+	}
+	if (main->keys.right == 1)
+	{
+		main->player.angle += ROTATION_SPEED;
+		if (main->player.angle > 2 * M_PI)
+			main->player.angle -= 2 * M_PI;
+		main->player.dir_x = cos(main->player.angle);
+		main->player.dir_y = sin(main->player.angle);
+	}
+}
+
 static void	player_movement(t_main *main)
 {
-	double radian;
-
-	radian = main->player.direction * (M_PI / 180);
 	if (main->keys.w == 1)
 	{
-		main->player.x += (PLAYER_SPEED * cos(radian));
-		main->player.y += (PLAYER_SPEED * sin(radian));
+		main->player.x += (main->player.dir_x * PLAYER_SPEED);
+		main->player.y += (main->player.dir_y * PLAYER_SPEED);
 	}
 	if (main->keys.s == 1)
 	{
-		main->player.x -= (PLAYER_SPEED * cos(radian));
-		main->player.y -= (PLAYER_SPEED * sin(radian));
-	}
-	if (main->keys.a == 1)
-	{
-		main->player.x += (PLAYER_SPEED * cos(main->player.direction * (M_PI / 90)));
-		main->player.y += (PLAYER_SPEED * sin(main->player.direction * (M_PI / 90)));
+		main->player.x -= (main->player.dir_x * PLAYER_SPEED);
+		main->player.y -= (main->player.dir_y * PLAYER_SPEED);
 	}
 	if (main->keys.d == 1)
 	{
-		main->player.x -= (PLAYER_SPEED * cos(main->player.direction * (M_PI / 90)));
-		main->player.y -= (PLAYER_SPEED * sin(main->player.direction * (M_PI / 90)));
+		main->player.x += (main->player.plane_x * PLAYER_SPEED);
+		main->player.y += (main->player.plane_y * PLAYER_SPEED);
 	}
-	if (main->keys.right == 1)
-		main->player.direction += ROTATION_SPEED;
-	if (main->keys.left == 1)
-		main->player.direction -= ROTATION_SPEED;
+	if (main->keys.a == 1)
+	{
+		main->player.x -= (main->player.plane_x * PLAYER_SPEED);
+		main->player.y -= (main->player.plane_y * PLAYER_SPEED);
+	}
 }
 
 int	render_next_frame(t_main *main)

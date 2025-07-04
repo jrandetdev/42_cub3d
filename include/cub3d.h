@@ -14,6 +14,7 @@
 #include "keycode.h"
 #include "struct.h"
 #include <mlx.h>
+#include <math.h>
 
 # ifndef BUFFERSIZE
 # define BUFFERSIZE 20
@@ -52,6 +53,7 @@ void	get_map_descritpion(t_main *main);
 void	extract_colour(t_main *main, char *id, char *info);
 void	extract_texture(t_main *main, char *id, char *xpm_f);
 void	validate_colour(t_main *main, char **splitted_colours);
+bool	find_player_position(t_main *main, int *x, int *y, int *player);
 
 // MINIMAP //
 void	print_fov(t_main *main);
@@ -66,6 +68,9 @@ void	mini_dda(t_main *main, double dst_x, double dst_y);
 int		render_next_frame(t_main *main);
 void	put_pixel_to_image(t_main *main, int x, int y, int colour);
 void	init_img(t_main *main);
+
+//GAMELOOP//
+void	cast_rays(t_main *main);
 
 size_t	count_map_height(char **map);
 

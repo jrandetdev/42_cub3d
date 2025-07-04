@@ -1,48 +1,49 @@
 #include "cub3d.h"
 
-void	initialise_east_and_west(t_main *main)
+static void	initialise_north_and_south(t_main *main)
 {
 	if (ft_strncmp(main->player.orientation, "N", 1) == 0)
 	{
-		main->player.dirX = 0;
-		main->player.dirY = -1;
+		main->player.dir_x = 0;
+		main->player.dir_y = -1;
 		main->player.plane_x = 0.66;
 		main->player.plane_y = 0;
 	}
 	if (ft_strncmp(main->player.orientation, "S", 1) == 0)
 	{
-		main->player.dirX = 0;
-		main->player.dirY = 1;
+		main->player.dir_x = 0;
+		main->player.dir_y = 1;
 		main->player.plane_x = -0.66;
 		main->player.plane_y = 0;
 	}
 }
 
-void	initialise_north_and_south(t_main *main)
+static void	initialise_east_and_west(t_main *main)
 {
 	if (ft_strncmp(main->player.orientation, "E", 1) == 0)
 	{
-		main->player.dirX = 1;
-		main->player.dirY = 0;
+		main->player.dir_x = 1;
+		main->player.dir_y = 0;
 		main->player.plane_x = 0;
 		main->player.plane_y = 0.66;
 	}
 	if (ft_strncmp(main->player.orientation, "W", 1) == 0)
 	{
-		main->player.dirX = -1;
-		main->player.dirY = 0;
+		main->player.dir_x = -1;
+		main->player.dir_y = 0;
 		main->player.plane_x = 0;
 		main->player.plane_y = -0.66;
 	}
 }
 
-void	init_player_direction(t_main *main)
+static void	init_player_direction(t_main *main)
 {
 	initialise_north_and_south(main);
 	initialise_east_and_west(main);
+	main->player.angle = atan2(main->player.dir_y, main->player.dir_x);
 }
 
-bool	get_players(t_main *main, char **map, int *x, int *y, int *player)
+static bool	get_players(t_main *main, char **map, int *x, int *y, int *player)
 {
 	int	i;
 	int	j;

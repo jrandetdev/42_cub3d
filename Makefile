@@ -83,8 +83,14 @@ SRC_MINIMAP		=			draw_player.c \
 							mini_dda.c
 MINIMAP 		=			$(addprefix $(DIR_DEBUG)/, $(SRC_MINIMAP))
 
-SOURCES			=			$(MAIN) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(RENDER_IMG) $(MINIMAP)
-vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS) $(DIR_IMG) $(DIR_RENDER_IMG) $(DIR_MINIMAP)
+DIR_RAYCASTING		=		./src/raycasting
+SRC_RAYCASTING		=		game_loop.c 
+
+RAYCASTING 		=			$(addprefix $(DIR_RAYCASTING)/, $(SRC_RAYCASTING))
+
+
+SOURCES			=			$(MAIN) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(RENDER_IMG) $(MINIMAP) $(RAYCASTING)
+vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS) $(DIR_IMG) $(DIR_RENDER_IMG) $(DIR_MINIMAP) $(DIR_RAYCASTING)
 
 OBJECTS			:= 			$(addprefix $(DIR_BUILD)/, $(notdir $(SOURCES:.c=.o)))
 DEPS			:=			$(OBJECTS:.o=.d)
