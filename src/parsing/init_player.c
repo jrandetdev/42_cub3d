@@ -4,17 +4,17 @@ static void	initialise_north_and_south(t_main *main)
 {
 	if (ft_strncmp(main->player.orientation, "N", 1) == 0)
 	{
-		main->player.forward_x = 0;
-		main->player.forward_y = -1;
-		main->player.right_x = 0.66;
-		main->player.right_y = 0;
+		main->player.dir_x = 0;
+		main->player.dir_y = -1;
+		main->player.plane_x = 0.66;
+		main->player.plane_y = 0;
 	}
 	if (ft_strncmp(main->player.orientation, "S", 1) == 0)
 	{
-		main->player.forward_x = 0;
-		main->player.forward_y = 1;
-		main->player.right_x = -0.66;
-		main->player.right_y = 0;
+		main->player.dir_x = 0;
+		main->player.dir_y = 1;
+		main->player.plane_x = -0.66;
+		main->player.plane_y = 0;
 	}
 }
 
@@ -22,17 +22,17 @@ static void	initialise_east_and_west(t_main *main)
 {
 	if (ft_strncmp(main->player.orientation, "E", 1) == 0)
 	{
-		main->player.forward_x = 1;
-		main->player.forward_y = 0;
-		main->player.right_x = 0;
-		main->player.right_y = 0.66;
+		main->player.dir_x = 1;
+		main->player.dir_y = 0;
+		main->player.plane_x = 0;
+		main->player.plane_y = 0.66;
 	}
 	if (ft_strncmp(main->player.orientation, "W", 1) == 0)
 	{
-		main->player.forward_x = -1;
-		main->player.forward_y = 0;
-		main->player.right_x = 0;
-		main->player.right_y = -0.66;
+		main->player.dir_x = -1;
+		main->player.dir_y = 0;
+		main->player.plane_x = 0;
+		main->player.plane_y = -0.66;
 	}
 }
 
@@ -40,7 +40,7 @@ static void	init_player_direction(t_main *main)
 {
 	initialise_north_and_south(main);
 	initialise_east_and_west(main);
-	main->player.angle = atan2(main->player.forward_y, main->player.forward_x);
+	main->player.angle = atan2(main->player.dir_y, main->player.dir_x);
 }
 
 static bool	get_players(t_main *main, char **map, int *x, int *y, int *player)

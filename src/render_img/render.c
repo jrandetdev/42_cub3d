@@ -33,16 +33,16 @@ static void	player_rotation(t_main *main)
 		main->player.angle -= ROTATION_SPEED;
 		if (main->player.angle < 0)
 			main->player.angle += 2 * M_PI;
-		main->player.forward_x = cos(main->player.angle);
-		main->player.forward_y = sin(main->player.angle);
+		main->player.dir_x = cos(main->player.angle);
+		main->player.dir_y = sin(main->player.angle);
 	}
 	if (main->keys.right == 1)
 	{
 		main->player.angle += ROTATION_SPEED;
 		if (main->player.angle > 2 * M_PI)
 			main->player.angle -= 2 * M_PI;
-		main->player.forward_x = cos(main->player.angle);
-		main->player.forward_y = sin(main->player.angle);
+		main->player.dir_x = cos(main->player.angle);
+		main->player.dir_y = sin(main->player.angle);
 	}
 }
 
@@ -50,23 +50,23 @@ static void	player_movement(t_main *main)
 {
 	if (main->keys.w == 1)
 	{
-		main->player.x += (main->player.forward_x * PLAYER_SPEED);
-		main->player.y += (main->player.forward_y * PLAYER_SPEED);
+		main->player.x += (main->player.dir_x * PLAYER_SPEED);
+		main->player.y += (main->player.dir_y * PLAYER_SPEED);
 	}
 	if (main->keys.s == 1)
 	{
-		main->player.x -= (main->player.forward_x * PLAYER_SPEED);
-		main->player.y -= (main->player.forward_y * PLAYER_SPEED);
+		main->player.x -= (main->player.dir_x * PLAYER_SPEED);
+		main->player.y -= (main->player.dir_y * PLAYER_SPEED);
 	}
 	if (main->keys.d == 1)
 	{
-		main->player.x += (main->player.right_x * PLAYER_SPEED);
-		main->player.y += (main->player.right_y * PLAYER_SPEED);
+		main->player.x += (main->player.plane_x * PLAYER_SPEED);
+		main->player.y += (main->player.plane_y * PLAYER_SPEED);
 	}
 	if (main->keys.a == 1)
 	{
-		main->player.x -= (main->player.right_x * PLAYER_SPEED);
-		main->player.y -= (main->player.right_y * PLAYER_SPEED);
+		main->player.x -= (main->player.plane_x * PLAYER_SPEED);
+		main->player.y -= (main->player.plane_y * PLAYER_SPEED);
 	}
 }
 
@@ -76,7 +76,9 @@ int	render_next_frame(t_main *main)
 	init_img(main);
 	player_movement(main);
 	player_rotation(main);
+	cast_rays(main);
 	backgroud_color(main);
+
 	// k_m = 1 show minimap
 	print_minimap(main);
 	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win,

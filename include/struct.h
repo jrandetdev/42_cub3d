@@ -6,6 +6,11 @@
 
 typedef struct	s_main t_main;
 
+typedef struct 	s_ray
+{
+	double	dirX;
+	double	dirY;
+}				t_ray;
 
 //enum for the compas angle 
 
@@ -48,10 +53,12 @@ typedef struct	s_player
 {
 	double	x;
 	double	y;
-	double	forward_x;
-	double	forward_y;
-	double	right_x;
-	double	right_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	double	camera_x;
+	double	camera_y;
 	double	angle;
 	char	*orientation;
 	//Standard — 90deg [π/2] is upward, 270deg [3π/2] is downward.
@@ -132,6 +139,7 @@ typedef struct	s_main
 	t_map			map_struct;
 	t_debug			debug;
 	t_player		player;
+	t_ray			ray;
 	t_keys			keys;
 	t_wall_texture	wall;
 	t_colour		c_colour;

@@ -69,6 +69,9 @@ int		render_next_frame(t_main *main);
 void	put_pixel_to_image(t_main *main, int x, int y, int colour);
 void	init_img(t_main *main);
 
+//GAMELOOP//
+void	cast_rays(t_main *main);
+
 size_t	count_map_height(char **map);
 
 // ERROR HANDLING //

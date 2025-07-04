@@ -26,7 +26,6 @@ void	print_minifov(t_main *main)
 	while (start_fov < end_fov)
 	{
 		print_mini_vector_from_angle(main, start_fov);
-		start_fov += 0.01;
-		printf("start fov added is %f\n", start_fov);
+		start_fov += 0.001;
 	}
 }

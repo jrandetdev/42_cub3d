@@ -5,8 +5,6 @@
 #include "cub3d.h"
 
 /* Common window dimensions */
-# define WIN_WIDTH 1200
-# define WIN_HEIGHT 800
 
 #if defined(__APPLE__)
 
@@ -52,6 +50,8 @@ enum e_keys
 
 # define PLAYER_SPEED 0.3
 # define ROTATION_SPEED 1.5
+# define WIN_WIDTH 1200
+# define WIN_HEIGHT 800
 
 #elif defined(__linux__)
 
@@ -99,6 +99,8 @@ enum e_keys
 
 # define PLAYER_SPEED 0.06
 # define ROTATION_SPEED 0.015
+# define WIN_WIDTH 840
+# define WIN_HEIGHT 600
 
 #endif
 

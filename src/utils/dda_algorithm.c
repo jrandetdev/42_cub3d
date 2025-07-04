@@ -69,16 +69,7 @@ void	dda_case_2(t_main *main, t_dda *dda_struct)
 
 void	digital_differential_analyzer(t_main *main, double dst_x, double dst_y)
 {
-	int	size;
-	t_dda	dda_struct;
-
-	size = main->debug.tile_size;
-	dda_struct.x_1 = main->player.x * size;
-	dda_struct.y_1 = main->player.y * size;
-	dda_struct.x_2 = dst_x * size;
-	dda_struct.y_2 = dst_y * size; 
-	dda_struct.delta_x = dda_struct.x_2 - dda_struct.x_1;
-	dda_struct.delta_y = dda_struct.y_2 - dda_struct.y_1;
+	
 	if (fabs(dda_struct.delta_y) <= fabs(dda_struct.delta_x))
 		dda_case_1(main, &dda_struct);
 	else
