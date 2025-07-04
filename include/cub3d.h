@@ -73,19 +73,20 @@ size_t	count_map_height(char **map);
 void	print_error_and_message(char *error_message);
 
 // UTILS //
-char	*get_next_line(int fd);
 int		has_new_line(char *buffer);
-char	*join_and_free(char *line, char *tmp2);
-void 	normalize_angle(double *angle);
-
-void	digital_differential_analyzer(t_main *main, double dst_x, double dst_y);
-void	ft_strcpy(char *dest, char *src, int start, int end);
-
-size_t	string_array_len(char **str);
-
 int		get_fd(t_main *main, char *file_relative_path);
 
+char	*get_next_line(int fd);
+char	*join_and_free(char *line, char *tmp2);
+
 void	print_array(char **array);
+void 	normalize_angle(double *angle);
+void	ft_strcpy(char *dest, char *src, int start, int end);
+
+double	get_vector_norm(t_vec2 vec1, t_vec2 vec2);
+
+size_t	string_array_len(char **str);
+t_vec2	digital_differential_analyzer(t_main *main);
 
 // FREE FUNCTIONS //
 void	safe_free_tab(void ***ptr);

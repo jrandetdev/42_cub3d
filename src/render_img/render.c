@@ -62,8 +62,10 @@ int	render_next_frame(t_main *main)
 	mlx_destroy_image(main->mlx_ptr, main->image.data_img);
 	init_img(main);
 	player_movement(main);
+	player_rotation(main);
 	backgroud_color(main);
-	// k_m = 1 show minimap
+
+	cast_rays(main);
 	print_minimap(main);
 	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win,
 		main->image.data_img, 0, 0);
