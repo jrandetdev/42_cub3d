@@ -1,77 +1,86 @@
 
 #include "cub3d.h"
-#include <math.h>
 
-typedef struct s_dda
+typedef struct s_dda_struct
 {
-	double	m;
-	double	x_1;
-	double	y_1;
-	double	x_2;
-	double	y_2;
+	int		origin_x;
+	int		origin_y;
+	double	sideDistX;
+	double	sideDistY;
 	double	delta_x;
 	double	delta_y;
-}	t_dda;
+	int		step_x;
+	int		step_y;
+	double	perpwalldist;
+	bool	hit;
+	int	side;
+}	t_dda_struct;
 
-void	dda_case_1(t_main *main, t_dda *dda_struct)
+void	dda_main_loop(t_main *main, t_dda_struct *dda_struct)
 {
-	int		count_steps;
-	int		step_in_x;
-	double	x;
-	double	y;
-
-	x = dda_struct->x_1;
-	y = dda_struct->y_1;
-	count_steps = fabs(dda_struct->delta_x);
-	if (dda_struct->delta_x > 0)
-		step_in_x = 1;
-	else
-		step_in_x = -1;
-	while (count_steps > 0)
+	while (dda_struct->hit == 0)
 	{
-		int	xm = x / main->debug.tile_size;
-		int	ym = y / main->debug.tile_size;
-		if (main->map_struct.map[ym][xm] == '1')
-			break;
-		put_pixel_to_image(main, x, y, 0xF4E700);
-		x += step_in_x;
-		y += dda_struct->delta_y / dda_struct->delta_x;
-		count_steps--;
+		if (dda_struct->sideDistX < dda_struct->sideDistY)
+		{
+			dda_struct->sideDistX += dda_struct->delta_x;
+			dda_struct->origin_x += dda_struct->step_x;
+			dda_struct->side = 0;
+		}
+		else
+		{
+			dda_struct->sideDistY += dda_struct->delta_y;
+			dda_struct->origin_y += dda_struct->step_y;
+			dda_struct->side = 1;
+		}
+		if (main->map_struct.map[dda_struct->origin_y][dda_struct->origin_x] != '0')
+			dda_struct->hit = 1;
 	}
 }
 
-void	dda_case_2(t_main *main, t_dda *dda_struct)
+void	get_step_and_sidedist(t_main *main, t_dda_struct *dda_struct)
 {
-	int		count_steps;
-	int		step_in_y;
-	double	x;
-	double	y;
-
-	x = dda_struct->x_1;
-	y = dda_struct->y_1;
-	if (dda_struct->delta_y > 0)
-		step_in_y = 1;
-	else
-		step_in_y = -1;
-	count_steps = fabs(dda_struct->delta_y);
-	while (count_steps > 0)
+	if (main->ray.dirX < 0)
 	{
-		int	xm = x / main->debug.tile_size;
-		int	ym = y / main->debug.tile_size;
-		if (main->map_struct.map[ym][xm] == '1')
-			break;
-		put_pixel_to_image(main, x, y, 0xF4E700);
-		y += step_in_y;
-		x += dda_struct->delta_x / dda_struct->delta_y;
-		count_steps--;
+		dda_struct->step_x = -1;
+		dda_struct->sideDistX = (main->player.x - dda_struct->origin_x) * dda_struct->delta_x;
+	}
+	else
+	{
+		dda_struct->step_x = 1;
+		dda_struct->sideDistX = (dda_struct->origin_x + 1.0 - main->player.x) * dda_struct->delta_x;
+	}
+	if (main->ray.dirY < 0)
+	{
+		dda_struct->step_y = -1;
+		dda_struct->sideDistY = (main->player.y - dda_struct->origin_y) * dda_struct->delta_y;
+	}
+	else
+	{
+		dda_struct->step_y = 1;
+		dda_struct->sideDistY =(dda_struct->origin_y + 1.0 - main->player.y) * dda_struct->delta_y;
 	}
 }
+
 
 void	digital_differential_analyzer(t_main *main, double dst_x, double dst_y)
 {
-	
-	if (fabs(dda_struct.delta_y) <= fabs(dda_struct.delta_x))
-		dda_case_1(main, &dda_struct);
+	t_dda_struct	dda_struct;
+
+	dda_struct.origin_x = (int)main->player.x;
+	dda_struct.origin_y = (int)main->player.y;
+	if (main->ray.dirX == 0)
+		dda_struct.delta_x = pow(10, 30);
 	else
-		dda_case_2(main, &dda_struct);
+		dda_struct.delta_x = abs(1 / main->ray.dirY);
+	if (main->ray.dirY == 0)
+		dda_struct.delta_y = pow(10, 30);
+	else
+		dda_struct.delta_y = abs(1 / main->ray.dirY);
+	dda_struct.hit = 0;
+	get_step_and_sidedist(main, &dda_struct);
+	dda_main_loop(main, &dda_struct);
+	// if (fabs(dda_struct.delta_y) <= fabs(dda_struct.delta_x))
+	// 	dda_case_1(main, &dda_struct);
+	// else
+	// 	dda_case_2(main, &dda_struct);
 }
