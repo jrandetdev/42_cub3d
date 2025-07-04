@@ -35,4 +35,5 @@ void	print_minimap(t_main *main)
 	print_obstacles(main);
 	print_minifov(main);
 	draw_player(main);
+	print_grid(main);
 }
