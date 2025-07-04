@@ -30,10 +30,11 @@ void	init_minimap(t_main *main)
 
 void	print_minimap(t_main *main)
 {
-	init_minimap(main); //init in right file later
+	init_minimap(main);
 	print_minimap_background(main);
 	print_obstacles(main);
 	print_minifov(main);
 	draw_player(main);
-	print_grid(main);
+	if (main->keys.g)
+			print_grid(main);
 }

@@ -59,6 +59,7 @@ bool	find_player_position(t_main *main, int *x, int *y, int *player);
 void	print_fov(t_main *main);
 void	print_grid(t_main *main);
 void	draw_player(t_main *main);
+void	init_minimap(t_main *main);
 void	print_minifov(t_main *main);
 void	print_minimap(t_main *main);
 void	print_obstacles(t_main *main);
