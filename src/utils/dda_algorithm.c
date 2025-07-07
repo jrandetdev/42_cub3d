@@ -49,9 +49,6 @@ static void dda_main_loop(t_main *main, t_dda_struct *dda_struct)
 		if (main->map_struct.map[(int)dda_struct->mapY][(int)dda_struct->mapX] != '0')
 			dda_struct->hit = 1;
 	}
-	vector.x = dda_struct->origin_x;
-	vector.y = dda_struct->origin_y;
-	return (vector);
 }
 
 static void	get_step_and_sidedist(t_main *main, t_dda_struct *dda_struct)
@@ -96,7 +93,6 @@ double	digital_differential_analyzer(t_main *main)
 	else
 		dda_struct.delta_y = fabs(1 / main->ray.dirY);
 	dda_struct.hit = 0;
-	printf("BEFORE X %d Y %d\n", dda_struct.origin_x, dda_struct.origin_y);
 	get_step_and_sidedist(main, &dda_struct);
 	dda_main_loop(main, &dda_struct);
 	get_wall_dist(&dda_struct);
