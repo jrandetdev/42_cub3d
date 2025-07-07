@@ -5,19 +5,21 @@ typedef struct s_dda_struct
 {
 	double		origin_x;
 	double		origin_y;
-	double	sideDistX;
-	double	sideDistY;
-	double	delta_x;
-	double	delta_y;
-	int		step_x;
-	int		step_y;
-	double	perpwalldist;
-	bool	hit;
-	int	side;
-}	t_dda_struct;
+	double		sideDistX;
+	double		sideDistY;
+	double		delta_x;
+	double		delta_y;
+	int			step_x;
+	int			step_y;
+	double		perpwalldist;
+	bool		hit;
+	int			side;
+}				t_dda_struct;
 
-void	dda_main_loop(t_main *main, t_dda_struct *dda_struct)
+t_vec2	dda_main_loop(t_main *main, t_dda_struct *dda_struct)
 {
+	t_vec2	vector;
+
 	while (dda_struct->hit == 0)
 	{
 		if (dda_struct->sideDistX < dda_struct->sideDistY)
@@ -35,6 +37,9 @@ void	dda_main_loop(t_main *main, t_dda_struct *dda_struct)
 		if (main->map_struct.map[(int)dda_struct->origin_y][(int)dda_struct->origin_x] != '0')
 			dda_struct->hit = 1;
 	}
+	vector.x = dda_struct->origin_x;
+	vector.y = dda_struct->origin_y;
+	return (vector);
 }
 
 void	get_step_and_sidedist(t_main *main, t_dda_struct *dda_struct)
@@ -64,7 +69,6 @@ void	get_step_and_sidedist(t_main *main, t_dda_struct *dda_struct)
 
 t_vec2	digital_differential_analyzer(t_main *main)
 {
-	t_vec2			wall_hited;
 	t_dda_struct	dda_struct;
 
 	dda_struct.origin_x = main->player.x;
@@ -78,9 +82,8 @@ t_vec2	digital_differential_analyzer(t_main *main)
 	else
 		dda_struct.delta_y = fabs(1 / main->ray.dirY);
 	dda_struct.hit = 0;
+	printf("BEFORE X %d Y %d\n", dda_struct.origin_x, dda_struct.origin_y);
 	get_step_and_sidedist(main, &dda_struct);
-	dda_main_loop(main, &dda_struct);
-	wall_hited.x = dda_struct.origin_x;
-	wall_hited.y = dda_struct.origin_y;
-	return (wall_hited);
+	return(dda_main_loop(main, &dda_struct));
+
 }

@@ -77,11 +77,10 @@ int	render_next_frame(t_main *main)
 	player_movement(main);
 	player_rotation(main);
 	backgroud_color(main);
-	//cast_rays(main);
+	cast_rays(main);
 	print_minimap(main);
 	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win,
 		main->image.data_img, 0, 0);
-	if (BONUS)
-		fps_counter(main);
+	fps_counter(main);
 	return (0);
 }
