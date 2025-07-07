@@ -60,13 +60,13 @@ static void	player_movement(t_main *main)
 	}
 	if (main->keys.d == 1)
 	{
-		main->player.x += (main->player.plane_x * PLAYER_SPEED); //not correct
-		main->player.y += (main->player.plane_y * PLAYER_SPEED); //not correct
+		main->player.x += (-main->player.dir_y * PLAYER_SPEED); //not correct
+		main->player.y += (main->player.dir_x * PLAYER_SPEED); //not correct
 	}
 	if (main->keys.a == 1)
 	{
-		main->player.x -= (main->player.plane_x * PLAYER_SPEED); //not correct
-		main->player.y -= (main->player.plane_y * PLAYER_SPEED); //not correct
+		main->player.x -= (main->player.dir_y * PLAYER_SPEED); //not correct
+		main->player.y -= (-main->player.dir_x * PLAYER_SPEED); //not correct
 	}
 }
 

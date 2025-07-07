@@ -7,7 +7,7 @@ static void	print_line_on_screen(t_main *main, int start, int end, int x)
 	y = start;
 	while (y <= end)
 	{
-		put_pixel_to_image(main, x, y, 0xFFFFFF);
+		put_pixel_to_image(main, x, y, 0x000000);
 		y++;
 	}
 }
