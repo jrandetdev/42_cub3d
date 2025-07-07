@@ -80,8 +80,14 @@ SRC_MINIMAP		=			draw_player.c \
 							minimap.c \
 							print_obstacles.c \
 							minifov.c \
-							mini_dda.c
+							mini_dda.c \
+							mini_raycasting.c
 MINIMAP 		=			$(addprefix $(DIR_DEBUG)/, $(SRC_MINIMAP))
+
+DIR_BONUS		=			./src/bonus
+SRC_BONUS		=			init_bonus.c \
+							fps_counter.c
+BONUS			=			$(addprefix $(DIR_BONUS)/, $(SRC_BONUS))
 
 DIR_RAYCASTING		=		./src/raycasting
 SRC_RAYCASTING		=		game_loop.c 
@@ -89,8 +95,8 @@ SRC_RAYCASTING		=		game_loop.c
 RAYCASTING 		=			$(addprefix $(DIR_RAYCASTING)/, $(SRC_RAYCASTING))
 
 
-SOURCES			=			$(MAIN) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(RENDER_IMG) $(MINIMAP) $(RAYCASTING)
-vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS) $(DIR_IMG) $(DIR_RENDER_IMG) $(DIR_MINIMAP) $(DIR_RAYCASTING)
+SOURCES			=			$(MAIN) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(RENDER_IMG) $(MINIMAP) $(RAYCASTING) $(BONUS)
+vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS) $(DIR_IMG) $(DIR_RENDER_IMG) $(DIR_MINIMAP) $(DIR_RAYCASTING) $(DIR_BONUS)
 
 OBJECTS			:= 			$(addprefix $(DIR_BUILD)/, $(notdir $(SOURCES:.c=.o)))
 DEPS			:=			$(OBJECTS:.o=.d)

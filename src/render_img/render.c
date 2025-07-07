@@ -1,6 +1,6 @@
 
 #include "cub3d.h"
-#include <math.h>
+#include "bonus.h"
 
 static void	 backgroud_color(t_main *main)
 {
@@ -14,14 +14,14 @@ static void	 backgroud_color(t_main *main)
 	{
 		x = 0;
 		while (x <= WIN_WIDTH)
-			put_pixel_to_image(main, x++, y, 0x0b5e0b);
+			put_pixel_to_image(main, x++, y, 0x00e1ff);
 		y++;
 	}
 	while (y < WIN_HEIGHT)
 	{
 		x = 0;
 		while (x <= WIN_WIDTH)
-			put_pixel_to_image(main, x++, y, 0x47007b);
+			put_pixel_to_image(main, x++, y, 0x006eff);
 		y++;
 	}
 }
@@ -77,10 +77,10 @@ int	render_next_frame(t_main *main)
 	player_movement(main);
 	player_rotation(main);
 	backgroud_color(main);
-
 	//cast_rays(main);
 	print_minimap(main);
 	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win,
 		main->image.data_img, 0, 0);
+	fps_counter(main);
 	return (0);
 }

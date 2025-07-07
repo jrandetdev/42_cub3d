@@ -97,8 +97,8 @@ enum e_keys
 	K_CTRL = 65507
 };
 
-# define PLAYER_SPEED 0.06
-# define ROTATION_SPEED 0.015
+# define PLAYER_SPEED 0.03
+# define ROTATION_SPEED 0.02
 # define WIN_WIDTH 840
 # define WIN_HEIGHT 600
 

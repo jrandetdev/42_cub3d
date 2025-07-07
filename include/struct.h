@@ -3,16 +3,20 @@
 #define STRUCT_H
 
 #include "cub3d.h"
+#include "sys/time.h" //including timeval struct
 
 typedef struct	s_main t_main;
+
+typedef struct s_bonus
+{
+	struct timeval tv;
+}	t_bonus;
 
 typedef struct 	s_ray
 {
 	double	dirX;
 	double	dirY;
 }				t_ray;
-
-//enum for the compas angle 
 
 typedef struct s_minimap
 {
@@ -128,7 +132,7 @@ typedef struct s_map
 	unsigned int	height;
 	unsigned int	width;
 
-}				t_map; // Replaces the map array with the map structure ?
+}				t_map;
 
 typedef struct	s_main
 {
@@ -146,6 +150,7 @@ typedef struct	s_main
 	t_colour		f_colour;
 	t_minimap		minimap;
 	t_myimage		image;
+	t_bonus			bonus;
 }				t_main;
 
 #endif

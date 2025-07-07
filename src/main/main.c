@@ -1,5 +1,6 @@
 
 #include "cub3d.h"
+#include "bonus.h"
 
 static bool	arguments_are_valid(int argc, char **argv)
 {
@@ -25,6 +26,7 @@ static void	init_cub3d(t_main *main)
 	if (!main->mlx_win)
 		exit_cub3d(main, "Mlx window failed");
 	mlx_hook(main->mlx_win, 17, 0, handle_destroy, main);
+	init_cub3d_bonus(main);
 	init_img(main);
 }
 
