@@ -32,7 +32,7 @@ void	init_minimap(t_main *main)
 void	print_minimap(t_main *main)
 {
 	init_minimap(main);
-	//mini_raycasting(main);
+	mini_raycasting(main);
 	print_minimap_background(main);
 	print_obstacles(main);
 	print_minifov(main);

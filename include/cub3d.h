@@ -16,13 +16,16 @@
 #include <mlx.h>
 #include <math.h>
 
-# ifndef BUFFERSIZE
-# define BUFFERSIZE 20
+# ifndef BONUS
+#  define BONUS 0
 # endif
 
-# define TILE_SIZE 1
+# ifndef BUFFERSIZE
+#  define BUFFERSIZE 20
+# endif
+
 # ifndef M_PI
-# define M_PI 3.14159265358979323846
+#  define M_PI 3.14159265358979323846
 # endif
 
 typedef struct	s_main t_main;
