@@ -27,12 +27,13 @@ static bool	check_outside_minimap(t_minimap minimap, t_map map, double x, double
 	return (true);
 }
 
-static void	dda_case_1(t_main *main, t_dda *dda_struct)
+static t_vec2	dda_case_1(t_main *main, t_dda *dda_struct)
 {
 	int		count_steps;
 	int		step_in_x;
 	double	x;
 	double	y;
+	t_vec2	vector;
 
 	step_in_x = 1;
 	x = dda_struct->x_1;
@@ -49,14 +50,18 @@ static void	dda_case_1(t_main *main, t_dda *dda_struct)
 		y += (dda_struct->delta_y / dda_struct->delta_x) * step_in_x;
 		count_steps--;
 	}
+	vector.x = x;
+	vector.y = y;
+	return(vector);
 }
 
-static void	dda_case_2(t_main *main, t_dda *dda_struct)
+static t_vec2	dda_case_2(t_main *main, t_dda *dda_struct)
 {
 	int		count_steps;
 	int		step_in_y;
 	double	x;
 	double	y;
+	t_vec2	vector;
 
 	step_in_y = 1;
 	x = dda_struct->x_1;
@@ -73,12 +78,16 @@ static void	dda_case_2(t_main *main, t_dda *dda_struct)
 		x += (dda_struct->delta_x / dda_struct->delta_y) * step_in_y;
 		count_steps--;
 	}
+	vector.x = x;
+	vector.y = y;
+	return(vector);
 }
 
-void	mini_dda(t_main *main, double dst_x, double dst_y)
+t_vec2	mini_dda(t_main *main, double dst_x, double dst_y)
 {
 	int	size;
 	t_dda	dda_struct;
+	t_vec2	vector;
 
 	size = main->minimap.tile_size;
 	dda_struct.x_1 = main->minimap.start_px + main->player.x * size;
@@ -88,7 +97,8 @@ void	mini_dda(t_main *main, double dst_x, double dst_y)
 	dda_struct.delta_x = dda_struct.x_2 - dda_struct.x_1;
 	dda_struct.delta_y = dda_struct.y_2 - dda_struct.y_1;
 	if (fabs(dda_struct.delta_y) <= fabs(dda_struct.delta_x))
-		dda_case_1(main, &dda_struct);
+		vector = dda_case_1(main, &dda_struct);
 	else
-		dda_case_2(main, &dda_struct);
+		vector = dda_case_2(main, &dda_struct);
+	return (vector);
 }

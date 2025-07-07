@@ -6,17 +6,17 @@ static void	print_pixel_line(t_main *main, int x, double size)
 	int	y;
 	int	start_y;
 
-	
-	if (size <= 2)
-	{
-		y = 0;
-		while (y < WIN_HEIGHT)
-		{
-			put_pixel_to_image(main, x, y, 0xFFFFFF);
-			y++;
-		}
-		return ;
-	}
+	size *= 50;
+	// if (size <= 2)
+	// {
+	// 	y = 0;
+	// 	while (y < WIN_HEIGHT)
+	// 	{
+	// 		put_pixel_to_image(main, x, y, 0xFFFFFF);
+	// 		y++;
+	// 	}
+	// 	return ;
+	// }
 	start_y = (WIN_HEIGHT / 2) + (size / 2);
 	y = start_y;
 	while (y < size)
@@ -46,9 +46,11 @@ void	cast_rays(t_main *main)
 		main->ray.dirY = player->dir_y + player->plane_y * player->camera_x;
 		vector_wall = digital_differential_analyzer(main);
 		vector_size = get_vector_norm(vector_player, vector_wall);
-		printf("%f\n", vector_size);
 		print_pixel_line(main, x, vector_size);
-		printf("%d\n", x);
+		printf("SRC %f %f\n", main->player.x, main->player.y);
+		printf("DST %f %f\n", vector_wall.x, vector_wall.y);
+		printf("SIZE %d %f\n", x, vector_size);
+		(void) vector_size;
 		x++;
 	}
 }

@@ -3,8 +3,8 @@
 
 typedef struct s_dda_struct
 {
-	int		origin_x;
-	int		origin_y;
+	double		origin_x;
+	double		origin_y;
 	double	sideDistX;
 	double	sideDistY;
 	double	delta_x;
@@ -32,7 +32,7 @@ void	dda_main_loop(t_main *main, t_dda_struct *dda_struct)
 			dda_struct->origin_y += dda_struct->step_y;
 			dda_struct->side = 1;
 		}
-		if (main->map_struct.map[dda_struct->origin_y][dda_struct->origin_x] != '0')
+		if (main->map_struct.map[(int)dda_struct->origin_y][(int)dda_struct->origin_x] != '0')
 			dda_struct->hit = 1;
 	}
 }
@@ -67,8 +67,8 @@ t_vec2	digital_differential_analyzer(t_main *main)
 	t_vec2			wall_hited;
 	t_dda_struct	dda_struct;
 
-	dda_struct.origin_x = (int)main->player.x;
-	dda_struct.origin_y = (int)main->player.y;
+	dda_struct.origin_x = main->player.x;
+	dda_struct.origin_y = main->player.y;
 	if (main->ray.dirX == 0)
 		dda_struct.delta_x = pow(10, 30);
 	else
