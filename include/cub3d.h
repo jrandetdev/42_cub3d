@@ -67,9 +67,9 @@ void	print_minifov(t_main *main);
 void	print_minimap(t_main *main);
 void	print_obstacles(t_main *main);
 void	mini_raycasting(t_main *main);
-//void	mini_dda(t_main *main, double dst_x, double dst_y);
 
 t_vec2	mini_dda(t_main *main, double dst_x, double dst_y);
+
 
 // RENDERING //
 int		render_next_frame(t_main *main);
@@ -78,6 +78,8 @@ void	init_img(t_main *main);
 
 //GAMELOOP//
 void	cast_rays(t_main *main);
+void	draw_line(t_main *main, double walldist, int x);
+
 
 size_t	count_map_height(char **map);
 
@@ -98,7 +100,7 @@ void	ft_strcpy(char *dest, char *src, int start, int end);
 double	get_vector_norm(t_vec2 vec1, t_vec2 vec2);
 
 size_t	string_array_len(char **str);
-t_vec2	digital_differential_analyzer(t_main *main);
+double	digital_differential_analyzer(t_main *main);
 
 // FREE FUNCTIONS //
 void	safe_free_tab(void ***ptr);

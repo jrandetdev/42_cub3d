@@ -1,16 +1,29 @@
 {
 	"configurations": [
 	{
-		"name": "(lldb) Lancer",
+		"name": "(gdb) Launch",
 		"type": "cppdbg",
 		"request": "launch",
 		"program": "${workspaceFolder}/cub3d",
-		"args": ["${workspaceFolder}/Assets/maps/test_map.cub"],
+		"args": ["/home/jrandet/Documents/42/cercle_4/cub3d/Assets/maps/test_map.cub"],
 		"stopAtEntry": false,
-		"cwd": "${fileDirname}",
+		"cwd": "${workspaceFolder}",
 		"environment": [],
 		"externalConsole": false,
-		"MIMode": "lldb"
+		"MIMode": "gdb",
+		"setupCommands": [
+			{
+				"description": "Enable pretty-printing for gdb",
+				"text": "-enable-pretty-printing",
+				"ignoreFailures": true
+			},
+			{
+				"description": "Set Disassembly Flavor to Intel",
+				"text": "-gdb-set disassembly-flavor intel",
+				"ignoreFailures": true
+			}
+		]
 	}
 	]
 }
+
