@@ -26,56 +26,11 @@ static void	 backgroud_color(t_main *main)
 	}
 }
 
-static void	player_rotation(t_main *main)
-{
-	if (main->keys.left == 1)
-	{
-		main->player.angle -= ROTATION_SPEED;
-		if (main->player.angle < 0)
-			main->player.angle += 2 * M_PI;
-		main->player.dir_x = cos(main->player.angle);
-		main->player.dir_y = sin(main->player.angle);
-	}
-	if (main->keys.right == 1)
-	{
-		main->player.angle += ROTATION_SPEED;
-		if (main->player.angle > 2 * M_PI)
-			main->player.angle -= 2 * M_PI;
-		main->player.dir_x = cos(main->player.angle);
-		main->player.dir_y = sin(main->player.angle);
-	}
-}
-
-static void	player_movement(t_main *main)
-{
-	if (main->keys.w == 1)
-	{
-		main->player.x += (main->player.dir_x * PLAYER_SPEED);
-		main->player.y += (main->player.dir_y * PLAYER_SPEED);
-	}
-	if (main->keys.s == 1)
-	{
-		main->player.x -= (main->player.dir_x * PLAYER_SPEED);
-		main->player.y -= (main->player.dir_y * PLAYER_SPEED);
-	}
-	if (main->keys.d == 1)
-	{
-		main->player.x += (-main->player.dir_y * PLAYER_SPEED); //not correct
-		main->player.y += (main->player.dir_x * PLAYER_SPEED); //not correct
-	}
-	if (main->keys.a == 1)
-	{
-		main->player.x -= (main->player.dir_y * PLAYER_SPEED); //not correct
-		main->player.y -= (-main->player.dir_x * PLAYER_SPEED); //not correct
-	}
-}
-
 int	render_next_frame(t_main *main)
 {
 	mlx_destroy_image(main->mlx_ptr, main->image.data_img);
 	init_img(main);
 	player_movement(main);
-	player_rotation(main);
 	backgroud_color(main);
 	cast_rays(main);
 	print_minimap(main);

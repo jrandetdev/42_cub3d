@@ -73,13 +73,14 @@ t_vec2	mini_dda(t_main *main, double dst_x, double dst_y);
 
 // RENDERING //
 int		render_next_frame(t_main *main);
-void	put_pixel_to_image(t_main *main, int x, int y, int colour);
+
 void	init_img(t_main *main);
+void	player_movement(t_main *main);
+void	put_pixel_to_image(t_main *main, int x, int y, int colour);
 
 //GAMELOOP//
 void	cast_rays(t_main *main);
 void	draw_line(t_main *main, double walldist, int x);
-
 
 size_t	count_map_height(char **map);
 
@@ -98,17 +99,17 @@ void 	normalize_angle(double *angle);
 void	ft_strcpy(char *dest, char *src, int start, int end);
 
 double	get_vector_norm(t_vec2 vec1, t_vec2 vec2);
-
-size_t	string_array_len(char **str);
 double	digital_differential_analyzer(t_main *main);
 
+size_t	string_array_len(char **str);
+
 // FREE FUNCTIONS //
-void	safe_free_tab(void ***ptr);
-void	free_string_array(char ***array);
-void	free_all_pointer_arrays(t_main *main);
-void	free_mlx_pointers(t_main *main);
-void	free_ptr_and_set_to_null(char *ptr);
 int		handle_destroy(t_main *main);
+void	safe_free_tab(void ***ptr);
+void	free_mlx_pointers(t_main *main);
+void	free_string_array(char ***array);
+void	free_ptr_and_set_to_null(char *ptr);
+void	free_all_pointer_arrays(t_main *main);
 void	exit_cub3d(t_main *main, char *error_message);
 
 #endif

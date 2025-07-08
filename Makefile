@@ -72,7 +72,8 @@ EVENTS			=			$(addprefix $(DIR_EVENTS)/, $(SRC_EVENTS))
 
 DIR_RENDER_IMG	=			./src/render_img
 SRC_RENDER_IMG	=			init_img.c \
-							render.c 
+							render.c \
+							player_movement.c
 RENDER_IMG		=			$(addprefix $(DIR_RENDER_IMG)/, $(SRC_RENDER_IMG))
 
 DIR_MINIMAP		=			./src/minimap
