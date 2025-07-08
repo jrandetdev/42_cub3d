@@ -86,5 +86,6 @@ bool	find_player_position(t_main *main, int *x, int *y, int *player)
 	main->player.x = *x;
 	main->player.y = *y;
 	init_player_direction(main);
+	main->map_struct.map[*y][*x] = '0';
 	return (true);
 }

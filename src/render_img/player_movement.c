@@ -30,7 +30,26 @@ static void	valid_next_movement(t_main *main, double x, double y)
 	}
 }
 
-static void	player_translation(t_main *main)
+static void	player_right_and_left(t_main *main)
+{
+	double	new_x;
+	double	new_y;
+
+	if (main->keys.d == 1)
+	{
+		new_x = main->player.x - (main->player.dir_y * PLAYER_SPEED);
+		new_y = main->player.y - (main->player.dir_x * PLAYER_SPEED);
+		valid_next_movement(main, new_x, new_y);
+	}
+	if (main->keys.a == 1)
+	{
+		new_x = main->player.x + (main->player.dir_y * PLAYER_SPEED);
+		new_y = main->player.y - (-main->player.dir_x * PLAYER_SPEED);
+		valid_next_movement(main, new_x, new_y);
+	}
+}
+
+static void	player_up_and_down(t_main *main)
 {
 	double	new_x;
 	double	new_y;
@@ -47,23 +66,11 @@ static void	player_translation(t_main *main)
 		new_y = main->player.y - (main->player.dir_y * PLAYER_SPEED);
 		valid_next_movement(main, new_x, new_y);
 	}
-	if (main->keys.d == 1)
-	{
-		new_x = main->player.x - (main->player.dir_y * PLAYER_SPEED); //not correct
-		new_y = main->player.y - (main->player.dir_x * PLAYER_SPEED); //not correct
-		valid_next_movement(main, new_x, new_y);
-	}
-	if (main->keys.a == 1)
-	{
-		new_x = main->player.x - (main->player.dir_y * PLAYER_SPEED); //not correct
-		new_y = main->player.y + (-main->player.dir_x * PLAYER_SPEED); //not correct
-		valid_next_movement(main, new_x, new_y);
-	}
 }
 
 void	player_movement(t_main *main)
 {
-	player_translation(main);
+	player_up_and_down(main);
+	player_right_and_left(main);
 	player_rotation(main);
-
 }

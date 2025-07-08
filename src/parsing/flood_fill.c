@@ -38,7 +38,7 @@ static char	**copy_map(char **map, t_parsing *parsing)
 		return (NULL);
 	while (map[i])
 	{
-		new_map[j] = max_strdup(map[i++], parsing->map_width); //add ft_strdup_max
+		new_map[j] = max_strdup(map[i++], parsing->map_width);
 		if (!new_map[j])
 		{
 			safe_free_tab((void ***)&new_map);
@@ -60,7 +60,7 @@ void	is_map_valid(t_main *main)
 	if (main->map_struct.height < 3 || main->map_struct.width < 3)
 		exit_cub3d(main, "map too small");
 	ft_bzero(&parsing, sizeof(t_parsing));
-	if (!find_player_position(main, &x, &y, &parsing.player)) //FIND PLAYER MISSING ?
+	if (!find_player_position(main, &x, &y, &parsing.player))
 		exit_cub3d(main, "Player not found.");
 	parsing.map_height = main->map_struct.height;
 	parsing.map_width = main->map_struct.width;
@@ -69,6 +69,6 @@ void	is_map_valid(t_main *main)
 		exit_cub3d(main, "Map could not be copied in is_map_valid.");
 	flood_fill(&parsing, x, y);
 	safe_free_tab((void ***)&parsing.map);
-	// if ((parsing.patern) == 1) //debug
-	// 	exit_cub3d(main, "Map invalid"); //debug
+	if ((parsing.patern) == 1)
+		exit_cub3d(main, "Map invalid");
 }
