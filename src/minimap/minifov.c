@@ -15,16 +15,14 @@ static void	print_mini_vector_from_angle(t_main *main, double angle)
 
 void	print_minifov(t_main *main)
 {
-	int		x = 0;
 	double	start_fov;
 	double	end_fov;
 
-	start_fov = main->player.angle - (M_PI / 6);
-	end_fov = main->player.angle + M_PI / 6;
+	start_fov = main->player.angle - (FOV / 2) * (M_PI / 180);
+	end_fov = main->player.angle + (FOV / 2) * (M_PI / 180);
 	while (start_fov < end_fov)
 	{
 		print_mini_vector_from_angle(main, start_fov);
 		start_fov += 0.001;
-		x++;
 	}
 }

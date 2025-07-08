@@ -52,6 +52,7 @@ enum e_keys
 # define ROTATION_SPEED 0.01
 # define WIN_WIDTH 1200
 # define WIN_HEIGHT 800
+# define FOV 66
 
 #elif defined(__linux__)
 
@@ -97,10 +98,11 @@ enum e_keys
 	K_CTRL = 65507
 };
 
+# define FOV 66
 # define PLAYER_SPEED 0.03
 # define ROTATION_SPEED 0.02
-# define WIN_WIDTH 1200
-# define WIN_HEIGHT 600
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
 
 #endif
 

@@ -53,7 +53,6 @@ static void dda_main_loop(t_main *main, t_dda_struct *dda_struct)
 
 static void	get_step_and_sidedist(t_main *main, t_dda_struct *dda_struct)
 {
-	printf("entered the get step and side dist\n");
 	if (main->ray.dirX < 0) // si le rayon est dans la partie gauche de l'ecrann, step x sera -1
 	{
 		dda_struct->step_x = -1;
