@@ -45,6 +45,7 @@ enum e_keys
 	K_C = 8,
 	K_G = 5,        /* Added for consistency */
 	K_K = 40,       /* Added for consistency */
+	K_M = 46,
 	K_CTRL = 256
 };
 
@@ -95,11 +96,12 @@ enum e_keys
 	K_C = 99,
 	K_G = 103,
 	K_K = 107,
+	K_M = 109,
 	K_CTRL = 65507
 };
 
 # define FOV 66
-# define PLAYER_SPEED 0.03
+# define PLAYER_SPEED 0.04
 # define ROTATION_SPEED 0.02
 # define WIN_WIDTH 1500
 # define WIN_HEIGHT 750

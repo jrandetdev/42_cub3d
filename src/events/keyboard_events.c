@@ -13,6 +13,8 @@ static int	key_pressed(int keycode, t_main *main)
 		main->keys.d = 1;
 	if (keycode == K_G)
 		main->keys.g = !main->keys.g;
+	if (keycode == K_M)
+		main->keys.m = !main->keys.m;
 	if (keycode == K_LEFT)
 		main->keys.left = 1;
 	if (keycode == K_RIGHT)

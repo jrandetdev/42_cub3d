@@ -76,6 +76,7 @@ typedef struct s_keys
 	int	s;
 	int	d;
 	int	g;
+	int	m;
 	int left;
 	int right;
 	int escp;
