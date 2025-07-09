@@ -39,14 +39,14 @@ static void	player_right_and_left(t_main *main)
 
 	if (main->keys.d == 1)
 	{
-		new_x = main->player.x - (main->player.dir_y * PLAYER_SPEED);
-		new_y = main->player.y - (main->player.dir_x * PLAYER_SPEED);
+		new_x = main->player.x + ((main->player.plane_x * cos(ROTATION_SPEED) - main->player.plane_y * sin(ROTATION_SPEED)) * PLAYER_SPEED);
+		new_y = main->player.y + ((main->player.plane_x * sin(ROTATION_SPEED) + main->player.plane_y * cos(ROTATION_SPEED)) * PLAYER_SPEED);
 		valid_next_movement(main, new_x, new_y);
 	}
 	if (main->keys.a == 1)
 	{
-		new_x = main->player.x + (main->player.dir_y * PLAYER_SPEED);
-		new_y = main->player.y - (-main->player.dir_x * PLAYER_SPEED);
+		new_x = main->player.x - ((main->player.plane_x * cos(ROTATION_SPEED) - main->player.plane_y * sin(ROTATION_SPEED)) * PLAYER_SPEED);
+		new_y = main->player.y - ((main->player.plane_x * sin(ROTATION_SPEED) + main->player.plane_y * cos(ROTATION_SPEED)) * PLAYER_SPEED);
 		valid_next_movement(main, new_x, new_y);
 	}
 }
