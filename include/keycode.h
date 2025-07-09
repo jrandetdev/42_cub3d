@@ -50,7 +50,7 @@ enum e_keys
 };
 
 # define PLAYER_SPEED 0.1
-# define ROTATION_SPEED 0.01
+# define ROTATION_SPEED 0.05
 # define WIN_WIDTH 1200
 # define WIN_HEIGHT 800
 # define FOV 66

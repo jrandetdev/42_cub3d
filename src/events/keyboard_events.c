@@ -16,21 +16,9 @@ static int	key_pressed(int keycode, t_main *main)
 	if (keycode == K_M)
 		main->keys.m = !main->keys.m;
 	if (keycode == K_LEFT)
-	{
-		if (main->rotation == 0)
-			main->rotation = 3;
-		else
-			main->rotation--;
 		main->keys.left = 1;
-	}
 	if (keycode == K_RIGHT)
-	{
-		if (main->rotation == 3)
-			main->rotation = 0;
-		else
-			main->rotation++;
 		main->keys.right = 1;
-	}
 	if (keycode == K_ESCP)
 		exit_cub3d(main, 0);
 	if (main->debug.last_keycode != keycode) //debug
