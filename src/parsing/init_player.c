@@ -11,6 +11,7 @@ static void	initialise_north_and_south(t_main *main)
 		main->player.dir_y = -1;
 		main->player.plane_x = fov;
 		main->player.plane_y = 0;
+		main->rotation = 0;
 	}
 	if (ft_strncmp(main->player.orientation, "S", 1) == 0)
 	{
@@ -18,6 +19,7 @@ static void	initialise_north_and_south(t_main *main)
 		main->player.dir_y = 1;
 		main->player.plane_x = -fov;
 		main->player.plane_y = 0;
+		main->rotation = 2;
 	}
 }
 
@@ -32,6 +34,7 @@ static void	initialise_east_and_west(t_main *main)
 		main->player.dir_y = 0;
 		main->player.plane_x = 0;
 		main->player.plane_y = fov;
+		main->rotation = 1;
 	}
 	if (ft_strncmp(main->player.orientation, "W", 1) == 0)
 	{
@@ -39,6 +42,7 @@ static void	initialise_east_and_west(t_main *main)
 		main->player.dir_y = 0;
 		main->player.plane_x = 0;
 		main->player.plane_y = -fov;
+		main->rotation = 3;
 	}
 }
 

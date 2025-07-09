@@ -1,7 +1,7 @@
 
 
 #ifndef BONUS_H
-# define BNUS_H
+# define BONUS_H
 
 #include <mlx.h>
 #include <stdio.h>

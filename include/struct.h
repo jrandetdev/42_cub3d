@@ -137,6 +137,7 @@ typedef struct s_map
 
 typedef struct	s_main
 {
+	int				rotation;
 	void			*mlx_ptr;
 	void			*mlx_win;
 	char			**file_content;
