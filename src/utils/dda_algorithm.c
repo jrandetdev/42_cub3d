@@ -47,7 +47,13 @@ static void dda_main_loop(t_main *main, t_dda_struct *dda_struct)
 			dda_struct->side = 1;
 		}
 		if (main->map_struct.map[(int)dda_struct->mapY][(int)dda_struct->mapX] != '0')
+		{
 			dda_struct->hit = 1;
+			if (dda_struct == 0)
+				main->wall_hit.x = main->player.x;
+			else
+				main->wall_hit.x = main->player.y;
+		}
 	}
 }
 

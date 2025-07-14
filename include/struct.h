@@ -100,6 +100,13 @@ typedef struct	s_myimage
 	int		endian;
 }	t_myimage;
 
+typedef struct	s_wall_hit
+{
+	double		x;
+	double		y;
+	t_myimage	texture;
+}				t_wall_hit;
+
 typedef struct	s_texture
 {
 	void	*img_ptr;
@@ -126,7 +133,7 @@ typedef struct	s_wall_texture
 	t_texture		ea;
 	t_texture		we;
 }				t_wall_texture;
- 
+
 typedef struct s_map
 {
 	char			**map;
@@ -153,6 +160,7 @@ typedef struct	s_main
 	t_minimap		minimap;
 	t_myimage		image;
 	t_bonus			bonus;
+	t_wall_hit		wall_hit;
 }				t_main;
 
 #endif

@@ -82,6 +82,8 @@ void	put_pixel_to_image(t_main *main, int x, int y, int colour);
 void	cast_rays(t_main *main);
 void	draw_line(t_main *main, double walldist, int x);
 
+void get_texture_pixel(t_main *main, int x);
+
 size_t	count_map_height(char **map);
 
 // ERROR HANDLING //
@@ -95,7 +97,7 @@ char	*get_next_line(int fd);
 char	*join_and_free(char *line, char *tmp2);
 
 void	print_array(char **array);
-void 	normalize_angle(double *angle);
+void	normalize_angle(double *angle);
 void	ft_strcpy(char *dest, char *src, int start, int end);
 
 double	get_vector_norm(t_vec2 vec1, t_vec2 vec2);

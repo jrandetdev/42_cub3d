@@ -13,7 +13,7 @@ void	cast_rays(t_main *main)
 		main->ray.dirX = main->player.dir_x + main->player.plane_x * main->player.camera_x;
 		main->ray.dirY = main->player.dir_y + main->player.plane_y * main->player.camera_x;
 		walldist = digital_differential_analyzer(main);
-		//printf("WALL DIST %f\n", walldist);
+		get_texture_pixel(main, x);
 		draw_line(main, walldist, x);
 		x++;
 	}
