@@ -17,13 +17,19 @@ static bool	check_outside_minimap(t_minimap minimap, t_map map, double x, double
 {
 	int	xm;
 	int	ym;
+	int	size;
 
-	xm = (x - minimap.start_px) / minimap.tile_size;
-	ym = (y - minimap.start_py) / minimap.tile_size;
+	size = minimap.tile_size;
+	xm = (x - minimap.start_px) / size;
+	ym = (y - minimap.start_py) / size;
 	if (xm < 0 || ym < 0 || xm > (int)map.width || ym > (int)map.height)
 		return (false);
 	if (map.map[ym][xm] == '1')
 		return (false);
+	// if (map.map[ym][xm - 1] == '1' && map.map[ym + 1][xm] == '1')
+	// 	return (false);
+	// if (map.map[ym - 1][xm] == '1' && map.map[ym][xm + 1] == '1')
+	// 	return (false);
 	return (true);
 }
 
