@@ -34,6 +34,7 @@ typedef struct	s_texture t_texture;
 typedef struct	s_myimage t_myimage;
 typedef struct	s_vec2 t_vec2;
 typedef struct	s_keys t_keys;
+typedef struct	s_dda_struct t_dda_struct;
 
 /*------------------------------------ DEBUG ---------------------------------*/
 
@@ -82,7 +83,7 @@ void	put_pixel_to_image(t_main *main, int x, int y, int colour);
 void	cast_rays(t_main *main);
 void	draw_line(t_main *main, double walldist, int x);
 
-void get_texture_pixel(t_main *main, int x);
+void	get_hit_position(t_main *main, t_dda_struct *dda_struct);
 
 size_t	count_map_height(char **map);
 
@@ -101,7 +102,8 @@ void	normalize_angle(double *angle);
 void	ft_strcpy(char *dest, char *src, int start, int end);
 
 double	get_vector_norm(t_vec2 vec1, t_vec2 vec2);
-double	digital_differential_analyzer(t_main *main);
+
+void	digital_differential_analyzer(t_main *main, t_dda_struct *dda_struct);
 
 size_t	string_array_len(char **str);
 

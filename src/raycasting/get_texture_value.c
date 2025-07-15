@@ -1,39 +1,45 @@
 
 #include "cub3d.h"
 
-static double get_texture_offset(t_main *main, t_myimage*texture, int x)
-{
-	long				texture_offset;
+// unsigned int	get_pixel(t_main *main, int x, int y)
+// {
+// 	long				pixel_offset;
+// 	t_myimage			*img;
 
-	texture_offset = main->wall_hit.x * texture->size_line;
-	// if (texture_offset > texture->total_bytes)
-	// {
-	// 	exit_cub3d(main, "Coordinates are outside of map capacity.");
-	// 	return(0);
-	// }
-	if (x == WIN_WIDTH / 2)
-		printf("percentage of the texture in width: %f\n", main->wall_hit.x);
-	return (texture_offset);
-}
-
-void get_texture_pixel(t_main *main, int x)
-{
-	t_myimage	*texture;
-
-	texture = &main->wall_hit.texture;
+// 	img = &main->image;
+// 	pixel_offset = y * img->size_line + x * img->bytespp;
+// 	dst = img->addr + pixel_offset;
 	
-	(void) texture->endian;
-	(void) texture->bitspp;
-	//main->wall_hit.x -= trunc(main->wall_hit.x);
-	texture->addr = mlx_get_data_addr(
-		&main->wall.no,
-		&texture->bitspp,
-		&texture->size_line,
-		&texture->endian);
-	if (!texture->addr)
-		return (exit_cub3d(main, "Texture get data addr failed."));
-	texture->bytespp = texture->bitspp / 8;
-	texture->pixels_per_line = texture->size_line / texture->bytespp;
-	if (get_texture_offset(main, texture, x) == 0)
-		return ;
+// }
+
+// unsigned int	get_pixel(t_main *main, int x)
+// {
+// 	t_myimage	texture;
+// 	long		pixel_offset;
+
+// 	texture.addr = mlx_get_data_addr(
+// 		main->wall.no.texture_ptr,
+// 		texture.bitspp,
+// 		texture.size_line,
+// 		texture.endian);
+
+
+// }
+
+void	get_hit_position(t_main *main, t_dda_struct *dda_struct)
+{
+	char	texnum;
+	double	width_pourcentage;
+	double	width_pos_x;
+	int		texture_coor_x;
+
+	(void)	texnum;
+	texnum = main->map_struct.map[dda_struct->mapY][dda_struct->mapX] - '1';
+	if(dda_struct->side == 0)
+		width_pos_x = main->player.y + main->ray.dirY * dda_struct->perpwalldist;
+	else
+		width_pos_x = main->player.x + main->ray.dirX * dda_struct->perpwalldist;
+	width_pourcentage = width_pos_x - floor(width_pos_x);
+	texture_coor_x = width_pourcentage * main->wall.no.width;
+	printf("texture_coor_x is worth %d, percentage: %f amd teture width: %d\n", texture_coor_x, width_pourcentage, main->wall.no.width);
 }

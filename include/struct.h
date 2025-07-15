@@ -7,6 +7,21 @@
 
 typedef struct	s_main t_main;
 
+typedef struct s_dda_struct
+{
+	int			mapX;
+	int			mapY;
+	double		sideDistX;
+	double		sideDistY;
+	double		delta_x;
+	double		delta_y;
+	int			step_x;
+	int			step_y;
+	double		perpwalldist;
+	bool		hit;
+	int			side;
+}	t_dda_struct;
+
 typedef struct s_bonus
 {
 	struct timeval tv;
@@ -100,16 +115,10 @@ typedef struct	s_myimage
 	int		endian;
 }	t_myimage;
 
-typedef struct	s_wall_hit
-{
-	double		x;
-	double		y;
-	t_myimage	texture;
-}				t_wall_hit;
 
 typedef struct	s_texture
 {
-	void	*img_ptr;
+	void	*texture_ptr;
 	int		width;
 	int		height;
 }				t_texture;
@@ -160,7 +169,6 @@ typedef struct	s_main
 	t_minimap		minimap;
 	t_myimage		image;
 	t_bonus			bonus;
-	t_wall_hit		wall_hit;
 }				t_main;
 
 #endif

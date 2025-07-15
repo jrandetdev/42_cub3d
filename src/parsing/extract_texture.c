@@ -3,7 +3,7 @@
 
 static void	get_texture_data(t_main *main, t_texture *direc, char *xpm_file)
 {
-	direc->img_ptr = mlx_xpm_file_to_image(main->mlx_ptr, xpm_file, \
+	direc->texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, xpm_file, \
 		&direc->width, &direc->height);
 }
 

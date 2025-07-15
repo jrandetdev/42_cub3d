@@ -3,8 +3,8 @@
 
 void	cast_rays(t_main *main)
 {
-	int			x;
-	double		walldist;
+	int				x;
+	t_dda_struct	dda_struct;
 	
 	x = 0;
 	while (x < WIN_WIDTH)
@@ -12,9 +12,9 @@ void	cast_rays(t_main *main)
 		main->player.camera_x = 2 * x / (double)WIN_WIDTH - 1;
 		main->ray.dirX = main->player.dir_x + main->player.plane_x * main->player.camera_x;
 		main->ray.dirY = main->player.dir_y + main->player.plane_y * main->player.camera_x;
-		walldist = digital_differential_analyzer(main);
-		get_texture_pixel(main, x);
-		draw_line(main, walldist, x);
+		digital_differential_analyzer(main, &dda_struct);
+		get_hit_position(main, &dda_struct);
+		draw_line(main, dda_struct.perpwalldist, x);
 		x++;
 	}
 }
