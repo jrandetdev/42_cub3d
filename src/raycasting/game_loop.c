@@ -4,6 +4,7 @@
 void	cast_rays(t_main *main)
 {
 	int				x;
+	unsigned long	texture_x;
 	t_dda_struct	dda_struct;
 	
 	x = 0;
@@ -13,8 +14,8 @@ void	cast_rays(t_main *main)
 		main->ray.dirX = main->player.dir_x + main->player.plane_x * main->player.camera_x;
 		main->ray.dirY = main->player.dir_y + main->player.plane_y * main->player.camera_x;
 		digital_differential_analyzer(main, &dda_struct);
-		get_hit_position(main, &dda_struct);
-		draw_line(main, dda_struct.perpwalldist, x);
+		texture_x = get_hit_position(main, &dda_struct);
+		draw_line(main, dda_struct.perpwalldist, x, texture_x);
 		x++;
 	}
 }
