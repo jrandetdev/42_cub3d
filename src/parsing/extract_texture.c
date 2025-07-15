@@ -5,6 +5,17 @@ static void	get_texture_data(t_main *main, t_texture *direc, char *xpm_file)
 {
 	direc->texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, xpm_file, \
 		&direc->width, &direc->height);
+	printf("%p\n", direc->texture_ptr);
+		direc->texture.addr = mlx_get_data_addr(
+		main->wall.no.texture_ptr,
+		&direc->texture.bitspp,
+		&direc->texture.size_line,
+		&direc->texture.endian);
+	if (!direc->texture.addr)
+		exit_cub3d(main, "Mlx_get_data_addr failed.");
+	direc->texture.bytespp = direc->texture.bitspp / 8;
+	direc->texture.pixels_per_line = direc->texture.size_line / direc->texture.bytespp;
+	direc->texture.total_bytes = direc->texture.size_line * main->wall.no.height;
 }
 
 void	extract_texture(t_main *main, char *id, char *xpm_f)

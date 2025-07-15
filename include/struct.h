@@ -118,9 +118,10 @@ typedef struct	s_myimage
 
 typedef struct	s_texture
 {
-	void	*texture_ptr;
-	int		width;
-	int		height;
+	void		*texture_ptr;
+	int			width;
+	int			height;
+	t_myimage	texture;
 }				t_texture;
 
 typedef union

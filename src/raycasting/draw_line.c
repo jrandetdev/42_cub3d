@@ -2,23 +2,22 @@
 
 unsigned int	get_texture_pixel(t_main *main, int coor_x, int y)
 {
-	t_myimage		texture;
 	long			pixel_offset;
 	unsigned int	pixel_color;
 
-	texture.data_img = main->wall.no.texture_ptr;
-	texture.addr = mlx_get_data_addr(
-		main->wall.no.texture_ptr,
-		&texture.bitspp,
-		&texture.size_line,
-		&texture.endian);
-	if (!texture.addr)
-		exit_cub3d(main, "Mlx_get_data_addr failed.");
-	texture.bytespp = texture.bitspp / 8;
-	texture.pixels_per_line = texture.size_line / texture.bytespp;
-	texture.total_bytes = texture.size_line * main->wall.no.height;
-	pixel_offset = y * main->wall.no.width + coor_x * texture.bytespp;
-	pixel_color = *(int*)(texture.addr + pixel_offset);
+	// texture.data_img = main->wall.no.texture_ptr;
+	// texture.addr = mlx_get_data_addr(
+	// 	main->wall.no.texture_ptr,
+	// 	&texture.bitspp,
+	// 	&texture.size_line,
+	// 	&texture.endian);
+	// if (!texture.addr)
+	// 	exit_cub3d(main, "Mlx_get_data_addr failed.");
+	// texture.bytespp = texture.bitspp / 8;
+	// texture.pixels_per_line = texture.size_line / texture.bytespp;
+	// texture.total_bytes = texture.size_line * main->wall.no.height;
+	pixel_offset = y * main->wall.no.width + coor_x * main->wall.no.texture.bytespp;
+	pixel_color = *(int*)(main->wall.no.texture.addr + pixel_offset);
 	return (pixel_color);
 }
 
