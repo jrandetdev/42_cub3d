@@ -92,7 +92,7 @@ BONUS			=			$(addprefix $(DIR_BONUS)/, $(SRC_BONUS))
 
 DIR_RAYCASTING		=		./src/raycasting
 SRC_RAYCASTING		=		game_loop.c \
-							draw_texture.c 
+							draw_walls.c 
 
 RAYCASTING 		=			$(addprefix $(DIR_RAYCASTING)/, $(SRC_RAYCASTING))
 

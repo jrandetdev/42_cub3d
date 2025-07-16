@@ -5,7 +5,7 @@ static void	initialise_north_and_south(t_main *main)
 	double fov;
 
 	fov = (double)FOV / 100;
-	if (ft_strncmp(main->player.orientation, "N", 1) == 0)
+	if (ft_strncmp(main->player.cardinal_direction, "N", 1) == 0)
 	{
 		main->player.dir_x = 0;
 		main->player.dir_y = -1;
@@ -13,7 +13,7 @@ static void	initialise_north_and_south(t_main *main)
 		main->player.plane_y = 0;
 		main->rotation = 0;
 	}
-	if (ft_strncmp(main->player.orientation, "S", 1) == 0)
+	if (ft_strncmp(main->player.cardinal_direction, "S", 1) == 0)
 	{
 		main->player.dir_x = 0;
 		main->player.dir_y = 1;
@@ -28,7 +28,7 @@ static void	initialise_east_and_west(t_main *main)
 	double fov;
 
 	fov = (double)FOV / 100;
-	if (ft_strncmp(main->player.orientation, "E", 1) == 0)
+	if (ft_strncmp(main->player.cardinal_direction, "E", 1) == 0)
 	{
 		main->player.dir_x = 1;
 		main->player.dir_y = 0;
@@ -36,7 +36,7 @@ static void	initialise_east_and_west(t_main *main)
 		main->player.plane_y = fov;
 		main->rotation = 1;
 	}
-	if (ft_strncmp(main->player.orientation, "W", 1) == 0)
+	if (ft_strncmp(main->player.cardinal_direction, "W", 1) == 0)
 	{
 		main->player.dir_x = -1;
 		main->player.dir_y = 0;
@@ -71,7 +71,7 @@ static bool	get_players(t_main *main, char **map, int *x, int *y, int *player)
 			{
 				*x = i;
 				*y = j;
-				main->player.orientation = &(map[j][i]);
+				main->player.cardinal_direction = &(map[j][i]);
 				(*player)++;
 			}
 			i++;

@@ -14,14 +14,14 @@ static void	get_texture_position(t_main *main, t_texture texture, int wall_heigh
 	while (screen_y < end)
 	{
 		tex_pos_y = (int)texture_pos & (texture.height - 1);
-		color = ((int *)main->wall.no.texture.addr)[main->wall.no.width * tex_pos_y + texture_x];
+		color = ((int *)texture.texture.addr)[texture.width * tex_pos_y + texture_x];
 		put_pixel_to_image(main, screen_x, screen_y, color);
 		texture_pos += step;
 		screen_y++;
 	}
 }
 
-static	int	get_hit_position(t_main *main, t_dda_struct *dda_struct)
+static	int	get_hit_position(t_main *main, t_dda_struct *dda_struct, t_texture texture)
 {
 	double	width_pourcentage;
 	double	width_pos_x;
@@ -32,28 +32,49 @@ static	int	get_hit_position(t_main *main, t_dda_struct *dda_struct)
 	else
 		width_pos_x = main->player.x + main->ray.dirX * dda_struct->perpwalldist;
 	width_pourcentage = width_pos_x - floor(width_pos_x);
-	texture_coor_x = (width_pourcentage * main->wall.no.width);
+	texture_coor_x = (width_pourcentage * texture.width);
 	if (dda_struct->side == 0 && main->ray.dirX > 0)
-		texture_coor_x = main->wall.no.width - texture_coor_x - 1;
+		texture_coor_x = texture.width - texture_coor_x - 1;
 	if (dda_struct->side == 1 && main->ray.dirY < 0)
-		texture_coor_x = main->wall.no.width - texture_coor_x - 1;
+		texture_coor_x = texture.width - texture_coor_x - 1;
 	return (texture_coor_x);
 }
 
-void	draw_texture(t_main *main, t_dda_struct *dda_struct, int x)
+void	draw_texture(t_main *main, t_dda_struct *dda_struct, int x, t_texture texture)
 {
 	int			texture_coor_x;
 	int			wall_height;
 	int			draw_start;
 	int			draw_end;
 
-	texture_coor_x = get_hit_position(main, dda_struct);
+	texture_coor_x = get_hit_position(main, dda_struct, texture);
 	wall_height = (int)(WIN_HEIGHT / dda_struct->perpwalldist);
-	draw_start = (-wall_height / 2) + (WIN_HEIGHT / 2);
+	draw_start =  (WIN_HEIGHT / 2) - (wall_height / 2);
 	if (draw_start < 0)
 		draw_start = 0;
 	draw_end = (wall_height / 2) + (WIN_HEIGHT / 2);
 	if (draw_end >= WIN_HEIGHT)
 		draw_end = WIN_HEIGHT - 1;
-	get_texture_position(main, main->wall.no, wall_height, draw_start, draw_end, texture_coor_x, x);
+	get_texture_position(main, texture, wall_height, draw_start, draw_end, texture_coor_x, x);
+}
+
+t_texture	get_cardinal_texture(t_main *main, t_dda_struct *dda_struct)
+{
+	t_texture	texture;
+	
+	if (dda_struct->side == 0)
+	{
+		if (main->ray.dirX > 0)
+			texture = main->wall.we;
+		else
+			texture = main->wall.ea;
+	}
+	else
+	{
+		if (main->ray.dirY < 0)
+			texture = main->wall.no;
+		else
+			texture = main->wall.so;
+	}
+	return (texture);
 }
