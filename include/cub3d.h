@@ -81,7 +81,7 @@ void	put_pixel_to_image(t_main *main, int x, int y, int colour);
 
 //GAMELOOP//
 void	cast_rays(t_main *main);
-void	draw_line(t_main *main, double walldist, int x, unsigned long coor_x);
+void	get_line_size(t_main *main, double walldist, int x, unsigned long coor_x);
 
 unsigned long	get_hit_position(t_main *main, t_dda_struct *dda_struct);
 

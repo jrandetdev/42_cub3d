@@ -1,40 +1,34 @@
 #include "cub3d.h"
 
-unsigned int	get_texture_pixel(t_main *main, int coor_x, int y)
+unsigned int	get_texture_pixel(t_main *main, int coor_x, int coor_y)
 {
 	long			pixel_offset;
 	unsigned int	pixel_color;
 
-	// texture.data_img = main->wall.no.texture_ptr;
-	// texture.addr = mlx_get_data_addr(
-	// 	main->wall.no.texture_ptr,
-	// 	&texture.bitspp,
-	// 	&texture.size_line,
-	// 	&texture.endian);
-	// if (!texture.addr)
-	// 	exit_cub3d(main, "Mlx_get_data_addr failed.");
-	// texture.bytespp = texture.bitspp / 8;
-	// texture.pixels_per_line = texture.size_line / texture.bytespp;
-	// texture.total_bytes = texture.size_line * main->wall.no.height;
-	pixel_offset = y * main->wall.no.width + coor_x * main->wall.no.texture.bytespp;
+	pixel_offset = coor_y * main->wall.no.width + coor_x * main->wall.no.texture.bytespp;
 	pixel_color = *(int*)(main->wall.no.texture.addr + pixel_offset);
 	return (pixel_color);
 }
 
-static void	draw_wall(t_main *main, int start, int end, int x, unsigned long coor_x)
+static void	get_texture_position(t_main *main, t_texture texture, int line_height, int start, int end, int coor_x, int screen_x)
 {
-	int	y;
-
+	int				tex_pos_y;
+	double			step;
+	double			texture_pos;
+	int				y;
+	
 	y = start;
-	//
+	step = 1.0 * texture.height / line_height;
+	texture_pos = (start / WIN_HEIGHT + line_height / 2) * step;
 	while (y <= end)
 	{
-		put_pixel_to_image(main, x, y, get_texture_pixel(main, coor_x, y - start));
+		tex_pos_y = (int)texture_pos & (texture.height - 1);
+		put_pixel_to_image(main, screen_x, y, get_texture_pixel(main, coor_x, y));
+		tex_pos_y += step;
 		y++;
 	}
 }
-
-void	draw_line(t_main *main, double walldist, int x, unsigned long coor_x)
+void	get_line_size(t_main *main, double walldist, int x, unsigned long coor_x)
 {
 	int		line_height;
 	int		draw_start;
@@ -47,5 +41,5 @@ void	draw_line(t_main *main, double walldist, int x, unsigned long coor_x)
 	draw_end = (line_height / 2) + (WIN_HEIGHT / 2);
 	if (draw_end >= WIN_HEIGHT)
 		draw_end = WIN_HEIGHT - 1;
-	draw_wall(main, draw_start, draw_end, x, coor_x);
+	get_texture_position(main, main->wall.no, line_height, draw_start, draw_end, coor_x, x);
 }

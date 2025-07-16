@@ -15,7 +15,7 @@ void	cast_rays(t_main *main)
 		main->ray.dirY = main->player.dir_y + main->player.plane_y * main->player.camera_x;
 		digital_differential_analyzer(main, &dda_struct);
 		texture_x = get_hit_position(main, &dda_struct);
-		draw_line(main, dda_struct.perpwalldist, x, texture_x);
+		get_line_size(main, dda_struct.perpwalldist, x, texture_x);
 		x++;
 	}
 }
