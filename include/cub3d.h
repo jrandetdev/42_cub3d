@@ -65,8 +65,8 @@ void	draw_player(t_main *main);
 void	init_minimap(t_main *main);
 void	print_minifov(t_main *main);
 void	print_minimap(t_main *main);
-void	print_obstacles(t_main *main);
 void	mini_raycasting(t_main *main);
+void	print_minimap_base(t_main *main);
 
 t_vec2	mini_dda(t_main *main, double dst_x, double dst_y);
 

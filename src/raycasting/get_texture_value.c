@@ -5,14 +5,13 @@ static double get_texture_offset(t_main *main, t_myimage*texture, int x)
 {
 	long				texture_offset;
 
+	(void) x;
 	texture_offset = main->wall_hit.x * texture->size_line;
 	// if (texture_offset > texture->total_bytes)
 	// {
 	// 	exit_cub3d(main, "Coordinates are outside of map capacity.");
 	// 	return(0);
 	// }
-	if (x == WIN_WIDTH / 2)
-		printf("percentage of the texture in width: %f\n", main->wall_hit.x);
 	return (texture_offset);
 }
 

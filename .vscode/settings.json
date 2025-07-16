@@ -5,6 +5,7 @@
 		"locale": "c",
 		"struct.h": "c",
 		"stdlib.h": "c",
-		"mlx.h": "c"
+		"mlx.h": "c",
+		"cub3d.h": "c"
 	}
 }

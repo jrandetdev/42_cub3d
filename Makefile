@@ -79,7 +79,7 @@ RENDER_IMG		=			$(addprefix $(DIR_RENDER_IMG)/, $(SRC_RENDER_IMG))
 DIR_MINIMAP		=			./src/minimap
 SRC_MINIMAP		=			draw_player.c \
 							minimap.c \
-							print_obstacles.c \
+							print_minimap.c \
 							minifov.c \
 							mini_dda.c \
 							mini_raycasting.c
