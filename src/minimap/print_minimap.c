@@ -1,6 +1,7 @@
 
 #include "cub3d.h"
 
+
 static void	print_tile(t_main *main, int idx_x, int idx_y, int color)
 {
 	int	x;
@@ -23,7 +24,7 @@ static void	print_tile(t_main *main, int idx_x, int idx_y, int color)
 	}
 }
 
-void	print_obstacles(t_main *main)
+void	print_minimap_base(t_main *main)
 {
 	int	i;
 	int	j;
@@ -35,7 +36,9 @@ void	print_obstacles(t_main *main)
 		while (main->map_struct.map[j][i])
 		{
 			if (main->map_struct.map[j][i] == '1')
-				print_tile(main, i, j, 0x00007b);
+				print_tile(main, i, j, 0x00007B);
+			else if (main->map_struct.map[j][i] == '0')
+				print_tile(main, i, j, 0x00797B);
 			i++;
 		}
 		j++;
