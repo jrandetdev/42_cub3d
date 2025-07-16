@@ -5,7 +5,7 @@
 		"type": "cppdbg",
 		"request": "launch",
 		"program": "${workspaceFolder}/cub3d",
-		"args": ["/home/jrandet/Documents/42/cercle_4/cub3d/Assets/maps/test_map.cub"],
+		"args": ["/home/jrandet/Documents/42/cercle_4/cub3d/Assets/maps/raycasting_test.cub"],
 		"stopAtEntry": false,
 		"cwd": "${workspaceFolder}",
 		"environment": [],

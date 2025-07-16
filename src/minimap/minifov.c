@@ -26,3 +26,4 @@ void	print_minifov(t_main *main)
 		start_fov += 0.001;
 	}
 }
+ 

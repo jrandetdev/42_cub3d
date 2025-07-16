@@ -2,25 +2,6 @@
 #include "cub3d.h"
 #include "struct.h"
 
-// static void print_minimap_background(t_main *main)
-// {
-// 	int	x;
-// 	int	y;
-
-// 	y = main->minimap.start_py;
-// 	while (y <= main->minimap.start_py + main->minimap.map_size_y)
-// 	{
-// 		x = main->minimap.start_px;
-// 		while (x <= main->minimap.start_px + main->minimap.map_size_x)
-// 		{
-
-// 			put_pixel_to_image(main, x, y, 0x00797b);
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// }
-
 static void	init_fullscreen_minimap(t_main *main)
 {
 	main->minimap.tile_size = 45; //detect the max map_size

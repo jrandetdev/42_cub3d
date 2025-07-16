@@ -1,14 +1,14 @@
-NO ./assets/textures/Brick_Wall_Cracked.xpm
-SO ./assets/textures/Brick_Wall.xpm
-WE ./assets/textures/Green_Wall_Rock.xpm
-EA ./assets/textures/Rocky_Road.xpm
+NO ./Assets/textures/sprites128-0-0.xpm
+SO ./Assets/textures/Brick_wall.xpm
+WE ./Assets/textures/Green_Wall_Rock.xpm
+EA ./Assets/textures/Rocky_Road.xpm
 
 F 220,100,0
 C 225,30,0
 
 111111111111111111111111111111111
 100000000000000000000000000000001
-100N00000000000000000000000000001
+10000000000000S000000000000000001
 100000000000000000000000000000001
 100000000000000000000000000000001
 100000000000000000000000000000001

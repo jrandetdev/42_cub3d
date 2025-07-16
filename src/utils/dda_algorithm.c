@@ -79,5 +79,5 @@ void	digital_differential_analyzer(t_main *main, t_dda_struct *dda_struct)
 	get_step_and_sidedist(main, dda_struct);
 	dda_main_loop(main, dda_struct);
 	get_perpwall_dist(dda_struct);
-	get_hit_position(main, dda_struct);
+	//get_hit_position(main, dda_struct);
 }

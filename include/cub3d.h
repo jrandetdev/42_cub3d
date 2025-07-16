@@ -81,9 +81,8 @@ void	put_pixel_to_image(t_main *main, int x, int y, int colour);
 
 //GAMELOOP//
 void	cast_rays(t_main *main);
-void	get_line_size(t_main *main, double walldist, int x, unsigned long coor_x);
 
-unsigned long	get_hit_position(t_main *main, t_dda_struct *dda_struct);
+void	draw_texture(t_main *main, t_dda_struct *dda_struct, int x);
 
 size_t	count_map_height(char **map);
 
