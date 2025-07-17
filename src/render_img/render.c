@@ -14,14 +14,14 @@ static void	 backgroud_color(t_main *main)
 	{
 		x = 0;
 		while (x <= WIN_WIDTH)
-			put_pixel_to_image(main, x++, y, 0x00e1ff);
+			put_pixel_to_image(main, x++, y, main->f_colour.value);
 		y++;
 	}
 	while (y < WIN_HEIGHT)
 	{
 		x = 0;
 		while (x <= WIN_WIDTH)
-			put_pixel_to_image(main, x++, y, 0x006eff);
+			put_pixel_to_image(main, x++, y, main->c_colour.value);
 		y++;
 	}
 }

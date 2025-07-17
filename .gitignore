@@ -9,3 +9,8 @@ cub3d
 *.swiftinfo
 *.swiftdoc
 *.dylib
+.vscode
+*.log
+*.png
+*.jpg
+*.jpeg
