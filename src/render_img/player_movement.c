@@ -3,23 +3,27 @@
 
 static void	player_rotation(t_main *main)
 {
+	double	old_dir_x;
+	double	rotation_speed;
+	double	old_plane_x;
+
 	if (main->keys.left || main->keys.right)
 	{
-		double	old_dir_x;
-		double	rotation_speed;
-		double	old_plane_x;
-
 		if (main->keys.left)
-			rotation_speed = -ROTATION_SPEED; // for using only one function
+			rotation_speed = -ROTATION_SPEED;
 		if (main->keys.right)
-			rotation_speed = ROTATION_SPEED; // for using only one function
+			rotation_speed = ROTATION_SPEED;
 		old_dir_x = main->player.dir_x;
-		main->player.dir_x = main->player.dir_x * cos(rotation_speed) - main->player.dir_y * sin(rotation_speed);
-		main->player.dir_y = old_dir_x * sin(rotation_speed) + main->player.dir_y * cos(rotation_speed);
+		main->player.dir_x = main->player.dir_x * cos(rotation_speed)
+			- main->player.dir_y * sin(rotation_speed);
+		main->player.dir_y = old_dir_x * sin(rotation_speed)
+			+ main->player.dir_y * cos(rotation_speed);
 		old_plane_x = main->player.plane_x;
-		main->player.plane_x = main->player.plane_x * cos(rotation_speed) - main->player.plane_y * sin(rotation_speed);
-		main->player.plane_y = old_plane_x * sin(rotation_speed) + main->player.plane_y * cos(rotation_speed);
-		main->player.angle = atan2(main->player.dir_y, main->player.dir_x); //update plaer_angle for minimap
+		main->player.plane_x = main->player.plane_x * cos(rotation_speed)
+			- main->player.plane_y * sin(rotation_speed);
+		main->player.plane_y = old_plane_x * sin(rotation_speed)
+			+ main->player.plane_y * cos(rotation_speed);
+		main->player.angle = atan2(main->player.dir_y, main->player.dir_x);
 	}
 }
 
