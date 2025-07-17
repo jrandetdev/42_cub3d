@@ -1,10 +1,10 @@
-NO ./Assets/textures/Rocky_Road.xpm
-SO ./Assets/textures/Brick_wall.xpm
-WE ./Assets/textures/Green_Wall_Rock.xpm
-EA ./Assets/textures/Brick_Wall_Cracked.xpm
+NO ./Assets/textures/brushed-metal_north.xpm
+SO ./Assets/textures/brushed-metal-south.xpm
+WE ./Assets/textures/brushed-metal-west.xpm
+EA ./Assets/textures/brushed-metal-east.xpm
 
-F 220,100,200
-C 0,0,0
+F 0,0,0
+C 105,104,101
 
                    11111111111111
         1111111111110000000000001

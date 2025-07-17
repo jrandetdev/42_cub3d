@@ -5,6 +5,8 @@ static void	get_texture_data(t_main *main, t_texture *direc, char *xpm_file)
 {
 	direc->texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, xpm_file, \
 		&direc->width, &direc->height);
+	if (!direc->texture_ptr)
+		exit_cub3d(main, "Texture path not found or invalid.");
 	printf("%p\n", direc->texture_ptr);
 		direc->texture.addr = mlx_get_data_addr(
 		direc->texture_ptr,

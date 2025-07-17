@@ -36,9 +36,9 @@ void	print_minimap_base(t_main *main)
 		while (main->map_struct.map[j][i])
 		{
 			if (main->map_struct.map[j][i] == '1')
-				print_tile(main, i, j, 0x00007B);
+				print_tile(main, i, j, 0x333333);
 			else if (main->map_struct.map[j][i] == '0')
-				print_tile(main, i, j, 0x00797B);
+				print_tile(main, i, j, 0xCCCCCC);
 			i++;
 		}
 		j++;

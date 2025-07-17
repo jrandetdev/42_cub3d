@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_colour.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 15:10:27 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/26 15:35:40 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/07/17 12:15:22 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	assign_colour(t_colour *pannel, char **rgb_colours)
 {
-	pannel->r = ft_atoi(rgb_colours[0]);
+	pannel->b = ft_atoi(rgb_colours[0]);
 	pannel->g = ft_atoi(rgb_colours[1]);
-	pannel->b = ft_atoi(rgb_colours[2]);
+	pannel->r = ft_atoi(rgb_colours[2]);
 	free_string_array(&rgb_colours);
 }
 

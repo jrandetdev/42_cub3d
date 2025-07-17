@@ -65,9 +65,9 @@ t_texture	get_cardinal_texture(t_main *main, t_dda_struct *dda_struct)
 	if (dda_struct->side == 0)
 	{
 		if (main->ray.dirX > 0)
-			texture = main->wall.we;
-		else
 			texture = main->wall.ea;
+		else
+			texture = main->wall.we;
 	}
 	else
 	{
