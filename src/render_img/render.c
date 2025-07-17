@@ -2,7 +2,7 @@
 #include "cub3d.h"
 #include "bonus.h"
 
-static void	 backgroud_color(t_main *main)
+static void	backgroud_color(t_main *main)
 {
 	int	x;
 	int	y;

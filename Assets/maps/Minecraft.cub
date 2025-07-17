@@ -1,10 +1,10 @@
 NO ./Assets/textures/cracked_brick.xpm
 SO ./Assets/textures/chiseled.xpm
 WE ./Assets/textures/chiseled_nether.xpm
-EA ./Assets/textures/bricks.xpm
+EA ./Assets/textures/chiseled_polished_blackstone.xpm
 
 F 255,255,0
-C 0,150,63
+C 37,200,0
 
                    11111111111111
         1111111111110000000000001

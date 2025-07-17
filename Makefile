@@ -81,8 +81,7 @@ SRC_MINIMAP		=			draw_player.c \
 							minimap.c \
 							print_minimap.c \
 							minifov.c \
-							mini_dda.c \
-							mini_raycasting.c
+							mini_dda.c
 MINIMAP 		=			$(addprefix $(DIR_DEBUG)/, $(SRC_MINIMAP))
 
 DIR_BONUS		=			./src/bonus

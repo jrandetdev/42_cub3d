@@ -7,7 +7,7 @@ static void	get_texture_position(t_main *main, t_texture texture, int wall_heigh
 	double			texture_pos;
 	int				screen_y;
 	int				color;
-	
+
 	screen_y = start;
 	step = (double)texture.height / wall_height;
 	texture_pos = (start - WIN_HEIGHT / 2 + wall_height / 2) * step;
@@ -61,7 +61,7 @@ void	draw_texture(t_main *main, t_dda_struct *dda_struct, int x, t_texture textu
 t_texture	get_cardinal_texture(t_main *main, t_dda_struct *dda_struct)
 {
 	t_texture	texture;
-	
+
 	if (dda_struct->side == 0)
 	{
 		if (main->ray.dirX > 0)

@@ -2,7 +2,7 @@
 
 static void	initialise_north_and_south(t_main *main)
 {
-	double fov;
+	double	fov;
 
 	fov = (double)FOV / 100;
 	if (ft_strncmp(main->player.cardinal_direction, "N", 1) == 0)
@@ -25,7 +25,7 @@ static void	initialise_north_and_south(t_main *main)
 
 static void	initialise_east_and_west(t_main *main)
 {
-	double fov;
+	double	fov;
 
 	fov = (double)FOV / 100;
 	if (ft_strncmp(main->player.cardinal_direction, "E", 1) == 0)
@@ -53,13 +53,15 @@ static void	init_player_direction(t_main *main)
 	main->player.angle = atan2(main->player.dir_y, main->player.dir_x);
 }
 
-static bool	get_players(t_main *main, char **map, int *x, int *y, int *player)
+static bool	get_players(t_main *main, int *x, int *y, int *player)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	char	**map;
 
-	j = 0;
-	while (map[j])
+	map = main->map_struct.map;
+	j = -1;
+	while (map[++j])
 	{
 		i = 0;
 		while (map[j][i])
@@ -76,14 +78,13 @@ static bool	get_players(t_main *main, char **map, int *x, int *y, int *player)
 			}
 			i++;
 		}
-		j++;
 	}
 	return (true);
 }
 
 bool	find_player_position(t_main *main, int *x, int *y, int *player)
 {
-	if (!get_players(main, main->map_struct.map, x, y, player))
+	if (!get_players(main, x, y, player))
 		return (false);
 	if (*player != 1)
 	{
