@@ -22,14 +22,10 @@ static bool	check_outside_minimap(t_minimap minimap, t_map map, double x, double
 	size = minimap.tile_size;
 	xm = (x - minimap.start_px) / size;
 	ym = (y - minimap.start_py) / size;
-	if (xm < 0 || ym < 0 || xm > (int)map.width || ym > (int)map.height)
+	if (xm < 0 || ym < 0 || xm > (int)trunc(map.width) || ym > (int)trunc(map.height))
 		return (false);
 	if (map.map[ym][xm] == '1')
 		return (false);
-	// if (map.map[ym][xm - 1] == '1' && map.map[ym + 1][xm] == '1')
-	// 	return (false);
-	// if (map.map[ym - 1][xm] == '1' && map.map[ym][xm + 1] == '1')
-	// 	return (false);
 	return (true);
 }
 
@@ -50,6 +46,10 @@ static t_vec2	dda_case_1(t_main *main, t_dda *dda_struct)
 	while (count_steps > 0)
 	{
 		if (!check_outside_minimap(main->minimap, main->map_struct, x, y))
+			break;
+		if (!check_outside_minimap(main->minimap, main->map_struct, x + 1, y))
+			break;
+		if (!check_outside_minimap(main->minimap, main->map_struct, x - 1, y))
 			break;
 		put_pixel_to_image(main, x, y, 0xF4E700);
 		x += step_in_x;
@@ -78,6 +78,10 @@ static t_vec2	dda_case_2(t_main *main, t_dda *dda_struct)
 	while (count_steps > 0)
 	{
 		if (!check_outside_minimap(main->minimap, main->map_struct, x, y))
+			break;
+		if (!check_outside_minimap(main->minimap, main->map_struct, x + 1, y))
+			break;
+		if (!check_outside_minimap(main->minimap, main->map_struct, x - 1, y))
 			break;
 		put_pixel_to_image(main, x, y, 0xF4E700);
 		y += step_in_y;
