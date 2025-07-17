@@ -3,7 +3,6 @@
 #define STRUCT_H
 
 #include "cub3d.h"
-#include "sys/time.h" //including timeval struct
 
 typedef struct	s_main t_main;
 
@@ -26,11 +25,6 @@ typedef struct s_dda_struct
 	bool		hit;
 	int			side;
 }	t_dda_struct;
-
-typedef struct s_bonus
-{
-	struct timeval tv;
-}	t_bonus;
 
 typedef struct 	s_ray
 {
@@ -173,7 +167,6 @@ typedef struct	s_main
 	t_colour		f_colour;
 	t_minimap		minimap;
 	t_myimage		image;
-	t_bonus			bonus;
 }				t_main;
 
 #endif
