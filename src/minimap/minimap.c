@@ -4,7 +4,7 @@
 
 static void	init_fullscreen_minimap(t_main *main)
 {
-	main->minimap.tile_size = 45; //detect the max map_size
+	main->minimap.tile_size = WIN_WIDTH / main->map_struct.width;
 	main->minimap.map_size_x = main->map_struct.width * main->minimap.tile_size;
 	main->minimap.map_size_y = main->map_struct.height * main->minimap.tile_size;
 	main->minimap.start_px = WIN_WIDTH - main->minimap.map_size_x - 7;
@@ -13,11 +13,11 @@ static void	init_fullscreen_minimap(t_main *main)
 
 void	init_minimap(t_main *main)
 {
-	main->minimap.tile_size = 10; //add this dynamic
+	main->minimap.tile_size = 10;
 	main->minimap.map_size_x = main->map_struct.width * main->minimap.tile_size;
 	main->minimap.map_size_y = main->map_struct.height * main->minimap.tile_size;
-	main->minimap.start_px = WIN_WIDTH - main->minimap.map_size_x - 10; // -10 is only for "design"
-	main->minimap.start_py = WIN_HEIGHT - main->minimap.map_size_y - 10; // -10 is only for "design"
+	main->minimap.start_px = WIN_WIDTH - main->minimap.map_size_x - 10;
+	main->minimap.start_py = WIN_HEIGHT - main->minimap.map_size_y - 10;
 }
 
 void	print_minimap(t_main *main)
