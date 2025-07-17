@@ -20,7 +20,7 @@ void	print_minifov(t_main *main)
 
 	start_fov = main->player.angle - (FOV / 2) * (M_PI / 180);
 	end_fov = main->player.angle + (FOV / 2) * (M_PI / 180);
-	while (start_fov < end_fov)
+	while (start_fov <= end_fov)
 	{
 		print_mini_vector_from_angle(main, start_fov);
 		start_fov += 0.001;

@@ -57,8 +57,10 @@ void	is_map_valid(t_main *main)
 
 	x = 0;
 	y = 0;
+	if(main->map_struct.height == 0 || main->map_struct.width == 0)
+		exit_cub3d(main, "No map, please input a valid map.");
 	if (main->map_struct.height < 3 || main->map_struct.width < 3)
-		exit_cub3d(main, "map too small");
+		exit_cub3d(main, "Map too small, must be 3 x 3 minimum.");
 	ft_bzero(&parsing, sizeof(t_parsing));
 	if (!find_player_position(main, &x, &y, &parsing.player))
 		exit_cub3d(main, "Player not found.");
