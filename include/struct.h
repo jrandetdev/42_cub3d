@@ -7,6 +7,11 @@
 
 typedef struct	s_main t_main;
 
+enum SYSTEM
+{
+	LINUX = 1,
+	MACOS = 2,
+};
 typedef struct s_dda_struct
 {
 	int			mapX;
@@ -80,8 +85,6 @@ typedef struct	s_player
 	double	camera_y;
 	double	angle;
 	char	*cardinal_direction;
-	//Standard — 90deg [π/2] is upward, 270deg [3π/2] is downward.
-	//MinilibX — 90deg [π/2] is downward, 270deg [3π/2] is upward.
 }				t_player;
 
 typedef struct s_keys
@@ -154,6 +157,7 @@ typedef struct s_map
 
 typedef struct	s_main
 {
+	int				os;
 	int				rotation;
 	void			*mlx_ptr;
 	void			*mlx_win;

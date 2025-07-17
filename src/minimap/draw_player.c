@@ -9,9 +9,10 @@ void	draw_player(t_main *main)
 	int	center_x;
 	int	center_y;
 
+	size = main->minimap.tile_size;
+	center_y = main->minimap.start_py + main->player.y * size;
+	center_x = main->minimap.start_px + main->player.x * size;
 	size = main->minimap.tile_size / 3;
-	center_y = main->minimap.start_py + main->player.y * main->minimap.tile_size;
-	center_x = main->minimap.start_px + main->player.x * main->minimap.tile_size;
 	y = center_y - size;
 	while (y <= center_y + size)
 	{

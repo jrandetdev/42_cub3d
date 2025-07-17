@@ -3,6 +3,7 @@
 
 void	fps_counter(t_main	*main)
 {
+	char					*fps_string;
 	static int				old_fps = 0;
 	struct timeval			tv;
 	static unsigned int		fps = 0;
@@ -18,7 +19,10 @@ void	fps_counter(t_main	*main)
 		old_fps = fps;
 		fps = 0;
 		if (gettimeofday(&main->bonus.tv, NULL))
-			exit_cub3d(main, "gettimeof day failed"); 
+			exit_cub3d(main, "gettimeof day failed");
 	}
-	mlx_string_put(main->mlx_ptr, main->mlx_win, 10, 10, 0xff0000, ft_itoa(old_fps)); //protect itoa
+	fps_string = ft_itoa(old_fps);
+	if (!fps_string)
+		exit_cub3d(main, "FPS Counter allocation failed");
+	mlx_string_put(main->mlx_ptr, main->mlx_win, 10, 10, 0xff0000, fps_string);
 }

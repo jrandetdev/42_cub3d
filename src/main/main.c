@@ -19,6 +19,10 @@ static bool	arguments_are_valid(int argc, char **argv)
 
 static void	init_cub3d(t_main *main)
 {
+	if (OS == LINUX)
+		main->os = LINUX;
+	if (OS == MACOS)
+		main->os = MACOS;
 	main->mlx_ptr = mlx_init();
 	if (!main->mlx_ptr)
 		exit_cub3d(main, "Mlx init failed.");

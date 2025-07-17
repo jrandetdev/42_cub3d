@@ -20,18 +20,21 @@ void	free_mlx_pointers(t_main *main)
 		mlx_destroy_window(main->mlx_ptr, main->mlx_win);
 		main->mlx_win = NULL;
 	}
-	#ifdef __linux__
-	if (main->mlx_ptr)
+	if (main->os == LINUX)
 	{
-		mlx_destroy_display(main->mlx_ptr);
-		free(main->mlx_ptr);
+		if (main->mlx_ptr)
+		{
+			mlx_destroy_display(main->mlx_ptr);
+			free(main->mlx_ptr);
+		}
 	}
-	#elif __APPLE__
-	if (main->mlx_ptr)
-		free(main->mlx_ptr);
-	#endif
+	if (main->os == MACOS)
+	{
+		if (main->mlx_ptr)
+			free(main->mlx_ptr);
+	}
 }
-	
+
 void	exit_cub3d(t_main *main, char *error_message)
 {
 	if (main)

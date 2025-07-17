@@ -48,7 +48,7 @@ enum e_keys
 	K_M = 46,
 	K_CTRL = 256
 };
-
+# define OS 2
 # define PLAYER_SPEED 0.1
 # define ROTATION_SPEED 0.05
 # define WIN_WIDTH 1200
@@ -100,11 +100,12 @@ enum e_keys
 	K_CTRL = 65507
 };
 
+# define OS 1
 # define FOV 66
 # define PLAYER_SPEED 0.04
 # define ROTATION_SPEED 0.02
-# define WIN_WIDTH 900
-# define WIN_HEIGHT 650
+# define WIN_WIDTH 1280
+# define WIN_HEIGHT 720
 
 #endif
 
