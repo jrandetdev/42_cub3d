@@ -71,6 +71,9 @@ void		print_minimap_base(t_main *main);
 
 t_vec2		mini_dda(t_main *main, double dst_x, double dst_y);
 
+// MENU //
+
+void	show_main_menu(t_main *main, int *main_menu);
 
 // RENDERING //
 int			render_next_frame(t_main *main);

@@ -27,6 +27,13 @@ static void	backgroud_color(t_main *main)
 
 int	render_next_frame(t_main *main)
 {
+	static int	main_menu = 1;
+
+	if (main_menu)
+	{
+		show_main_menu(main, &main_menu);
+		return (0);
+	}
 	mlx_destroy_image(main->mlx_ptr, main->image.data_img);
 	init_img(main);
 	player_movement(main);

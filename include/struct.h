@@ -89,9 +89,12 @@ typedef struct s_keys
 	int	d;
 	int	g;
 	int	m;
-	int left;
-	int right;
+	int	left;
+	int	right;
+	int	up;
+	int	down;
 	int escp;
+	int	enter;
 }	t_keys;
 
 typedef struct s_vec2
