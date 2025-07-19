@@ -37,5 +37,5 @@ void	show_main_menu(t_main *main, int *main_menu)
 		selection++;
 		main->keys.down = 0;
 	}
-	printf("%d\n", selection);
+	//printf("%d\n", selection);
 }

@@ -20,14 +20,14 @@ void	free_mlx_pointers(t_main *main)
 		mlx_destroy_window(main->mlx_ptr, main->mlx_win);
 		main->mlx_win = NULL;
 	}
-	if (main->os == LINUX)
-	{
-		if (main->mlx_ptr)
-		{
-			mlx_destroy_display(main->mlx_ptr);
-			free(main->mlx_ptr);
-		}
-	}
+	// if (main->os == LINUX)
+	// {
+	// 	if (main->mlx_ptr)
+	// 	{
+	// 		mlx_destroy_display(main->mlx_ptr);
+	// 		free(main->mlx_ptr);
+	// 	}
+	// }
 	if (main->os == MACOS)
 	{
 		if (main->mlx_ptr)

@@ -46,7 +46,8 @@ enum e_keys
 	K_G = 5,        /* Added for consistency */
 	K_K = 40,       /* Added for consistency */
 	K_M = 46,
-	K_CTRL = 256
+	K_CTRL = 256,
+	K_ENTER = 36
 };
 # define OS 2
 # define PLAYER_SPEED 0.1
