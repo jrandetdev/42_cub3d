@@ -15,6 +15,7 @@
 #include "struct.h"
 #include <mlx.h>
 #include <math.h>
+#include "bonus.h"
 
 # ifndef BONUS
 #  define BONUS 0
@@ -70,10 +71,6 @@ void		mini_raycasting(t_main *main);
 void		print_minimap_base(t_main *main);
 
 t_vec2		mini_dda(t_main *main, double dst_x, double dst_y);
-
-// MENU //
-
-void	show_main_menu(t_main *main, int *main_menu);
 
 // RENDERING //
 int			render_next_frame(t_main *main);

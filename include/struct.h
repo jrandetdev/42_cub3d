@@ -6,11 +6,29 @@
 
 typedef struct	s_main t_main;
 
+// BONUS //
+
+enum MAIN_MENU
+{
+	PLAY = 0,
+	OPTION = 1,
+	DEBUG = 2,
+	QUIT = 4,
+};
+
+typedef struct s_font
+{
+	
+}
+
+// MANDATORY PART //
+
 enum SYSTEM
 {
 	LINUX = 1,
 	MACOS = 2,
 };
+
 typedef struct s_dda_struct
 {
 	int			mapX;

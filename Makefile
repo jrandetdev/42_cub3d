@@ -36,8 +36,7 @@ DIR_MAIN		=			./src/main
 SRC_MAIN		=			main.c \
 							exit_cub3d.c \
 							error_handling.c \
-							free_utils.c \
-							main_menu.c
+							free_utils.c
 MAIN			=			$(addprefix $(DIR_MAIN)/, $(SRC_MAIN))
 
 DIR_PARSING		=			./src/parsing
@@ -84,21 +83,25 @@ SRC_MINIMAP		=			draw_player.c \
 							print_minimap.c \
 							minifov.c \
 							mini_dda.c
-MINIMAP 		=			$(addprefix $(DIR_DEBUG)/, $(SRC_MINIMAP))
+MINIMAP 		=			$(addprefix $(DIR_MINIMAP)/, $(SRC_MINIMAP))
 
 DIR_BONUS		=			./src/bonus
 SRC_BONUS		=			init_bonus.c \
 							fps_counter.c
 BONUS			=			$(addprefix $(DIR_BONUS)/, $(SRC_BONUS))
 
-DIR_RAYCASTING		=		./src/raycasting
-SRC_RAYCASTING		=		game_loop.c \
+DIR_RAYCASTING	=			./src/raycasting
+SRC_RAYCASTING	=			game_loop.c \
 							draw_walls.c 
-
 RAYCASTING 		=			$(addprefix $(DIR_RAYCASTING)/, $(SRC_RAYCASTING))
 
-SOURCES			=			$(MAIN) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(RENDER_IMG) $(MINIMAP) $(RAYCASTING)
-vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS) $(DIR_IMG) $(DIR_RENDER_IMG) $(DIR_MINIMAP) $(DIR_RAYCASTING)
+DIR_MENU		=			./src/menu
+SRC_MENU		=			main_menu.c \
+							menu_utils.c
+MENU			=			$(addprefix $(DIR_MENU)/, $(SRC_MENU))
+
+SOURCES			=			$(MAIN) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(RENDER_IMG) $(MINIMAP) $(RAYCASTING) $(MENU)
+vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS) $(DIR_RENDER_IMG) $(DIR_RENDER_IMG) $(DIR_MINIMAP) $(DIR_RAYCASTING) $(DIR_MENU)
 
 OBJECTS			:= 			$(addprefix $(DIR_BUILD)/, $(notdir $(SOURCES:.c=.o)))
 DEPS			:=			$(OBJECTS:.o=.d)
