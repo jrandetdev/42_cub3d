@@ -27,11 +27,11 @@ static void	backgroud_color(t_main *main)
 
 int	render_next_frame(t_main *main)
 {
-	static int	main_menu = 1;
+	static int	menu = 1;
 
-	if (main_menu)
+	if (menu)
 	{
-		show_main_menu(main, &main_menu);
+		print_correct_menu(main, &menu);
 		return (0);
 	}
 	mlx_destroy_image(main->mlx_ptr, main->image.data_img);

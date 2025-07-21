@@ -37,8 +37,8 @@ void	print_menu_title(t_main *main, char *str)
 		if (!letter.texture_ptr)
 			exit_cub3d(main, "failed to load a letter int 'print_menu_title'");
 		mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, letter.texture_ptr, x, y);
+		mlx_destroy_image(main->mlx_ptr, letter.texture_ptr);
 		x += 64;
 		str++;
 	}
-	mlx_destroy_image(main->mlx_ptr, letter.texture_ptr);
 }

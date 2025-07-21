@@ -3,9 +3,15 @@
 
 static void	apply_selection(t_main *main, int *main_menu, int selection)
 {
+	main->keys.enter = 0;
 	if (selection == 0)
-		*(main_menu) = 0;
-	else if (selection == 3)
+		*(main_menu) = NO_MENU;
+	if (selection == 1)
+	{
+		*(main_menu) = OPTION_MENU;
+		mlx_clear_window(main->mlx_ptr, main->mlx_win);
+	}
+	else if (selection == 2)
 		exit_cub3d(main, NULL);
 }
 

@@ -98,8 +98,10 @@ RAYCASTING 		=			$(addprefix $(DIR_RAYCASTING)/, $(SRC_RAYCASTING))
 DIR_MENU		=			./src/menu
 SRC_MENU		=			main_menu.c \
 							menu_utils.c \
+							option_menu.c \
 							print_menu_title.c \
-							print_menu_section.c
+							print_menu_section.c \
+							print_correct_menu.c
 MENU			=			$(addprefix $(DIR_MENU)/, $(SRC_MENU))
 
 SOURCES			=			$(MAIN) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(RENDER_IMG) $(MINIMAP) $(RAYCASTING) $(MENU)
