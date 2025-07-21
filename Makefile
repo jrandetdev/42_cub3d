@@ -97,7 +97,9 @@ RAYCASTING 		=			$(addprefix $(DIR_RAYCASTING)/, $(SRC_RAYCASTING))
 
 DIR_MENU		=			./src/menu
 SRC_MENU		=			main_menu.c \
-							menu_utils.c
+							menu_utils.c \
+							print_menu_title.c \
+							print_menu_section.c
 MENU			=			$(addprefix $(DIR_MENU)/, $(SRC_MENU))
 
 SOURCES			=			$(MAIN) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(RENDER_IMG) $(MINIMAP) $(RAYCASTING) $(MENU)
@@ -114,7 +116,7 @@ LIBRARY_PATHS	:=			-L$(LIBFT_PATH) -L$(MLX_PATH)
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(MLX) $(OBJECTS)
+$(NAME):  $(OBJECTS) | $(LIBFT) $(MLX)
 	$(CC) $(CFLAGS) $(OBJECTS) $(LIBRARY_PATHS) $(LIBRARIES) -o $@
 	@echo "$(GREEN)Cube3d: Make successful, can execute ./cub3d$(RESET)"
 
@@ -143,7 +145,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
 
 .SILENT:
 

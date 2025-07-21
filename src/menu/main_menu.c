@@ -20,20 +20,16 @@ void	show_main_menu(t_main *main, int *main_menu)
 	if (menu_title < 0)
 		menu_title = 3;
 	selection = menu_title % 4;
-	print_menu_title(main, selection, i++, "PLAY");
-	print_menu_title(main, selection, i++, "OPTION");
-	print_menu_title(main, selection, i++, "DEBUG");
-	print_menu_title(main, selection, i, "QUIT");
+	print_menu_title(main, GAME_NAME);
+	print_menu_section(main, selection, i++, "PLAY");
+	print_menu_section(main, selection, i++, "OPTION");
+	print_menu_section(main, selection, i++, "DEBUG");
+	print_menu_section(main, selection, i, "QUIT");
 	if (main->keys.enter)
 		apply_selection(main, main_menu, selection);
 	else if (main->keys.up)
-	{
-		menu_title--;
-		main->keys.up = 0;
-	}
+		menu_up(main, &menu_title);
 	else if (main->keys.down)
-	{
-		menu_title++;
-		main->keys.down = 0;
-	}
+		menu_down(main, &menu_title);
+	mlx_string_put(main->mlx_ptr, main->mlx_win, 10, WIN_HEIGHT - 20, 0xFFFFFF, "by : jrandet and hdougoud");
 }

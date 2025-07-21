@@ -50,10 +50,10 @@ enum e_keys
 	K_ENTER = 36
 };
 # define OS 2
-# define PLAYER_SPEED 0.1
-# define ROTATION_SPEED 0.05
-# define WIN_WIDTH 1200
-# define WIN_HEIGHT 800
+# define PLAYER_SPEED 0.04
+# define ROTATION_SPEED 0.02
+# define WIN_WIDTH 1024
+# define WIN_HEIGHT 576
 # define FOV 66
 
 #elif defined(__linux__)

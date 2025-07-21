@@ -8,6 +8,16 @@ typedef struct	s_main t_main;
 
 // BONUS //
 
+enum MENU
+{
+	NO_MENU = 0,
+	MAIN_MENU = 1,
+	OPTION_MENU = 2,
+	RESOLUTION_OPTION = 3,
+	FOV_OPTION = 4,
+	DEBUG_MENU = 5,
+};
+
 enum MAIN_MENU
 {
 	PLAY = 0,
@@ -15,11 +25,6 @@ enum MAIN_MENU
 	DEBUG = 2,
 	QUIT = 4,
 };
-
-typedef struct s_font
-{
-	
-}
 
 // MANDATORY PART //
 
