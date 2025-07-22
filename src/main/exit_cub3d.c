@@ -11,6 +11,19 @@ void	free_all_pointer_arrays(t_main *main)
 		free_string_array(&main->id_and_info);
 }
 
+void	free_all_textures(t_main *main)
+{
+	if (main->wall.ea.texture_ptr)
+		//mlx_destroy_image(main->mlx_ptr, main->wall.ea.texture_ptr);
+		free(main->wall.ea.texture_ptr);
+	if (main->wall.so.texture_ptr)
+		free(main->wall.we.texture_ptr);
+	if (main->wall.no.texture_ptr)
+		free(main->wall.no.texture_ptr);
+	if (main->wall.we.texture_ptr)
+		free(main->wall.so.texture_ptr);
+}
+
 void	free_mlx_pointers(t_main *main)
 {
 	if (main->image.data_img)
@@ -20,14 +33,14 @@ void	free_mlx_pointers(t_main *main)
 		mlx_destroy_window(main->mlx_ptr, main->mlx_win);
 		main->mlx_win = NULL;
 	}
-	// if (main->os == LINUX)
-	// {
-	// 	if (main->mlx_ptr)
-	// 	{
-	// 		mlx_destroy_display(main->mlx_ptr);
-	// 		free(main->mlx_ptr);
-	// 	}
-	// }
+	if (main->os == LINUX)
+	{
+		if (main->mlx_ptr)
+		{
+			mlx_destroy_display(main->mlx_ptr);
+			free(main->mlx_ptr);
+		}
+	}
 	if (main->os == MACOS)
 	{
 		if (main->mlx_ptr)
@@ -40,6 +53,7 @@ void	exit_cub3d(t_main *main, char *error_message)
 	if (main)
 	{
 		free_all_pointer_arrays(main);
+		free_all_textures(main);
 		free_mlx_pointers(main);
 	}
 	if (error_message)

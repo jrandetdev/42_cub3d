@@ -9,7 +9,7 @@ char	*ft_charjoin(char const *s1, char const s2)
 	if (!s1)
 		return (NULL);
 	total_len = ft_strlen(s1);
-	result = (char *)malloc(sizeof(char) * (total_len + 1));
+	result = (char *)malloc(sizeof(char) * (total_len + 2));
 	if (!result)
 		return (NULL);
 	ft_strlcpy(result, s1, ft_strlen(s1) + 1);
