@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exit_cub3d.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/22 16:24:31 by hdougoud          #+#    #+#             */
+/*   Updated: 2025/07/22 16:25:35 by hdougoud         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	free_all_pointer_arrays(t_main *main)
@@ -25,7 +37,7 @@ void	free_all_textures(t_main *main)
 void	free_mlx_pointers(t_main *main)
 {
 	if (main->image.data_img)
-			mlx_destroy_image(main->mlx_ptr, main->image.data_img);
+		mlx_destroy_image(main->mlx_ptr, main->image.data_img);
 	if (main->mlx_win)
 	{
 		mlx_destroy_window(main->mlx_ptr, main->mlx_win);
