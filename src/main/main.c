@@ -1,6 +1,13 @@
 
 #include "cub3d.h"
 
+/*
+fov / 2
+WIN_HEIHT / 2
+WIN_WIDTH / 2
+M_PI / 2
+*/
+
 static bool	arguments_are_valid(int argc, char **argv)
 {
 	if (argc != 2)

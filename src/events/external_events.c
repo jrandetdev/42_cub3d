@@ -3,8 +3,6 @@
 
 int	mouse_move(int x, int y, t_main *main)
 {
-	//static int old_pos = WIN_WIDTH / 2;
-
 	mlx_mouse_get_pos(main->mlx_ptr, main->mlx_win, &x, &y);
 	if (x != main->mouse.x)
 	{
@@ -17,12 +15,6 @@ int	mouse_move(int x, int y, t_main *main)
 		}
 		mlx_mouse_move(main->mlx_ptr, main->mlx_win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	}
-	// if (main->mouse.dist != old_pos)
-	// {
-	// 	printf("mouse old pos %d\n", old_pos);
-	// 	printf("mouse dist %f\n", main->mouse.dist);
-	// }
-	//old_pos = main->mouse.dist;
 	return (0);
 }
 
