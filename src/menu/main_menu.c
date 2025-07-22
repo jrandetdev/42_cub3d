@@ -11,7 +11,7 @@ static void	apply_selection(t_main *main, int *main_menu, int selection)
 		*(main_menu) = OPTION_MENU;
 		mlx_clear_window(main->mlx_ptr, main->mlx_win);
 	}
-	else if (selection == 2)
+	else if (selection == 3)
 		exit_cub3d(main, NULL);
 }
 
