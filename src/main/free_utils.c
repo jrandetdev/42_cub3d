@@ -1,4 +1,3 @@
-
 #include "cub3d.h"
 
 void	safe_free_tab(void ***ptr)

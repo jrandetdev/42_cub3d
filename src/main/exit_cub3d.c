@@ -1,4 +1,3 @@
-
 #include "cub3d.h"
 
 void	free_all_pointer_arrays(t_main *main)
