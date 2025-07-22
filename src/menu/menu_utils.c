@@ -6,9 +6,9 @@ char	*ft_charjoin(char const *s1, char const s2)
 	int		total_len;
 	char	*result;
 
-	if (!s1 || !s2)
+	if (!s1)
 		return (NULL);
-	total_len = ft_strlen(s1) + 1;
+	total_len = ft_strlen(s1);
 	result = (char *)malloc(sizeof(char) * (total_len + 1));
 	if (!result)
 		return (NULL);
@@ -22,7 +22,8 @@ char ft_capitalize(char letter)
 {
 	if (letter >= 'A' || letter <= 'Z')
 		return (letter);
-	return (letter ^ 32);
+	else
+		return (letter -= 32);
 }
 
 void	menu_up(t_main *main, int *selection)

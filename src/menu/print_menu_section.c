@@ -10,7 +10,7 @@ static char *get_letter_filename(t_main *main, char letter, int i, int selection
 	char		*filename;
 
 
-	first_part = ft_strjoin(path, &letter);
+	first_part = ft_charjoin(path, letter);
 	if (!first_part)
 		exit_cub3d(main, "'get_letter' malloc falied");
 	if (selection == i)
@@ -33,7 +33,7 @@ void	print_menu_section(t_main *main, int selection, int i, char *str)
 	char			*filename;
 	t_texture		letter;
 
-	x = WIN_WIDTH / 2 - (ft_strlen(str) * 32 / 2);
+	x = WIN_WIDTH / 2 - (ft_strlen(str) * 48 / 2);
 	while (*str)
 	{
 		filename = get_letter_filename(main, ft_capitalize(*str), i, selection);
@@ -41,7 +41,7 @@ void	print_menu_section(t_main *main, int selection, int i, char *str)
 		if (!letter.texture_ptr)
 			exit_cub3d(main, "failed to load a letter int 'print_menu_title'");
 		mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, letter.texture_ptr, x, y);
-		x += 32;
+		x += 48;
 		str++;
 	}
 	y += 64;

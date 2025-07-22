@@ -18,7 +18,6 @@ static char *get_letter_filename(t_main *main, char letter)
 		free(first_part);
 		exit_cub3d(main, "'get_letter' malloc falied");
 	}
-	printf("%s\n", filename);
 	return (filename);
 }
 

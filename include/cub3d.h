@@ -2,7 +2,7 @@
 # define CUB3D_H
 
 # define _USE_MATH_DEFINES
-# define GAME_NAME "Cube3D"
+# define GAME_NAME "CUBE3D"
 
 #include <errno.h>
 #include <fcntl.h>
