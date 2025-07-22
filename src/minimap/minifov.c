@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:28:55 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/22 15:51:11 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:00:23 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	print_mini_vector_from_angle(t_main *main, double angle)
 	t_vec2	vector;
 
 	magnitude = sqrt(pow(main->map_struct.height, 2)
-		+ pow(main->map_struct.width, 2));
+			+ pow(main->map_struct.width, 2));
 	vector.x = main->player.x + (magnitude * cos(angle));
 	vector.y = main->player.y + (magnitude * sin(angle));
 	mini_dda(main, vector.x, vector.y);
@@ -37,4 +37,3 @@ void	print_minifov(t_main *main)
 		start_fov += 0.001;
 	}
 }
- 

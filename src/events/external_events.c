@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:52:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/22 15:56:26 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:00:10 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	mouse_move(int x, int y, t_main *main)
 	return (0);
 }
 
-static int	key_hit(int keycode, t_main *main)
+static void	key_hit(int keycode, t_main *main)
 {
 	if (keycode == K_ESCP)
 		exit_cub3d(main, 0);
