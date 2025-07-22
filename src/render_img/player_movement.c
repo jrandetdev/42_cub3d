@@ -1,7 +1,7 @@
 
 #include "cub3d.h"
 
-static void	player_rotation(t_main *main)
+static void	player_key_rotation(t_main *main)
 {
 	double	old_dir_x;
 	double	rotation_speed;
@@ -26,6 +26,53 @@ static void	player_rotation(t_main *main)
 		main->player.plane_y = old_plane_x * sin(rotation_speed)
 			+ main->player.plane_y * cos(rotation_speed);
 		main->player.angle = atan2(main->player.dir_y, main->player.dir_x);
+	}
+}
+
+static void	player_mouse_rotation(t_main *main)
+{
+	double	old_dir_x;
+	double	rotation_speed;
+	double	old_plane_x;
+
+	if (main->mouse.dist)
+	{
+		// old_dir_x = main->player.dir_x;
+		// main->player.dir_x = main->player.dir_x * cos(main->mouse.dist)
+		// 	- main->player.dir_y * sin(main->mouse.dist);
+		// main->player.dir_y = old_dir_x * sin(main->mouse.dist)
+		// 	+ main->player.dir_y * cos(main->mouse.dist);
+		// old_plane_x = main->player.plane_x;
+		// main->player.plane_x = main->player.plane_x * cos(main->mouse.dist)
+		// 	- main->player.plane_y * sin(main->mouse.dist);
+		// main->player.plane_y = old_plane_x * sin(main->mouse.dist)
+		// 	+ main->player.plane_y * cos(main->mouse.dist);
+		// main->player.angle = atan2(main->player.dir_y, main->player.dir_x);
+		// main->mouse.dist = 0;
+		if (main->mouse.dist > 0)
+		{
+			printf("turning right\n");
+			rotation_speed = main->mouse.dist * ROTATION_SPEED;
+			printf("RIGHT rot speed: %f and main->mouse.dist %f\n", rotation_speed, main->mouse.dist);
+		}
+		if (main->mouse.dist < 0)
+		{
+			printf("turning left\n");
+			rotation_speed = main->mouse.dist * ROTATION_SPEED;
+			printf("LEFT rot speed: %f and main->mouse.dist %f\n", rotation_speed, main->mouse.dist);
+		}
+		old_dir_x = main->player.dir_x;
+		main->player.dir_x = main->player.dir_x * cos(rotation_speed)
+			- main->player.dir_y * sin(rotation_speed);
+		main->player.dir_y = old_dir_x * sin(rotation_speed)
+			+ main->player.dir_y * cos(rotation_speed);
+		old_plane_x = main->player.plane_x;
+		main->player.plane_x = main->player.plane_x * cos(rotation_speed)
+			- main->player.plane_y * sin(rotation_speed);
+		main->player.plane_y = old_plane_x * sin(rotation_speed)
+			+ main->player.plane_y * cos(rotation_speed);
+		main->player.angle = atan2(main->player.dir_y, main->player.dir_x);
+		main->mouse.dist = 0;
 	}
 }
 
@@ -71,5 +118,6 @@ void	player_movement(t_main *main)
 {
 	player_up_and_down(main);
 	player_right_and_left(main);
-	player_rotation(main);
+	player_key_rotation(main);
+	player_mouse_rotation(main);
 }

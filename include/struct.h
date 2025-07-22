@@ -26,6 +26,12 @@ enum MAIN_MENU
 	QUIT = 4,
 };
 
+typedef struct	s_mouse
+{
+	double	x;
+	double	dist;
+}				t_mouse;
+
 // MANDATORY PART //
 
 enum SYSTEM
@@ -193,6 +199,7 @@ typedef struct	s_main
 	t_colour		f_colour;
 	t_minimap		minimap;
 	t_myimage		image;
+	t_mouse			mouse;
 }				t_main;
 
 #endif

@@ -114,7 +114,7 @@ enum e_keys
 typedef struct s_main t_main;
 
 /* Function prototypes */
-void	init_keyboard_events(t_main *main);
+void	init_external_events(t_main *main);
 int		key_handler(int key_code, t_main *main);
 
 #endif

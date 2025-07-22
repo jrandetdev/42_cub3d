@@ -67,7 +67,7 @@ SRC_DEBUG		=			debug.c \
 DEBUG 			=			$(addprefix $(DIR_DEBUG)/, $(SRC_DEBUG))
 
 DIR_EVENTS		=			./src/events
-SRC_EVENTS		=			keyboard_events.c
+SRC_EVENTS		=			external_events.c
 EVENTS			=			$(addprefix $(DIR_EVENTS)/, $(SRC_EVENTS))
 
 DIR_RENDER_IMG	=			./src/render_img

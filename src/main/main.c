@@ -34,6 +34,8 @@ static void	init_cub3d(t_main *main)
 		exit_cub3d(main, "Mlx window failed");
 	mlx_hook(main->mlx_win, 17, 0, handle_destroy, main);
 	init_img(main);
+	main->mouse.x = WIN_WIDTH / 2;
+	mlx_mouse_hide(main->mlx_ptr, main->mlx_win);
 }
 
 int	main(int argc, char **argv)
@@ -46,7 +48,7 @@ int	main(int argc, char **argv)
 	init_mlx(&main);
 	parsing(&main, argv[1]);
 	init_cub3d(&main);
-	init_keyboard_events(&main);
+	init_external_events(&main);
 	mlx_loop_hook(main.mlx_ptr, render_next_frame, &main);
 	mlx_loop(main.mlx_ptr);
 	return (0);
