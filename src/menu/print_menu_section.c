@@ -22,6 +22,7 @@ static char *get_letter_filename(t_main *main, char letter, int i, int selection
 		free(first_part);
 		exit_cub3d(main, "'get_letter' malloc falied");
 	}
+	free(first_part);
 	return (filename);
 }
 
@@ -38,14 +39,15 @@ void	print_menu_section(t_main *main, int selection, int i, char *str)
 	{
 		filename = get_letter_filename(main, ft_capitalize(*str), i, selection);
 		letter.texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, filename, &letter.width, &letter.height);
+		free(filename);
 		if (!letter.texture_ptr)
 			exit_cub3d(main, "failed to load a letter int 'print_menu_title'");
 		mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, letter.texture_ptr, x, y);
 		x += 48;
 		str++;
+		mlx_destroy_image(main->mlx_ptr, letter.texture_ptr);
 	}
 	y += 64;
 	if (i == 3)
 		y = WIN_HEIGHT / 2 - 3 * 48 + 48;
-	mlx_destroy_image(main->mlx_ptr, letter.texture_ptr);
 }

@@ -18,6 +18,7 @@ static char *get_letter_filename(t_main *main, char letter)
 		free(first_part);
 		exit_cub3d(main, "'get_letter' malloc falied");
 	}
+	free(first_part);
 	return (filename);
 }
 
@@ -34,6 +35,7 @@ void	print_menu_title(t_main *main, char *str)
 	{
 		filename = get_letter_filename(main, ft_capitalize(*str));
 		letter.texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, filename, &letter.width, &letter.height);
+		free(filename);
 		if (!letter.texture_ptr)
 			exit_cub3d(main, "failed to load a letter int 'print_menu_title'");
 		mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, letter.texture_ptr, x, y);
