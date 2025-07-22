@@ -3,7 +3,7 @@
 
 static char *get_letter_filename(t_main *main, char letter, int i, int selection)
 {
-	const char	*path = "./Assets/fonts/xpm_48/";
+	const char	*path = "Assets/fonts/xpm_48/";
 	const char	*white = "_white.xpm";
 	const char	*gold = "_gold.xpm";
 	char 		*first_part;

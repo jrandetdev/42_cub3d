@@ -3,13 +3,13 @@
 
 static char *get_letter_filename(t_main *main, char letter)
 {
-	const char	*path = "./Assets/fonts/xpm_80/";
+	const char	*path = "Assets/fonts/xpm_80/";
 	const char	*white = "_white.xpm";
 	char 		*first_part;
 	char		*filename;
 
 
-	first_part = ft_strjoin(path, &letter);
+	first_part = ft_charjoin(path, letter);
 	if (!first_part)
 		exit_cub3d(main, "'get_letter' malloc falied");
 	filename = ft_strjoin(first_part, white);
@@ -18,6 +18,7 @@ static char *get_letter_filename(t_main *main, char letter)
 		free(first_part);
 		exit_cub3d(main, "'get_letter' malloc falied");
 	}
+	printf("%s\n", filename);
 	return (filename);
 }
 
