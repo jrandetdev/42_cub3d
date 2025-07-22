@@ -46,13 +46,14 @@ enum e_keys
 	K_G = 5,        /* Added for consistency */
 	K_K = 40,       /* Added for consistency */
 	K_M = 46,
-	K_CTRL = 256
+	K_CTRL = 256,
+	K_ENTER = 36
 };
 # define OS 2
-# define PLAYER_SPEED 0.1
-# define ROTATION_SPEED 0.05
-# define WIN_WIDTH 1200
-# define WIN_HEIGHT 800
+# define PLAYER_SPEED 0.04
+# define ROTATION_SPEED 0.02
+# define WIN_WIDTH 1280
+# define WIN_HEIGHT 720
 # define FOV 66
 
 #elif defined(__linux__)
@@ -84,20 +85,21 @@ enum e_mouse
 /* Keyboard keys for Linux */
 enum e_keys
 {
-	K_W = 119,
-	K_S = 115,
-	K_A = 97,
-	K_D = 100,
-	K_LEFT = 65361,
-	K_UP = 65362,
-	K_RIGHT = 65363,
-	K_DOWN = 65364,
-	K_ESCP = 65307,
-	K_C = 99,
-	K_G = 103,
-	K_K = 107,
-	K_M = 109,
-	K_CTRL = 65507
+	K_W			= 119,
+	K_S			= 115,
+	K_A			= 97,
+	K_D			= 100,
+	K_LEFT		= 65361,
+	K_UP		= 65362,
+	K_RIGHT		= 65363,
+	K_DOWN		= 65364,
+	K_ESCP		= 65307,
+	K_C			= 99,
+	K_G			= 103,
+	K_K			= 107,
+	K_M			= 109,
+	K_CTRL		= 65507,
+	K_ENTER		= 65293
 };
 
 # define OS 1

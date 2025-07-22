@@ -83,22 +83,29 @@ SRC_MINIMAP		=			draw_player.c \
 							print_minimap.c \
 							minifov.c \
 							mini_dda.c
-MINIMAP 		=			$(addprefix $(DIR_DEBUG)/, $(SRC_MINIMAP))
+MINIMAP 		=			$(addprefix $(DIR_MINIMAP)/, $(SRC_MINIMAP))
 
 DIR_BONUS		=			./src/bonus
 SRC_BONUS		=			init_bonus.c \
 							fps_counter.c
 BONUS			=			$(addprefix $(DIR_BONUS)/, $(SRC_BONUS))
 
-DIR_RAYCASTING		=		./src/raycasting
-SRC_RAYCASTING		=		game_loop.c \
+DIR_RAYCASTING	=			./src/raycasting
+SRC_RAYCASTING	=			game_loop.c \
 							draw_walls.c 
-
 RAYCASTING 		=			$(addprefix $(DIR_RAYCASTING)/, $(SRC_RAYCASTING))
 
+DIR_MENU		=			./src/menu
+SRC_MENU		=			main_menu.c \
+							menu_utils.c \
+							option_menu.c \
+							print_menu_title.c \
+							print_menu_section.c \
+							print_correct_menu.c
+MENU			=			$(addprefix $(DIR_MENU)/, $(SRC_MENU))
 
-SOURCES			=			$(MAIN) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(RENDER_IMG) $(MINIMAP) $(RAYCASTING) $(BONUS)
-vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS) $(DIR_IMG) $(DIR_RENDER_IMG) $(DIR_MINIMAP) $(DIR_RAYCASTING) $(DIR_BONUS)
+SOURCES			=			$(MAIN) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(RENDER_IMG) $(MINIMAP) $(RAYCASTING) $(MENU)
+vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS) $(DIR_RENDER_IMG) $(DIR_RENDER_IMG) $(DIR_MINIMAP) $(DIR_RAYCASTING) $(DIR_MENU)
 
 OBJECTS			:= 			$(addprefix $(DIR_BUILD)/, $(notdir $(SOURCES:.c=.o)))
 DEPS			:=			$(OBJECTS:.o=.d)
@@ -111,7 +118,7 @@ LIBRARY_PATHS	:=			-L$(LIBFT_PATH) -L$(MLX_PATH)
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(MLX) $(OBJECTS)
+$(NAME):  $(OBJECTS) | $(LIBFT) $(MLX)
 	$(CC) $(CFLAGS) $(OBJECTS) $(LIBRARY_PATHS) $(LIBRARIES) -o $@
 	@echo "$(GREEN)Cube3d: Make successful, can execute ./cub3d$(RESET)"
 
@@ -140,7 +147,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
 
 .SILENT:
 

@@ -3,15 +3,37 @@
 #define STRUCT_H
 
 #include "cub3d.h"
-#include "sys/time.h" //including timeval struct
 
 typedef struct	s_main t_main;
+
+// BONUS //
+
+enum MENU
+{
+	NO_MENU = 0,
+	MAIN_MENU = 1,
+	OPTION_MENU = 2,
+	RESOLUTION_OPTION = 3,
+	FOV_OPTION = 4,
+	DEBUG_MENU = 5,
+};
+
+enum MAIN_MENU
+{
+	PLAY = 0,
+	OPTION = 1,
+	DEBUG = 2,
+	QUIT = 4,
+};
+
+// MANDATORY PART //
 
 enum SYSTEM
 {
 	LINUX = 1,
 	MACOS = 2,
 };
+
 typedef struct s_dda_struct
 {
 	int			mapX;
@@ -26,11 +48,6 @@ typedef struct s_dda_struct
 	bool		hit;
 	int			side;
 }	t_dda_struct;
-
-typedef struct s_bonus
-{
-	struct timeval tv;
-}	t_bonus;
 
 typedef struct 	s_ray
 {
@@ -95,9 +112,12 @@ typedef struct s_keys
 	int	d;
 	int	g;
 	int	m;
-	int left;
-	int right;
+	int	left;
+	int	right;
+	int	up;
+	int	down;
 	int escp;
+	int	enter;
 }	t_keys;
 
 typedef struct s_vec2
@@ -173,7 +193,6 @@ typedef struct	s_main
 	t_colour		f_colour;
 	t_minimap		minimap;
 	t_myimage		image;
-	t_bonus			bonus;
 }				t_main;
 
 #endif

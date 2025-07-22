@@ -2,6 +2,7 @@
 # define CUB3D_H
 
 # define _USE_MATH_DEFINES
+# define GAME_NAME "Cube3D"
 
 #include <errno.h>
 #include <fcntl.h>
@@ -15,6 +16,7 @@
 #include "struct.h"
 #include <mlx.h>
 #include <math.h>
+#include "bonus.h"
 
 # ifndef BONUS
 #  define BONUS 0
@@ -70,7 +72,6 @@ void		mini_raycasting(t_main *main);
 void		print_minimap_base(t_main *main);
 
 t_vec2		mini_dda(t_main *main, double dst_x, double dst_y);
-
 
 // RENDERING //
 int			render_next_frame(t_main *main);
