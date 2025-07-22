@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   menu_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/22 15:38:51 by hdougoud          #+#    #+#             */
+/*   Updated: 2025/07/22 15:49:40 by hdougoud         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub3d.h"
 
@@ -18,7 +29,7 @@ char	*ft_charjoin(char const *s1, char const s2)
 	return (result);
 }
 
-char ft_capitalize(char letter)
+char	ft_capitalize(char letter)
 {
 	if (letter >= 'A' || letter <= 'Z')
 		return (letter);
@@ -32,7 +43,7 @@ void	menu_up(t_main *main, int *selection)
 	main->keys.up = 0;
 }
 
-void menu_down(t_main *main, int *selection)
+void	menu_down(t_main *main, int *selection)
 {
 	*(selection) += 1;
 	main->keys.down = 0;

@@ -1,4 +1,3 @@
-
 #include "cub3d.h"
 
 void	print_error_and_message(char *error_message)

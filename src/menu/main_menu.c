@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main_menu.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/22 15:38:55 by hdougoud          #+#    #+#             */
+/*   Updated: 2025/07/22 15:39:22 by hdougoud         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub3d.h"
 
@@ -37,5 +48,6 @@ void	show_main_menu(t_main *main, int *main_menu)
 		menu_up(main, &menu_title);
 	else if (main->keys.down)
 		menu_down(main, &menu_title);
-	mlx_string_put(main->mlx_ptr, main->mlx_win, 10, WIN_HEIGHT - 20, 0xFFFFFF, "by : jrandet and hdougoud");
+	mlx_string_put(main->mlx_ptr, main->mlx_win, 10, WIN_HEIGHT - 20, 0xFFFFFF,
+		"by : jrandet and hdougoud");
 }
