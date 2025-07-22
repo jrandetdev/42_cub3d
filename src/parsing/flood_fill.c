@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   flood_fill.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/22 15:20:47 by jrandet           #+#    #+#             */
+/*   Updated: 2025/07/22 15:23:51 by jrandet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub3d.h"
 
@@ -5,7 +16,8 @@ static void	flood_fill(t_parsing *p, int x, int y)
 {
 	if (p->patern == 1)
 		return ;
-	if (x < 0 || y < 0 || y >= p->map_height || x >= p->map_width || p->map[y][x] == '\0' || p->map[y][x] == ' ')
+	if (x < 0 || y < 0 || y >= p->map_height || x >= p->map_width
+		|| p->map[y][x] == '\0' || p->map[y][x] == ' ')
 	{
 		p->patern = 1;
 		return ;
@@ -57,7 +69,7 @@ void	is_map_valid(t_main *main)
 
 	x = 0;
 	y = 0;
-	if(main->map_struct.height == 0 || main->map_struct.width == 0)
+	if (main->map_struct.height == 0 || main->map_struct.width == 0)
 		exit_cub3d(main, "No map, please input a valid map.");
 	if (main->map_struct.height < 3 || main->map_struct.width < 3)
 		exit_cub3d(main, "Map too small, must be 3 x 3 minimum.");

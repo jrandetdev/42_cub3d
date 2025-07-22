@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_player.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/22 15:21:00 by jrandet           #+#    #+#             */
+/*   Updated: 2025/07/22 15:24:24 by jrandet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 static void	initialise_north_and_south(t_main *main)
@@ -91,7 +103,7 @@ bool	find_player_position(t_main *main, int *x, int *y, int *player)
 		if (*player < 1)
 			exit_cub3d(main, "No player found");
 		else if (*player > 1)
-			exit_cub3d(main,"Too many players, it's a single-player game");
+			exit_cub3d(main, "Too many players, it's a single-player game");
 		return (false);
 	}
 	main->player.x = *x;

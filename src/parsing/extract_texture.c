@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   extract_texture.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/22 15:20:40 by jrandet           #+#    #+#             */
+/*   Updated: 2025/07/22 15:22:54 by jrandet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub3d.h"
 
@@ -8,15 +19,16 @@ static void	get_texture_data(t_main *main, t_texture *direc, char *xpm_file)
 	if (!direc->texture_ptr)
 		exit_cub3d(main, "Texture path not found or invalid.");
 	printf("%p\n", direc->texture_ptr);
-		direc->texture.addr = mlx_get_data_addr(
-		direc->texture_ptr,
-		&direc->texture.bitspp,
-		&direc->texture.size_line,
-		&direc->texture.endian);
+	direc->texture.addr = mlx_get_data_addr(
+			direc->texture_ptr,
+			&direc->texture.bitspp,
+			&direc->texture.size_line,
+			&direc->texture.endian);
 	if (!direc->texture.addr)
 		exit_cub3d(main, "Mlx_get_data_addr failed.");
 	direc->texture.bytespp = direc->texture.bitspp / 8;
-	direc->texture.pixels_per_line = direc->texture.size_line / direc->texture.bytespp;
+	direc->texture.pixels_per_line = \
+		direc->texture.size_line / direc->texture.bytespp;
 	direc->texture.total_bytes = direc->texture.size_line * direc->height;
 }
 

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dda_algorithm.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/22 16:07:51 by jrandet           #+#    #+#             */
+/*   Updated: 2025/07/22 16:08:51 by jrandet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub3d.h"
 
@@ -16,7 +27,7 @@ static void	get_perpwall_dist(t_dda_struct *dda)
  */
 // t_vec2	vector;
 // continue tant que mur n'est pas hit
-static void dda_main_loop(t_main *main, t_dda_struct *dda)
+static void	dda_main_loop(t_main *main, t_dda_struct *dda)
 {
 	while (dda->hit == 0)
 	{
