@@ -14,14 +14,13 @@ void	free_all_pointer_arrays(t_main *main)
 void	free_all_textures(t_main *main)
 {
 	if (main->wall.ea.texture_ptr)
-		//mlx_destroy_image(main->mlx_ptr, main->wall.ea.texture_ptr);
-		free(main->wall.ea.texture_ptr);
+		mlx_destroy_image(main->mlx_ptr, main->wall.ea.texture_ptr);
 	if (main->wall.so.texture_ptr)
-		free(main->wall.we.texture_ptr);
+		mlx_destroy_image(main->mlx_ptr, main->wall.so.texture_ptr);
 	if (main->wall.no.texture_ptr)
-		free(main->wall.no.texture_ptr);
+		mlx_destroy_image(main->mlx_ptr, main->wall.no.texture_ptr);
 	if (main->wall.we.texture_ptr)
-		free(main->wall.so.texture_ptr);
+		mlx_destroy_image(main->mlx_ptr, main->wall.we.texture_ptr);
 }
 
 void	free_mlx_pointers(t_main *main)
