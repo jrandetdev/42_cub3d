@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:07:51 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/22 16:08:51 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/07/23 14:08:08 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ static void	dda_main_loop(t_main *main, t_dda_struct *dda)
 			dda->mapY += dda->step_y;
 			dda->side = 1;
 		}
-		if (main->map_struct.map[(int)dda->mapY][(int)dda->mapX] != '0')
-		{
+		if (main->map_struct.map[(int)dda->mapY][(int)dda->mapX] == '1')
 			dda->hit = 1;
-		}
+		else if (main->map_struct.map[(int)dda->mapY][(int)dda->mapX] == '2')
+			dda->hit = 1;
 	}
 }
 

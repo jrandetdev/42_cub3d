@@ -45,7 +45,6 @@ SRC_PARSING		=			flood_fill.c \
 							main_parsing.c \
 							check_file.c \
 							init_player.c \
-							load_personal_textures.c \
 							extract_texture.c \
 							extract_colour.c \
 							validate_colour.c \

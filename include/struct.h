@@ -177,6 +177,7 @@ typedef struct	s_wall_texture
 	t_texture		so;
 	t_texture		ea;
 	t_texture		we;
+	t_texture		door;
 }				t_wall_texture;
 
 typedef struct s_map

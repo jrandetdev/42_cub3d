@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fps_counter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 10:27:23 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/23 11:51:16 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/23 13:55:29 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	fps_counter(t_main *main)
 	frames += 1;
 	if (gettimeofday(&current, NULL))
 		exit_cub3d(main, "GetTimeOfDay failed in fps counter");
-	ms = (main->bonus.last_sec.tv_sec - current.tv_sec) / 1000;
-	ms += (main->bonus.last_sec.tv_usec - current.tv_usec) * 1000;
+	ms = (current.tv_sec - main->bonus.last_sec.tv_sec) * 1000;
+	ms += (current.tv_usec - main->bonus.last_sec.tv_usec) / 1000;
 	if (ms >= 1000)
 	{
 		main->bonus.fps = frames;
@@ -37,3 +37,4 @@ void	fps_counter(t_main *main)
 	mlx_string_put(main->mlx_ptr, main->mlx_win, 10, 10, 0xff1100, str_frame);
 	free(str_frame);
 }
+

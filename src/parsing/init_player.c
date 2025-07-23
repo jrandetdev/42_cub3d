@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:21:00 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/22 15:24:24 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/07/23 14:10:34 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static bool	get_players(t_main *main, int *x, int *y, int *player)
 		i = 0;
 		while (map[j][i])
 		{
-			if (!ft_strchr("01NSWE' ", map[j][i]))
+			if (!ft_strchr("0123NSWE' ", map[j][i]))
 				return (print_error_and_message("unknown character"), false);
 			if (map[j][i] == 'N' || map[j][i] == 'S'
 				|| map[j][i] == 'W' || map[j][i] == 'E')

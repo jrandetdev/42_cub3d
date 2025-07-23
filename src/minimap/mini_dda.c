@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_dda.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:19:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/22 15:28:35 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/23 14:06:41 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ static bool	check_outside_minimap(t_main *main, double x, double y)
 	ym = (y - main->minimap.start_py) / size;
 	if (xm < 0 || ym < 0 || xm > map_width || ym > map_height)
 		return (false);
-	if (main->map_struct.map[ym][xm] == '1')
+	if (main->map_struct.map[ym][xm] == '1' ||
+		main->map_struct.map[ym][xm] == '2')
 		return (false);
 	return (true);
 }

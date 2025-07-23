@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:40 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/23 12:56:49 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/07/23 14:29:40 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,14 @@ void	extract_texture(t_main *main, char *id, char *xpm_f)
 		return (get_texture_data(main, &main->wall.ea, xpm_f));
 	else
 		return (exit_cub3d(main, "Texture id needs NO, SO, WE, EA"));
+}
+
+void	load_personal_textures(t_main *main)
+{
+	char	*filename;
+
+	filename = "./Assets/textures/brushed-metal-east.xpm";
+	if (!xmp_extension_is_valid(filename, 3))
+		return (exit_cub3d(main, "Texture file needs xpm extension."));
+	get_texture_data(main, &main->wall.door, filename);
 }
