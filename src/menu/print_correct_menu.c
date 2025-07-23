@@ -18,4 +18,6 @@ void	print_correct_menu(t_main *main, int *menu)
 		show_main_menu(main, menu);
 	else if (*menu == OPTION_MENU)
 		show_option_menu(main, menu);
+	else if (*menu == DEBUG_MENU)
+		show_debug_menu(main, menu);
 }

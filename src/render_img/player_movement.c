@@ -46,6 +46,7 @@ static void	player_mouse_rotation(t_main *main)
 	double	rotation_speed;
 	double	old_plane_x;
 
+	rotation_speed = 0;
 	if (main->mouse.dist)
 	{
 		if (main->mouse.dist > 0)
