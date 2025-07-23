@@ -104,8 +104,12 @@ SRC_MENU		=			main_menu.c \
 							print_correct_menu.c
 MENU			=			$(addprefix $(DIR_MENU)/, $(SRC_MENU))
 
-SOURCES			=			$(MAIN) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(RENDER_IMG) $(MINIMAP) $(RAYCASTING) $(MENU)
-vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS) $(DIR_RENDER_IMG) $(DIR_RENDER_IMG) $(DIR_MINIMAP) $(DIR_RAYCASTING) $(DIR_MENU)
+DIR_BONUS		=			./src/bonus
+SRC_BONUS		=			fps_counter.c
+
+BONUS			=			$(addprefix $(DIR_BONUS)/, $(SRC_BONUS))
+SOURCES			=			$(MAIN) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(RENDER_IMG) $(MINIMAP) $(RAYCASTING) $(MENU) $(BONUS)
+vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS) $(DIR_RENDER_IMG) $(DIR_RENDER_IMG) $(DIR_MINIMAP) $(DIR_RAYCASTING) $(DIR_MENU) $(DIR_BONUS)
 
 OBJECTS			:= 			$(addprefix $(DIR_BUILD)/, $(notdir $(SOURCES:.c=.o)))
 DEPS			:=			$(OBJECTS:.o=.d)

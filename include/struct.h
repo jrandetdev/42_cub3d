@@ -32,6 +32,12 @@ typedef struct	s_mouse
 	double	dist;
 }				t_mouse;
 
+typedef struct	s_bonus
+{
+	struct timeval	*last_sec;
+	unsigned int	fps;
+}				t_bonus;
+
 // MANDATORY PART //
 
 enum SYSTEM
@@ -200,6 +206,7 @@ typedef struct	s_main
 	t_minimap		minimap;
 	t_myimage		image;
 	t_mouse			mouse;
+	t_bonus			bonus;
 }				t_main;
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:06:37 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/22 16:06:38 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/07/23 11:37:07 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ int	render_next_frame(t_main *main)
 	print_minimap(main);
 	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win,
 		main->image.data_img, 0, 0);
+	//fps_counter(main);
 	return (0);
 }

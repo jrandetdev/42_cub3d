@@ -17,5 +17,7 @@ void	print_menu_section(t_main *main, int selection, int i, char *str);
 
 
 // FPS //
+void	fps_counter(t_main *main);
+
 
 #endif

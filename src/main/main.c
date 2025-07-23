@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:23:58 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/22 16:25:23 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/23 10:42:11 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ static void	init_cub3d(t_main *main)
 	init_img(main);
 	main->mouse.x = WIN_WIDTH / 2;
 	mlx_mouse_hide(main->mlx_ptr, main->mlx_win);
+	if (gettimeofday(main->bonus.last_sec, NULL))
+		exit_cub3d(main, "GetTimeOfDay failed in init_cub3d");
 }
 
 int	main(int argc, char **argv)
