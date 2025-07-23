@@ -34,7 +34,7 @@ typedef struct	s_mouse
 
 typedef struct	s_bonus
 {
-	struct timeval	*last_sec;
+	struct timeval	last_sec;
 	unsigned int	fps;
 }				t_bonus;
 
