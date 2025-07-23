@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_next_movement.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:03:07 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/22 16:23:37 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/23 12:02:26 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	valid_next_movement_down(t_main *main, double next_x, double next_y)
 		{
 			main->player.x = next_x;
 			main->player.y = next_y;
-		}
+		} 
 	}
 }
 

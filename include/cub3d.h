@@ -30,6 +30,14 @@
 #  define M_PI 3.14159265358979323846
 # endif
 
+# ifndef DC
+#  define DC 2
+# endif
+
+# ifndef DO
+#  define DC
+# endif
+
 typedef struct	s_main t_main;
 typedef struct	s_map t_map;
 typedef struct	s_texture t_texture;
