@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:29:29 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/22 15:55:08 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/07/23 15:10:39 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,15 @@ void	draw_texture(t_main *main, t_dda_struct *dda_struct, int x,
 	get_texture_position(main, texture, &params);
 }
 
-t_texture	get_cardinal_texture(t_main *main, t_dda_struct *dda_struct)
+t_texture	get_corresp_texture(t_main *main, t_dda_struct *dda_struct)
 {
 	t_texture	texture;
 
+	if (dda_struct->hit == 2)
+	{
+		texture = main->wall.door;
+		return (texture);
+	}
 	if (dda_struct->side == 0)
 	{
 		if (main->ray.dirX > 0)

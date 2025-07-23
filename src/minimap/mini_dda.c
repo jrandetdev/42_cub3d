@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:19:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/23 14:06:41 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/07/23 15:10:39 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static t_vec2	dda_case_1(t_main *main, t_dda *dda_struct)
 	count_steps = fabs(dda_struct->delta_x);
 	if (dda_struct->delta_x < 0)
 		step_in_x = -1;
-	while (count_steps > 0)
+	while (count_steps >= 0)
 	{
 		if (!check_outside_and_corner(main, x, y))
 			break ;
@@ -98,7 +98,7 @@ static t_vec2	dda_case_2(t_main *main, t_dda *dda_struct)
 	if (dda_struct->delta_y < 0)
 		step_in_y = -1;
 	count_steps = fabs(dda_struct->delta_y);
-	while (count_steps > 0)
+	while (count_steps >= 0)
 	{
 		if (!check_outside_and_corner(main, x, y))
 			break ;

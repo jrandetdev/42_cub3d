@@ -57,7 +57,7 @@ typedef struct s_dda_struct
 	int			step_x;
 	int			step_y;
 	double		perpwalldist;
-	bool		hit;
+	int			hit;
 	int			side;
 }	t_dda_struct;
 

@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:55:18 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/22 15:55:32 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/07/23 15:10:39 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	cast_rays(t_main *main)
 		main->ray.dirY = main->player.dir_y
 			+ main->player.plane_y * main->player.camera_x;
 		digital_differential_analyzer(main, &dda_struct);
-		cardinal_texture = get_cardinal_texture(main, &dda_struct);
+		cardinal_texture = get_corresp_texture(main, &dda_struct);
 		draw_texture(main, &dda_struct, x, cardinal_texture);
 		x++;
 	}
