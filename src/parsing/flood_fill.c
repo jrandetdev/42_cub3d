@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:47 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/22 15:23:51 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/07/23 12:44:14 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	flood_fill(t_parsing *p, int x, int y)
 		p->patern = 1;
 		return ;
 	}
-	if (p->map[y][x] == '1' || p->map[y][x] == 'V')
+	if (p->map[y][x] == '1' || p->map[y][x] == 'V' || p->map[y][x] == '2')
 		return ;
 	p->map[y][x] = 'V';
 	if (p->patern == 1)

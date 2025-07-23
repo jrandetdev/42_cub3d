@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:23:58 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/23 11:44:56 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/23 12:44:14 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ WIN_HEIHT / 2
 WIN_WIDTH / 2
 M_PI / 2
 */
+
+//FIX WALL
 
 static bool	arguments_are_valid(int argc, char **argv)
 {

@@ -49,7 +49,7 @@ typedef struct	s_dda_struct t_dda_struct;
 /*------------------------------------ DEBUG ---------------------------------*/
 
 
-void	init_debug(t_main *main);
+void		init_debug(t_main *main);
 
 // MAP AND PARSING//
 
@@ -66,6 +66,7 @@ void		parse_map_elements(t_main *main);
 void		get_map_descritpion(t_main *main);
 void		extract_colour(t_main *main, char *id, char *info);
 void		extract_texture(t_main *main, char *id, char *xpm_f);
+void		get_texture_data(t_main *main, t_texture *direc, char *xpm_file);
 void		validate_colour(t_main *main, char **splitted_colours);
 bool		find_player_position(t_main *main, int *x, int *y, int *player);
 

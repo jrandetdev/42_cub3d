@@ -6,13 +6,13 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:40 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/22 15:22:54 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/07/23 12:56:49 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	get_texture_data(t_main *main, t_texture *direc, char *xpm_file)
+void	get_texture_data(t_main *main, t_texture *direc, char *xpm_file)
 {
 	direc->texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, xpm_file, \
 		&direc->width, &direc->height);
