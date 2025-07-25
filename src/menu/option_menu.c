@@ -38,12 +38,15 @@ void	show_option_menu(t_main *main, int *menu)
 		menu_title = 3;
 	selection = menu_title % 4;
 	print_menu_title(main, "OPTION");
-	print_menu_section(main, selection, i++, "RESOLUTION");
-	print_menu_section(main, selection, i++, "FOV");
-	print_menu_section(main, selection, i++, "MINIMAP");
-	print_menu_section(main, selection, i, "RETURN");
+	print_menu_section_4(main, selection, i++, "RESOLUTION");
+	print_menu_section_4(main, selection, i++, "FOV");
+	print_menu_section_4(main, selection, i++, "MINIMAP");
+	print_menu_section_4(main, selection, i, "RETURN");
 	if (main->keys.enter)
+	{
+		menu_title = 0;
 		apply_selection(main, menu, selection);
+	}
 	else if (main->keys.up)
 		menu_up(main, &menu_title);
 	else if (main->keys.down)

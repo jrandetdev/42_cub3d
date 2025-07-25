@@ -101,7 +101,8 @@ SRC_MENU		=			main_menu.c \
 							option_menu.c \
 							print_menu_title.c \
 							print_menu_section.c \
-							print_correct_menu.c
+							print_correct_menu.c \
+							print_debug_menu.c
 MENU			=			$(addprefix $(DIR_MENU)/, $(SRC_MENU))
 
 DIR_BONUS		=			./src/bonus
