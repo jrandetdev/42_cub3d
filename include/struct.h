@@ -172,14 +172,16 @@ typedef union
 	};
 }	t_colour;
 
-typedef struct	s_wall_texture
+typedef struct	s_texture_bank
 {
 	t_texture		no;
 	t_texture		so;
 	t_texture		ea;
 	t_texture		we;
 	t_texture		door;
-}				t_wall_texture;
+	t_texture		floor;
+	t_texture		ceiling;
+}				t_texture_bank;
 
 typedef struct s_map
 {
@@ -202,7 +204,7 @@ typedef struct	s_main
 	t_player		player;
 	t_ray			ray;
 	t_keys			keys;
-	t_wall_texture	wall;
+	t_texture_bank	texture_bank;
 	t_colour		c_colour;
 	t_colour		f_colour;
 	t_minimap		minimap;

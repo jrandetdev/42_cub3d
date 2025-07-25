@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:29:29 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/25 13:42:55 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/07/25 16:22:43 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,22 +87,22 @@ t_texture	get_corresp_texture(t_main *main, t_dda_struct *dda_struct)
 
 	if (dda_struct->hit == 2)
 	{
-		texture = main->wall.door;
+		texture = main->texture_bank.door;
 		return (texture);
 	}
 	if (dda_struct->side == 0)
 	{
 		if (main->ray.dirX > 0)
-			texture = main->wall.ea;
+			texture = main->texture_bank.ea;
 		else
-			texture = main->wall.we;
+			texture = main->texture_bank.we;
 	}
 	else
 	{
 		if (main->ray.dirY < 0)
-			texture = main->wall.no;
+			texture = main->texture_bank.no;
 		else
-			texture = main->wall.so;
+			texture = main->texture_bank.so;
 	}
 	return (texture);
 }
