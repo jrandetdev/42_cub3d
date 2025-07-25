@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:47 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/23 15:05:08 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/07/25 14:35:28 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static bool	verify_door_position(char **map, int x, int y)
+{
+	if ((map[y][x + 1] == '1' && map[y] [x - 1] == '1')
+		|| (map[y + 1][x] = '1' && map[y - 1][x] == '1'))
+		return (true);
+	return	(false);
+}
 
 static void	flood_fill(t_parsing *p, int x, int y)
 {
@@ -24,6 +32,9 @@ static void	flood_fill(t_parsing *p, int x, int y)
 	}
 	if (p->map[y][x] == '1' || p->map[y][x] == 'V')
 		return ;
+	if (p->map[y][x] == DO || p->map[y][x] == DC)
+		if (!verify_door_position(p->map, x, y))
+			return;
 	p->map[y][x] = 'V';
 	if (p->patern == 1)
 		return ;
