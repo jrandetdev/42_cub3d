@@ -31,11 +31,11 @@
 # endif
 
 # ifndef DC
-#  define DC 2
+#  define DC '2'
 # endif
 
 # ifndef DO
-#  define DO 3
+#  define DO '3'
 # endif
 
 typedef struct	s_main t_main;

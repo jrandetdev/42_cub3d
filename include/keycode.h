@@ -94,6 +94,7 @@ enum e_keys
 	K_RIGHT		= 65363,
 	K_DOWN		= 65364,
 	K_ESCP		= 65307,
+	K_E			= 101,
 	K_C			= 99,
 	K_G			= 103,
 	K_K			= 107,
