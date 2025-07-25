@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 14:04:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/25 14:22:41 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/25 15:41:10 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,23 @@
 
 void	player_interaction(t_main *main)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
+	char	**map;
 
-	x = (int)trunc(main->player.x);
-	y = (int)trunc(main->player.y);
 	if (main->keys.e)
 	{
-		if (main->map_struct.map[y][x + 1] == DC)
-			main->map_struct.map[y][x + 1] = DO;
-		else if (main->map_struct.map[y][x - 1] == DC)
-			main->map_struct.map[y][x - 1] = DO;
-		else if (main->map_struct.map[y + 1][x] == DC)
-			main->map_struct.map[y + 1][x] = DO;
-		else if (main->map_struct.map[y - 1][x] == DC)
-			main->map_struct.map[y - 1][x] = DO;
-		else if (main->map_struct.map[y][x + 1] == DO)
-			main->map_struct.map[y][x + 1] = DC;
-		else if (main->map_struct.map[y][x - 1] == DO)
-			main->map_struct.map[y][x - 1] = DC;
-		else if (main->map_struct.map[y + 1][x] == DO)
-			main->map_struct.map[y + 1][x] = DC;
-		else if (main->map_struct.map[y - 1][x] == DO)
-			main->map_struct.map[y - 1][x] = DC;
+		main->keys.e = 0;
+		map = main->map_struct.map;
+		x = (int)trunc(main->player.x + (main->player.dir_x * 1.5));
+		y = (int)trunc(main->player.y + (main->player.dir_y * 1.5));
+		if (main->map_struct.map[y][x] == DC)
+			main->map_struct.map[y][x] = DO;
+		else if (main->map_struct.map[y][x] == DO)
+		{
+			if (map[(int)trunc(main->player.y)][(int)trunc(main->player.x)] == map[y][x])
+				return;
+			main->map_struct.map[y][x] = DC;
+		}
 	}
-	main->keys.e = 0;
 }
