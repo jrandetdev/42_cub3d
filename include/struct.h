@@ -124,6 +124,7 @@ typedef struct s_keys
 	int	d;
 	int	g;
 	int	m;
+	int	e;
 	int	left;
 	int	right;
 	int	up;

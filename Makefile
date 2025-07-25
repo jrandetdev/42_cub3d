@@ -74,7 +74,8 @@ DIR_RENDER_IMG	=			./src/render_img
 SRC_RENDER_IMG	=			init_img.c \
 							render.c \
 							player_movement.c \
-							valid_next_movement.c
+							valid_next_movement.c \
+							player_interaction.c
 RENDER_IMG		=			$(addprefix $(DIR_RENDER_IMG)/, $(SRC_RENDER_IMG))
 
 DIR_MINIMAP		=			./src/minimap

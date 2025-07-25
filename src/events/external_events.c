@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:52:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/22 16:00:10 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/25 14:07:47 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ static int	key_pressed(int keycode, t_main *main)
 		main->keys.s = 1;
 	if (keycode == K_D)
 		main->keys.d = 1;
+	if (keycode == K_E)
+		main->keys.e = 1;
 	if (keycode == K_LEFT)
 		main->keys.left = 1;
 	if (keycode == K_RIGHT)
@@ -77,6 +79,8 @@ static int	key_released(int keycode, t_main *main)
 		main->keys.s = 0;
 	if (keycode == K_D)
 		main->keys.d = 0;
+	if (keycode == K_E)
+		main->keys.e = 0;
 	if (keycode == K_LEFT)
 		main->keys.left = 0;
 	if (keycode == K_RIGHT)
