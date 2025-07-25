@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:40 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/23 15:10:39 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/07/25 16:22:43 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,27 @@ void	extract_texture(t_main *main, char *id, char *xpm_f)
 	if (!xmp_extension_is_valid(xpm_f, 3))
 		return (exit_cub3d(main, "Texture file needs xpm extension."));
 	if (ft_strncmp(id, "NO", 2) == 0)
-		return (get_texture_data(main, &main->wall.no, xpm_f));
+		return (get_texture_data(main, &main->texture_bank.no, xpm_f));
 	else if (ft_strncmp(id, "SO", 2) == 0)
-		return (get_texture_data(main, &main->wall.so, xpm_f));
+		return (get_texture_data(main, &main->texture_bank.so, xpm_f));
 	else if (ft_strncmp(id, "WE", 2) == 0)
-		return (get_texture_data(main, &main->wall.we, xpm_f));
+		return (get_texture_data(main, &main->texture_bank.we, xpm_f));
 	else if (ft_strncmp(id, "EA", 2) == 0)
-		return (get_texture_data(main, &main->wall.ea, xpm_f));
+		return (get_texture_data(main, &main->texture_bank.ea, xpm_f));
 	else
 		return (exit_cub3d(main, "Texture id needs NO, SO, WE, EA"));
 }
 
-void	load_personal_textures(t_main *main)
+void	check_and_get_texture_data(t_main *main, t_texture *pannel, char *filename)
 {
-	char	*filename;
-
-	filename = "./Assets/textures/office_door.xpm";
 	if (!xmp_extension_is_valid(filename, 3))
 		return (exit_cub3d(main, "Texture file needs xpm extension."));
-	get_texture_data(main, &main->wall.door, filename);
+	get_texture_data(main, pannel, filename);
+}
+
+void	load_personal_textures(t_main *main)
+{
+	check_and_get_texture_data(main, &main->texture_bank.door, "./Assets/textures/office_door.xpm");
+	check_and_get_texture_data(main, )
+	
 }

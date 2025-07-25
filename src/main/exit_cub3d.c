@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_cub3d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:24:31 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/22 16:25:35 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/25 16:22:43 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ void	free_all_pointer_arrays(t_main *main)
 
 void	free_all_textures(t_main *main)
 {
-	if (main->wall.ea.texture_ptr)
-		mlx_destroy_image(main->mlx_ptr, main->wall.ea.texture_ptr);
-	if (main->wall.so.texture_ptr)
-		mlx_destroy_image(main->mlx_ptr, main->wall.so.texture_ptr);
-	if (main->wall.no.texture_ptr)
-		mlx_destroy_image(main->mlx_ptr, main->wall.no.texture_ptr);
-	if (main->wall.we.texture_ptr)
-		mlx_destroy_image(main->mlx_ptr, main->wall.we.texture_ptr);
+	if (main->texture_bank.ea.texture_ptr)
+		mlx_destroy_image(main->mlx_ptr, main->texture_bank.ea.texture_ptr);
+	if (main->texture_bank.so.texture_ptr)
+		mlx_destroy_image(main->mlx_ptr, main->texture_bank.so.texture_ptr);
+	if (main->texture_bank.no.texture_ptr)
+		mlx_destroy_image(main->mlx_ptr, main->texture_bank.no.texture_ptr);
+	if (main->texture_bank.we.texture_ptr)
+		mlx_destroy_image(main->mlx_ptr, main->texture_bank.we.texture_ptr);
 }
 
 void	free_mlx_pointers(t_main *main)
