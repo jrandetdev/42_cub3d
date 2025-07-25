@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:40 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/25 17:34:41 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/07/25 18:23:06 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,5 @@ void	check_and_get_texture_data(t_main *main, t_texture *pannel, char *filename)
 void	load_personal_textures(t_main *main)
 {
 	check_and_get_texture_data(main, &main->texture_bank.door, "./Assets/textures/office_door.xpm");
-	check_and_get_texture_data(main, &main->texture_bank.floor, "./Assets/textures/floor.xpm")
+	check_and_get_texture_data(main, &main->texture_bank.floor, "./Assets/textures/floor.xpm");
 }
