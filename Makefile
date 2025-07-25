@@ -94,6 +94,7 @@ BONUS			=			$(addprefix $(DIR_BONUS)/, $(SRC_BONUS))
 DIR_RAYCASTING	=			./src/raycasting
 SRC_RAYCASTING	=			game_loop.c \
 							draw_floor.c \
+							draw_ceiling.c \
 							draw_walls.c 
 RAYCASTING 		=			$(addprefix $(DIR_RAYCASTING)/, $(SRC_RAYCASTING))
 
@@ -117,7 +118,7 @@ vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS
 OBJECTS			:= 			$(addprefix $(DIR_BUILD)/, $(notdir $(SOURCES:.c=.o)))
 DEPS			:=			$(OBJECTS:.o=.d)
 
-CFLAGS			=			-Wall -Werror -Wextra $(INC_FLAGS) -g -MMD -MP 
+CFLAGS			=			-Wall -Werror -Wextra $(INC_FLAGS) -g -MMD -MP -O3
 INC_FLAGS		:=			-I $(DIR_INCLUDE) -I $(LIBFT_PATH) -I $(MLX_PATH)
 LIBRARY_PATHS	:=			-L$(LIBFT_PATH) -L$(MLX_PATH)
 

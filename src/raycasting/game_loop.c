@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:55:18 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/25 17:43:53 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/07/25 18:37:44 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	cast_rays(t_main *main)
 
 	x = 0;
 	draw_floor(main);
+	draw_ceiling(main);
 	while (x < WIN_WIDTH)
 	{
 		main->player.camera_x = 2 * x / (double)WIN_WIDTH - 1;

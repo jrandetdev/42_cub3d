@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:40 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/25 17:35:22 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/07/25 18:59:27 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,5 @@ void	load_personal_textures(t_main *main)
 {
 	check_and_get_texture_data(main, &main->texture_bank.door, "./Assets/textures/office_door.xpm");
 	check_and_get_texture_data(main, &main->texture_bank.floor, "./Assets/textures/floor.xpm");
+	check_and_get_texture_data(main, &main->texture_bank.ceiling, "./Assets/textures/Star_Ceiling-7.xpm");
 }
