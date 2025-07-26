@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:52:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/26 21:43:15 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/27 01:49:18 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ static int	key_pressed(int keycode, t_main *main)
 		main->keys.up = 1;
 	if (keycode == K_DOWN)
 		main->keys.down = 1;
+	if (keycode == K_SHIFT)
+		main->keys.shift = 1;
 	key_hit(keycode, main);
 	return (1);
 }
@@ -91,6 +93,8 @@ static int	key_released(int keycode, t_main *main)
 		main->keys.up = 0;
 	if (keycode == K_DOWN)
 		main->keys.down = 0;
+	if (keycode == K_SHIFT)
+		main->keys.shift = 0;
 	return (0);
 }
 

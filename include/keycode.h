@@ -100,7 +100,8 @@ enum e_keys
 	K_K			= 107,
 	K_M			= 109,
 	K_CTRL		= 65507,
-	K_ENTER		= 65293
+	K_ENTER		= 65293,
+	K_SHIFT		= 65505,
 };
 
 # define OS 1

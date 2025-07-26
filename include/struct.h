@@ -5,8 +5,7 @@
 #include "cub3d.h"
 
 typedef struct	s_main t_main;
-typedef struct s_texture t_texture;
-
+typedef struct	s_texture t_texture;
 
 // BONUS //
 
@@ -39,6 +38,15 @@ typedef struct	s_bonus
 	struct timeval	last_sec;
 	unsigned int	fps;
 }				t_bonus;
+
+typedef	struct	s_menu_param
+{
+	int	fov;
+	int	sensitivity;
+	int	show_minimap;
+	int	show_minimap_grid;
+}
+				t_menu_param;
 
 // MANDATORY PART //
 
@@ -134,12 +142,13 @@ typedef struct s_keys
 	int	g;
 	int	m;
 	int	e;
+	int	up;
+	int escp;
+	int	down;
 	int	left;
 	int	right;
-	int	up;
-	int	down;
-	int escp;
 	int	enter;
+	int	shift;
 }	t_keys;
 
 typedef struct s_vec2
@@ -228,6 +237,7 @@ typedef struct	s_main
 	t_mouse			mouse;
 	t_bonus			bonus;
 	t_cal			cal;
+	t_menu_param	param;
 }				t_main;
 
 #endif
