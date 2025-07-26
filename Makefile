@@ -36,7 +36,8 @@ DIR_MAIN		=			./src/main
 SRC_MAIN		=			main.c \
 							exit_cub3d.c \
 							error_handling.c \
-							free_utils.c
+							free_utils.c \
+							pre_calculate.c
 MAIN			=			$(addprefix $(DIR_MAIN)/, $(SRC_MAIN))
 
 DIR_PARSING		=			./src/parsing

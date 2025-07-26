@@ -48,6 +48,12 @@ enum SYSTEM
 	MACOS = 2,
 };
 
+typedef struct	s_cal
+{
+	int	half_wh;
+	int	half_ww;
+}				t_cal;
+
 typedef struct s_dda_struct
 {
 	int			mapX;
@@ -220,6 +226,7 @@ typedef struct	s_main
 	t_myimage		image;
 	t_mouse			mouse;
 	t_bonus			bonus;
+	t_cal			cal;
 }				t_main;
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:23:58 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/23 12:44:14 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/07/26 21:39:55 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static void	init_mlx(t_main *main)
 
 static void	init_cub3d(t_main *main)
 {
+	calcule_constants(main);
 	main->mlx_win = mlx_new_window(main->mlx_ptr, WIN_WIDTH,
 			WIN_HEIGHT, "Cub3d");
 	if (!main->mlx_win)

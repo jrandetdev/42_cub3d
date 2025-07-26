@@ -119,6 +119,7 @@ char		*join_and_free(char *line, char *tmp2);
 
 void		print_array(char **array);
 void		normalize_angle(double *angle);
+void		calcule_constants(t_main *main);
 void		ft_strcpy(char *dest, char *src, int start, int end);
 
 double		get_vector_norm(t_vec2 vec1, t_vec2 vec2);
