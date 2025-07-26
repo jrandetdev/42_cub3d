@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:06:37 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/26 17:38:45 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/26 21:43:15 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	backgroud_color(t_main *main)
 	int	midle;
 
 	y = 0;
-	midle = WIN_HEIGHT / 2;
+	midle = main->cal.half_wh;
 	while (y <= midle)
 	{
 		x = 0;

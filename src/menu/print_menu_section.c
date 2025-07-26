@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:39 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/22 15:50:11 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/26 21:43:15 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	print_menu_section_3(t_main *main, int selection, int i, char *str)
 	char			*filename;
 	t_texture		letter;
 
-	x = WIN_WIDTH / 2 - (ft_strlen(str) * 48 / 2);
+	x = main->cal.half_ww - (ft_strlen(str) * 48 / 2);
 	while (*str)
 	{
 		filename = get_letter_filename(main, ft_capitalize(*str), i, selection);
@@ -60,7 +60,7 @@ void	print_menu_section_3(t_main *main, int selection, int i, char *str)
 	}
 	y += 64;
 	if (i == 2)
-		y = WIN_HEIGHT / 2 - 3 * 48 + 48;
+		y = main->cal.half_wh - 3 * 48 + 48;
 }
 
 void	print_menu_section_4(t_main *main, int selection, int i, char *str)
@@ -70,7 +70,7 @@ void	print_menu_section_4(t_main *main, int selection, int i, char *str)
 	char			*filename;
 	t_texture		letter;
 
-	x = WIN_WIDTH / 2 - (ft_strlen(str) * 48 / 2);
+	x = main->cal.half_ww - (ft_strlen(str) * 48 / 2);
 	while (*str)
 	{
 		filename = get_letter_filename(main, ft_capitalize(*str), i, selection);
@@ -87,5 +87,5 @@ void	print_menu_section_4(t_main *main, int selection, int i, char *str)
 	}
 	y += 64;
 	if (i == 3)
-		y = WIN_HEIGHT / 2 - 3 * 48 + 48;
+		y = main->cal.half_wh - 3 * 48 + 48;
 }

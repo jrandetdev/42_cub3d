@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:23:58 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/26 21:39:55 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/26 21:42:48 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 fov / 2
 WIN_HEIHT / 2
-WIN_WIDTH / 2
+main->cal.half_ww
 M_PI / 2
 */
 
@@ -56,7 +56,7 @@ static void	init_cub3d(t_main *main)
 		exit_cub3d(main, "Mlx window failed");
 	mlx_hook(main->mlx_win, 17, 0, handle_destroy, main);
 	init_img(main);
-	main->mouse.x = WIN_WIDTH / 2;
+	main->mouse.x = main->cal.half_ww;
 	mlx_mouse_hide(main->mlx_ptr, main->mlx_win);
 	if (gettimeofday(&main->bonus.last_sec, NULL))
 		exit_cub3d(main, "GetTimeOfDay failed in init_cub3d");

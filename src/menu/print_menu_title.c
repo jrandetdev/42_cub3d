@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:34 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/22 15:41:04 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/26 21:42:55 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	print_menu_title(t_main *main, char *str)
 	char			*filename;
 	t_texture		letter;
 
-	x = WIN_WIDTH / 2 - (ft_strlen(str) * 64 / 2);
+	x = main->cal.half_ww - (ft_strlen(str) * 64 / 2);
 	while (*str)
 	{
 		filename = get_letter_filename(main, ft_capitalize(*str));

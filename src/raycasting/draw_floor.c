@@ -69,7 +69,7 @@ static void	get_guide_info(t_main *main, t_guide *g, int y)
 	g->rayDirLeft_Y = player->dir_y - player->plane_y;
 	g->rayDirRight_X = player->dir_x + player->plane_x;
 	g->rayDirRight_Y = player->dir_y + player->plane_y;
-	g->pixel_distance_down = y - WIN_HEIGHT / 2;
+	g->pixel_distance_down = y - main->cal.half_wh;
 	g->pos_z = 0.5 * WIN_HEIGHT;
 	g->total_columns = WIN_WIDTH;
 	g->floor_pannel_distance = g->pos_z / g->pixel_distance_down;
@@ -84,7 +84,7 @@ void	draw_floor(t_main *main)
 	t_guide	g;
 	int		y;
 
-	y = WIN_HEIGHT / 2;
+	y = main->cal.half_wh;
 	while (y < WIN_HEIGHT)
 	{
 		get_guide_info(main, &g, y);

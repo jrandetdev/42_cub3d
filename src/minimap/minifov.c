@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:28:55 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/22 16:00:23 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/26 22:03:51 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	print_minifov(t_main *main)
 	double	start_fov;
 	double	end_fov;
 
-	start_fov = main->player.angle - (FOV / 2) * (M_PI / 180);
-	end_fov = main->player.angle + (FOV / 2) * (M_PI / 180);
+	start_fov = main->player.angle - main->cal.pre_fov;
+	end_fov = main->player.angle + main->cal.pre_fov;
 	while (start_fov <= end_fov)
 	{
 		print_mini_vector_from_angle(main, start_fov);

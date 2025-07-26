@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:52:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/25 14:07:47 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/26 21:43:15 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	mouse_move(int x, int y, t_main *main)
 			main->mouse.dist = -main->mouse.dist;
 		}
 		mlx_mouse_move(main->mlx_ptr, main->mlx_win,
-			WIN_WIDTH / 2, WIN_HEIGHT / 2);
+			main->cal.half_ww, main->cal.half_wh);
 	}
 	return (0);
 }

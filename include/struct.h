@@ -50,8 +50,9 @@ enum SYSTEM
 
 typedef struct	s_cal
 {
-	int	half_wh;
-	int	half_ww;
+	int		half_wh;
+	int		half_ww;
+	double	pre_fov;
 }				t_cal;
 
 typedef struct s_dda_struct

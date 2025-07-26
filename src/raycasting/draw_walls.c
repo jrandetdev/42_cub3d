@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:29:29 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/26 21:05:54 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/26 21:43:15 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	get_texture_position(t_main *main, t_texture t, t_params *p)
 
 	screen_y = p->draw_start;
 	step = (double)t.height / p->wall_height;
-	texture_pos = (p->draw_start - WIN_HEIGHT / 2 + p->wall_height / 2) * step;
+	texture_pos = (p->draw_start - main->cal.half_wh + p->wall_height / 2) * step;
 	while (screen_y < p->draw_end)
 	{
 		tex_pos_y = (int)texture_pos & (t.height - 1);
@@ -72,10 +72,10 @@ void	draw_texture(t_main *main, t_dda_struct *dda_struct, int x,
 	params.screen_x = x;
 	params.texture_x = get_hit_position(main, dda_struct, texture, &params);
 	params.wall_height = (int)(WIN_HEIGHT / dda_struct->perpwalldist);
-	params.draw_start = (WIN_HEIGHT / 2) - (params.wall_height / 2);
+	params.draw_start = (main->cal.half_wh) - (params.wall_height / 2);
 	if (params.draw_start < 0)
 		params.draw_start = 0;
-	params.draw_end = (params.wall_height / 2) + (WIN_HEIGHT / 2);
+	params.draw_end = (params.wall_height / 2) + (main->cal.half_wh);
 	if (params.draw_end >= WIN_HEIGHT)
 		params.draw_end = WIN_HEIGHT - 1;
 	get_texture_position(main, texture, &params);
