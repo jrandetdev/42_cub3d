@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:29:29 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/25 16:22:43 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/07/26 21:05:54 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ t_texture	get_corresp_texture(t_main *main, t_dda_struct *dda_struct)
 {
 	t_texture	texture;
 
-	if (dda_struct->hit == 2)
+	if (dda_struct->hit > 1)
 	{
-		texture = main->texture_bank.door;
+		texture = main->animation.door[0];
 		return (texture);
 	}
 	if (dda_struct->side == 0)

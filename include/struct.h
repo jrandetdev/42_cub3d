@@ -5,6 +5,8 @@
 #include "cub3d.h"
 
 typedef struct	s_main t_main;
+typedef struct s_texture t_texture;
+
 
 // BONUS //
 
@@ -160,6 +162,11 @@ typedef struct	s_texture
 	t_myimage	texture;
 }				t_texture;
 
+typedef struct	s_animation
+{
+	t_texture	door[6];
+}				t_animation;
+
 typedef union
 {
 	int	value;
@@ -195,6 +202,7 @@ typedef struct	s_main
 {
 	int				os;
 	int				rotation;
+	int				animation_playing;
 	void			*mlx_ptr;
 	void			*mlx_win;
 	char			**file_content;
@@ -205,6 +213,7 @@ typedef struct	s_main
 	t_ray			ray;
 	t_keys			keys;
 	t_texture_bank	texture_bank;
+	t_animation		animation;
 	t_colour		c_colour;
 	t_colour		f_colour;
 	t_minimap		minimap;

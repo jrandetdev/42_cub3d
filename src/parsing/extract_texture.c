@@ -3,21 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   extract_texture.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:40 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/25 18:59:27 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/07/26 21:04:44 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	load_all_door_textures(t_main *main)
+{
+	int			i;
+	char		*num;
+	char		*filename;
+	char		*fullname;
+	const char	*path = "Assets/textures/doors/door_";
+
+	i = 0;
+	while (i < 5)
+	{
+		num = ft_itoa(i);
+		if (!num)
+			exit_cub3d(main, "itoa failed in load_doors_textures");
+		filename = ft_strjoin(path, num);
+		free(num);
+		if (!filename)
+			exit_cub3d(main, "first ft_strjoin failed in load_doors_textures");
+		fullname = ft_strjoin(filename, ".xpm");
+		free(filename);
+		if (!fullname)
+			exit_cub3d(main, "second ft_strjoin failed in load_doors_textures");
+		get_texture_data(main, &main->animation.door[i], fullname);
+		free(fullname);
+		i++;
+	}
+	main->animation.door[i].texture_ptr = NULL;
+}
 
 void	get_texture_data(t_main *main, t_texture *direc, char *xpm_file)
 {
 	direc->texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, xpm_file, \
 		&direc->width, &direc->height);
 	if (!direc->texture_ptr)
+	{
+		perror("texture failed");
 		exit_cub3d(main, "Texture path not found or invalid.");
+	}
 	printf("%p\n", direc->texture_ptr);
 	direc->texture.addr = mlx_get_data_addr(
 			direc->texture_ptr,
@@ -60,4 +92,5 @@ void	load_personal_textures(t_main *main)
 	check_and_get_texture_data(main, &main->texture_bank.door, "./Assets/textures/office_door.xpm");
 	check_and_get_texture_data(main, &main->texture_bank.floor, "./Assets/textures/floor.xpm");
 	check_and_get_texture_data(main, &main->texture_bank.ceiling, "./Assets/textures/Star_Ceiling-7.xpm");
+	load_all_door_textures(main);
 }
