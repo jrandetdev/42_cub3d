@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_minimap.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:18:19 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/23 15:10:39 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/07/27 12:09:38 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-
 
 static void	print_tile(t_main *main, int idx_x, int idx_y, int color)
 {

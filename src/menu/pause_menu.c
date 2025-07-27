@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_menu.c                                        :+:      :+:    :+:   */
+/*   pause_menu.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:55 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/27 22:32:11 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/27 22:12:10 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@ static void	apply_selection(t_main *main, int *main_menu, int selection)
 {
 	main->keys.enter = 0;
 	if (selection == 0)
-	{
-		main->game_start = 1;
 		*(main_menu) = NO_MENU;
-	}
 	if (selection == 1)
 	{
 		*(main_menu) = OPTION_MENU;
@@ -34,7 +31,7 @@ static void	apply_selection(t_main *main, int *main_menu, int selection)
 		exit_cub3d(main, NULL);
 }
 
-void	show_main_menu(t_main *main, int *main_menu)
+void	show_pause_menu(t_main *main, int *main_menu)
 {
 	t_menu_struct	param;
 	static int		menu_title = 0;
@@ -46,7 +43,7 @@ void	show_main_menu(t_main *main, int *main_menu)
 	param.y = main->cal.half_wh - (param.menu_size * 48);
 	param.selection = menu_title % 4;
 	print_menu_title(main, GAME_NAME);
-	print_menu_section(main, &param, "PLAY");
+	print_menu_section(main, &param, "RESUME");
 	print_menu_section(main, &param, "OPTION");
 	print_menu_section(main, &param, "DEBUG");
 	print_menu_section(main, &param, "QUIT");

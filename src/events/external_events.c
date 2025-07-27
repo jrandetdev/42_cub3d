@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:52:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/27 01:49:18 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/27 22:36:11 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@ static void	key_hit(int keycode, t_main *main)
 		main->keys.m = !main->keys.m;
 	if (main->debug.last_keycode != keycode)
 		printf("keycode : %d\n", keycode);
+	if (keycode == K_P && main->game_start && !main->menu)
+	{
+		mlx_clear_window(main->mlx_ptr, main->mlx_win);
+		main->menu = PAUSE_MENU;
+	}
+	else if (keycode == K_P && main->game_start && main->menu > 0)
+		main->menu = NO_MENU;
 	main->debug.last_keycode = keycode;
 }
 

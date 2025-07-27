@@ -13,10 +13,11 @@ enum MENU
 {
 	NO_MENU = 0,
 	MAIN_MENU = 1,
-	OPTION_MENU = 2,
-	RESOLUTION_OPTION = 3,
-	FOV_OPTION = 4,
-	DEBUG_MENU = 5,
+	PAUSE_MENU = 2,
+	OPTION_MENU = 3,
+	RESOLUTION_OPTION = 4,
+	FOV_OPTION = 5,
+	DEBUG_MENU = 6,
 };
 
 enum MAIN_MENU
@@ -24,7 +25,7 @@ enum MAIN_MENU
 	PLAY = 0,
 	OPTION = 1,
 	DEBUG = 2,
-	QUIT = 4,
+	QUIT = 3,
 };
 
 typedef struct	s_mouse
@@ -47,6 +48,14 @@ typedef	struct	s_menu_param
 	int	show_minimap_grid;
 }
 				t_menu_param;
+
+typedef struct	s_menu_struct
+{
+	int	y;
+	int	idx;
+	int	selection;
+	int	menu_size;
+}				t_menu_struct;
 
 // MANDATORY PART //
 
@@ -142,6 +151,7 @@ typedef struct s_keys
 	int	g;
 	int	m;
 	int	e;
+	int	p;
 	int	up;
 	int escp;
 	int	down;
@@ -218,7 +228,9 @@ typedef struct	s_main
 {
 	int				os;
 	int				rotation;
+	int				menu;
 	int				animation_playing;
+	int				game_start;
 	void			*mlx_ptr;
 	void			*mlx_win;
 	char			**file_content;

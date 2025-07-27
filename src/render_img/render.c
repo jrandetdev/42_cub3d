@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:06:37 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/26 21:43:15 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/27 22:22:31 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,9 @@ static void	backgroud_color(t_main *main)
 
 int	render_next_frame(t_main *main)
 {
-	static int	menu = 1;
-
-	if (menu)
+	if (main->menu)
 	{
-		print_correct_menu(main, &menu);
+		print_correct_menu(main, &main->menu);
 		return (0);
 	}
 	mlx_destroy_image(main->mlx_ptr, main->image.data_img);
@@ -51,7 +49,8 @@ int	render_next_frame(t_main *main)
 		player_movement(main);
 	backgroud_color(main);
 	cast_rays(main);
-	print_minimap(main);
+	if (main->param.show_minimap)
+		print_minimap(main);
 	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win,
 		main->image.data_img, 0, 0);
 	fps_counter(main);

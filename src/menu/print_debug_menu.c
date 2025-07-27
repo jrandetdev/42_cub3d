@@ -5,35 +5,38 @@ static void	apply_selection(t_main *main, int *menu, int selection)
 {
 	main->keys.enter = 0;
 	if (selection == 0)
-		*(menu) = RESOLUTION_OPTION;
+		main->param.show_minimap_grid = !main->param.show_minimap_grid;
 	else if (selection == 1)
-		*(menu) = FOV_OPTION;
+		main->param.fov = !main->param.fov;
 	else if (selection == 2)
 	{
-		*(menu) = MAIN_MENU;
+		if (!main->game_start)
+			*(menu) = MAIN_MENU;
+		else
+			*menu = PAUSE_MENU;
 		mlx_clear_window(main->mlx_ptr, main->mlx_win);
 	}
 }
 
 void	show_debug_menu(t_main *main, int *menu)
 {
-	int			i;
-	int			selection;
-	static int	menu_title = 0;
+	t_menu_struct	param;
+	static int		menu_title = 0;
 
-	i = 0;
-	selection = 0;
+	ft_bzero(&param, sizeof(t_menu_struct));
+	param.menu_size = 3;
 	if (menu_title < 0)
 		menu_title = 3;
-	selection = menu_title % 4;
+	param.y = main->cal.half_wh - (param.menu_size * 48);
+	param.selection = menu_title % 4;
 	print_menu_title(main, "DEBUG");
-	print_menu_section_3(main, selection, i++, "GRID");
-	print_menu_section_3(main, selection, i++, "FOV");
-	print_menu_section_3(main, selection, i, "RETURN");
+	print_case(main, &param, main->param.show_minimap_grid, "GRID");
+	print_case(main, &param, main->param.fov, "FOV");
+	print_menu_section(main, &param, "RETURN");
 	if (main->keys.enter)
 	{
 		menu_title = 0;
-		apply_selection(main, menu, selection);
+		apply_selection(main, menu, param.selection);
 	}
 	else if (main->keys.up)
 		menu_up(main, &menu_title);
