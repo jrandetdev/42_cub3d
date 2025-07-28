@@ -3,34 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   valid_next_movement.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:03:07 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/25 12:15:43 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/07/28 11:15:20 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-// static bool	check_corner(t_main *main, double next_x, double next_y)
-// {
-// 	char	**map;
-
-// 	map = main->map_struct.map;
-// 	if (map[(int)trunc(next_y - 0.1)][(int)trunc(next_x)] == '1'
-// 			&& map[(int)trunc(next_y)][(int)trunc(next_x + 0.1)] == '1')
-// 		return (false);
-// 	if (map[(int)trunc(next_y + 0.1)][(int)trunc(next_x)] == '1'
-// 			&& map[(int)trunc(next_y)][(int)trunc(next_x - 0.1)] == '1')
-// 		return (false);
-// 	if (map[(int)trunc(next_y + 0.1)][(int)trunc(next_x)] == '1'
-// 			&& map[(int)trunc(next_y)][(int)trunc(next_x + 0.1)] == '1')
-// 		return (false);
-// 	if (map[(int)trunc(next_y - 0.1)][(int)trunc(next_x)] == '1'
-// 			&& map[(int)trunc(next_y)][(int)trunc(next_x - 0.1)] == '1')
-// 		return (false);
-// 	return (true);
-// }
 
 void	valid_next_movement_up(t_main *main, double next_x, double next_y)
 {

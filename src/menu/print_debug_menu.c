@@ -1,7 +1,7 @@
 
 #include "cub3d.h"
 
-static void	apply_selection(t_main *main, int *menu, int selection)
+static void	apply_selection(t_main *main, int *menu, int selection, int *menu_section)
 {
 	main->keys.enter = 0;
 	if (selection == 0)
@@ -10,6 +10,7 @@ static void	apply_selection(t_main *main, int *menu, int selection)
 		main->param.fov = !main->param.fov;
 	else if (selection == 2)
 	{
+		*(menu_section) = 0;
 		if (!main->game_start)
 			*(menu) = MAIN_MENU;
 		else
@@ -30,14 +31,11 @@ void	show_debug_menu(t_main *main, int *menu)
 	param.y = main->cal.half_wh - (param.menu_size * 48);
 	param.selection = menu_title % 4;
 	print_menu_title(main, "DEBUG");
-	print_case(main, &param, main->param.show_minimap_grid, "GRID");
-	print_case(main, &param, main->param.fov, "FOV");
+	print_case(main, &param, main->param.show_minimap_grid, "MINIMAP GRID");
+	print_case(main, &param, main->param.fov, "MINIMAP FOV");
 	print_menu_section(main, &param, "RETURN");
 	if (main->keys.enter)
-	{
-		menu_title = 0;
-		apply_selection(main, menu, param.selection);
-	}
+		apply_selection(main, menu, param.selection, &menu_title);
 	else if (main->keys.up)
 		menu_up(main, &menu_title);
 	else if (main->keys.down)

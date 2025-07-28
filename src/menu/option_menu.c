@@ -6,21 +6,25 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:47 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/27 22:26:54 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/28 12:04:56 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	apply_selection(t_main *main, int *menu, int selection)
+static void	apply_selection(t_main *main, int *menu, int selection, int *menu_title)
 {
 	main->keys.enter = 0;
 	if (selection == 0)
-		*(menu) = RESOLUTION_OPTION;
-	else if (selection == 1)
 		*(menu) = FOV_OPTION;
-	else if (selection == 3)
+	else if (selection == 1)
+		main->param.show_fps = !main->param.show_fps;
+	else if (selection == 2)
+		main->param.show_minimap = !main->param.show_minimap;
+	//mouse_sensitivity option
+	else if (selection == 4)
 	{
+		*(menu_title) = 0;
 		if (!main->game_start)
 			*(menu) = MAIN_MENU;
 		else
@@ -41,15 +45,13 @@ void	show_option_menu(t_main *main, int *menu)
 	param.y = main->cal.half_wh - (param.menu_size * 48);
 	param.selection = menu_title % 4;
 	print_menu_title(main, "OPTION");
-	print_menu_section(main, &param, "RESOLUTION");
 	print_menu_section(main, &param, "FOV");
-	print_menu_section(main, &param, "MINIMAP");
+	print_case(main, &param, main->param.show_fps, "SHOW FPS");
+	print_case(main, &param, main->param.show_minimap, "SHOW MINIMAP");
+	//print_menu_section(main, &param, "MOUSE SENSITIVITY");
 	print_menu_section(main, &param, "RETURN");
 	if (main->keys.enter)
-	{
-		menu_title = 0;
-		apply_selection(main, menu, param.selection);
-	}
+		apply_selection(main, menu, param.selection, &menu_title);
 	else if (main->keys.up)
 		menu_up(main, &menu_title);
 	else if (main->keys.down)

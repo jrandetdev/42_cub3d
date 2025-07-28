@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:39 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/27 21:59:53 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/28 11:00:39 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ void	print_menu_section(t_main *main, t_menu_struct *param, char *str)
 	x = main->cal.half_ww - (ft_strlen(str) * 48 / 2);
 	while (*str)
 	{
+		if (*str == ' ')
+		{
+			str++;
+			x += 64;
+			continue;
+		}
 		filename = get_letter_filename(main, ft_capitalize(*str), param->idx, param->selection);
 		letter.texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, filename,
 				&letter.width, &letter.height);
@@ -68,13 +74,14 @@ void	print_case(t_main *main, t_menu_struct *menu, int param, char *str)
 	char	*full_case = "Assets/fonts/xpm_48/cross_case_white.xpm";
 	t_texture	cross;
 
-	x = main->cal.half_ww + 4 * 48;
+	x = main->cal.half_ww + 7 * 48;
 	if (param)
 	{
 		cross.texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, full_case, &cross.width, &cross.height);
 		if (!cross.texture_ptr)
 			exit_cub3d(main, "failed to load case logo");
 		mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, cross.texture_ptr, x, menu->y);
+		mlx_destroy_image(main->mlx_ptr, cross.texture_ptr);
 	}
 	else
 	{
@@ -82,6 +89,7 @@ void	print_case(t_main *main, t_menu_struct *menu, int param, char *str)
 		if (!cross.texture_ptr)
 			exit_cub3d(main, "failed to load case logo");
 		mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, cross.texture_ptr, x, menu->y);
+		mlx_destroy_image(main->mlx_ptr, cross.texture_ptr);
 	}
 	print_menu_section(main, menu, str);
 }

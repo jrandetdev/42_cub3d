@@ -15,9 +15,8 @@ enum MENU
 	MAIN_MENU = 1,
 	PAUSE_MENU = 2,
 	OPTION_MENU = 3,
-	RESOLUTION_OPTION = 4,
-	FOV_OPTION = 5,
-	DEBUG_MENU = 6,
+	FOV_OPTION = 4,
+	DEBUG_MENU = 5,
 };
 
 enum MAIN_MENU
@@ -43,6 +42,7 @@ typedef struct	s_bonus
 typedef	struct	s_menu_param
 {
 	int	fov;
+	int	show_fps;
 	int	sensitivity;
 	int	show_minimap;
 	int	show_minimap_grid;
