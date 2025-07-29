@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:47 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/28 12:04:56 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/29 11:29:00 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	apply_selection(t_main *main, int *menu, int selection, int *menu_ti
 	else if (selection == 2)
 		main->param.show_minimap = !main->param.show_minimap;
 	//mouse_sensitivity option
-	else if (selection == 4)
+	else if (selection == 3)
 	{
 		*(menu_title) = 0;
 		if (!main->game_start)
