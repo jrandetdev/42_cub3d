@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:29:29 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/26 21:43:15 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/29 16:09:23 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_params
 
 static void	get_texture_position(t_main *main, t_texture t, t_params *p)
 {
+	int				y = 0;
 	int				tex_pos_y;
 	double			step;
 	double			texture_pos;
@@ -35,6 +36,8 @@ static void	get_texture_position(t_main *main, t_texture t, t_params *p)
 	screen_y = p->draw_start;
 	step = (double)t.height / p->wall_height;
 	texture_pos = (p->draw_start - main->cal.half_wh + p->wall_height / 2) * step;
+	while (y < screen_y)
+		draw_ceiling(main, p->screen_x, y++);
 	while (screen_y < p->draw_end)
 	{
 		tex_pos_y = (int)texture_pos & (t.height - 1);
@@ -42,6 +45,10 @@ static void	get_texture_position(t_main *main, t_texture t, t_params *p)
 		put_pixel_to_image(main, p->screen_x, screen_y, color);
 		texture_pos += step;
 		screen_y++;
+	}
+	while (screen_y < WIN_HEIGHT)
+	{
+		draw_floor(main, p->screen_x, screen_y++);
 	}
 }
 

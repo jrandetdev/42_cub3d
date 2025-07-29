@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:55:18 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/26 21:05:06 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/29 16:08:22 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	cast_rays(t_main *main)
 	t_texture		cardinal_texture;
 
 	x = 0;
-	draw_floor(main);
-	draw_ceiling(main);
+	//draw_floor(main);
+	//draw_ceiling(main);
 	while (x < WIN_WIDTH)
 	{
 		main->player.camera_x = 2 * x / (double)WIN_WIDTH - 1;

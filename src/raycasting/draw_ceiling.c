@@ -20,36 +20,27 @@ typedef struct	s_guide
 	float	floor_coor_x;
 	float	floor_coor_y;
 	float	floor_pannel_distance;
-	int		total_columns;
 	int		floor_grid_x;
 	int		floor_grid_y;
 	int		color;
 
 }				t_guide;
 
-static void	get_texture_position_floor(t_main *main, int y, t_guide *g)
+static void	get_texture_position_floor(t_main *main, int x, int y, t_guide *g)
 {
 	int	texture_x;
 	int	texture_y;
 	int	texture_width;
 	int	texture_height;
-	int	x;
 
-	x = 0;
-	while (x < WIN_WIDTH)
-	{
-		g->floor_grid_x = (int)g->floor_coor_x;
-		g->floor_grid_y = (int)g->floor_coor_y;
-		texture_width = main->texture_bank.floor.width;
-		texture_height = main->texture_bank.floor.height;
-		texture_x = (int)(texture_width * fabs(g->floor_coor_x - g->floor_grid_x)) % texture_width;
-		texture_y = (int)(texture_height * fabs(g->floor_coor_y - g->floor_grid_y)) % texture_height;
-		g->floor_coor_x += g->x_step_right;
-		g->floor_coor_y += g->y_step_down;
-		g->color = ((int *)main->texture_bank.ceiling.texture.addr)[texture_width * texture_x + texture_y];
-		put_pixel_to_image(main, x, y, g->color);
-		x++;
-	}	
+	float _x = g->floor_coor_x + ((float)x * g->x_step_right);
+	float _y = g->floor_coor_y + ((float)x * g->y_step_down);
+	texture_width = main->texture_bank.floor.width;
+	texture_height = main->texture_bank.floor.height;
+	texture_x = (int)(texture_width * fabs(_x - (int)_x)) % texture_width;
+	texture_y = (int)(texture_height * fabs(_y - (int)_y)) % texture_height;
+	g->color = ((int *)main->texture_bank.ceiling.texture.addr)[texture_width * texture_x + texture_y];
+	put_pixel_to_image(main, x, y, g->color);
 }
 
 /**
@@ -67,24 +58,17 @@ static void	get_guide_info(t_main *main, t_guide *g, int y)
 	g->rayDirRight_Y = player->dir_y + player->plane_y;
 	g->pixel_distance_down = y - main->cal.half_wh;
 	g->pos_z = -0.5 * WIN_HEIGHT;
-	g->total_columns = WIN_WIDTH;
 	g->floor_pannel_distance = g->pos_z / g->pixel_distance_down;
-	g->x_step_right = g->floor_pannel_distance * ((g->rayDirRight_X - g->rayDirLeft_X) / g->total_columns); // gives me the incrmeental part of the calculation
-	g->y_step_down = g->floor_pannel_distance * ((g->rayDirRight_Y - g->rayDirLeft_Y) / g->total_columns); // scalar calculation
+	g->x_step_right = g->floor_pannel_distance * ((g->rayDirRight_X - g->rayDirLeft_X) / WIN_WIDTH); // gives me the incrmeental part of the calculation
+	g->y_step_down = g->floor_pannel_distance * ((g->rayDirRight_Y - g->rayDirLeft_Y) / WIN_WIDTH); // scalar calculation
 	g->floor_coor_x = player->x + g->floor_pannel_distance * g->rayDirLeft_X;
 	g->floor_coor_y = player->y + g->floor_pannel_distance * g->rayDirLeft_Y;
 }
 
-void	draw_ceiling(t_main *main)
+void	draw_ceiling(t_main *main, int x, int y)
 {
 	t_guide	g;
-	int		y;
 
-	y = main->cal.half_wh;
-	while (y > 0)
-	{
-		get_guide_info(main, &g, y);
-		get_texture_position_floor(main, y, &g);
-		y--;
-	}
+	get_guide_info(main, &g, y);
+	get_texture_position_floor(main, x, y, &g);
 }

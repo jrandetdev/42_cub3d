@@ -87,9 +87,9 @@ t_vec2		mini_dda(t_main *main, double dst_x, double dst_y);
 int			render_next_frame(t_main *main);
 
 void		init_img(t_main *main);
-void		draw_floor(t_main *main);
-void		draw_ceiling(t_main *main);
+void		draw_floor(t_main *main, int x, int y);
 void		player_movement(t_main *main);
+void		draw_ceiling(t_main *main, int x, int y);
 void		put_pixel_to_image(t_main *main, int x, int y, int colour);
 void		valid_next_movement_up(t_main *main, double next_x, double next_y);
 void		valid_next_movement_down(t_main *main, double next_x, double next_y);
