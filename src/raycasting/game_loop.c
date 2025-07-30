@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:55:18 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/30 14:56:31 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/30 18:04:22 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,28 +47,25 @@ static void	*multi_cast_rays(void *data)
 static void	create_threads(t_main *main)
 {
 	int	i;
-	int	segement;
+	int	segment;
 	int	current_pos;
 	int	created_threads;
 	t_threads	threads[N_THREAD + 1];
 
 	i = 0;
 	current_pos = 0;
-	segement = WIN_WIDTH / N_THREAD;
+	segment = WIN_WIDTH / N_THREAD;
 	ft_bzero(threads, sizeof(t_threads));
-	printf("segment %d\n", segement);
 	while (i < N_THREAD)
 	{
 		threads[i].main = main;
 		threads[i].start = current_pos;
-		current_pos += segement;
+		current_pos += segment;
 		threads[i].end = current_pos;
 		if (pthread_create(&threads[i].thread_id, NULL, multi_cast_rays, &threads[i]))
-			exit_cub3d(main, "pthread_create failed");
-		printf("%d start %d\n%d end %d\n", i, threads[i].start, i, threads[i].end);
+			exit_cub3d(main, "pthread_create failed");		
 		i++;
 	}
-	printf("%d thread create\n", i);
 	created_threads = i;
 	i = 0;
 	while (i < created_threads)
