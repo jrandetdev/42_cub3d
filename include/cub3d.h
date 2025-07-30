@@ -18,10 +18,6 @@
 #include <math.h>
 #include "bonus.h"
 
-# ifndef BONUS
-#  define BONUS 0
-# endif
-
 # ifndef BUFFERSIZE
 #  define BUFFERSIZE 20
 # endif

@@ -3,6 +3,13 @@
 # define BONUS_H
 
 #include <sys/time.h>
+#include <pthread.h>
+
+# ifndef BONUS
+#  define BONUS 1
+# endif
+
+# define N_THREAD 10
 
 // MENU //
 char	ft_capitalize(char letter);

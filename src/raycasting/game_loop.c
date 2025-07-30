@@ -3,14 +3,77 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:55:18 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/29 16:08:22 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/07/30 14:56:31 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+typedef struct	s_threads
+{
+	pthread_t	thread_id;
+	int			start;
+	int			end;
+	t_main		*main;
+}				t_threads;
+
+static void	*multi_cast_rays(void *data)
+{
+	t_threads		*thread;
+	t_dda_struct	dda;
+	t_texture		cardinal_texture;
+	t_main			*main;
+
+	thread = (t_threads *)data;
+	main = thread->main;
+	while (thread->start < thread->end)
+	{
+		dda.camera_x = 2 * thread->start / (double)WIN_WIDTH - 1;
+		dda.ray_dirx = main->player.dir_x
+			+ main->player.plane_x * dda.camera_x;
+		dda.ray_diry = main->player.dir_y
+			+ main->player.plane_y * dda.camera_x;
+		digital_differential_analyzer(main, &dda);
+		cardinal_texture = get_corresp_texture(main, &dda);
+		draw_texture(main, &dda, thread->start, cardinal_texture);
+		thread->start++;
+	}
+	return (NULL);
+}
+
+static void	create_threads(t_main *main)
+{
+	int	i;
+	int	segement;
+	int	current_pos;
+	int	created_threads;
+	t_threads	threads[N_THREAD + 1];
+
+	i = 0;
+	current_pos = 0;
+	segement = WIN_WIDTH / N_THREAD;
+	ft_bzero(threads, sizeof(t_threads));
+	printf("segment %d\n", segement);
+	while (i < N_THREAD)
+	{
+		threads[i].main = main;
+		threads[i].start = current_pos;
+		current_pos += segement;
+		threads[i].end = current_pos;
+		if (pthread_create(&threads[i].thread_id, NULL, multi_cast_rays, &threads[i]))
+			exit_cub3d(main, "pthread_create failed");
+		printf("%d start %d\n%d end %d\n", i, threads[i].start, i, threads[i].end);
+		i++;
+	}
+	printf("%d thread create\n", i);
+	created_threads = i;
+	i = 0;
+	while (i < created_threads)
+		pthread_join(threads[i++].thread_id, NULL);
+}
 
 void	cast_rays(t_main *main)
 {
@@ -19,15 +82,18 @@ void	cast_rays(t_main *main)
 	t_texture		cardinal_texture;
 
 	x = 0;
-	//draw_floor(main);
-	//draw_ceiling(main);
+	if (BONUS == 1 && N_THREAD > 1)
+	{
+		create_threads(main);
+		return ;
+	}
 	while (x < WIN_WIDTH)
 	{
-		main->player.camera_x = 2 * x / (double)WIN_WIDTH - 1;
-		main->ray.dirX = main->player.dir_x
-			+ main->player.plane_x * main->player.camera_x;
-		main->ray.dirY = main->player.dir_y
-			+ main->player.plane_y * main->player.camera_x;
+		dda_struct.camera_x = 2 * x / (double)WIN_WIDTH - 1;
+		dda_struct.ray_dirx = main->player.dir_x
+			+ main->player.plane_x * dda_struct.camera_x;
+		dda_struct.ray_diry = main->player.dir_y
+			+ main->player.plane_y * dda_struct.camera_x;
 		digital_differential_analyzer(main, &dda_struct);
 		cardinal_texture = get_corresp_texture(main, &dda_struct);
 		draw_texture(main, &dda_struct, x, cardinal_texture);

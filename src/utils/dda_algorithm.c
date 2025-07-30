@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda_algorithm.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:07:51 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/23 15:10:39 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/07/30 14:56:03 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	dda_main_loop(t_main *main, t_dda_struct *dda)
 // si le rayon est dans la partie gauche de l'ecrann, step x sera -1
 static void	get_step_and_sidedist(t_main *main, t_dda_struct *dda)
 {
-	if (main->ray.dirX < 0)
+	if (dda->ray_dirx < 0)
 	{
 		dda->step_x = -1;
 		dda->sideDistX = (main->player.x - dda->mapX) * dda->delta_x;
@@ -63,7 +63,7 @@ static void	get_step_and_sidedist(t_main *main, t_dda_struct *dda)
 		dda->step_x = 1;
 		dda->sideDistX = (dda->mapX + 1.0 - main->player.x) * dda->delta_x;
 	}
-	if (main->ray.dirY < 0)
+	if (dda->ray_diry < 0)
 	{
 		dda->step_y = -1;
 		dda->sideDistY = (main->player.y - dda->mapY) * dda->delta_y;
@@ -77,17 +77,16 @@ static void	get_step_and_sidedist(t_main *main, t_dda_struct *dda)
 
 void	digital_differential_analyzer(t_main *main, t_dda_struct *dda_struct)
 {
-	ft_bzero(dda_struct, sizeof(t_dda_struct));
 	dda_struct->mapX = main->player.x;
 	dda_struct->mapY = main->player.y;
-	if (main->ray.dirX == 0)
+	if (dda_struct->ray_dirx == 0)
 		dda_struct->delta_x = pow(10, 30);
 	else
-		dda_struct->delta_x = fabs(1 / main->ray.dirX);
-	if (main->ray.dirY == 0)
+		dda_struct->delta_x = fabs(1 / dda_struct->ray_dirx);
+	if (dda_struct->ray_diry == 0)
 		dda_struct->delta_y = pow(10, 30);
 	else
-		dda_struct->delta_y = fabs(1 / main->ray.dirY);
+		dda_struct->delta_y = fabs(1 / dda_struct->ray_diry);
 	dda_struct->hit = 0;
 	get_step_and_sidedist(main, dda_struct);
 	dda_main_loop(main, dda_struct);

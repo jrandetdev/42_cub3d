@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:29:29 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/29 16:09:23 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/07/30 14:44:40 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,14 @@ static	int	get_hit_position(t_main *main, t_dda_struct *dda_s,
 	double	width_pos_x;
 
 	if (dda_s->side == 0)
-		width_pos_x = main->player.y + main->ray.dirY * dda_s->perpwalldist;
+		width_pos_x = main->player.y + dda_s->ray_diry * dda_s->perpwalldist;
 	else
-		width_pos_x = main->player.x + main->ray.dirX * dda_s->perpwalldist;
+		width_pos_x = main->player.x + dda_s->ray_dirx * dda_s->perpwalldist;
 	width_pourcentage = width_pos_x - floor(width_pos_x);
 	p->texture_x = (width_pourcentage * texture.width);
-	if (dda_s->side == 0 && main->ray.dirX > 0)
+	if (dda_s->side == 0 && dda_s->ray_dirx > 0)
 		p->texture_x = texture.width - p->texture_x - 1;
-	if (dda_s->side == 1 && main->ray.dirY < 0)
+	if (dda_s->side == 1 && dda_s->ray_diry < 0)
 		p->texture_x = texture.width - p->texture_x - 1;
 	return (p->texture_x);
 }
@@ -99,14 +99,14 @@ t_texture	get_corresp_texture(t_main *main, t_dda_struct *dda_struct)
 	}
 	if (dda_struct->side == 0)
 	{
-		if (main->ray.dirX > 0)
+		if (dda_struct->ray_dirx > 0)
 			texture = main->texture_bank.ea;
 		else
 			texture = main->texture_bank.we;
 	}
 	else
 	{
-		if (main->ray.dirY < 0)
+		if (dda_struct->ray_diry < 0)
 			texture = main->texture_bank.no;
 		else
 			texture = main->texture_bank.so;
