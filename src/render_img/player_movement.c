@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:06:09 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/27 01:54:28 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/31 17:09:12 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ static void	player_up_and_down(t_main *main)
 
 	player_speed = PLAYER_SPEED;
 	if (main->keys.shift)
-		player_speed += 0.03;
+		player_speed += 0.08;
 	if (main->keys.w == 1)
 	{
 		new_x = main->player.x + (main->player.dir_x * player_speed);

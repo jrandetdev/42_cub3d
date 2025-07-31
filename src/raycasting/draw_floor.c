@@ -59,10 +59,9 @@ static void	get_guide_info(t_main *main, t_guide *g, int y)
 	g->rayDirRight_Y = player->dir_y + player->plane_y;
 	g->pixel_distance_down = y - main->cal.half_wh;
 	g->pos_z = 0.5 * WIN_HEIGHT;
-	g->total_columns = WIN_WIDTH;
 	g->floor_pannel_distance = g->pos_z / g->pixel_distance_down;
-	g->x_step_right = g->floor_pannel_distance * ((g->rayDirRight_X - g->rayDirLeft_X) / g->total_columns); // gives me the incrmeental part of the calculation
-	g->y_step_down = g->floor_pannel_distance * ((g->rayDirRight_Y - g->rayDirLeft_Y) / g->total_columns); // scalar calculation
+	g->x_step_right = g->floor_pannel_distance * ((g->rayDirRight_X - g->rayDirLeft_X) / WIN_WIDTH); // gives me the incrmeental part of the calculation
+	g->y_step_down = g->floor_pannel_distance * ((g->rayDirRight_Y - g->rayDirLeft_Y) / WIN_WIDTH); 
 	g->floor_coor_x = player->x + g->floor_pannel_distance * g->rayDirLeft_X;
 	g->floor_coor_y = player->y + g->floor_pannel_distance * g->rayDirLeft_Y;
 }

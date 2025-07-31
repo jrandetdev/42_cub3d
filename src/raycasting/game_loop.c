@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:55:18 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/30 18:04:22 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/31 16:28:50 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,19 @@ static void	*multi_cast_rays(void *data)
 	return (NULL);
 }
 
+static void	pre_calc(t_main *main)
+{
+	t_cal	*cal;
+
+	cal = &main->cal;
+	cal->cf_ray_dirx_left = main->player.dir_x - main->player.plane_x;
+	cal->cf_ray_diry_left = main->player.dir_y - main->player.plane_y;
+	cal->cf_ray_dirx_right = main->player.dir_x + main->player.plane_x;
+	cal->cf_ray_diry_right = main->player.dir_y + main->player.plane_y;
+	cal->cf_pre_step_right = (main->cal.cf_ray_dirx_right - main->cal.cf_ray_dirx_left) / WIN_WIDTH;
+	cal->cf_pre_step_down = (main->cal.cf_ray_diry_right - main->cal.cf_ray_diry_left) / WIN_WIDTH;
+}
+
 static void	create_threads(t_main *main)
 {
 	int	i;
@@ -55,6 +68,7 @@ static void	create_threads(t_main *main)
 	i = 0;
 	current_pos = 0;
 	segment = WIN_WIDTH / N_THREAD;
+	pre_calc(main);
 	ft_bzero(threads, sizeof(t_threads));
 	while (i < N_THREAD)
 	{

@@ -70,6 +70,12 @@ typedef struct	s_cal
 	int		half_wh;
 	int		half_ww;
 	double	pre_fov;
+	double	cf_ray_dirx_left;
+	double	cf_ray_diry_left;
+	double	cf_ray_dirx_right;
+	double	cf_ray_diry_right;
+	double	cf_pre_step_right;
+	double	cf_pre_step_down;
 }				t_cal;
 
 typedef struct s_dda_struct
