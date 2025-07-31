@@ -6,12 +6,9 @@
  * @remark the ray goes through two points. The camera itself which is at 
  * @param half_screen is 
  */
-typedef struct	s_guide
+
+ typedef struct	s_guide
 {
-	float	rayDirLeft_X;
-	float	rayDirLeft_Y;
-	float	rayDirRight_X;
-	float	rayDirRight_Y;
 	int		pixel_distance_down;
 	float	pos_z;
 	float	distance_to_row;
@@ -23,7 +20,6 @@ typedef struct	s_guide
 	int		floor_grid_x;
 	int		floor_grid_y;
 	int		color;
-
 }				t_guide;
 
 static void	get_texture_position_floor(t_main *main, int x, int y, t_guide *g)
