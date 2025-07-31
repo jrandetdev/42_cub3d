@@ -25,5 +25,7 @@ void	fps_counter(t_main *main);
 // DOOR //
 
 void	player_interaction(t_main *main);
+bool	is_in_door_half(t_main *main, t_dda_struct *dda);
+
 
 #endif
