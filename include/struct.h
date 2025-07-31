@@ -191,11 +191,6 @@ typedef struct	s_texture
 	t_myimage	texture;
 }				t_texture;
 
-typedef struct	s_animation
-{
-	t_texture	door[6];
-}				t_animation;
-
 typedef union
 {
 	int	value;
@@ -244,7 +239,6 @@ typedef struct	s_main
 	t_ray			ray;
 	t_keys			keys;
 	t_texture_bank	texture_bank;
-	t_animation		animation;
 	t_colour		c_colour;
 	t_colour		f_colour;
 	t_minimap		minimap;

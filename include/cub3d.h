@@ -12,7 +12,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include "libft.h"
-#include "keycode.h"
+#include "parameter.h"
 #include "struct.h"
 #include <mlx.h>
 #include <math.h>

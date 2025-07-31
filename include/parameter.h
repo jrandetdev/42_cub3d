@@ -1,6 +1,6 @@
 
-#ifndef KEYCODE_H
-# define KEYCODE_H
+#ifndef PARAMETER_H
+# define PARAMETER_H
 
 #include "cub3d.h"
 
@@ -106,8 +106,8 @@ enum e_keys
 };
 
 # define OS 1
-# define FOV 66
-# define PLAYER_SPEED 0.04
+# define FOV 75
+# define PLAYER_SPEED 0.08
 # define ROTATION_SPEED 0.02
 # define WIN_WIDTH 3800
 # define WIN_HEIGHT 2000

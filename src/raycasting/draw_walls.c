@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:29:29 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/30 14:44:40 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/31 11:12:19 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ t_texture	get_corresp_texture(t_main *main, t_dda_struct *dda_struct)
 
 	if (dda_struct->hit > 1)
 	{
-		texture = main->animation.door[0];
+		texture = main->texture_bank.door;
 		return (texture);
 	}
 	if (dda_struct->side == 0)

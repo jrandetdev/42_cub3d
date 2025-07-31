@@ -6,40 +6,40 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:40 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/30 16:37:49 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/07/31 11:11:19 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	load_all_door_textures(t_main *main)
-{
-	int			i;
-	char		*num;
-	char		*filename;
-	char		*fullname;
-	const char	*path = "Assets/textures/doors/door_";
+// static void	load_all_door_textures(t_main *main)
+// {
+// 	int			i;
+// 	char		*num;
+// 	char		*filename;
+// 	char		*fullname;
+// 	const char	*path = "Assets/textures/doors/door_";
 
-	i = 0;
-	while (i < 5)
-	{
-		num = ft_itoa(i);
-		if (!num)
-			exit_cub3d(main, "itoa failed in load_doors_textures");
-		filename = ft_strjoin(path, num);
-		free(num);
-		if (!filename)
-			exit_cub3d(main, "first ft_strjoin failed in load_doors_textures");
-		fullname = ft_strjoin(filename, ".xpm");
-		free(filename);
-		if (!fullname)
-			exit_cub3d(main, "second ft_strjoin failed in load_doors_textures");
-		get_texture_data(main, &main->animation.door[i], fullname);
-		free(fullname);
-		i++;
-	}
-	main->animation.door[i].texture_ptr = NULL;
-}
+// 	i = 0;
+// 	while (i < 5)
+// 	{
+// 		num = ft_itoa(i);
+// 		if (!num)
+// 			exit_cub3d(main, "itoa failed in load_doors_textures");
+// 		filename = ft_strjoin(path, num);
+// 		free(num);
+// 		if (!filename)
+// 			exit_cub3d(main, "first ft_strjoin failed in load_doors_textures");
+// 		fullname = ft_strjoin(filename, ".xpm");
+// 		free(filename);
+// 		if (!fullname)
+// 			exit_cub3d(main, "second ft_strjoin failed in load_doors_textures");
+// 		get_texture_data(main, &main->animation.door[i], fullname);
+// 		free(fullname);
+// 		i++;
+// 	}
+// 	main->animation.door[i].texture_ptr = NULL;
+// }
 
 void	get_texture_data(t_main *main, t_texture *direc, char *xpm_file)
 {
@@ -91,5 +91,5 @@ void	load_personal_textures(t_main *main)
 {
 	check_and_get_texture_data(main, &main->texture_bank.floor, "./Assets/textures/floor.xpm");
 	check_and_get_texture_data(main, &main->texture_bank.ceiling, "./Assets/textures/Star_Ceiling-7.xpm");
-	load_all_door_textures(main);
+	check_and_get_texture_data(main, &main->texture_bank.door, "./Assets/textures/brushed-metal-door.xpm");
 }
