@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:55:18 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/31 16:28:50 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/01 23:26:21 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,26 @@ static void	pre_calc(t_main *main)
 	cal->cf_pre_step_down = (main->cal.cf_ray_diry_right - main->cal.cf_ray_diry_left) / WIN_WIDTH;
 }
 
+static void	wait_threads(t_threads *threads, int created_threads)
+{
+	int i;
+
+	i = 0;
+	while (i < created_threads)
+		pthread_join(threads[i++].thread_id, NULL);
+	
+}
+
 static void	create_threads(t_main *main)
 {
 	int	i;
 	int	segment;
 	int	current_pos;
-	int	created_threads;
 	t_threads	threads[N_THREAD + 1];
 
 	i = 0;
 	current_pos = 0;
 	segment = WIN_WIDTH / N_THREAD;
-	pre_calc(main);
 	ft_bzero(threads, sizeof(t_threads));
 	while (i < N_THREAD)
 	{
@@ -77,13 +85,12 @@ static void	create_threads(t_main *main)
 		current_pos += segment;
 		threads[i].end = current_pos;
 		if (pthread_create(&threads[i].thread_id, NULL, multi_cast_rays, &threads[i]))
-			exit_cub3d(main, "pthread_create failed");		
+			break ;
 		i++;
 	}
-	created_threads = i;
-	i = 0;
-	while (i < created_threads)
-		pthread_join(threads[i++].thread_id, NULL);
+	wait_threads(threads, i);
+	if (i != N_THREAD)
+		exit_cub3d(main, "One or more threads failed");
 }
 
 void	cast_rays(t_main *main)
@@ -92,12 +99,13 @@ void	cast_rays(t_main *main)
 	t_dda_struct	dda_struct;
 	t_texture		cardinal_texture;
 
-	x = 0;
+	pre_calc(main);
 	if (BONUS == 1 && N_THREAD > 1)
 	{
 		create_threads(main);
 		return ;
 	}
+	x = 0;
 	while (x < WIN_WIDTH)
 	{
 		dda_struct.camera_x = 2 * x / (double)WIN_WIDTH - 1;
