@@ -31,8 +31,8 @@ void	show_debug_menu(t_main *main, int *menu)
 	param.y = main->cal.half_wh - (param.menu_size * 48);
 	param.selection = menu_title % 4;
 	print_menu_title(main, "DEBUG");
-	print_case(main, &param, main->param.show_minimap_grid, "MINIMAP GRID");
-	print_case(main, &param, main->param.fov, "MINIMAP FOV");
+	print_box(main, &param, main->param.show_minimap_grid, "MINIMAP GRID");
+	print_box(main, &param, main->param.fov, "MINIMAP FOV");
 	print_menu_section(main, &param, "RETURN");
 	if (main->keys.enter)
 		apply_selection(main, menu, param.selection, &menu_title);

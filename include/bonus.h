@@ -22,8 +22,10 @@ char	*ft_charjoin(char const *s1, char const s2);
 void	print_correct_menu(t_main *main, int *menu);
 void	show_main_menu(t_main *main, int *main_menu);
 void	show_pause_menu(t_main *main, int *main_menu);
+void	show_mouse_sensitivity_menu(t_main *main, int *menu);
 void	print_menu_section(t_main *main, t_menu_struct *param, char *str);
-void	print_case(t_main *main, t_menu_struct *menu, int param, char *str);
+void	print_box(t_main *main, t_menu_struct *menu, int param, char *str);
+
 
 
 // FPS //

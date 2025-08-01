@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:39 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/28 11:00:39 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/02 00:32:40 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,11 @@ void	print_menu_section(t_main *main, t_menu_struct *param, char *str)
 	param->idx++;
 }
 
-void	print_case(t_main *main, t_menu_struct *menu, int param, char *str)
+void	print_box(t_main *main, t_menu_struct *menu, int param, char *str)
 {
 	int			x;
-	char	*empty_case = "Assets/fonts/xpm_48/epmty_case_white.xpm";
-	char	*full_case = "Assets/fonts/xpm_48/cross_case_white.xpm";
+	char	*empty_case = "Assets/fonts/logo/empty_box_white.xpm";
+	char	*full_case = "Assets/fonts/logo/checked_box_white.xpm";
 	t_texture	cross;
 
 	x = main->cal.half_ww + 7 * 48;
@@ -79,7 +79,7 @@ void	print_case(t_main *main, t_menu_struct *menu, int param, char *str)
 	{
 		cross.texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, full_case, &cross.width, &cross.height);
 		if (!cross.texture_ptr)
-			exit_cub3d(main, "failed to load case logo");
+			exit_cub3d(main, "failed to load box logo");
 		mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, cross.texture_ptr, x, menu->y);
 		mlx_destroy_image(main->mlx_ptr, cross.texture_ptr);
 	}
@@ -87,7 +87,7 @@ void	print_case(t_main *main, t_menu_struct *menu, int param, char *str)
 	{
 		cross.texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, empty_case, &cross.width, &cross.height);
 		if (!cross.texture_ptr)
-			exit_cub3d(main, "failed to load case logo");
+			exit_cub3d(main, "failed to load box logo");
 		mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, cross.texture_ptr, x, menu->y);
 		mlx_destroy_image(main->mlx_ptr, cross.texture_ptr);
 	}

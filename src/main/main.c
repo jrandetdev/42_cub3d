@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:23:58 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/27 22:19:23 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/01 23:49:11 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,6 @@ static bool	arguments_are_valid(int argc, char **argv)
 
 static void	init_mlx(t_main *main)
 {
-	if (OS == LINUX)
-		main->os = LINUX;
-	if (OS == MACOS)
-		main->os = MACOS;
 	main->mlx_ptr = mlx_init();
 	if (!main->mlx_ptr)
 		exit_cub3d(main, "Mlx init failed.");

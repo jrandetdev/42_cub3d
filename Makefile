@@ -51,7 +51,6 @@ SRC_PARSING		=			flood_fill.c \
 							validate_colour.c \
 							get_file_content.c \
 							parse_texture_and_colour.c
-#init_data.c
 PARSING			=			$(addprefix $(DIR_PARSING)/, $(SRC_PARSING))
 
 DIR_UTILS		=			./src/utils
@@ -96,18 +95,19 @@ DIR_RAYCASTING	=			./src/raycasting
 SRC_RAYCASTING	=			game_loop.c \
 							draw_floor.c \
 							draw_ceiling.c \
-							draw_walls.c 
+							draw_walls.c
 RAYCASTING 		=			$(addprefix $(DIR_RAYCASTING)/, $(SRC_RAYCASTING))
 
 DIR_MENU		=			./src/menu
 SRC_MENU		=			main_menu.c \
 							menu_utils.c \
+							mouse_menu.c \
+							pause_menu.c \
 							option_menu.c \
-							print_menu_title.c \
-							print_menu_section.c \
-							print_correct_menu.c \
 							print_debug_menu.c \
-							pause_menu.c
+							print_menu_title.c \
+							print_correct_menu.c \
+							print_menu_section.c
 MENU			=			$(addprefix $(DIR_MENU)/, $(SRC_MENU))
 
 DIR_BONUS		=			./src/bonus

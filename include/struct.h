@@ -15,8 +15,9 @@ enum MENU
 	MAIN_MENU = 1,
 	PAUSE_MENU = 2,
 	OPTION_MENU = 3,
-	FOV_OPTION = 4,
-	DEBUG_MENU = 5,
+	MOUSE_SENSITIVITY_OPTION = 4,
+	FOV_OPTION = 5,
+	DEBUG_MENU = 6,
 };
 
 enum MAIN_MENU
@@ -58,12 +59,6 @@ typedef struct	s_menu_struct
 }				t_menu_struct;
 
 // MANDATORY PART //
-
-enum SYSTEM
-{
-	LINUX = 1,
-	MACOS = 2,
-};
 
 typedef struct	s_cal
 {
@@ -230,7 +225,6 @@ typedef struct s_map
 
 typedef struct	s_main
 {
-	int				os;
 	int				rotation;
 	int				menu;
 	int				animation_playing;

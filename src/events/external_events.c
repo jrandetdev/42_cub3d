@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:52:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/27 22:36:11 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/01 23:43:16 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,19 @@ static void	key_hit(int keycode, t_main *main)
 {
 	if (keycode == K_ESCP)
 		exit_cub3d(main, 0);
-	if (keycode == K_G)
+	else if (keycode == K_G)
 		main->keys.g = !main->keys.g;
-	if (keycode == K_M)
+	else if (keycode == K_M)
 		main->keys.m = !main->keys.m;
-	if (main->debug.last_keycode != keycode)
-		printf("keycode : %d\n", keycode);
-	if (keycode == K_P && main->game_start && !main->menu)
+	else if (keycode == K_P && main->game_start && !main->menu)
 	{
 		mlx_clear_window(main->mlx_ptr, main->mlx_win);
 		main->menu = PAUSE_MENU;
 	}
 	else if (keycode == K_P && main->game_start && main->menu > 0)
 		main->menu = NO_MENU;
+	else if (main->debug.last_keycode != keycode)
+		printf("keycode : %d\n", keycode);
 	main->debug.last_keycode = keycode;
 }
 
@@ -54,25 +54,25 @@ static int	key_pressed(int keycode, t_main *main)
 {
 	if (keycode == K_W)
 		main->keys.w = 1;
-	if (keycode == K_A)
+	else if (keycode == K_A)
 		main->keys.a = 1;
-	if (keycode == K_S)
+	else if (keycode == K_S)
 		main->keys.s = 1;
-	if (keycode == K_D)
+	else if (keycode == K_D)
 		main->keys.d = 1;
-	if (keycode == K_E)
+	else if (keycode == K_E)
 		main->keys.e = 1;
-	if (keycode == K_LEFT)
+	else if (keycode == K_LEFT)
 		main->keys.left = 1;
-	if (keycode == K_RIGHT)
+	else if (keycode == K_RIGHT)
 		main->keys.right = 1;
-	if (keycode == K_ENTER)
+	else if (keycode == K_ENTER)
 		main->keys.enter = 1;
-	if (keycode == K_UP)
+	else if (keycode == K_UP)
 		main->keys.up = 1;
-	if (keycode == K_DOWN)
+	else if (keycode == K_DOWN)
 		main->keys.down = 1;
-	if (keycode == K_SHIFT)
+	else if (keycode == K_SHIFT)
 		main->keys.shift = 1;
 	key_hit(keycode, main);
 	return (1);
@@ -82,25 +82,25 @@ static int	key_released(int keycode, t_main *main)
 {
 	if (keycode == K_W)
 		main->keys.w = 0;
-	if (keycode == K_A)
+	else if (keycode == K_A)
 		main->keys.a = 0;
-	if (keycode == K_S)
+	else if (keycode == K_S)
 		main->keys.s = 0;
-	if (keycode == K_D)
+	else if (keycode == K_D)
 		main->keys.d = 0;
-	if (keycode == K_E)
+	else if (keycode == K_E)
 		main->keys.e = 0;
-	if (keycode == K_LEFT)
+	else if (keycode == K_LEFT)
 		main->keys.left = 0;
-	if (keycode == K_RIGHT)
+	else if (keycode == K_RIGHT)
 		main->keys.right = 0;
-	if (keycode == K_ENTER)
+	else if (keycode == K_ENTER)
 		main->keys.enter = 0;
-	if (keycode == K_UP)
+	else if (keycode == K_UP)
 		main->keys.up = 0;
-	if (keycode == K_DOWN)
+	else if (keycode == K_DOWN)
 		main->keys.down = 0;
-	if (keycode == K_SHIFT)
+	else if (keycode == K_SHIFT)
 		main->keys.shift = 0;
 	return (0);
 }

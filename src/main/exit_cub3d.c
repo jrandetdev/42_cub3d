@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_cub3d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:24:31 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/25 16:22:43 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/01 23:48:49 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,10 @@ void	free_mlx_pointers(t_main *main)
 		mlx_destroy_window(main->mlx_ptr, main->mlx_win);
 		main->mlx_win = NULL;
 	}
-	if (main->os == LINUX)
+	if (main->mlx_ptr)
 	{
-		if (main->mlx_ptr)
-		{
-			mlx_destroy_display(main->mlx_ptr);
-			free(main->mlx_ptr);
-		}
-	}
-	if (main->os == MACOS)
-	{
-		if (main->mlx_ptr)
-			free(main->mlx_ptr);
+		mlx_destroy_display(main->mlx_ptr);
+		free(main->mlx_ptr);
 	}
 }
 
