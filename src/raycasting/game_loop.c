@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:55:18 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/01 23:26:21 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/04 13:24:55 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	cast_rays(t_main *main)
 	t_texture		cardinal_texture;
 
 	pre_calc(main);
-	if (BONUS == 1 && N_THREAD > 1)
+	if (BONUS && N_THREAD)
 	{
 		create_threads(main);
 		return ;

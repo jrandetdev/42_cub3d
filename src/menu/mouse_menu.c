@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:47 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/04 08:56:37 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/04 11:55:44 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 static void	apply_selection(t_main *main, int *menu, int selection, int *menu_title)
 {
 	main->keys.enter = 0;
-	if (selection == 0)
-	{
-		
-	}
-	else if (selection == 1)
+	if (selection == 1 && main->mouse_sensitivity < 30)
+		main->mouse_sensitivity += 1;
+	else if (selection == 2 && main->mouse_sensitivity > 5)
+		main->mouse_sensitivity -= 1;
+	else if (selection == 3)
 	{
 		*(menu_title) = 0;
 		if (!main->game_start)
@@ -37,7 +37,7 @@ static void	print_current_sensitivity(t_main *main)
 	t_menu_struct	param;
 	
 	ft_bzero(&param, sizeof(t_menu_struct));
-	param.y = 600;
+	param.y = main->cal.half_wh - 316;
 	param.idx = 1;
 	sensitvity = ft_itoa(main->mouse_sensitivity);
 	if (!sensitvity)
@@ -50,30 +50,46 @@ static void	print_current_sensitivity(t_main *main)
 	free(menu_name);
 }
 
-static void	print_minus_logo(t_main *main, int *menu)
+static void	print_minus_logo(t_main *main, int selection)
 {
-	(void) menu;
 	t_texture	logo;
-	const char	*minus_logo_w = "Assets/fonts/logo/minus_white.xpm";
+	char	*minus_logo_white = "Assets/fonts/logo/minus_white.xpm";
+	char	*minus_logo_gold = "Assets/fonts/logo/minus_gold.xpm";
 
-	logo.texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, (char *)minus_logo_w,
-		&logo.width, &logo.height);
+	if (selection == 2)
+	{
+		logo.texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, minus_logo_gold,
+			&logo.width, &logo.height);
+	}
+	else
+	{
+		logo.texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, minus_logo_white,
+			&logo.width, &logo.height);
+	}
 	if (!logo.texture_ptr)
 		exit_cub3d(main, "mlx load image failed in minus logo");
-	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, logo.texture_ptr, main->cal.half_ww + 50, 700);
+	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, logo.texture_ptr, main->cal.half_ww + 50, main->cal.half_wh - 250);
 }
 
-static void	print_plus_logo(t_main *main, int *menu)
+static void	print_plus_logo(t_main *main, int selection)
 {
-	(void) menu;
 	t_texture	logo;
-	const char	*plus_logo_w = "Assets/fonts/logo/plus_white.xpm";
+	char	*plus_logo_white = "Assets/fonts/logo/plus_white.xpm";
+	char	*plus_logo_gold = "Assets/fonts/logo/plus_gold.xpm";
 
-	logo.texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, (char *)plus_logo_w,
-		&logo.width, &logo.height);
+	if (selection == 1)
+	{
+		logo.texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, plus_logo_gold,
+			&logo.width, &logo.height);
+	}
+	else
+	{
+		logo.texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, plus_logo_white,
+			&logo.width, &logo.height);
+	}
 	if (!logo.texture_ptr)
 		exit_cub3d(main, "mlx load image failed in plus logo");
-	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, logo.texture_ptr, main->cal.half_ww - 50 - 333 , 700);
+	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, logo.texture_ptr, main->cal.half_ww - 50 - 128 , main->cal.half_wh - 250);
 }
 
 void show_mouse_sensitivity_menu(t_main *main, int *menu)
@@ -85,17 +101,17 @@ void show_mouse_sensitivity_menu(t_main *main, int *menu)
 	param.menu_size = 3;
 	if (menu_title < 0)
 		menu_title = 3;
-	param.y = main->cal.half_wh - (param.menu_size * 48) + 250;
+	param.y = main->cal.half_wh - (param.menu_size + 1 * 48);
 	param.selection = menu_title % param.menu_size;
 	print_menu_title(main, "MOUSE SENSITIVITY");
 	print_current_sensitivity(main);
-	print_minus_logo(main, menu);
-	print_plus_logo(main, menu);
+	print_minus_logo(main, param.selection);
+	print_plus_logo(main, param.selection);
 	print_menu_section(main, &param, "RETURN");
 	if (main->keys.enter)
 		apply_selection(main, menu, param.selection, &menu_title);
-	else if (main->keys.up)
-		menu_up(main, &menu_title);
-	else if (main->keys.down)
-		menu_down(main, &menu_title);
+	else if (main->keys.up || main->keys.down)
+		menu_up_and_down(main, &menu_title);
+	else if (main->keys.left)
+		return;
 }

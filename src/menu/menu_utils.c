@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:51 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/22 15:49:40 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/04 11:40:10 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,21 @@ char	ft_capitalize(char letter)
 		return (letter -= 32);
 }
 
-void	menu_up(t_main *main, int *selection)
+void	menu_up_and_down(t_main *main, int *selection)
 {
-	*(selection) -= 1;
-	main->keys.up = 0;
+	if (main->keys.up)
+	{
+		*(selection) -= 1;
+		main->keys.up = 0;
+	}
+	else
+	{
+		*(selection) += 1;
+		main->keys.down = 0;
+	}
 }
 
-void	menu_down(t_main *main, int *selection)
-{
-	*(selection) += 1;
-	main->keys.down = 0;
-}
+// void	menu_down(t_main *main, int *selection)
+// {
+
+// }

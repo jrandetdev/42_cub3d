@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:47 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/02 00:31:24 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/04 11:39:25 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	show_option_menu(t_main *main, int *menu)
 	param.menu_size = 4;
 	if (menu_title < 0)
 		menu_title = 3;
-	param.y = main->cal.half_wh - (param.menu_size * 48);
+	param.y = main->cal.half_wh - (param.menu_size + 1 * 48);
 	param.selection = menu_title % 4;
 	print_menu_title(main, "OPTION");
 	print_menu_section(main, &param, "MOUSE SENSITIVITY");
@@ -53,8 +53,6 @@ void	show_option_menu(t_main *main, int *menu)
 	print_menu_section(main, &param, "RETURN");
 	if (main->keys.enter)
 		apply_selection(main, menu, param.selection, &menu_title);
-	else if (main->keys.up)
-		menu_up(main, &menu_title);
-	else if (main->keys.down)
-		menu_down(main, &menu_title);
+	else if (main->keys.up || main->keys.down)
+		menu_up_and_down(main, &menu_title);
 }

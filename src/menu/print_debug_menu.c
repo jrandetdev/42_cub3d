@@ -28,7 +28,7 @@ void	show_debug_menu(t_main *main, int *menu)
 	param.menu_size = 3;
 	if (menu_title < 0)
 		menu_title = 3;
-	param.y = main->cal.half_wh - (param.menu_size * 48);
+	param.y = main->cal.half_wh - (param.menu_size + 1 * 48);
 	param.selection = menu_title % 4;
 	print_menu_title(main, "DEBUG");
 	print_box(main, &param, main->param.show_minimap_grid, "MINIMAP GRID");
@@ -36,8 +36,6 @@ void	show_debug_menu(t_main *main, int *menu)
 	print_menu_section(main, &param, "RETURN");
 	if (main->keys.enter)
 		apply_selection(main, menu, param.selection, &menu_title);
-	else if (main->keys.up)
-		menu_up(main, &menu_title);
-	else if (main->keys.down)
-		menu_down(main, &menu_title);
+	else if (main->keys.up || main->keys.down)
+		menu_up_and_down(main, &menu_title);
 }
