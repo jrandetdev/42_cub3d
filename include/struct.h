@@ -227,8 +227,9 @@ typedef struct	s_main
 {
 	int				rotation;
 	int				menu;
-	int				animation_playing;
 	int				game_start;
+	int				mouse_sensitivity;
+	int				animation_playing;
 	void			*mlx_ptr;
 	void			*mlx_win;
 	char			**file_content;

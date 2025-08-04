@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:23:58 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/01 23:49:11 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/03 21:04:33 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void	init_cub3d(t_main *main)
 	main->menu = 1;
 	main->param.fov = 1;
 	main->param.show_minimap = 1;
+	main->mouse_sensitivity = 25;
 	calcule_constants(main);
 	main->mlx_win = mlx_new_window(main->mlx_ptr, WIN_WIDTH,
 			WIN_HEIGHT, "Cub3d");

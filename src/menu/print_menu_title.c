@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:34 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/26 21:42:55 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/03 17:39:44 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ void	print_menu_title(t_main *main, char *str)
 	x = main->cal.half_ww - (ft_strlen(str) * 64 / 2);
 	while (*str)
 	{
+		if (*str == ' ')
+		{
+			x += 64;
+			str++;
+			continue ;
+		}
 		filename = get_letter_filename(main, ft_capitalize(*str));
 		letter.texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, filename,
 				&letter.width, &letter.height);
