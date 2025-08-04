@@ -32,6 +32,7 @@ typedef struct	s_mouse
 {
 	double	x;
 	double	dist;
+	int		sensitivity;
 }				t_mouse;
 
 typedef struct	s_bonus
@@ -228,7 +229,6 @@ typedef struct	s_main
 	int				rotation;
 	int				menu;
 	int				game_start;
-	int				mouse_sensitivity;
 	int				animation_playing;
 	void			*mlx_ptr;
 	void			*mlx_win;

@@ -10,6 +10,8 @@
 # endif
 
 # define N_THREAD 10
+# define MAX_SENSITIVITY 100
+# define MIN_SENSITIVITY 1
 
 // MENU //
 char	ft_capitalize(char letter);
