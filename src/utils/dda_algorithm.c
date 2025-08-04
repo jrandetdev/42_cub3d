@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda_algorithm.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:07:51 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/30 14:56:03 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/04 13:28:52 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,14 @@ static void	dda_main_loop(t_main *main, t_dda_struct *dda)
 			dda->mapY += dda->step_y;
 			dda->side = 1;
 		}
-		if (main->map_struct.map[(int)dda->mapY][(int)dda->mapX] == '1')
+		if (main->map_struct.map[dda->mapY][dda->mapX] == '1')
 			dda->hit = 1;
-		else if (main->map_struct.map[(int)dda->mapY][(int)dda->mapX] == '2')
-			dda->hit = 2;
+		else if (main->map_struct.map[dda->mapY][dda->mapX] == '2')
+		{
+			get_perpwall_dist(dda);
+			if (!is_in_door_half(main, dda))
+				dda->hit = 2;
+		}
 	}
 }
 
@@ -92,3 +96,4 @@ void	digital_differential_analyzer(t_main *main, t_dda_struct *dda_struct)
 	dda_main_loop(main, dda_struct);
 	get_perpwall_dist(dda_struct);
 }
+

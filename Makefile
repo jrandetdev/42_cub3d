@@ -87,7 +87,7 @@ SRC_MINIMAP		=			draw_player.c \
 MINIMAP 		=			$(addprefix $(DIR_MINIMAP)/, $(SRC_MINIMAP))
 
 DIR_BONUS		=			./src/bonus
-SRC_BONUS		=			init_bonus.c \
+SRC_BONUS		=			door.c \
 							fps_counter.c
 BONUS			=			$(addprefix $(DIR_BONUS)/, $(SRC_BONUS))
 
@@ -110,10 +110,6 @@ SRC_MENU		=			main_menu.c \
 							print_menu_section.c
 MENU			=			$(addprefix $(DIR_MENU)/, $(SRC_MENU))
 
-DIR_BONUS		=			./src/bonus
-SRC_BONUS		=			fps_counter.c
-
-BONUS			=			$(addprefix $(DIR_BONUS)/, $(SRC_BONUS))
 SOURCES			=			$(MAIN) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(RENDER_IMG) $(MINIMAP) $(RAYCASTING) $(MENU) $(BONUS)
 vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS) $(DIR_RENDER_IMG) $(DIR_RENDER_IMG) $(DIR_MINIMAP) $(DIR_RAYCASTING) $(DIR_MENU) $(DIR_BONUS)
 
