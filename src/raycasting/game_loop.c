@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:55:18 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/04 13:26:37 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/04 14:14:35 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	cast_rays(t_main *main)
 	t_texture		cardinal_texture;
 
 	pre_calc(main);
-	if (BONUS == 1 && N_THREAD > 0)
+	if (BONUS == 1 && N_THREAD > 1)
 	{
 		create_threads(main);
 		return ;
@@ -108,6 +108,7 @@ void	cast_rays(t_main *main)
 	x = 0;
 	while (x < WIN_WIDTH)
 	{
+		ft_bzero(&dda_struct, sizeof(t_dda_struct));
 		dda_struct.camera_x = 2 * x / (double)WIN_WIDTH - 1;
 		dda_struct.ray_dirx = main->player.dir_x
 			+ main->player.plane_x * dda_struct.camera_x;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   door.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 11:30:17 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/30 18:16:17 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/04 14:22:56 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@ bool is_in_door_half(t_main *main, t_dda_struct *dda)
 	double	width_pourcentage;
 	double	width_pos_x;
 
-	(void)main;
 	if (dda->side == 0)
-		width_pos_x = main->player.y + main->ray.dirY * dda->perpwalldist;
+		width_pos_x = main->player.y + dda->ray_diry * dda->perpwalldist;
 	else
-		width_pos_x = main->player.x + main->ray.dirX * dda->perpwalldist;
+		width_pos_x = main->player.x + dda->ray_dirx * dda->perpwalldist;
 	width_pourcentage = width_pos_x - floor(width_pos_x);
 	if (width_pourcentage > 0.5)
 		return (true);

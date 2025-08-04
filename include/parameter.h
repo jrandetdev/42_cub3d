@@ -52,8 +52,8 @@ enum e_keys
 # define OS 2
 # define PLAYER_SPEED 0.04
 # define ROTATION_SPEED 0.02
-# define WIN_WIDTH 1280
-# define WIN_HEIGHT 720
+# define WIN_WIDTH 3845
+# define WIN_HEIGHT 2000
 # define FOV 66
 
 #elif defined(__linux__)
