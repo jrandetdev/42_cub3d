@@ -13,6 +13,18 @@
 # define MAX_SENSITIVITY 100
 # define MIN_SENSITIVITY 1
 
+# define DC '2'
+# define DO '3'
+# define DA '4'
+
+enum DOOR_STATE
+{
+	NONE = 0,
+	OPENING = 1,
+	CLOSING = 2,
+};
+
+
 // MENU //
 char	ft_capitalize(char letter);
 void	show_debug_menu(t_main *main, int *menu);
@@ -34,6 +46,7 @@ void	fps_counter(t_main *main);
 
 // DOOR //
 
+void	opening_door(t_main *main);
 void	player_interaction(t_main *main);
 bool	is_in_door_half(t_main *main, t_dda_struct *dda);
 

@@ -59,6 +59,13 @@ typedef struct	s_menu_struct
 	int	menu_size;
 }				t_menu_struct;
 
+typedef struct	s_door
+{
+	int	door_state;
+	int	door_opening_state;
+	int	pos_x;
+	int	pos_y;
+}				t_door;
 // MANDATORY PART //
 
 typedef struct	s_cal
@@ -229,7 +236,6 @@ typedef struct	s_main
 	int				rotation;
 	int				menu;
 	int				game_start;
-	int				animation_playing;
 	void			*mlx_ptr;
 	void			*mlx_win;
 	char			**file_content;
@@ -247,6 +253,7 @@ typedef struct	s_main
 	t_mouse			mouse;
 	t_bonus			bonus;
 	t_cal			cal;
+	t_door			door;
 	t_menu_param	param;
 }				t_main;
 

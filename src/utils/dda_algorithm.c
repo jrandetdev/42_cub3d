@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:07:51 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/04 14:25:12 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/04 17:18:21 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,15 @@ static void	dda_main_loop(t_main *main, t_dda_struct *dda)
 		}
 		if (main->map_struct.map[dda->mapY][dda->mapX] == '1')
 			dda->hit = 1;
-		else if (main->map_struct.map[dda->mapY][dda->mapX] == '2')
+		else if (main->map_struct.map[dda->mapY][dda->mapX] == DC || main->map_struct.map[dda->mapY][dda->mapX] == DA)
 		{
-			get_perpwall_dist(dda);
-			if (!is_in_door_half(main, dda))
+			if (main->map_struct.map[dda->mapY][dda->mapX] == DA)
+			{
+				get_perpwall_dist(dda);
+				if (is_in_door_half(main, dda))
+					dda->hit = 2;
+			}
+			else
 				dda->hit = 2;
 		}
 	}
