@@ -61,8 +61,8 @@ typedef struct	s_menu_struct
 
 typedef struct	s_door
 {
-	int	door_state;
-	int	door_opening_state;
+	int	state;
+	int	opening_pourcent;
 	int	pos_x;
 	int	pos_y;
 }				t_door;

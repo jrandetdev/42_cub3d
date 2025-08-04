@@ -6,11 +6,19 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 11:30:17 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/04 17:16:21 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/04 17:45:36 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	playing_door_animation(t_main *main)
+{
+	while (main->door.opening_pourcent < 1)
+	{
+
+	}
+}
 
 void	opening_door(t_main *main)
 {
@@ -23,12 +31,20 @@ void	opening_door(t_main *main)
 	x = (int)trunc(main->player.x + (main->player.dir_x * 1.0));
 	y = (int)trunc(main->player.y + (main->player.dir_y * 1.0));
 	if (main->map_struct.map[y][x] == DC)
+	{
 		main->map_struct.map[y][x] = DA;
+		main->door.state = OPENING;
+		main->door.pos_x = x;
+		main->door.pos_y = y;
+	}
 	else if (main->map_struct.map[y][x] == DO)
 	{
 		if (map[(int)trunc(main->player.y)][(int)trunc(main->player.x)] == map[y][x])
 			return;
 		main->map_struct.map[y][x] = DA;
+		main->door.state = CLOSING;
+		main->door.pos_x = x;
+		main->door.pos_y = y;
 	}
 }
 

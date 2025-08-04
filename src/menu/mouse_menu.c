@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:47 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/04 16:51:28 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/04 17:26:32 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ static void	print_minus_logo(t_main *main, int selection)
 	if (!logo.texture_ptr)
 		exit_cub3d(main, "mlx load image failed in minus logo");
 	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, logo.texture_ptr, main->cal.half_ww + 50, main->cal.half_wh - 250);
+	mlx_destroy_image(main->mlx_ptr, logo.texture_ptr);
 }
 
 static void	print_plus_logo(t_main *main, int selection)
@@ -93,6 +94,7 @@ static void	print_plus_logo(t_main *main, int selection)
 	if (!logo.texture_ptr)
 		exit_cub3d(main, "mlx load image failed in plus logo");
 	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, logo.texture_ptr, main->cal.half_ww - 50 - 128 , main->cal.half_wh - 250);
+	mlx_destroy_image(main->mlx_ptr, logo.texture_ptr);
 }
 
 void show_mouse_sensitivity_menu(t_main *main, int *menu)

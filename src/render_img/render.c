@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:06:37 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/04 17:24:21 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/04 17:44:55 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	render_next_frame(t_main *main)
 	}
 	mlx_destroy_image(main->mlx_ptr, main->image.data_img);
 	init_img(main);
-	if (!main->door.door_state)
+	if (!main->door.state)
 		player_movement(main);
 	//backgroud_color(main);
 	cast_rays(main);
