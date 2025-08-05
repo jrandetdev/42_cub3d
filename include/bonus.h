@@ -16,6 +16,7 @@
 # define DC '2'
 # define DO '3'
 # define DA '4'
+# define DOOR_ANIMATION_SPEED 0.05
 
 enum DOOR_STATE
 {
@@ -48,7 +49,9 @@ void	fps_counter(t_main *main);
 
 void	opening_door(t_main *main);
 void	player_interaction(t_main *main);
+void	playing_door_animation(t_main *main);
 bool	is_in_door_half(t_main *main, t_dda_struct *dda);
-
+int		get_door_hit_position(t_main *main, t_dda_struct *dda_s,
+	t_texture texture, t_params *p);
 
 #endif

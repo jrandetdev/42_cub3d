@@ -9,7 +9,7 @@ UNAME			=			$(shell uname)
 DIR_BUILD		=			./build
 DIR_INCLUDE		=			./include
 
-MLX_PATH_UNIX	:=			./libs/minilibx-linux/
+MLX_PATH_UNIX	:=			./libs/minilibx-linux
 MLX_NAME_UNIX	:=			libmlx.a
 MLX_PATH_OSX	:=			./libs/minilibx-macos
 MLX_NAME_OSX	:=			libmlx.a
@@ -25,7 +25,7 @@ ifeq ($(UNAME), Darwin)
 else ifeq ($(UNAME), Linux)
 	MLX_PATH	= $(MLX_PATH_UNIX)
 	MLX_NAME	= $(MLX_NAME_UNIX)
-	LIBRARIES	= -lft -lmlx -lX11 -lXext -lm -lz
+	LIBRARIES	= -lft -lmlx -lX11 -lXext -lm -lz -lXfixes
 endif
 
 MLX = $(MLX_PATH)$(MLX_NAME)

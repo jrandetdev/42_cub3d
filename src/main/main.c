@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:23:58 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/04 16:37:27 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/05 15:46:55 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ static void	init_cub3d(t_main *main)
 			WIN_HEIGHT, "Cub3d");
 	if (!main->mlx_win)
 		exit_cub3d(main, "Mlx window failed");
-	mlx_hook(main->mlx_win, 17, 0, handle_destroy, main);
 	init_img(main);
 	main->mouse.x = main->cal.half_ww;
 	mlx_mouse_hide(main->mlx_ptr, main->mlx_win);
@@ -73,6 +72,7 @@ int	main(int argc, char **argv)
 	parsing(&main, argv[1]);
 	init_cub3d(&main);
 	init_external_events(&main);
+	mlx_hook(main.mlx_win, 17, 0, handle_destroy, &main);
 	mlx_loop_hook(main.mlx_ptr, render_next_frame, &main);
 	mlx_loop(main.mlx_ptr);
 	return (0);

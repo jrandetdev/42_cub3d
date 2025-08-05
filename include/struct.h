@@ -61,12 +61,25 @@ typedef struct	s_menu_struct
 
 typedef struct	s_door
 {
-	int	state;
-	int	opening_pourcent;
-	int	pos_x;
-	int	pos_y;
+	int		state;
+	double	opening_pourcent;
+	int		pos_x;
+	int		pos_y;
 }				t_door;
+
 // MANDATORY PART //
+
+typedef struct s_params
+{
+	int		wall_height;
+	int		start;
+	int		draw_start;
+	int		draw_end;
+	int		texture_x;
+	int		screen_x;
+	int		screen_y;
+	double	step;
+}				t_params;
 
 typedef struct	s_cal
 {

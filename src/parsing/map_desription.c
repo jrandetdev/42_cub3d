@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_desription.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:21:10 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/22 15:28:49 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/05 14:42:14 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	get_map_descritpion(t_main *main)
 
 	height = count_map_height(main->file_content);
 	width = get_max_row_size(main->file_content);
-	if (height > 50 || width > 70)
+	if (height > 200 || width > 200)
 		exit_cub3d(main, "Map is too big.");
 	main->map_struct.map = ft_calloc(height + 2, sizeof(char *));
 	if (!main->map_struct.map)

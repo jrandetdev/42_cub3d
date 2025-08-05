@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:07:51 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/04 17:18:21 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/05 12:06:06 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	dda_main_loop(t_main *main, t_dda_struct *dda)
 			{
 				get_perpwall_dist(dda);
 				if (is_in_door_half(main, dda))
-					dda->hit = 2;
+					dda->hit = 3;
 			}
 			else
 				dda->hit = 2;

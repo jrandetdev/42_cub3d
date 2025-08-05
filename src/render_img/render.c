@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:06:37 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/04 17:44:55 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/05 10:33:40 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	render_next_frame(t_main *main)
 	init_img(main);
 	if (!main->door.state)
 		player_movement(main);
+	else
+		playing_door_animation(main);
 	//backgroud_color(main);
 	cast_rays(main);
 	if (main->param.show_minimap)

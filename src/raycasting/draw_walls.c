@@ -6,23 +6,11 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:29:29 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/04 13:58:54 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/05 12:48:13 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-typedef struct s_params
-{
-	int		wall_height;
-	int		start;
-	int		draw_start;
-	int		draw_end;
-	int		texture_x;
-	int		screen_x;
-	int		screen_y;
-	double	step;
-}				t_params;
 
 static void	get_texture_position(t_main *main, t_texture t, t_params *p)
 {
@@ -77,7 +65,10 @@ void	draw_texture(t_main *main, t_dda_struct *dda_struct, int x,
 	t_params	params;
 
 	params.screen_x = x;
-	params.texture_x = get_hit_position(main, dda_struct, texture, &params);
+	if (dda_struct->hit != 3)
+		params.texture_x = get_hit_position(main, dda_struct, texture, &params);
+	else
+		params.texture_x = get_door_hit_position(main, dda_struct, texture, &params);
 	params.wall_height = (int)(WIN_HEIGHT / dda_struct->perpwalldist);
 	params.draw_start = (main->cal.half_wh) - (params.wall_height / 2);
 	if (params.draw_start < 0)
@@ -92,7 +83,7 @@ t_texture	get_corresp_texture(t_main *main, t_dda_struct *dda_struct)
 {
 	t_texture	texture;
 
-	if (dda_struct->hit == 2)
+	if (dda_struct->hit == 2 || dda_struct->hit == 3)
 	{
 		texture = main->texture_bank.door;
 		return (texture);

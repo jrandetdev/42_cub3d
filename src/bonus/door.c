@@ -6,19 +6,75 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 11:30:17 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/04 17:45:36 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/05 12:52:06 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+int	get_door_hit_position(t_main *main, t_dda_struct *dda_s,
+	t_texture texture, t_params *p)
+{
+	double	width_pourcentage;
+	double	width_pos_x;
+
+	if (dda_s->side == 0)
+		width_pos_x = main->player.y + dda_s->ray_diry * dda_s->perpwalldist;
+	else
+		width_pos_x = main->player.x + dda_s->ray_dirx * dda_s->perpwalldist;
+	width_pourcentage = width_pos_x - floor(width_pos_x);
+	p->texture_x = ((width_pourcentage - main->door.opening_pourcent) * texture.width);
+	if (dda_s->side == 0 && dda_s->ray_dirx > 0)
+		p->texture_x = texture.width - p->texture_x - 1;
+	if (dda_s->side == 1 && dda_s->ray_diry < 0)
+		p->texture_x = texture.width - p->texture_x - 1;
+	return (p->texture_x);
+}
+
 void	playing_door_animation(t_main *main)
 {
-	while (main->door.opening_pourcent < 1)
+	if (main->door.state == OPENING)
 	{
-
+		if (main->door.opening_pourcent < 1)
+		{
+			main->door.opening_pourcent += DOOR_ANIMATION_SPEED;
+			return;
+		}
+		main->map_struct.map[main->door.pos_y][main->door.pos_x] = DO;
 	}
+	else if (main->door.state == CLOSING)
+	{
+		if (main->door.opening_pourcent > 0)
+		{
+			main->door.opening_pourcent -= DOOR_ANIMATION_SPEED;
+			return;
+		}
+		main->map_struct.map[main->door.pos_y][main->door.pos_x] = DC;
+	}
+	main->door.state = NONE;
 }
+
+
+bool is_in_door_half(t_main *main, t_dda_struct *dda)
+{
+	double		width_pourcentage;
+	double		width_pos_x;
+	
+	if (dda->side == 0)
+		width_pos_x = main->player.y + dda->ray_diry * dda->perpwalldist;
+	else
+		width_pos_x = main->player.x + dda->ray_dirx * dda->perpwalldist;
+	width_pourcentage = width_pos_x - floor(width_pos_x);
+	if (width_pourcentage > (0.5 + (main->door.opening_pourcent / 2)))
+		return (true);
+	else if (width_pourcentage <= (0.5 - (main->door.opening_pourcent / 2)))
+		return (true);
+	return (false);
+}
+//par frame ouvrir de deux pixel et ca donne l'effet de portwes coulissantes 
+//deduire les pixe
+//decaler dans la texture et faire une translation et partir a droite 
+//but de faire le plus fluide possible make 
 
 void	opening_door(t_main *main)
 {
@@ -33,6 +89,7 @@ void	opening_door(t_main *main)
 	if (main->map_struct.map[y][x] == DC)
 	{
 		main->map_struct.map[y][x] = DA;
+		main->door.opening_pourcent = 0;
 		main->door.state = OPENING;
 		main->door.pos_x = x;
 		main->door.pos_y = y;
@@ -42,27 +99,10 @@ void	opening_door(t_main *main)
 		if (map[(int)trunc(main->player.y)][(int)trunc(main->player.x)] == map[y][x])
 			return;
 		main->map_struct.map[y][x] = DA;
+		main->door.opening_pourcent = 1;
 		main->door.state = CLOSING;
 		main->door.pos_x = x;
 		main->door.pos_y = y;
 	}
 }
-
-bool is_in_door_half(t_main *main, t_dda_struct *dda)
-{
-	double		width_pourcentage;
-	double		width_pos_x;
-
-	if (dda->side == 0)
-		width_pos_x = main->player.y + dda->ray_diry * dda->perpwalldist;
-	else
-		width_pos_x = main->player.x + dda->ray_dirx * dda->perpwalldist;
-	width_pourcentage = width_pos_x - floor(width_pos_x);
-	if (width_pourcentage > 0.5)
-		return (true);
-	return (false);
-}
-//par frame ouvrir de deux pixel et ca donne l'effet de portwes coulissantes 
-//deduire les pixe
-//decaler dans la texture et faire une translation et partir a droite 
-//but de faire le plus fluide possible make 
+	
