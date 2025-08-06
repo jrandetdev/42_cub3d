@@ -72,7 +72,7 @@ void		print_minimap_base(t_main *main);
 t_vec2		mini_dda(t_main *main, double dst_x, double dst_y);
 
 // RENDERING //
-int			render_next_frame(t_main *main);
+int			game_loop(t_main *main);
 
 void		init_img(t_main *main);
 void		draw_floor(t_main *main, int x, int y);

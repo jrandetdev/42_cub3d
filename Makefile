@@ -72,7 +72,7 @@ EVENTS			=			$(addprefix $(DIR_EVENTS)/, $(SRC_EVENTS))
 
 DIR_RENDER_IMG	=			./src/render_img
 SRC_RENDER_IMG	=			init_img.c \
-							render.c \
+							game_loop.c \
 							player_movement.c \
 							valid_next_movement.c \
 							player_interaction.c
@@ -92,7 +92,7 @@ SRC_BONUS		=			door.c \
 BONUS			=			$(addprefix $(DIR_BONUS)/, $(SRC_BONUS))
 
 DIR_RAYCASTING	=			./src/raycasting
-SRC_RAYCASTING	=			game_loop.c \
+SRC_RAYCASTING	=			render.c \
 							draw_floor.c \
 							draw_ceiling.c \
 							draw_walls.c

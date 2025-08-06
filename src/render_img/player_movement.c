@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:06:09 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/31 17:09:12 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/06 11:47:31 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,5 @@ void	player_movement(t_main *main)
 	player_right_and_left(main);
 	player_key_rotation(main);
 	player_mouse_rotation(main);
-	player_interaction(main);
+	player_action(main);
 }

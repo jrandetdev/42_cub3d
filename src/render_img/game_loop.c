@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:06:37 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/05 10:33:40 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/06 11:49:29 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 // 	}
 // }
 
-int	render_next_frame(t_main *main)
+int	game_loop(t_main *main)
 {
 	if (main->menu)
 	{

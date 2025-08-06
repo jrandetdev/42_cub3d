@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:23:58 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/05 15:46:55 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/06 11:49:29 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	main(int argc, char **argv)
 	init_cub3d(&main);
 	init_external_events(&main);
 	mlx_hook(main.mlx_win, 17, 0, handle_destroy, &main);
-	mlx_loop_hook(main.mlx_ptr, render_next_frame, &main);
+	mlx_loop_hook(main.mlx_ptr, game_loop, &main);
 	mlx_loop(main.mlx_ptr);
 	return (0);
 }

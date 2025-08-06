@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 11:30:17 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/05 12:52:06 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/06 12:05:51 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ int	get_door_hit_position(t_main *main, t_dda_struct *dda_s,
 	else
 		width_pos_x = main->player.x + dda_s->ray_dirx * dda_s->perpwalldist;
 	width_pourcentage = width_pos_x - floor(width_pos_x);
-	p->texture_x = ((width_pourcentage - main->door.opening_pourcent) * texture.width);
+	if (dda_s->door_hit_percentage <= 0.5)
+		p->texture_x = ((width_pourcentage + main->door.opening_pourcent / 2) * texture.width);
+	if (dda_s->door_hit_percentage > 0.5)
+		p->texture_x = ((width_pourcentage - main->door.opening_pourcent / 2) * texture.width);
 	if (dda_s->side == 0 && dda_s->ray_dirx > 0)
 		p->texture_x = texture.width - p->texture_x - 1;
 	if (dda_s->side == 1 && dda_s->ray_diry < 0)
@@ -59,12 +62,13 @@ bool is_in_door_half(t_main *main, t_dda_struct *dda)
 {
 	double		width_pourcentage;
 	double		width_pos_x;
-	
+
 	if (dda->side == 0)
 		width_pos_x = main->player.y + dda->ray_diry * dda->perpwalldist;
 	else
 		width_pos_x = main->player.x + dda->ray_dirx * dda->perpwalldist;
 	width_pourcentage = width_pos_x - floor(width_pos_x);
+	dda->door_hit_percentage = width_pourcentage;
 	if (width_pourcentage > (0.5 + (main->door.opening_pourcent / 2)))
 		return (true);
 	else if (width_pourcentage <= (0.5 - (main->door.opening_pourcent / 2)))

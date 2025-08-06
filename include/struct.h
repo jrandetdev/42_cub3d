@@ -110,6 +110,7 @@ typedef struct s_dda_struct
 	double		camera_x;
 	double		ray_dirx;
 	double		ray_diry;
+	double		door_hit_percentage;
 }	t_dda_struct;
 
 typedef struct 	s_ray
