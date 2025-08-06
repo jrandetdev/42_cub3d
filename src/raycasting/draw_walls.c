@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:29:29 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/06 11:52:52 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/06 12:09:45 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,15 @@ static	int	get_hit_position(t_main *main, t_dda_struct *dda_s,
 	else
 		width_pos_x = main->player.x + dda_s->ray_dirx * dda_s->perpwalldist;
 	width_pourcentage = width_pos_x - floor(width_pos_x);
-	p->texture_x = (width_pourcentage * texture.width);
+	if (dda_s->hit == 3)
+	{
+		if (dda_s->door_hit_percentage <= 0.5)
+			p->texture_x = ((width_pourcentage + main->door.opening_pourcent / 2) * texture.width);
+		if (dda_s->door_hit_percentage > 0.5)
+			p->texture_x = ((width_pourcentage - main->door.opening_pourcent / 2) * texture.width);
+	}
+	else
+		p->texture_x = (width_pourcentage * texture.width);
 	if (dda_s->side == 0 && dda_s->ray_dirx > 0)
 		p->texture_x = texture.width - p->texture_x - 1;
 	if (dda_s->side == 1 && dda_s->ray_diry < 0)
@@ -65,10 +73,7 @@ void	draw_texture(t_main *main, t_dda_struct *dda_struct, int x,
 	t_params	params;
 
 	params.screen_x = x;
-	if (dda_struct->hit != 3)
-		params.texture_x = get_hit_position(main, dda_struct, texture, &params);
-	else
-		params.texture_x = get_door_hit_position(main, dda_struct, texture, &params);
+	params.texture_x = get_hit_position(main, dda_struct, texture, &params);
 	params.wall_height = (int)(WIN_HEIGHT / dda_struct->perpwalldist);
 	params.draw_start = (main->cal.half_wh) - (params.wall_height / 2);
 	if (params.draw_start < 0)

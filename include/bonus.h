@@ -51,7 +51,5 @@ void	opening_door(t_main *main);
 void	player_action(t_main *main);
 void	playing_door_animation(t_main *main);
 bool	is_in_door_half(t_main *main, t_dda_struct *dda);
-int		get_door_hit_position(t_main *main, t_dda_struct *dda_s,
-	t_texture texture, t_params *p);
 
 #endif
