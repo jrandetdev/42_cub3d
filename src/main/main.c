@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:23:58 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/06 11:49:29 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/06 15:31:26 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ int	main(int argc, char **argv)
 {
 	t_main	main;
 
-	ft_bzero(&main, sizeof(t_main));
 	if (!arguments_are_valid(argc, argv))
 		return (EXIT_FAILURE);
+	ft_bzero(&main, sizeof(t_main));
 	init_mlx(&main);
 	parsing(&main, argv[1]);
 	init_cub3d(&main);

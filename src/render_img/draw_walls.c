@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:29:29 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/06 12:09:45 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/06 14:20:48 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	get_texture_position(t_main *main, t_texture t, t_params *p)
 	screen_y = p->draw_start;
 	step = (double)t.height / p->wall_height;
 	texture_pos = (p->draw_start - main->cal.half_wh + p->wall_height / 2) * step;
-	while (y < screen_y)
+	while (main->c_colour.is_texture && y < screen_y)
 		draw_ceiling(main, p->screen_x, y++);
 	while (screen_y < p->draw_end)
 	{
@@ -34,7 +34,7 @@ static void	get_texture_position(t_main *main, t_texture t, t_params *p)
 		texture_pos += step;
 		screen_y++;
 	}
-	while (screen_y < WIN_HEIGHT)
+	while (main->f_colour.is_texture && screen_y < WIN_HEIGHT)
 	{
 		draw_floor(main, p->screen_x, screen_y++);
 	}

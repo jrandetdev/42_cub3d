@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_texture_and_colour.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:19:53 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/23 12:56:49 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/06 14:57:53 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,5 @@ void	parse_map_elements(t_main *main)
 		free_string_array(&main->id_and_info);
 		i++;
 	}
+	printf("AFter parsing element ceiling %d floor %d\n", main->c_colour.is_texture, main->f_colour.is_texture);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:21:00 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/23 14:10:34 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/06 15:37:44 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,8 @@ bool	find_player_position(t_main *main, int *x, int *y, int *player)
 			exit_cub3d(main, "Too many players, it's a single-player game");
 		return (false);
 	}
-	main->player.x = *x;
-	main->player.y = *y;
+	main->player.x = *x + 0.5;
+	main->player.y = *y + 0.5;
 	init_player_direction(main);
 	main->map_struct.map[*y][*x] = '0';
 	return (true);

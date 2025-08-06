@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:40 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/06 13:02:58 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/06 15:29:25 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,12 @@ void	load_personal_textures(t_main *main)
 {
 	if (main->f_colour.is_texture)
 	{
-		printf("Incorect color for floor format, trying to load texture...\n");
+		printf("Incorect color format for floor, trying to load texture...\n");
 		check_and_get_texture_data(main, &main->texture_bank.floor, "./Assets/textures/floor.xpm");
 	}
 	if (main->c_colour.is_texture)
 	{
-		printf("Incorect color for ceiling format, trying to load texture...\n");
+		printf("Incorect color format for ceiling, trying to load texture...\n");
 		check_and_get_texture_data(main, &main->texture_bank.ceiling, "./Assets/textures/Star_Ceiling-7.xpm");
 	}
 	check_and_get_texture_data(main, &main->texture_bank.door, "./Assets/textures/brushed-metal-door.xpm");

@@ -116,7 +116,7 @@ vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS
 OBJECTS			:= 			$(addprefix $(DIR_BUILD)/, $(notdir $(SOURCES:.c=.o)))
 DEPS			:=			$(OBJECTS:.o=.d)
 
-CFLAGS			=			-Wall -Werror -Wextra $(INC_FLAGS) -g -MMD -MP -O3
+CFLAGS			=			-Wall -Werror -Wextra $(INC_FLAGS) -g -MMD -MP
 INC_FLAGS		:=			-I $(DIR_INCLUDE) -I $(LIBFT_PATH) -I $(MLX_PATH)
 LIBRARY_PATHS	:=			-L$(LIBFT_PATH) -L$(MLX_PATH)
 
