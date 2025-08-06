@@ -217,7 +217,6 @@ typedef struct	s_texture
 typedef union
 {
 	int		value;
-	bool	is_texture;
 	struct
 	{
 		unsigned char r;
@@ -251,6 +250,8 @@ typedef struct	s_main
 	int				rotation;
 	int				menu;
 	int				game_start;
+	bool			is_celling_texture;
+	bool			is_floor_texture;
 	void			*mlx_ptr;
 	void			*mlx_win;
 	char			**file_content;

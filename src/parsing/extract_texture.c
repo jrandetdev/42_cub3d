@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:40 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/06 15:29:25 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/06 16:00:33 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	get_texture_data(t_main *main, t_texture *direc, char *xpm_file)
 		perror("texture failed");
 		exit_cub3d(main, "Texture path not found or invalid.");
 	}
-	printf("%p\n", direc->texture_ptr);
 	direc->texture.addr = mlx_get_data_addr(
 			direc->texture_ptr,
 			&direc->texture.bitspp,
@@ -60,12 +59,12 @@ void	check_and_get_texture_data(t_main *main, t_texture *pannel, char *filename)
 
 void	load_personal_textures(t_main *main)
 {
-	if (main->f_colour.is_texture)
+	if (main->is_floor_texture)
 	{
 		printf("Incorect color format for floor, trying to load texture...\n");
 		check_and_get_texture_data(main, &main->texture_bank.floor, "./Assets/textures/floor.xpm");
 	}
-	if (main->c_colour.is_texture)
+	if (main->is_celling_texture)
 	{
 		printf("Incorect color format for ceiling, trying to load texture...\n");
 		check_and_get_texture_data(main, &main->texture_bank.ceiling, "./Assets/textures/Star_Ceiling-7.xpm");

@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 15:10:27 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/06 15:33:29 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/06 16:00:17 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static void	assign_colour(t_colour *pannel, char **rgb_colours)
 	pannel->g = ft_atoi(rgb_colours[1]);
 	pannel->r = ft_atoi(rgb_colours[2]);
 	free_string_array(&rgb_colours);
-	pannel->is_texture = 0;
 }
 
 void	extract_colour(t_main *main, char *id, char *info)
@@ -36,9 +35,15 @@ void	extract_colour(t_main *main, char *id, char *info)
 	if (!validate_colour(main, rgb_colours))
 	{
 		if (ft_strncmp(id, "F", 1) == 0)
-			main->f_colour.is_texture = 1;
+		{
+			main->is_floor_texture = 1;
+			//add_texture_path in struct
+		}
 		else
-			main->c_colour.is_texture = 1;
+		{
+			main->is_celling_texture = 1;
+			//add_texture_path in struct
+		}
 		return ;
 	}
 	if (ft_strncmp(id, "F", 1) == 0)
