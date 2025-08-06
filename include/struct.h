@@ -216,7 +216,8 @@ typedef struct	s_texture
 
 typedef union
 {
-	int	value;
+	int		value;
+	bool	is_texture;
 	struct
 	{
 		unsigned char r;

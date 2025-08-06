@@ -70,13 +70,13 @@ DIR_EVENTS		=			./src/events
 SRC_EVENTS		=			external_events.c
 EVENTS			=			$(addprefix $(DIR_EVENTS)/, $(SRC_EVENTS))
 
-DIR_RENDER_IMG	=			./src/render_img
-SRC_RENDER_IMG	=			init_img.c \
+DIR_GAMELOOP	=			./src/gameloop
+SRC_GAMELOOP	=			init_img.c \
 							game_loop.c \
 							player_movement.c \
 							valid_next_movement.c \
 							player_interaction.c
-RENDER_IMG		=			$(addprefix $(DIR_RENDER_IMG)/, $(SRC_RENDER_IMG))
+GAMELOOP		=			$(addprefix $(DIR_GAMELOOP)/, $(SRC_GAMELOOP))
 
 DIR_MINIMAP		=			./src/minimap
 SRC_MINIMAP		=			draw_player.c \
@@ -91,12 +91,12 @@ SRC_BONUS		=			door.c \
 							fps_counter.c
 BONUS			=			$(addprefix $(DIR_BONUS)/, $(SRC_BONUS))
 
-DIR_RAYCASTING	=			./src/raycasting
-SRC_RAYCASTING	=			render.c \
+DIR_RENDER_IMG	=			./src/render_img
+SRC_RENDER_IMG	=			render.c \
 							draw_floor.c \
 							draw_ceiling.c \
 							draw_walls.c
-RAYCASTING 		=			$(addprefix $(DIR_RAYCASTING)/, $(SRC_RAYCASTING))
+RENDER_IMG 		=			$(addprefix $(DIR_RENDER_IMG)/, $(SRC_RENDER_IMG))
 
 DIR_MENU		=			./src/menu
 SRC_MENU		=			main_menu.c \
@@ -110,8 +110,8 @@ SRC_MENU		=			main_menu.c \
 							print_menu_section.c
 MENU			=			$(addprefix $(DIR_MENU)/, $(SRC_MENU))
 
-SOURCES			=			$(MAIN) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(RENDER_IMG) $(MINIMAP) $(RAYCASTING) $(MENU) $(BONUS)
-vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS) $(DIR_RENDER_IMG) $(DIR_RENDER_IMG) $(DIR_MINIMAP) $(DIR_RAYCASTING) $(DIR_MENU) $(DIR_BONUS)
+SOURCES			=			$(MAIN) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(GAMELOOP) $(MINIMAP) $(RENDER_IMG) $(MENU) $(BONUS)
+vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS) $(DIR_GAMELOOP) $(DIR_GAMELOOP) $(DIR_MINIMAP) $(DIR_RENDER_IMG) $(DIR_MENU) $(DIR_BONUS)
 
 OBJECTS			:= 			$(addprefix $(DIR_BUILD)/, $(notdir $(SOURCES:.c=.o)))
 DEPS			:=			$(OBJECTS:.o=.d)

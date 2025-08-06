@@ -1,40 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:06:37 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/06 11:49:29 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/06 14:03:56 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// static void	backgroud_color(t_main *main)
-// {
-// 	int	x;
-// 	int	y;
-// 	int	midle;
+static void	backgroud_color(t_main *main)
+{
+	int	x;
+	int	y;
+	int	midle;
 
-// 	y = 0;
-// 	midle = main->cal.half_wh;
-// 	while (y <= midle)
-// 	{
-// 		x = 0;
-// 		while (x <= WIN_WIDTH)
-// 			put_pixel_to_image(main, x++, y, main->f_colour.value);
-// 		y++;
-// 	}
-// 	while (y < WIN_HEIGHT)
-// 	{
-// 		x = 0;
-// 		while (x <= WIN_WIDTH)
-// 			put_pixel_to_image(main, x++, y, main->c_colour.value);
-// 		y++;
-// 	}
-// }
+	y = 0;
+	midle = main->cal.half_wh;
+	if (!main->c_colour.is_texture)
+	{
+		while (y <= midle)
+		{
+			x = 0;
+			while (x <= WIN_WIDTH)
+				put_pixel_to_image(main, x++, y, main->f_colour.value);
+			y++;
+		}
+	}
+	if (!main->f_colour.is_texture)
+	{
+		while (y < WIN_HEIGHT)
+		{
+			x = 0;
+			while (x <= WIN_WIDTH)
+				put_pixel_to_image(main, x++, y, main->c_colour.value);
+			y++;
+		}
+	}
+}
 
 int	game_loop(t_main *main)
 {
@@ -49,7 +55,7 @@ int	game_loop(t_main *main)
 		player_movement(main);
 	else
 		playing_door_animation(main);
-	//backgroud_color(main);
+	backgroud_color(main);
 	cast_rays(main);
 	if (main->param.show_minimap)
 		print_minimap(main);

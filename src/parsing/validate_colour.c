@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_colour.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:06 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/22 15:20:25 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/06 12:56:16 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static bool	is_valid_len(char *colour)
 	return (false);
 }
 
-void	validate_colour(t_main *main, char **splitted_colours)
+bool	validate_colour(t_main *main, char **splitted_colours)
 {
 	int	i;
 
@@ -48,10 +48,7 @@ void	validate_colour(t_main *main, char **splitted_colours)
 	while (splitted_colours[i])
 	{
 		if (!is_valid_len(splitted_colours[i]))
-		{
-			free_string_array(&splitted_colours);
-			return (exit_cub3d(main, "Colour must be between 1 and 3 digits."));
-		}
+			return (false);
 		if (!is_only_digit(splitted_colours[i]))
 		{
 			free_string_array(&splitted_colours);
@@ -64,4 +61,5 @@ void	validate_colour(t_main *main, char **splitted_colours)
 		}
 		i++;
 	}
+	return (true);
 }

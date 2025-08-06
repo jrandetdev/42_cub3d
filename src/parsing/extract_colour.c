@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_colour.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 15:10:27 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/17 12:15:22 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/06 13:04:13 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,14 @@ void	extract_colour(t_main *main, char *id, char *info)
 	rgb_colours = ft_split(info, ',');
 	if (!rgb_colours)
 		return (exit_cub3d(main, "Ft_split failed in extract_fc_colours."));
-	validate_colour(main, rgb_colours);
+	if (!validate_colour(main, rgb_colours))
+	{
+		if (ft_strncmp(id, "F", 1) == 0)
+			main->f_colour.is_texture = 1;
+		else
+			main->c_colour.is_texture = 1;
+		return ;
+	}
 	if (ft_strncmp(id, "F", 1) == 0)
 		return (assign_colour(&main->f_colour, rgb_colours));
 	return (assign_colour(&main->c_colour, rgb_colours));
