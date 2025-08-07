@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:52:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/07 12:22:02 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/07 15:30:18 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ int	mouse_move(int x, int y, t_main *main)
 	if (x != main->mouse.x)
 	{
 		if (x > main->mouse.x)
-			main->mouse.dist = (x - main->mouse.x) / (MAX_SENSITIVITY - main->mouse.sensitivity + 1);
+			main->mouse.dist = (x - main->mouse.x)
+				/ (MAX_SENSITIVITY - main->mouse.sensitivity + 1);
 		else
 		{
-			main->mouse.dist = (main->mouse.x - x) / (MAX_SENSITIVITY - main->mouse.sensitivity + 1);
+			main->mouse.dist = (main->mouse.x - x)
+				/ (MAX_SENSITIVITY - main->mouse.sensitivity + 1);
 			main->mouse.dist = -main->mouse.dist;
 		}
 		mlx_mouse_move(main->mlx_ptr, main->mlx_win,

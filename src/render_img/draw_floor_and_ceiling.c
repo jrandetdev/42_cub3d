@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_floor_and_ceiling.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/07 15:38:19 by hdougoud          #+#    #+#             */
+/*   Updated: 2025/08/07 15:43:55 by hdougoud         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 /**
@@ -6,36 +18,38 @@
  * @remark the ray goes through two points. The camera itself which is at 
  * @param half_screen is 
  */
-
  typedef struct	s_guide
 {
+	int		texture_x;
+	int		texture_y;
 	int		pixel_distance_down;
 	float	pos_z;
-	float	distance_to_row;
 	float	x_step_right;
 	float	y_step_down;
 	float	floor_coor_x;
 	float	floor_coor_y;
+	float	distance_to_row;
 	float	floor_pannel_distance;
+	int		color;
 	int		floor_grid_x;
 	int		floor_grid_y;
-	int		color;
 }				t_guide;
 
 static void	get_texture_position_floor(t_main *main, int x, int y, t_guide *g)
 {
-	int	texture_x;
-	int	texture_y;
-	int	texture_width;
-	int	texture_height;
-
-	float _x = g->floor_coor_x + ((float)x * g->x_step_right);
-	float _y = g->floor_coor_y + ((float)x * g->y_step_down);
+	int		texture_width;
+	int		texture_height;
+	float	_y;
+	float	_x;
+	
+	_x = g->floor_coor_x + ((float)x * g->x_step_right);
+	_y = g->floor_coor_y + ((float)x * g->y_step_down);
 	texture_width = main->texture_bank.floor.width;
 	texture_height = main->texture_bank.floor.height;
-	texture_x = (int)(texture_width * fabs(_x - (int)_x)) % texture_width;
-	texture_y = (int)(texture_height * fabs(_y - (int)_y)) % texture_height;
-	g->color = ((int *)main->texture_bank.floor.texture.addr)[texture_width * texture_x + texture_y];
+	g->texture_x = (int)(texture_width * fabs(_x - (int)_x)) % texture_width;
+	g->texture_y = (int)(texture_height * fabs(_y - (int)_y)) % texture_height;
+	g->color = ((int *)main->texture_bank.floor.texture.addr)
+		[texture_width * g->texture_x + g->texture_y];
 	put_pixel_to_image(main, x, y, g->color);
 }
 

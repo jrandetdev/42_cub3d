@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:40 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/07 12:16:18 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/07 15:34:44 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	get_texture_data(t_main *main, t_texture *direc, char *xpm_file)
 {
-	direc->texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, xpm_file, \
-		&direc->width, &direc->height);
+	direc->texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, xpm_file,
+			&direc->width, &direc->height);
 	if (!direc->texture_ptr)
 	{
 		perror("texture failed");
@@ -29,8 +29,8 @@ void	get_texture_data(t_main *main, t_texture *direc, char *xpm_file)
 	if (!direc->texture.addr)
 		exit_cub3d(main, "Mlx_get_data_addr failed.");
 	direc->texture.bytespp = direc->texture.bitspp / 8;
-	direc->texture.pixels_per_line = \
-		direc->texture.size_line / direc->texture.bytespp;
+	direc->texture.pixels_per_line = direc->texture.size_line
+		/ direc->texture.bytespp;
 	direc->texture.total_bytes = direc->texture.size_line * direc->height;
 }
 
@@ -59,5 +59,6 @@ void	check_and_get_texture(t_main *main, t_texture *pannel, char *filename)
 
 void	load_personal_textures(t_main *main)
 {
-	check_and_get_texture(main, &main->texture_bank.door, "./Assets/textures/brushed-metal-door.xpm");
+	check_and_get_texture(main, &main->texture_bank.door,
+		"./Assets/textures/brushed-metal-door.xpm");
 }

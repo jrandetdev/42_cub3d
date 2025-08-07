@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:24:31 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/05 15:31:25 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/07 15:29:37 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void	free_all_textures(t_main *main)
 	if (main->texture_bank.floor.texture_ptr)
 		mlx_destroy_image(main->mlx_ptr, main->texture_bank.floor.texture_ptr);
 	if (main->texture_bank.ceiling.texture_ptr)
-		mlx_destroy_image(main->mlx_ptr, main->texture_bank.ceiling.texture_ptr);
+		mlx_destroy_image(main->mlx_ptr,
+			main->texture_bank.ceiling.texture_ptr);
 }
 
 void	free_mlx_pointers(t_main *main)
