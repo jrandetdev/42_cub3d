@@ -20,6 +20,15 @@
 #include "parameter.h"
 #include "bonus_struct.h"
 
+# define RED	"\x1b[31;1m"
+# define GREEN	"\x1b[32;1m"
+# define YELLOW	"\x1b[33;1m"
+# define RESET	"\x1b[0m"
+
+# ifndef DEBUG
+#  define DEBUG 0
+# endif
+
 # ifndef BUFFERSIZE
 #  define BUFFERSIZE 20
 # endif
@@ -53,6 +62,7 @@ void		load_personal_textures(t_main *main);
 void		extract_colour(t_main *main, char *id, char *info);
 void		extract_texture(t_main *main, char *id, char *xpm_f);
 void		get_texture_data(t_main *main, t_texture *direc, char *xpm_file);
+void		check_and_get_texture(t_main *main, t_texture *pannel, char *filename);
 
 /*-------------------------------- MINIMAP -----------------------------------*/
 

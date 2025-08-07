@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:06 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/06 14:30:33 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/07 12:25:18 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ bool	validate_colour(t_main *main, char **splitted_colours)
 	{
 		if (!is_valid_len(splitted_colours[i]))
 		{
+			free_string_array(&splitted_colours);
 			return (false);
 		}
 		if (!is_only_digit(splitted_colours[i]))

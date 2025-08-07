@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:52:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/04 16:37:56 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/07 12:22:02 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,12 @@ static void	key_hit(int keycode, t_main *main)
 	}
 	else if (keycode == K_P && main->game_start && main->menu > 0)
 		main->menu = NO_MENU;
-	else if (main->debug.last_keycode != keycode)
-		printf("keycode : %d\n", keycode);
-	main->debug.last_keycode = keycode;
+	if (DEBUG)
+	{
+		if (main->debug.last_keycode != keycode)
+			printf("keycode : %d\n", keycode);
+		main->debug.last_keycode = keycode;
+	}
 }
 
 static int	key_pressed(int keycode, t_main *main)

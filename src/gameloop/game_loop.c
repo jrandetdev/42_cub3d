@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:06:37 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/06 16:00:49 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/07 12:18:41 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	backgroud_color(t_main *main)
 
 	y = 0;
 	midle = main->cal.half_wh;
-	if (!main->is_celling_texture)
+	if (!main->texture_bank.ceiling.texture_ptr)
 	{
 		while (y <= midle)
 		{
@@ -30,7 +30,7 @@ static void	backgroud_color(t_main *main)
 			y++;
 		}
 	}
-	if (!main->is_floor_texture)
+	if (!main->texture_bank.floor.texture_ptr)
 	{
 		while (y < WIN_HEIGHT)
 		{

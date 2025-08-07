@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:40 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/06 16:00:33 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/07 12:16:18 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	extract_texture(t_main *main, char *id, char *xpm_f)
 		return (exit_cub3d(main, "Texture id needs NO, SO, WE, EA"));
 }
 
-void	check_and_get_texture_data(t_main *main, t_texture *pannel, char *filename)
+void	check_and_get_texture(t_main *main, t_texture *pannel, char *filename)
 {
 	if (!xmp_extension_is_valid(filename, 3))
 		return (exit_cub3d(main, "Texture file needs xpm extension."));
@@ -59,15 +59,5 @@ void	check_and_get_texture_data(t_main *main, t_texture *pannel, char *filename)
 
 void	load_personal_textures(t_main *main)
 {
-	if (main->is_floor_texture)
-	{
-		printf("Incorect color format for floor, trying to load texture...\n");
-		check_and_get_texture_data(main, &main->texture_bank.floor, "./Assets/textures/floor.xpm");
-	}
-	if (main->is_celling_texture)
-	{
-		printf("Incorect color format for ceiling, trying to load texture...\n");
-		check_and_get_texture_data(main, &main->texture_bank.ceiling, "./Assets/textures/Star_Ceiling-7.xpm");
-	}
-	check_and_get_texture_data(main, &main->texture_bank.door, "./Assets/textures/brushed-metal-door.xpm");
+	check_and_get_texture(main, &main->texture_bank.door, "./Assets/textures/brushed-metal-door.xpm");
 }

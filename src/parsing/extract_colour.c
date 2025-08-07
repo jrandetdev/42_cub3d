@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 15:10:27 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/06 16:00:17 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/07 12:17:42 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ void	extract_colour(t_main *main, char *id, char *info)
 	{
 		if (ft_strncmp(id, "F", 1) == 0)
 		{
-			main->is_floor_texture = 1;
-			//add_texture_path in struct
+			printf(YELLOW"Incorrect color format for floor.. Trying to load texture\n"RESET);
+			check_and_get_texture(main, &main->texture_bank.floor, info);
 		}
 		else
 		{
-			main->is_celling_texture = 1;
-			//add_texture_path in struct
+			printf(YELLOW"Incorrect color format for ceiling... Trying to load texture\n"RESET);
+			check_and_get_texture(main, &main->texture_bank.ceiling, info);
 		}
 		return ;
 	}

@@ -185,8 +185,6 @@ typedef struct	s_main
 	int				menu;
 	int				rotation;
 	int				game_start;
-	bool			is_floor_texture;
-	bool			is_celling_texture;
 	void			*mlx_ptr;
 	void			*mlx_win;
 	char			**id_and_info;
