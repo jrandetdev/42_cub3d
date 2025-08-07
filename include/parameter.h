@@ -6,7 +6,7 @@
 
 /* Common window dimensions */
 
-# if defined(__APPLE__)
+#if defined(__APPLE__)
 
 /* Event types for macOS */
 enum e_events
@@ -57,7 +57,6 @@ enum e_keys
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
 # define FOV 66
-# endif
 
 #elif defined(__linux__)
 
@@ -113,5 +112,7 @@ enum e_keys
 # define ROTATION_SPEED 0.04
 # define WIN_WIDTH 3845
 # define WIN_HEIGHT 2000
+
+#endif
 
 #endif
