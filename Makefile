@@ -93,9 +93,8 @@ BONUS			=			$(addprefix $(DIR_BONUS)/, $(SRC_BONUS))
 
 DIR_RENDER_IMG	=			./src/render_img
 SRC_RENDER_IMG	=			render.c \
-							draw_floor.c \
-							draw_ceiling.c \
-							draw_walls.c
+							draw_walls.c \
+							draw_floor_and_ceiling.c
 RENDER_IMG 		=			$(addprefix $(DIR_RENDER_IMG)/, $(SRC_RENDER_IMG))
 
 DIR_MENU		=			./src/menu

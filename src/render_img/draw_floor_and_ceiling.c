@@ -49,18 +49,18 @@ static void	get_guide_info(t_main *main, t_guide *g, int y)
 
 	player = &main->player;
 	g->pixel_distance_down = y - main->cal.half_wh;
-	g->pos_z = 0.5 * WIN_HEIGHT;
 	g->floor_pannel_distance = g->pos_z / g->pixel_distance_down;
-	g->x_step_right = g->floor_pannel_distance * main->cal.cf_pre_step_right; // gives me the incrmeental part of the calculation
-	g->y_step_down = g->floor_pannel_distance * main->cal.cf_pre_step_down; // scalar calculation
+	g->x_step_right = g->floor_pannel_distance * main->cal.cf_pre_step_right;
+	g->y_step_down = g->floor_pannel_distance * main->cal.cf_pre_step_down;
 	g->floor_coor_x = player->x + g->floor_pannel_distance * main->cal.cf_ray_dirx_left;
 	g->floor_coor_y = player->y + g->floor_pannel_distance * main->cal.cf_ray_diry_left;
 }
 
-void	draw_floor(t_main *main, int x, int y)
+void	draw_floor_and_ceiling(t_main *main, int x, int y, float z)
 {
 	t_guide	g;
 
+	g.pos_z = z * WIN_HEIGHT;
 	get_guide_info(main, &g, y);
 	get_texture_position_floor(main, x, y, &g);
 }

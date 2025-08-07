@@ -4,6 +4,8 @@
 # define _USE_MATH_DEFINES
 # define GAME_NAME "CUBE3D"
 
+#include <mlx.h>
+#include <math.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <stdio.h>
@@ -11,12 +13,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+
 #include "libft.h"
-#include "parameter.h"
-#include "struct.h"
-#include <mlx.h>
-#include <math.h>
 #include "bonus.h"
+#include "struct.h"
+#include "parameter.h"
+#include "bonus_struct.h"
 
 # ifndef BUFFERSIZE
 #  define BUFFERSIZE 20
@@ -26,25 +28,20 @@
 #  define M_PI 3.14159265358979323846
 # endif
 
-typedef struct	s_main t_main;
-typedef struct	s_map t_map;
-typedef struct	s_texture t_texture;
-typedef struct	s_myimage t_myimage;
-typedef struct	s_vec2 t_vec2;
-typedef struct	s_keys t_keys;
-typedef struct	s_dda_struct t_dda_struct;
+typedef struct	t_texturec s_texture;
 
-/*------------------------------------ DEBUG ---------------------------------*/
-
+/*------------------------------- DECLARATION --------------------------------*/
 
 void		init_debug(t_main *main);
 
-// MAP AND PARSING//
+/*-------------------------------- PARSING -----------------------------------*/
 
 bool		is_dir(char *file_relative_path);
 bool		parsing(t_main *main, char *file);
 bool		cub_extension_is_valid(char	*s, int len);
 bool		xmp_extension_is_valid(char	*s, int len);
+bool		validate_colour(t_main *main, char **splitted_colours);
+bool		find_player_position(t_main *main, int *x, int *y, int *player);
 
 char		*max_strdup(const char *s1, int max_size);
 char		**get_file_content(t_main *main, int fd, char *file);
@@ -52,14 +49,13 @@ char		**get_file_content(t_main *main, int fd, char *file);
 void		is_map_valid(t_main *main);
 void		parse_map_elements(t_main *main);
 void		get_map_descritpion(t_main *main);
+void		load_personal_textures(t_main *main);
 void		extract_colour(t_main *main, char *id, char *info);
 void		extract_texture(t_main *main, char *id, char *xpm_f);
-void		load_personal_textures(t_main *main);
 void		get_texture_data(t_main *main, t_texture *direc, char *xpm_file);
-bool		validate_colour(t_main *main, char **splitted_colours);
-bool		find_player_position(t_main *main, int *x, int *y, int *player);
 
-// MINIM	AP //
+/*-------------------------------- MINIMAP -----------------------------------*/
+
 void		print_fov(t_main *main);
 void		print_grid(t_main *main);
 void		draw_player(t_main *main);
@@ -71,34 +67,35 @@ void		print_minimap_base(t_main *main);
 
 t_vec2		mini_dda(t_main *main, double dst_x, double dst_y);
 
-// RENDERING //
+/*------------------------------- RENDERING ----------------------------------*/
+
 int			game_loop(t_main *main);
 
 void		init_img(t_main *main);
-void		draw_floor(t_main *main, int x, int y);
 void		player_movement(t_main *main);
-void		draw_ceiling(t_main *main, int x, int y);
 void		put_pixel_to_image(t_main *main, int x, int y, int colour);
 void		valid_next_movement_up(t_main *main, double next_x, double next_y);
 void		valid_next_movement_down(t_main *main, double next_x, double next_y);
 void		valid_next_movement_left(t_main *main, double next_x, double next_y);
 void		valid_next_movement_right(t_main *main, double next_x, double next_y);
 
+/*-------------------------------- GAMELOOP ----------------------------------*/
 
+int			key_handler(int key_code, t_main *main);
 
-//GAMELOOP//
 void		cast_rays(t_main *main);
-
+void		init_external_events(t_main *main);
 void		draw_texture(t_main *main, t_dda_struct *dda_struct, int x, t_texture texture);
 
+size_t		count_map_height(char **map);
 t_texture	get_corresp_texture(t_main *main, t_dda_struct *dda_struct);
 
-size_t		count_map_height(char **map);
+/*---------------------------- ERROR HANDELING -------------------------------*/
 
-// ERROR HANDLING //
 void		print_error_and_message(char *error_message);
 
-// UTILS //
+/*--------------------------------- UTILS ------------------------------------*/
+
 int			has_new_line(char *buffer);
 int			get_fd(t_main *main, char *file_relative_path);
 
@@ -109,15 +106,16 @@ void		print_array(char **array);
 void		normalize_angle(double *angle);
 void		calcule_constants(t_main *main);
 void		ft_strcpy(char *dest, char *src, int start, int end);
+void		digital_differential_analyzer(t_main *main, t_dda_struct *dda_struct);
 
 double		get_vector_norm(t_vec2 vec1, t_vec2 vec2);
 
-void		digital_differential_analyzer(t_main *main, t_dda_struct *dda_struct);
-
 size_t		string_array_len(char **str);
 
-// FREE FUNCTIONS //
+/*----------------------------- FREE FUNCTIONS -------------------------------*/
+
 int			handle_destroy(t_main *main);
+
 void		safe_free_tab(void ***ptr);
 void		free_mlx_pointers(t_main *main);
 void		free_string_array(char ***array);

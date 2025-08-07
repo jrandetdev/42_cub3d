@@ -2,82 +2,85 @@
 #ifndef STRUCT_H
 #define STRUCT_H
 
-#include "cub3d.h"
+#include "bonus_struct.h"
 
-typedef struct	s_main t_main;
-typedef struct	s_texture t_texture;
-
-// BONUS //
-
-enum MENU
+/*---------------------------------- ENUM ------------------------------------*/
+enum start_angle
 {
-	NO_MENU = 0,
-	MAIN_MENU = 1,
-	PAUSE_MENU = 2,
-	OPTION_MENU = 3,
-	MOUSE_SENSITIVITY_OPTION = 4,
-	FOV_OPTION = 5,
-	DEBUG_MENU = 6,
+	N = 0,
+	E = 90,
+	S = 180,
+	W = 270,
 };
 
-enum MAIN_MENU
+/*---------------------------------- UNION -----------------------------------*/
+typedef union
 {
-	PLAY = 0,
-	OPTION = 1,
-	DEBUG = 2,
-	QUIT = 3,
-};
+	int value;
+	struct
+	{
+		unsigned char r;
+		unsigned char g;
+		unsigned char b;
+		unsigned char a;
+	};
+}	t_colour;
 
-typedef struct	s_mouse
+/*--------------------------------- STRUCT -----------------------------------*/
+
+typedef struct	s_vec2
 {
 	double	x;
-	double	dist;
-	int		sensitivity;
-}				t_mouse;
-
-typedef struct	s_bonus
+	double	y;
+}				t_vec2;
+typedef struct 	s_ray
 {
-	struct timeval	last_sec;
-	unsigned int	fps;
-}				t_bonus;
+	double	dirX;
+	double	dirY;
+}				t_ray;
 
-typedef	struct	s_menu_param
+typedef struct s_debug
 {
-	int	fov;
-	int	show_fps;
-	int	sensitivity;
-	int	show_minimap;
-	int	show_minimap_grid;
-}
-				t_menu_param;
+	bool	debug;
+	int		last_keycode;
+}	t_debug;
 
-typedef struct	s_menu_struct
+typedef struct s_map
 {
-	int	y;
-	int	idx;
-	int	selection;
-	int	menu_size;
-}				t_menu_struct;
+	char			**map;
+	unsigned int	height;
+	unsigned int	width;
 
-typedef struct	s_door
+}				t_map;
+
+typedef struct s_minimap
 {
-	int		state;
-	double	opening_pourcent;
-	int		pos_x;
-	int		pos_y;
-}				t_door;
+	int	start_px;
+	int	start_py;
+	int	tile_size;
+	int	map_size_x;
+	int	map_size_y;
+}	t_minimap;
 
-// MANDATORY PART //
+typedef struct s_parsing
+{
+	int		player;
+	int		patern;
+	char	**map;
+	int		map_width;
+	int		map_height;
+}	t_parsing;
+
 
 typedef struct s_params
 {
-	int		wall_height;
 	int		start;
-	int		draw_start;
-	int		draw_end;
-	int		texture_x;
 	int		screen_x;
 	int		screen_y;
+	int		draw_end;
+	int		texture_x;
+	int		draw_start;
+	int		wall_height;
 	double	step;
 }				t_params;
 
@@ -94,79 +97,69 @@ typedef struct	s_cal
 	double	cf_pre_step_down;
 }				t_cal;
 
-typedef struct s_dda_struct
+typedef struct	s_myimage
 {
-	int			mapX;
-	int			mapY;
-	double		sideDistX;
-	double		sideDistY;
-	double		delta_x;
-	double		delta_y;
-	int			step_x;
-	int			step_y;
-	double		perpwalldist;
-	int			hit;
-	int			side;
-	double		camera_x;
-	double		ray_dirx;
-	double		ray_diry;
-	double		door_hit_percentage;
-}	t_dda_struct;
+	void	*data_img;
+	void	*addr;
+	int		bitspp;
+	int		bytespp;
+	int		size_line;
+	int		total_bytes;
+	int		pixels_per_line;
+	int		endian;
+}				t_myimage;
 
-typedef struct 	s_ray
+typedef struct	s_texture
 {
-	double	dirX;
-	double	dirY;
-}				t_ray;
-
-typedef struct s_minimap
-{
-	int	start_px;
-	int	start_py;
-	int	tile_size;
-	int	map_size_x;
-	int	map_size_y;
-}	t_minimap;
-
-enum start_angle
-{
-	N = 0,
-	E = 90,
-	S = 180,
-	W = 270,
-};
-
-typedef struct s_parsing
-{
-	int		player;
-	int		patern;
-	char	**map;
-	int		map_width;
-	int		map_height;
-}	t_parsing;
-
-typedef struct s_debug
-{
-	bool	debug;
-	int		grid_separator;
-	int		tile_size;
-	int		last_keycode;
-	double	last_vector_size;
-}	t_debug;
+	void		*texture_ptr;
+	int			width;
+	int			height;
+	t_myimage	texture;
+}				t_texture;
 
 typedef struct	s_player
 {
 	double	x;
 	double	y;
+	double	angle;
 	double	dir_x;
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
 	double	camera_x;
 	double	camera_y;
-	double	angle;
 	char	*cardinal_direction;
 }				t_player;
+
+typedef struct	s_texture_bank
+{
+	t_texture		no;
+	t_texture		so;
+	t_texture		ea;
+	t_texture		we;
+	t_texture		door;
+	t_texture		floor;
+	t_texture		ceiling;
+}				t_texture_bank;
+
+typedef struct s_dda_struct
+{
+	int			mapX;
+	int			mapY;
+	int			hit;
+	int			side;
+	int			step_x;
+	int			step_y;
+	double		delta_x;
+	double		delta_y;
+	double		ray_dirx;
+	double		ray_diry;
+	double		camera_x;
+	double		sideDistX;
+	double		sideDistY;
+	double		perpwalldist;
+	double		door_hit_percentage;
+}	t_dda_struct;
 
 typedef struct s_keys
 {
@@ -187,94 +180,32 @@ typedef struct s_keys
 	int	shift;
 }	t_keys;
 
-typedef struct s_vec2
-{
-	double	x;
-	double	y;
-}	t_vec2;
-
-typedef struct	s_myimage
-{
-	void	*data_img;
-	void	*addr;
-	int		size_line;
-	int		bitspp;
-	int		bytespp;
-	int		total_bytes;
-	int		pixels_per_line;
-	int		endian;
-}	t_myimage;
-
-
-typedef struct	s_texture
-{
-	void		*texture_ptr;
-	int			width;
-	int			height;
-	t_myimage	texture;
-}				t_texture;
-
-typedef struct	s_colour
-{
-	char	*texture_path;
-	union
-	{
-		int value;
-		struct
-		{
-			unsigned char r;
-			unsigned char g;
-			unsigned char b;
-			unsigned char a;
-		};
-	};
-}				t_colour;
-
-typedef struct	s_texture_bank
-{
-	t_texture		no;
-	t_texture		so;
-	t_texture		ea;
-	t_texture		we;
-	t_texture		door;
-	t_texture		floor;
-	t_texture		ceiling;
-}				t_texture_bank;
-
-typedef struct s_map
-{
-	char			**map;
-	unsigned int	height;
-	unsigned int	width;
-
-}				t_map;
-
 typedef struct	s_main
 {
-	int				rotation;
 	int				menu;
+	int				rotation;
 	int				game_start;
-	bool			is_celling_texture;
 	bool			is_floor_texture;
+	bool			is_celling_texture;
 	void			*mlx_ptr;
 	void			*mlx_win;
-	char			**file_content;
 	char			**id_and_info;
-	t_map			map_struct;
-	t_debug			debug;
-	t_player		player;
+	char			**file_content;
+	t_cal			cal;
 	t_ray			ray;
+	t_door			door;
 	t_keys			keys;
-	t_texture_bank	texture_bank;
+	t_bonus			bonus;
+	t_debug			debug;
+	t_mouse			mouse;
+	t_myimage		image;
+	t_menu_param	param;
+	t_player		player;
+	t_minimap		minimap;
 	t_colour		c_colour;
 	t_colour		f_colour;
-	t_minimap		minimap;
-	t_myimage		image;
-	t_mouse			mouse;
-	t_bonus			bonus;
-	t_cal			cal;
-	t_door			door;
-	t_menu_param	param;
+	t_map			map_struct;
+	t_texture_bank	texture_bank;
 }				t_main;
 
 #endif
