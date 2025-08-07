@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:47 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/04 17:26:32 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/07 15:28:01 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ static void	apply_selection(t_main *main, int *menu, int selection, int *menu_ti
 	}
 }
 
-static void	print_current_sensitivity(t_main *main)
+static void	print_current_sensitivity(t_main *main, int last_y)
 {
 	char			*sensitvity;
 	char			*menu_name;
 	t_menu_struct	param;
 	
 	ft_bzero(&param, sizeof(t_menu_struct));
-	param.y = main->cal.half_wh - 316;
+	param.y = last_y - 300;
 	param.idx = 1;
 	sensitvity = ft_itoa(main->mouse.sensitivity);
 	if (!sensitvity)
@@ -53,7 +53,7 @@ static void	print_current_sensitivity(t_main *main)
 	free(menu_name);
 }
 
-static void	print_minus_logo(t_main *main, int selection)
+static void	print_minus_logo(t_main *main, int selection, int last_y)
 {
 	t_texture	logo;
 	char	*minus_logo_white = "Assets/fonts/logo/minus_white.xpm";
@@ -71,11 +71,11 @@ static void	print_minus_logo(t_main *main, int selection)
 	}
 	if (!logo.texture_ptr)
 		exit_cub3d(main, "mlx load image failed in minus logo");
-	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, logo.texture_ptr, main->cal.half_ww + 50, main->cal.half_wh - 250);
+	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, logo.texture_ptr, main->cal.half_ww + 50, last_y - 200);
 	mlx_destroy_image(main->mlx_ptr, logo.texture_ptr);
 }
 
-static void	print_plus_logo(t_main *main, int selection)
+static void	print_plus_logo(t_main *main, int selection, int last_y)
 {
 	t_texture	logo;
 	char	*plus_logo_white = "Assets/fonts/logo/plus_white.xpm";
@@ -93,7 +93,7 @@ static void	print_plus_logo(t_main *main, int selection)
 	}
 	if (!logo.texture_ptr)
 		exit_cub3d(main, "mlx load image failed in plus logo");
-	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, logo.texture_ptr, main->cal.half_ww - 50 - 128 , main->cal.half_wh - 250);
+	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, logo.texture_ptr, main->cal.half_ww - 50 - 128 , last_y - 200);
 	mlx_destroy_image(main->mlx_ptr, logo.texture_ptr);
 }
 
@@ -106,12 +106,12 @@ void show_mouse_sensitivity_menu(t_main *main, int *menu)
 	param.menu_size = 3;
 	if (menu_title < 0)
 		menu_title = 2;
-	param.y = main->cal.half_wh - (param.menu_size + 1 * 48);
-	param.selection = menu_title % param.menu_size;
+	param.y = main->cal.half_wh + WIN_HEIGHT / 5;
+	param.selection = (menu_title % param.menu_size);
 	print_menu_title(main, "MOUSE SENSITIVITY");
-	print_current_sensitivity(main);
-	print_minus_logo(main, param.selection);
-	print_plus_logo(main, param.selection);
+	print_current_sensitivity(main, param.y);
+	print_minus_logo(main, param.selection, param.y);
+	print_plus_logo(main, param.selection, param.y);
 	param.idx = 2;
 	print_menu_section(main, &param, "RETURN");
 	if (main->keys.enter)
