@@ -17,6 +17,7 @@ int		mlx_mouse_show(t_xvar *xvar, t_win_list *win)
 	XFixesShowCursor(xvar->display, win->window);
 }
 
+
 /*
 ** Queries the position of the mouse pointer relative to the origin of the
 ** specified window and saves it to the provided location.

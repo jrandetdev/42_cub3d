@@ -38,22 +38,24 @@ enum e_keys
 	K_A = 0,
 	K_D = 2,
 	K_LEFT = 123,
-	K_RIGHT = 124,
 	K_UP = 126,
+	K_RIGHT = 124,
 	K_DOWN = 125,
 	K_ESCP = 53,
+	K_E = 14,
 	K_C = 8,
-	K_G = 5,        /* Added for consistency */
-	K_K = 40,       /* Added for consistency */
+	K_G = 5,
+	K_K = 40,
 	K_M = 46,
 	K_CTRL = 256,
-	K_ENTER = 36
+	K_ENTER = 36,
+	K_SHIFT = 257,
+	K_P = 35
 };
-# define OS 2
 # define PLAYER_SPEED 0.04
 # define ROTATION_SPEED 0.02
-# define WIN_WIDTH 3845
-# define WIN_HEIGHT 2000
+# define WIN_WIDTH 1280
+# define WIN_HEIGHT 720
 # define FOV 66
 
 #elif defined(__linux__)
@@ -105,7 +107,6 @@ enum e_keys
 	K_P			= 112,
 };
 
-# define OS 1
 # define FOV 75
 # define PLAYER_SPEED 0.08
 # define ROTATION_SPEED 0.04

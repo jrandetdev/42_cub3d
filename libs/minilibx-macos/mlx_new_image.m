@@ -10,7 +10,10 @@
 #include "mlx_int.h"
 #include "mlx_new_window.h"
 
-
+void	mlx_destroy_display(void *mlx)
+{
+	return;
+}
 
 void    *mlx_new_image(mlx_ptr_t *mlx_ptr, int width, int height)
 {

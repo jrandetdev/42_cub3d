@@ -6,21 +6,21 @@
 #include	"mlx_int.h"
 #include	"mlx_new_window.h"
 
-int	mlx_mouse_hide()
+int	mlx_mouse_hide(void *mlx, void *win)
 {
   //  CGDisplayHideCursor(kCGDirectMainDisplay);
   [NSCursor hide];
   return (0);
 }
 
-int	mlx_mouse_show()
+int	mlx_mouse_show(void *mlx, void *win)
 {
   //  CGDisplayShowCursor(kCGDirectMainDisplay);
   [NSCursor unhide];
   return (0);
 }
 
-int	mlx_mouse_move(mlx_win_list_t *win, int x, int y)
+int	mlx_mouse_move(void *mlx, mlx_win_list_t *win, int x, int y)
 {
   CGPoint	point;
   NSRect	pos;
@@ -37,7 +37,7 @@ int	mlx_mouse_move(mlx_win_list_t *win, int x, int y)
 }
 
 
-int	mlx_mouse_get_pos(mlx_win_list_t *win, int *x, int *y)
+int	mlx_mouse_get_pos(void *mlx, mlx_win_list_t *win, int *x, int *y)
 {
   CGPoint	point;
   id		thewin;

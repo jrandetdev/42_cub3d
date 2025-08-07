@@ -214,17 +214,21 @@ typedef struct	s_texture
 	t_myimage	texture;
 }				t_texture;
 
-typedef union
+typedef struct	s_colour
 {
-	int		value;
-	struct
+	char	*texture_path;
+	union
 	{
-		unsigned char r;
-		unsigned char g;
-		unsigned char b;
-		unsigned char a;
+		int value;
+		struct
+		{
+			unsigned char r;
+			unsigned char g;
+			unsigned char b;
+			unsigned char a;
+		};
 	};
-}	t_colour;
+}				t_colour;
 
 typedef struct	s_texture_bank
 {

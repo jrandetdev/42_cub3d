@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:29:29 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/06 16:01:04 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/07 08:49:00 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	draw_texture(t_main *main, t_dda_struct *dda_struct, int x,
 {
 	t_params	params;
 
+	ft_bzero(&params, sizeof(t_params));
 	params.screen_x = x;
 	params.texture_x = get_hit_position(main, dda_struct, texture, &params);
 	params.wall_height = (int)(WIN_HEIGHT / dda_struct->perpwalldist);

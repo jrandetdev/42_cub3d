@@ -9,9 +9,9 @@ UNAME			=			$(shell uname)
 DIR_BUILD		=			./build
 DIR_INCLUDE		=			./include
 
-MLX_PATH_UNIX	:=			./libs/minilibx-linux
+MLX_PATH_UNIX	:=			./libs/minilibx-linux/
 MLX_NAME_UNIX	:=			libmlx.a
-MLX_PATH_OSX	:=			./libs/minilibx-macos
+MLX_PATH_OSX	:=			./libs/minilibx-macos/
 MLX_NAME_OSX	:=			libmlx.a
 
 LIBFT_PATH		:=			./libs/libft/
@@ -116,7 +116,7 @@ vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS
 OBJECTS			:= 			$(addprefix $(DIR_BUILD)/, $(notdir $(SOURCES:.c=.o)))
 DEPS			:=			$(OBJECTS:.o=.d)
 
-CFLAGS			=			-Wall -Werror -Wextra $(INC_FLAGS) -g -MMD -MP
+CFLAGS			=			-Wall -Werror -Wextra $(INC_FLAGS) -g -MMD -MP -O3
 INC_FLAGS		:=			-I $(DIR_INCLUDE) -I $(LIBFT_PATH) -I $(MLX_PATH)
 LIBRARY_PATHS	:=			-L$(LIBFT_PATH) -L$(MLX_PATH)
 
