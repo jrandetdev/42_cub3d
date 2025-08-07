@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:38:19 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/07 15:43:55 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/07 15:54:07 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,19 @@ static void	get_texture_position_floor(t_main *main, int x, int y, t_guide *g)
 	int		texture_height;
 	float	_y;
 	float	_x;
+	t_texture	*texture;
 	
+	if (g->pos_z < 0)
+		texture = &main->texture_bank.ceiling;
+	else
+		texture = &main->texture_bank.floor;
 	_x = g->floor_coor_x + ((float)x * g->x_step_right);
 	_y = g->floor_coor_y + ((float)x * g->y_step_down);
-	texture_width = main->texture_bank.floor.width;
-	texture_height = main->texture_bank.floor.height;
+	texture_width = texture->width;
+	texture_height = texture->height;
 	g->texture_x = (int)(texture_width * fabs(_x - (int)_x)) % texture_width;
 	g->texture_y = (int)(texture_height * fabs(_y - (int)_y)) % texture_height;
-	g->color = ((int *)main->texture_bank.floor.texture.addr)
+	g->color = ((int *)texture->texture.addr)
 		[texture_width * g->texture_x + g->texture_y];
 	put_pixel_to_image(main, x, y, g->color);
 }
