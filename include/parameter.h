@@ -52,10 +52,12 @@ enum e_keys
 	K_SHIFT = 257,
 	K_P = 35
 };
+# define MIN_RESOLUTION_X 1280
+# define MIN_RESOLTION_Y 720
 # define PLAYER_SPEED 0.04
 # define ROTATION_SPEED 0.02
-# define WIN_WIDTH 1280
-# define WIN_HEIGHT 720
+# define WIN_WIDTH 1664
+# define WIN_HEIGHT 936
 # define FOV 66
 
 #elif defined(__linux__)
@@ -107,6 +109,8 @@ enum e_keys
 	K_P			= 112,
 };
 
+# define MIN_RESOLUTION_X 1920
+# define MIN_RESOLTION_Y 1080
 # define FOV 75
 # define PLAYER_SPEED 0.08
 # define ROTATION_SPEED 0.04

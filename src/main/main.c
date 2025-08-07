@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:23:58 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/06 15:31:26 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/07 14:10:38 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ static bool	arguments_are_valid(int argc, char **argv)
 	if (!cub_extension_is_valid(argv[1], 3))
 	{
 		print_error_and_message(".cub extenssion is missing.\n");
+		return (false);
+	}
+	if (WIN_HEIGHT < MIN_RESOLTION_Y || WIN_WIDTH < MIN_RESOLUTION_X)
+	{
+		print_error_and_message("Resolution too small\n");
 		return (false);
 	}
 	return (true);
