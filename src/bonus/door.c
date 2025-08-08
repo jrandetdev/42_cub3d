@@ -6,11 +6,32 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 11:30:17 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/06 12:10:04 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/08 13:12:21 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	opening_door(t_main *main, int x, int y)
+{
+	main->map_struct.map[y][x] = DA;
+	main->door.opening_pourcent = 0;
+	main->door.state = OPENING;
+	main->door.pos_x = x;
+	main->door.pos_y = y;
+}
+
+static void	closing_door(t_main *main, char **map, int x, int y)
+{
+	if (map[(int)trunc(main->player.y)]
+		[(int)trunc(main->player.x)] == map[y][x])
+		return ;
+	main->map_struct.map[y][x] = DA;
+	main->door.opening_pourcent = 1;
+	main->door.state = CLOSING;
+	main->door.pos_x = x;
+	main->door.pos_y = y;
+}
 
 void	playing_door_animation(t_main *main)
 {
@@ -19,7 +40,7 @@ void	playing_door_animation(t_main *main)
 		if (main->door.opening_pourcent < 1)
 		{
 			main->door.opening_pourcent += DOOR_ANIMATION_SPEED;
-			return;
+			return ;
 		}
 		main->map_struct.map[main->door.pos_y][main->door.pos_x] = DO;
 	}
@@ -28,15 +49,14 @@ void	playing_door_animation(t_main *main)
 		if (main->door.opening_pourcent > 0)
 		{
 			main->door.opening_pourcent -= DOOR_ANIMATION_SPEED;
-			return;
+			return ;
 		}
 		main->map_struct.map[main->door.pos_y][main->door.pos_x] = DC;
 	}
 	main->door.state = NONE;
 }
 
-
-bool is_in_door_half(t_main *main, t_dda_struct *dda)
+bool	is_in_door_half(t_main *main, t_dda_struct *dda)
 {
 	double		width_pourcentage;
 	double		width_pos_x;
@@ -53,12 +73,8 @@ bool is_in_door_half(t_main *main, t_dda_struct *dda)
 		return (true);
 	return (false);
 }
-//par frame ouvrir de deux pixel et ca donne l'effet de portwes coulissantes 
-//deduire les pixe
-//decaler dans la texture et faire une translation et partir a droite 
-//but de faire le plus fluide possible make 
 
-void	opening_door(t_main *main)
+void	change_door_state(t_main *main)
 {
 	int		x;
 	int		y;
@@ -70,21 +86,10 @@ void	opening_door(t_main *main)
 	y = (int)trunc(main->player.y + (main->player.dir_y * 1.0));
 	if (main->map_struct.map[y][x] == DC)
 	{
-		main->map_struct.map[y][x] = DA;
-		main->door.opening_pourcent = 0;
-		main->door.state = OPENING;
-		main->door.pos_x = x;
-		main->door.pos_y = y;
+		opening_door(main, x, y);
 	}
 	else if (main->map_struct.map[y][x] == DO)
 	{
-		if (map[(int)trunc(main->player.y)][(int)trunc(main->player.x)] == map[y][x])
-			return;
-		main->map_struct.map[y][x] = DA;
-		main->door.opening_pourcent = 1;
-		main->door.state = CLOSING;
-		main->door.pos_x = x;
-		main->door.pos_y = y;
+		closing_door(main, map, x, y);
 	}
 }
-	

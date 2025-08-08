@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:38:19 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/07 15:54:07 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/08 11:49:01 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,32 +17,15 @@
  * for the current row. 
  * @remark the ray goes through two points. The camera itself which is at 
  * @param half_screen is 
- */
- typedef struct	s_guide
-{
-	int		texture_x;
-	int		texture_y;
-	int		pixel_distance_down;
-	float	pos_z;
-	float	x_step_right;
-	float	y_step_down;
-	float	floor_coor_x;
-	float	floor_coor_y;
-	float	distance_to_row;
-	float	floor_pannel_distance;
-	int		color;
-	int		floor_grid_x;
-	int		floor_grid_y;
-}				t_guide;
-
+*/
 static void	get_texture_position_floor(t_main *main, int x, int y, t_guide *g)
 {
-	int		texture_width;
-	int		texture_height;
-	float	_y;
-	float	_x;
+	int			texture_width;
+	int			texture_height;
+	float		_y;
+	float		_x;
 	t_texture	*texture;
-	
+
 	if (g->pos_z < 0)
 		texture = &main->texture_bank.ceiling;
 	else
@@ -51,10 +34,12 @@ static void	get_texture_position_floor(t_main *main, int x, int y, t_guide *g)
 	_y = g->floor_coor_y + ((float)x * g->y_step_down);
 	texture_width = texture->width;
 	texture_height = texture->height;
-	g->texture_x = (int)(texture_width * fabs(_x - (int)_x)) % texture_width;
-	g->texture_y = (int)(texture_height * fabs(_y - (int)_y)) % texture_height;
+	g->texture_x = (int)(texture_width * fabs(_x - (int)_x))
+		% texture_width;
+	g->texture_y = (int)(texture_height * fabs(_y - (int)_y))
+		% texture_height;
 	g->color = ((int *)texture->texture.addr)
-		[texture_width * g->texture_x + g->texture_y];
+	[texture_width * g->texture_x + g->texture_y];
 	put_pixel_to_image(main, x, y, g->color);
 }
 
@@ -71,8 +56,10 @@ static void	get_guide_info(t_main *main, t_guide *g, int y)
 	g->floor_pannel_distance = g->pos_z / g->pixel_distance_down;
 	g->x_step_right = g->floor_pannel_distance * main->cal.cf_pre_step_right;
 	g->y_step_down = g->floor_pannel_distance * main->cal.cf_pre_step_down;
-	g->floor_coor_x = player->x + g->floor_pannel_distance * main->cal.cf_ray_dirx_left;
-	g->floor_coor_y = player->y + g->floor_pannel_distance * main->cal.cf_ray_diry_left;
+	g->floor_coor_x = player->x + g->floor_pannel_distance
+		* main->cal.cf_ray_dirx_left;
+	g->floor_coor_y = player->y + g->floor_pannel_distance
+		* main->cal.cf_ray_diry_left;
 }
 
 void	draw_floor_and_ceiling(t_main *main, int x, int y, float z)

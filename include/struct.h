@@ -142,6 +142,23 @@ typedef struct	s_texture_bank
 	t_texture		ceiling;
 }				t_texture_bank;
 
+typedef struct	s_guide
+{
+	int		texture_x;
+	int		texture_y;
+	int		pixel_distance_down;
+	float	pos_z;
+	float	x_step_right;
+	float	y_step_down;
+	float	floor_coor_x;
+	float	floor_coor_y;
+	float	distance_to_row;
+	float	floor_pannel_distance;
+	int		color;
+	int		floor_grid_x;
+	int		floor_grid_y;
+}				t_guide;
+
 typedef struct s_dda_struct
 {
 	int			mapX;
@@ -205,5 +222,13 @@ typedef struct	s_main
 	t_map			map_struct;
 	t_texture_bank	texture_bank;
 }				t_main;
+
+typedef struct	s_threads
+{
+	pthread_t	thread_id;
+	int			start;
+	int			end;
+	t_main		*main;
+}				t_threads;
 
 #endif

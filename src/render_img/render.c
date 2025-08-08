@@ -1,24 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_loop.c                                        :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:55:18 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/04 14:14:35 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/08 11:50:45 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-typedef struct	s_threads
-{
-	pthread_t	thread_id;
-	int			start;
-	int			end;
-	t_main		*main;
-}				t_threads;
 
 static void	*multi_cast_rays(void *data)
 {
@@ -53,25 +45,26 @@ static void	pre_calc(t_main *main)
 	cal->cf_ray_diry_left = main->player.dir_y - main->player.plane_y;
 	cal->cf_ray_dirx_right = main->player.dir_x + main->player.plane_x;
 	cal->cf_ray_diry_right = main->player.dir_y + main->player.plane_y;
-	cal->cf_pre_step_right = (main->cal.cf_ray_dirx_right - main->cal.cf_ray_dirx_left) / WIN_WIDTH;
-	cal->cf_pre_step_down = (main->cal.cf_ray_diry_right - main->cal.cf_ray_diry_left) / WIN_WIDTH;
+	cal->cf_pre_step_right = (main->cal.cf_ray_dirx_right
+			- main->cal.cf_ray_dirx_left) / WIN_WIDTH;
+	cal->cf_pre_step_down = (main->cal.cf_ray_diry_right
+			- main->cal.cf_ray_diry_left) / WIN_WIDTH;
 }
 
 static void	wait_threads(t_threads *threads, int created_threads)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < created_threads)
 		pthread_join(threads[i++].thread_id, NULL);
-	
 }
 
 static void	create_threads(t_main *main)
 {
-	int	i;
-	int	segment;
-	int	current_pos;
+	int			i;
+	int			segment;
+	int			current_pos;
 	t_threads	threads[N_THREAD + 1];
 
 	i = 0;
@@ -84,7 +77,8 @@ static void	create_threads(t_main *main)
 		threads[i].start = current_pos;
 		current_pos += segment;
 		threads[i].end = current_pos;
-		if (pthread_create(&threads[i].thread_id, NULL, multi_cast_rays, &threads[i]))
+		if (pthread_create(&threads[i].thread_id, NULL
+				, multi_cast_rays, &threads[i]))
 			break ;
 		i++;
 	}

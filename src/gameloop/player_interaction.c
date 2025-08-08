@@ -16,6 +16,6 @@ void	player_action(t_main *main)
 {
 	if (main->keys.e)
 	{
-		opening_door(main);
+		change_door_state(main);
 	}
 }

@@ -47,7 +47,7 @@ void	print_box(t_main *main, t_menu_struct *menu, int param, char *str);
 void	fps_counter(t_main *main);
 
 /*--------------------------------- DOOR -------------------------------------*/
-void	opening_door(t_main *main);
+void	change_door_state(t_main *main);
 void	player_action(t_main *main);
 void	playing_door_animation(t_main *main);
 bool	is_in_door_half(t_main *main, t_dda_struct *dda);
