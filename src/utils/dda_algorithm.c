@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda_algorithm.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:07:51 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/08 11:31:44 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/08 15:58:58 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 static void	get_perpwall_dist(t_dda_struct *dda)
 {
 	if (dda->side == 0)
-		dda->perpwalldist = (dda->sideDistX - dda->delta_x);
+		dda->perpwalldist = (dda->sidedistx - dda->delta_x);
 	else
-		dda->perpwalldist = (dda->sideDistY - dda->delta_y);
+		dda->perpwalldist = (dda->sidedisty - dda->delta_y);
 }
 
 static void	handle_door_state(t_main *main, t_dda_struct *dda)
 {
-	if (main->map_struct.map[dda->mapY][dda->mapX] == DA)
+	if (main->map_struct.map[dda->mapy][dda->mapx] == DA)
 	{
 		get_perpwall_dist(dda);
 		if (is_in_door_half(main, dda))
@@ -43,24 +43,24 @@ static void	dda_main_loop(t_main *main, t_dda_struct *dda)
 {
 	while (dda->hit == 0)
 	{
-		if (dda->sideDistX < dda->sideDistY)
+		if (dda->sidedistx < dda->sidedisty)
 		{
-			dda->sideDistX += dda->delta_x;
-			dda->mapX += dda->step_x;
+			dda->sidedistx += dda->delta_x;
+			dda->mapx += dda->step_x;
 			dda->side = 0;
 		}
 		else
 		{
-			dda->sideDistY += dda->delta_y;
-			dda->mapY += dda->step_y;
+			dda->sidedisty += dda->delta_y;
+			dda->mapy += dda->step_y;
 			dda->side = 1;
 		}
-		if (main->map_struct.map[dda->mapY][dda->mapX] == '1')
+		if (main->map_struct.map[dda->mapy][dda->mapx] == '1')
 		{
 			dda->hit = 1;
 		}
-		else if (main->map_struct.map[dda->mapY][dda->mapX] == DC ||
-			main->map_struct.map[dda->mapY][dda->mapX] == DA)
+		else if (main->map_struct.map[dda->mapy][dda->mapx] == DC ||
+			main->map_struct.map[dda->mapy][dda->mapx] == DA)
 		{
 			handle_door_state(main, dda);
 		}
@@ -73,29 +73,29 @@ static void	get_step_and_sidedist(t_main *main, t_dda_struct *dda)
 	if (dda->ray_dirx < 0)
 	{
 		dda->step_x = -1;
-		dda->sideDistX = (main->player.x - dda->mapX) * dda->delta_x;
+		dda->sidedistx = (main->player.x - dda->mapx) * dda->delta_x;
 	}
 	else
 	{
 		dda->step_x = 1;
-		dda->sideDistX = (dda->mapX + 1.0 - main->player.x) * dda->delta_x;
+		dda->sidedistx = (dda->mapx + 1.0 - main->player.x) * dda->delta_x;
 	}
 	if (dda->ray_diry < 0)
 	{
 		dda->step_y = -1;
-		dda->sideDistY = (main->player.y - dda->mapY) * dda->delta_y;
+		dda->sidedisty = (main->player.y - dda->mapy) * dda->delta_y;
 	}
 	else
 	{
 		dda->step_y = 1;
-		dda->sideDistY = (dda->mapY + 1.0 - main->player.y) * dda->delta_y;
+		dda->sidedisty = (dda->mapy + 1.0 - main->player.y) * dda->delta_y;
 	}
 }
 
 void	digital_differential_analyzer(t_main *main, t_dda_struct *dda_struct)
 {
-	dda_struct->mapX = main->player.x;
-	dda_struct->mapY = main->player.y;
+	dda_struct->mapx = main->player.x;
+	dda_struct->mapy = main->player.y;
 	if (dda_struct->ray_dirx == 0)
 		dda_struct->delta_x = pow(10, 30);
 	else

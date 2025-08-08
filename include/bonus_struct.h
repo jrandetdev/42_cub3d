@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_struct.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:09:52 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/08 13:52:09 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/08 16:00:41 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BONUS_STRUCT_H
 # define BONUS_STRUCT_H
 
-#include <sys/time.h>
+# include <sys/time.h>
 
 /*---------------------------------- ENUM ------------------------------------*/
 
-enum MENU
+enum e_menu
 {
 	NO_MENU = 0,
 	MAIN_MENU = 1,
@@ -28,7 +28,7 @@ enum MENU
 	DEBUG_MENU = 6,
 };
 
-enum MAIN_MENU
+enum e_main_menu
 {
 	PLAY = 0,
 	OPTION = 1,
@@ -38,43 +38,42 @@ enum MAIN_MENU
 
 /*--------------------------------- STRUCT -----------------------------------*/
 
-typedef struct	s_mouse
+typedef struct s_mouse
 {
 	double	x;
 	double	dist;
 	int		sensitivity;
-}				t_mouse;
+}			t_mouse;
 
-typedef struct	s_bonus
+typedef struct s_bonus
 {
 	struct timeval	last_sec;
 	unsigned int	fps;
-}				t_bonus;
+}					t_bonus;
 
-typedef struct	s_door
+typedef struct s_door
 {
 	int		state;
 	double	opening_pourcent;
 	int		pos_x;
 	int		pos_y;
-}				t_door;
+}	t_door;
 
-typedef struct	s_menu_struct
+typedef struct s_menu_struct
 {
 	int	y;
 	int	idx;
 	int	selection;
 	int	menu_size;
-}				t_menu_struct;
+}	t_menu_struct;
 
-typedef	struct	s_menu_param
+typedef struct s_menu_param
 {
 	bool		fov;
 	bool		show_fps;
 	bool		sensitivity;
 	bool		show_minimap;
 	bool		show_minimap_grid;
-}
-				t_menu_param;
+}				t_menu_param;
 
 #endif

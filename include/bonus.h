@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/08 15:46:20 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/08 15:47:18 by jrandet          ###   ########.fr       */
+/*   Created: 2025/08/08 15:47:37 by hdougoud          #+#    #+#             */
+/*   Updated: 2025/08/08 16:00:24 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # include "struct.h"
 # include "bonus_struct.h"
 
-enum DOOR_STATE
+enum e_door_state
 {
 	NONE = 0,
 	OPENING = 1,
@@ -53,7 +53,6 @@ void	show_mouse_sensitivity_menu(t_main *main, int *menu);
 void	print_menu_section(t_main *main, t_menu_struct *param, char *str);
 void	print_box(t_main *main, t_menu_struct *menu, int param, char *str);
 void	put_letter(t_main *main, t_menu_struct *param, char *file, int x);
-
 
 /*--------------------------------- FPS --------------------------------------*/
 void	fps_counter(t_main *main);

@@ -1,11 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   struct.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/08 15:54:48 by hdougoud          #+#    #+#             */
+/*   Updated: 2025/08/08 15:59:18 by hdougoud         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef STRUCT_H
-#define STRUCT_H
+# define STRUCT_H
 
-#include "bonus_struct.h"
+# include "bonus_struct.h"
 
 /*---------------------------------- ENUM ------------------------------------*/
-enum start_angle
+enum e_start_angle
 {
 	N = 0,
 	E = 90,
@@ -14,36 +25,36 @@ enum start_angle
 };
 
 /*---------------------------------- UNION -----------------------------------*/
-typedef union
+typedef union s_coulour
 {
-	int value;
+	int	value;
 	struct
 	{
-		unsigned char r;
-		unsigned char g;
-		unsigned char b;
-		unsigned char a;
+		unsigned char	r;
+		unsigned char	g;
+		unsigned char	b;
+		unsigned char	a;
 	};
 }	t_colour;
 
 /*--------------------------------- STRUCT -----------------------------------*/
 
-typedef struct	s_vec2
+typedef struct s_vec2
 {
 	double	x;
 	double	y;
-}				t_vec2;
-typedef struct 	s_ray
+}			t_vec2;
+typedef struct s_ray
 {
-	double	dirX;
-	double	dirY;
-}				t_ray;
+	double	dirx;
+	double	diry;
+}			t_ray;
 
 typedef struct s_debug
 {
 	bool	debug;
 	int		last_keycode;
-}	t_debug;
+}			t_debug;
 
 typedef struct s_map
 {
@@ -51,7 +62,7 @@ typedef struct s_map
 	unsigned int	height;
 	unsigned int	width;
 
-}				t_map;
+}					t_map;
 
 typedef struct s_minimap
 {
@@ -60,7 +71,7 @@ typedef struct s_minimap
 	int	tile_size;
 	int	map_size_x;
 	int	map_size_y;
-}	t_minimap;
+}		t_minimap;
 
 typedef struct s_parsing
 {
@@ -69,8 +80,7 @@ typedef struct s_parsing
 	char	**map;
 	int		map_width;
 	int		map_height;
-}	t_parsing;
-
+}			t_parsing;
 
 typedef struct s_params
 {
@@ -82,9 +92,9 @@ typedef struct s_params
 	int		draw_start;
 	int		wall_height;
 	double	step;
-}				t_params;
+}			t_params;
 
-typedef struct	s_cal
+typedef struct s_cal
 {
 	int		half_wh;
 	int		half_ww;
@@ -95,9 +105,9 @@ typedef struct	s_cal
 	double	cf_ray_diry_right;
 	double	cf_pre_step_right;
 	double	cf_pre_step_down;
-}				t_cal;
+}			t_cal;
 
-typedef struct	s_myimage
+typedef struct s_myimage
 {
 	void	*data_img;
 	void	*addr;
@@ -107,9 +117,9 @@ typedef struct	s_myimage
 	int		total_bytes;
 	int		pixels_per_line;
 	int		endian;
-}				t_myimage;
+}			t_myimage;
 
-typedef struct	s_texture
+typedef struct s_texture
 {
 	void		*texture_ptr;
 	int			width;
@@ -117,7 +127,7 @@ typedef struct	s_texture
 	t_myimage	texture;
 }				t_texture;
 
-typedef struct	s_player
+typedef struct s_player
 {
 	double	x;
 	double	y;
@@ -129,9 +139,9 @@ typedef struct	s_player
 	double	camera_x;
 	double	camera_y;
 	char	*cardinal_direction;
-}				t_player;
+}			t_player;
 
-typedef struct	s_texture_bank
+typedef struct s_texture_bank
 {
 	t_texture		no;
 	t_texture		so;
@@ -140,7 +150,7 @@ typedef struct	s_texture_bank
 	t_texture		door;
 	t_texture		floor;
 	t_texture		ceiling;
-}				t_texture_bank;
+}					t_texture_bank;
 
 typedef struct s_mini_dda_struct
 {
@@ -151,9 +161,9 @@ typedef struct s_mini_dda_struct
 	double	y_2;
 	double	delta_x;
 	double	delta_y;
-}	t_mini_dda_struct;
+}			t_mini_dda_struct;
 
-typedef struct	s_guide
+typedef struct s_guide
 {
 	int		texture_x;
 	int		texture_y;
@@ -168,12 +178,12 @@ typedef struct	s_guide
 	int		color;
 	int		floor_grid_x;
 	int		floor_grid_y;
-}				t_guide;
+}			t_guide;
 
 typedef struct s_dda_struct
 {
-	int			mapX;
-	int			mapY;
+	int			mapx;
+	int			mapy;
 	int			hit;
 	int			side;
 	int			step_x;
@@ -183,11 +193,11 @@ typedef struct s_dda_struct
 	double		ray_dirx;
 	double		ray_diry;
 	double		camera_x;
-	double		sideDistX;
-	double		sideDistY;
+	double		sidedistx;
+	double		sidedisty;
 	double		perpwalldist;
 	double		door_hit_percentage;
-}	t_dda_struct;
+}				t_dda_struct;
 
 typedef struct s_keys
 {
@@ -200,15 +210,15 @@ typedef struct s_keys
 	int	e;
 	int	p;
 	int	up;
-	int escp;
+	int	escp;
 	int	down;
 	int	left;
 	int	right;
 	int	enter;
 	int	shift;
-}	t_keys;
+}		t_keys;
 
-typedef struct	s_main
+typedef struct s_main
 {
 	int					menu;
 	int					rotation;
@@ -233,9 +243,9 @@ typedef struct	s_main
 	t_colour			f_colour;
 	t_map				map_struct;
 	t_texture_bank		texture_bank;
-}				t_main;
+}						t_main;
 
-typedef struct	s_threads
+typedef struct s_threads
 {
 	pthread_t	thread_id;
 	int			start;
