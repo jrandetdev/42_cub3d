@@ -142,6 +142,17 @@ typedef struct	s_texture_bank
 	t_texture		ceiling;
 }				t_texture_bank;
 
+typedef struct s_mini_dda_struct
+{
+	double	m;
+	double	x_1;
+	double	y_1;
+	double	x_2;
+	double	y_2;
+	double	delta_x;
+	double	delta_y;
+}	t_mini_dda_struct;
+
 typedef struct s_dda_struct
 {
 	int			mapX;
@@ -182,28 +193,29 @@ typedef struct s_keys
 
 typedef struct	s_main
 {
-	int				menu;
-	int				rotation;
-	int				game_start;
-	void			*mlx_ptr;
-	void			*mlx_win;
-	char			**id_and_info;
-	char			**file_content;
-	t_cal			cal;
-	t_ray			ray;
-	t_door			door;
-	t_keys			keys;
-	t_bonus			bonus;
-	t_debug			debug;
-	t_mouse			mouse;
-	t_myimage		image;
-	t_menu_param	param;
-	t_player		player;
-	t_minimap		minimap;
-	t_colour		c_colour;
-	t_colour		f_colour;
-	t_map			map_struct;
-	t_texture_bank	texture_bank;
+	int					menu;
+	int					rotation;
+	int					game_start;
+	void				*mlx_ptr;
+	void				*mlx_win;
+	char				**id_and_info;
+	char				**file_content;
+	t_cal				cal;
+	t_ray				ray;
+	t_door				door;
+	t_keys				keys;
+	t_bonus				bonus;
+	t_debug				debug;
+	t_mouse				mouse;
+	t_myimage			image;
+	t_menu_param		param;
+	t_player			player;
+	t_minimap			minimap;
+	t_mini_dda_struct	mini_dda_struct;
+	t_colour			c_colour;
+	t_colour			f_colour;
+	t_map				map_struct;
+	t_texture_bank		texture_bank;
 }				t_main;
 
 #endif

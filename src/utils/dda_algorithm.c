@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda_algorithm.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:07:51 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/05 12:06:06 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/08 11:31:44 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,18 @@ static void	get_perpwall_dist(t_dda_struct *dda)
 		dda->perpwalldist = (dda->sideDistX - dda->delta_x);
 	else
 		dda->perpwalldist = (dda->sideDistY - dda->delta_y);
+}
+
+static void	handle_door_state(t_main *main, t_dda_struct *dda)
+{
+	if (main->map_struct.map[dda->mapY][dda->mapX] == DA)
+	{
+		get_perpwall_dist(dda);
+		if (is_in_door_half(main, dda))
+			dda->hit = 3;
+	}
+	else
+		dda->hit = 2;
 }
 
 /**
@@ -44,17 +56,13 @@ static void	dda_main_loop(t_main *main, t_dda_struct *dda)
 			dda->side = 1;
 		}
 		if (main->map_struct.map[dda->mapY][dda->mapX] == '1')
-			dda->hit = 1;
-		else if (main->map_struct.map[dda->mapY][dda->mapX] == DC || main->map_struct.map[dda->mapY][dda->mapX] == DA)
 		{
-			if (main->map_struct.map[dda->mapY][dda->mapX] == DA)
-			{
-				get_perpwall_dist(dda);
-				if (is_in_door_half(main, dda))
-					dda->hit = 3;
-			}
-			else
-				dda->hit = 2;
+			dda->hit = 1;
+		}
+		else if (main->map_struct.map[dda->mapY][dda->mapX] == DC ||
+			main->map_struct.map[dda->mapY][dda->mapX] == DA)
+		{
+			handle_door_state(main, dda);
 		}
 	}
 }
@@ -101,4 +109,3 @@ void	digital_differential_analyzer(t_main *main, t_dda_struct *dda_struct)
 	dda_main_loop(main, dda_struct);
 	get_perpwall_dist(dda_struct);
 }
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_struct.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:09:52 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/07 10:50:16 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/08 13:52:09 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@ typedef struct	s_menu_struct
 
 typedef	struct	s_menu_param
 {
-	int	fov;
-	int	show_fps;
-	int	sensitivity;
-	int	show_minimap;
-	int	show_minimap_grid;
+	bool		fov;
+	bool		show_fps;
+	bool		sensitivity;
+	bool		show_minimap;
+	bool		show_minimap_grid;
 }
 				t_menu_param;
 
