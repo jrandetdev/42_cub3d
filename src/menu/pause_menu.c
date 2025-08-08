@@ -6,13 +6,13 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:55 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/08 14:06:04 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/08 14:26:28 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	apply_selection(t_main *main, int *main_menu, int selection)
+static void	selection(t_main *main, int *main_menu, int selection)
 {
 	main->keys.enter = 0;
 	if (selection == 0)
@@ -48,7 +48,7 @@ void	show_pause_menu(t_main *main, int *main_menu)
 	print_menu_section(main, &param, "DEBUG");
 	print_menu_section(main, &param, "QUIT");
 	if (main->keys.enter)
- 		apply_selection(main, main_menu, param.selection);
+		selection(main, main_menu, param.selection);
 	else if (main->keys.up || main->keys.down)
 		menu_up_and_down(main, &menu_title);
 	mlx_string_put(main->mlx_ptr, main->mlx_win, 10, WIN_HEIGHT - 20, 0xFFFFFF,

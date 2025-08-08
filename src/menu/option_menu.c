@@ -6,13 +6,13 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:47 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/08 14:06:00 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/08 14:26:45 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	apply_selection(t_main *main, int *menu, int selection, int *menu_title)
+static void	selection(t_main *main, int *menu, int selection, int *menu_title)
 {
 	main->keys.enter = 0;
 	if (selection == 0)
@@ -52,7 +52,7 @@ void	show_option_menu(t_main *main, int *menu)
 	print_box(main, &param, main->param.show_minimap, "SHOW MINIMAP");
 	print_menu_section(main, &param, "RETURN");
 	if (main->keys.enter)
-		apply_selection(main, menu, param.selection, &menu_title);
+		selection(main, menu, param.selection, &menu_title);
 	else if (main->keys.up || main->keys.down)
 		menu_up_and_down(main, &menu_title);
 }

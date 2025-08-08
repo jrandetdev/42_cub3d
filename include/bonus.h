@@ -30,7 +30,6 @@ enum DOOR_STATE
 
 /*--------------------------------- MENU -------------------------------------*/
 
-char	ft_capitalize(char letter);
 void	show_debug_menu(t_main *main, int *menu);
 void	print_menu_title(t_main *main, char *str);
 void	show_option_menu(t_main *main, int *menu);
@@ -42,6 +41,8 @@ void	menu_up_and_down(t_main *main, int *selection);
 void	show_mouse_sensitivity_menu(t_main *main, int *menu);
 void	print_menu_section(t_main *main, t_menu_struct *param, char *str);
 void	print_box(t_main *main, t_menu_struct *menu, int param, char *str);
+void	put_letter(t_main *main, t_menu_struct *param, char *file, int x);
+
 
 /*--------------------------------- FPS --------------------------------------*/
 void	fps_counter(t_main *main);

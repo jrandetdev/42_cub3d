@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_debug_menu.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/08 14:25:17 by jrandet           #+#    #+#             */
+/*   Updated: 2025/08/08 14:28:23 by jrandet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	apply_selection(t_main *main, int *menu, int selection, int *menu_section)
+static void	selection(t_main *main, int *menu, int selection, int *menu_section)
 {
 	main->keys.enter = 0;
 	if (selection == 0)
@@ -35,7 +46,7 @@ void	show_debug_menu(t_main *main, int *menu)
 	print_box(main, &param, main->param.fov, "MINIMAP FOV");
 	print_menu_section(main, &param, "RETURN");
 	if (main->keys.enter)
-		apply_selection(main, menu, param.selection, &menu_title);
+		selection(main, menu, param.selection, &menu_title);
 	else if (main->keys.up || main->keys.down)
 		menu_up_and_down(main, &menu_title);
 }

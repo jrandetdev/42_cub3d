@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:51 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/08 14:06:37 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/08 14:21:17 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,6 @@ char	*ft_charjoin(char const *s1, char const s2)
 	return (result);
 }
 
-char	ft_capitalize(char letter)
-{
-	if (letter >= 'A' || letter <= 'Z')
-		return (letter);
-	else
-		return (letter -= 32);
-}
-
 void	menu_up_and_down(t_main *main, int *selection)
 {
 	if (main->keys.up)
@@ -51,7 +43,15 @@ void	menu_up_and_down(t_main *main, int *selection)
 	}
 }
 
-// void	menu_down(t_main *main, int *selection)
-// {
+void	put_letter(t_main *main, t_menu_struct *param, char *file, int x)
+{
+	t_texture		letter;
 
-// }
+	letter.texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, file,
+			&letter.width, &letter.height);
+	if (!letter.texture_ptr)
+		exit_cub3d(main, "failed to load a letter int 'print_menu_title'");
+	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win,
+		letter.texture_ptr, x, param->y);
+	mlx_destroy_image(main->mlx_ptr, letter.texture_ptr);
+}

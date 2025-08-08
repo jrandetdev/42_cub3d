@@ -6,13 +6,13 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:34 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/08 14:06:34 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/08 14:22:23 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static char	*get_letter_filename(t_main *main, char letter)
+static char	*get_letter_title(t_main *main, char letter)
 {
 	const char	*path = "Assets/fonts/xpm_80/";
 	const char	*white = "_white.xpm";
@@ -35,11 +35,11 @@ static char	*get_letter_filename(t_main *main, char letter)
 void	print_menu_title(t_main *main, char *str)
 {
 	int				x;
-	static int		y = 100;
 	char			*filename;
-	t_texture		letter;
+	t_menu_struct	param;
 
 	x = main->cal.half_ww - (ft_strlen(str) * 64 / 2);
+	param.y = 100;
 	while (*str)
 	{
 		if (*str == ' ')
@@ -48,15 +48,9 @@ void	print_menu_title(t_main *main, char *str)
 			str++;
 			continue ;
 		}
-		filename = get_letter_filename(main, ft_capitalize(*str));
-		letter.texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, filename,
-				&letter.width, &letter.height);
+		filename = get_letter_title(main, *str);
+		put_letter(main, &param, filename, x);
 		free(filename);
-		if (!letter.texture_ptr)
-			exit_cub3d(main, "failed to load a letter int 'print_menu_title'");
-		mlx_put_image_to_window(main->mlx_ptr, main->mlx_win,
-			letter.texture_ptr, x, y);
-		mlx_destroy_image(main->mlx_ptr, letter.texture_ptr);
 		x += 64;
 		str++;
 	}
