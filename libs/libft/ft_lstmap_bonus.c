@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 10:39:24 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/16 17:50:37 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/08 16:03:03 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_list	*ft_newnode_start(void *new_content)
 	return (new_node);
 }
 
-t_list	*ft_newnode(t_list **head, t_list **new_head, void *(*f)(void *), \
+t_list	*ft_newnode(t_list **head, t_list **new_head, void *(*f)(void *),
 					void (*del)(void *))
 {
 	void	*new_content;
