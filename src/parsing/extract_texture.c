@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:40 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/07 15:34:44 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/08 15:29:25 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,5 @@ void	check_and_get_texture(t_main *main, t_texture *pannel, char *filename)
 void	load_personal_textures(t_main *main)
 {
 	check_and_get_texture(main, &main->texture_bank.door,
-		"./Assets/textures/brushed-metal-door.xpm");
+		"./Assets/textures/cool_door.xpm");
 }
