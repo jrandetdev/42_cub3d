@@ -1,24 +1,35 @@
-#ifndef	CUB3D_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/08 15:47:04 by jrandet           #+#    #+#             */
+/*   Updated: 2025/08/08 15:53:06 by jrandet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef CUB3D_H
 # define CUB3D_H
 
 # define _USE_MATH_DEFINES
 # define GAME_NAME "CUBE3D"
 
-#include <mlx.h>
-#include <math.h>
-#include <errno.h>
-#include <fcntl.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
-
-#include "libft.h"
-#include "bonus.h"
-#include "struct.h"
-#include "parameter.h"
-#include "bonus_struct.h"
+# include <mlx.h>
+# include <math.h>
+# include <errno.h>
+# include <fcntl.h>
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <string.h>
+# include <stdbool.h>
+# include "libft.h"
+# include "bonus.h"
+# include "struct.h"
+# include "parameter.h"
+# include "bonus_struct.h"
 
 # define RED	"\x1b[31;1m"
 # define GREEN	"\x1b[32;1m"
@@ -37,11 +48,7 @@
 #  define M_PI 3.14159265358979323846
 # endif
 
-typedef struct	t_texturec s_texture;
-
-/*------------------------------- DECLARATION --------------------------------*/
-
-void		init_debug(t_main *main);
+typedef struct s_texture	t_texture;
 
 /*-------------------------------- PARSING -----------------------------------*/
 
@@ -62,7 +69,8 @@ void		load_personal_textures(t_main *main);
 void		extract_colour(t_main *main, char *id, char *info);
 void		extract_texture(t_main *main, char *id, char *xpm_f);
 void		get_texture_data(t_main *main, t_texture *direc, char *xpm_file);
-void		check_and_get_texture(t_main *main, t_texture *pannel, char *filename);
+void		check_and_get_texture(t_main *main, t_texture *pannel,
+				char *filename);
 
 /*-------------------------------- MINIMAP -----------------------------------*/
 
@@ -85,9 +93,12 @@ void		init_img(t_main *main);
 void		player_movement(t_main *main);
 void		put_pixel_to_image(t_main *main, int x, int y, int colour);
 void		valid_next_movement_up(t_main *main, double next_x, double next_y);
-void		valid_next_movement_down(t_main *main, double next_x, double next_y);
-void		valid_next_movement_left(t_main *main, double next_x, double next_y);
-void		valid_next_movement_right(t_main *main, double next_x, double next_y);
+void		valid_next_movement_down(t_main *main, double next_x,
+				double next_y);
+void		valid_next_movement_left(t_main *main, double next_x,
+				double next_y);
+void		valid_next_movement_right(t_main *main, double next_x,
+				double next_y);
 
 /*-------------------------------- GAMELOOP ----------------------------------*/
 
@@ -95,7 +106,8 @@ int			key_handler(int key_code, t_main *main);
 
 void		cast_rays(t_main *main);
 void		init_external_events(t_main *main);
-void		draw_texture(t_main *main, t_dda_struct *dda_struct, int x, t_texture texture);
+void		draw_texture(t_main *main, t_dda_struct *dda_struct, int x,
+				t_texture texture);
 
 size_t		count_map_height(char **map);
 t_texture	get_corresp_texture(t_main *main, t_dda_struct *dda_struct);
@@ -116,7 +128,8 @@ void		print_array(char **array);
 void		normalize_angle(double *angle);
 void		calcule_constants(t_main *main);
 void		ft_strcpy(char *dest, char *src, int start, int end);
-void		digital_differential_analyzer(t_main *main, t_dda_struct *dda_struct);
+void		digital_differential_analyzer(t_main *main,
+				t_dda_struct *dda_struct);
 
 double		get_vector_norm(t_vec2 vec1, t_vec2 vec2);
 

@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bonus.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/08 15:46:20 by hdougoud          #+#    #+#             */
+/*   Updated: 2025/08/08 15:47:18 by jrandet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef BONUS_H
 # define BONUS_H
 
-#include <sys/time.h>
-#include <pthread.h>
+# include <sys/time.h>
+# include <pthread.h>
 
 # ifndef BONUS
 #  define BONUS 1
@@ -18,8 +29,8 @@
 # define DA '4'
 # define DOOR_ANIMATION_SPEED 0.05
 
-#include "struct.h"
-#include "bonus_struct.h"
+# include "struct.h"
+# include "bonus_struct.h"
 
 enum DOOR_STATE
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:21:06 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/07 15:35:09 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/08 15:38:06 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ bool	parsing(t_main *main, char *file_relative_path)
 		exit_cub3d(main, "Input is a directory.");
 	fd = get_fd(main, file_relative_path);
 	main->file_content = get_file_content(main, fd, file_relative_path);
+	close(fd);
 	parse_map_elements(main);
 	load_personal_textures(main);
 	get_map_descritpion(main);
