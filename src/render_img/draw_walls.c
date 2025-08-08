@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:29:29 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/07 12:19:19 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/08 11:43:48 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 
 static void	get_texture_position(t_main *main, t_texture t, t_params *p)
 {
-	int				y = 0;
 	int				tex_pos_y;
 	double			step;
 	double			texture_pos;
 	int				screen_y;
 	int				color;
 
-	screen_y = p->draw_start;
+	screen_y = 0;
 	step = (double)t.height / p->wall_height;
-	texture_pos = (p->draw_start - main->cal.half_wh + p->wall_height / 2) * step;
-	while (main->texture_bank.ceiling.texture_ptr && y < screen_y)
-		draw_floor_and_ceiling(main, p->screen_x, y++, -0.5);
+	texture_pos = (p->draw_start - main->cal.half_wh + p->wall_height / 2)
+		* step;
+	while (main->texture_bank.ceiling.texture_ptr && screen_y < p->draw_start)
+		draw_floor_and_ceiling(main, p->screen_x, screen_y++, -0.5);
+	screen_y = p->draw_start;
 	while (screen_y < p->draw_end)
 	{
 		tex_pos_y = (int)texture_pos & (t.height - 1);
@@ -35,9 +36,7 @@ static void	get_texture_position(t_main *main, t_texture t, t_params *p)
 		screen_y++;
 	}
 	while (main->texture_bank.floor.texture_ptr && screen_y < WIN_HEIGHT)
-	{
 		draw_floor_and_ceiling(main, p->screen_x, screen_y++, 0.5);
-	}
 }
 
 static	int	get_hit_position(t_main *main, t_dda_struct *dda_s,
@@ -54,9 +53,11 @@ static	int	get_hit_position(t_main *main, t_dda_struct *dda_s,
 	if (dda_s->hit == 3)
 	{
 		if (dda_s->door_hit_percentage <= 0.5)
-			p->texture_x = ((width_pourcentage + main->door.opening_pourcent / 2) * texture.width);
+			p->texture_x = ((width_pourcentage
+						+ main->door.opening_pourcent / 2) * texture.width);
 		if (dda_s->door_hit_percentage > 0.5)
-			p->texture_x = ((width_pourcentage - main->door.opening_pourcent / 2) * texture.width);
+			p->texture_x = ((width_pourcentage
+						- main->door.opening_pourcent / 2) * texture.width);
 	}
 	else
 		p->texture_x = (width_pourcentage * texture.width);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fps_counter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 10:27:23 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/23 13:55:29 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/08 11:51:19 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,9 @@ void	fps_counter(t_main *main)
 		if (gettimeofday(&main->bonus.last_sec, NULL))
 			exit_cub3d(main, "GetTimeOfDay failed in fps counter");
 	}
-	str_frame = ft_itoa(main->bonus.fps); //optimisation
+	str_frame = ft_itoa(main->bonus.fps);
 	if (!str_frame)
 		exit_cub3d(main, "itoa failed");
 	mlx_string_put(main->mlx_ptr, main->mlx_win, 10, 10, 0xff1100, str_frame);
 	free(str_frame);
 }
-
