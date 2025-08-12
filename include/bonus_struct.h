@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_struct.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:09:52 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/08 16:00:41 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/12 16:36:55 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ enum e_main_menu
 
 typedef struct s_mouse
 {
-	double	x;
-	double	dist;
+	float	x;
+	float	dist;
 	int		sensitivity;
 }			t_mouse;
 
@@ -54,7 +54,7 @@ typedef struct s_bonus
 typedef struct s_door
 {
 	int		state;
-	double	opening_pourcent;
+	float	opening_pourcent;
 	int		pos_x;
 	int		pos_y;
 }	t_door;

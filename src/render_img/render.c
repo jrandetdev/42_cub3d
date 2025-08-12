@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:55:18 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 14:49:59 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 16:36:55 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	*multi_cast_rays(void *data)
 	main = thread->main;
 	while (thread->start < thread->end)
 	{
-		dda.camera_x = 2 * thread->start / (double)WIN_WIDTH - 1;
+		dda.camera_x = 2 * thread->start / (float)WIN_WIDTH - 1;
 		dda.ray_dirx = main->player.dir_x
 			+ main->player.plane_x * dda.camera_x;
 		dda.ray_diry = main->player.dir_y
@@ -103,7 +103,7 @@ void	cast_rays(t_main *main)
 	while (x < WIN_WIDTH)
 	{
 		ft_bzero(&dda_struct, sizeof(t_dda_struct));
-		dda_struct.camera_x = 2 * x / (double)WIN_WIDTH - 1;
+		dda_struct.camera_x = 2 * x / (float)WIN_WIDTH - 1;
 		dda_struct.ray_dirx = main->player.dir_x
 			+ main->player.plane_x * dda_struct.camera_x;
 		dda_struct.ray_diry = main->player.dir_y

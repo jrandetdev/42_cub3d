@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:21:00 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 14:49:55 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 16:36:55 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	initialise_north_and_south(t_main *main)
 {
-	double	fov;
+	float	fov;
 
-	fov = (double)FOV / 100;
+	fov = (float)FOV / 100;
 	if (ft_strncmp(main->player.cardinal_direction, "N", 1) == 0)
 	{
 		main->player.dir_x = 0;
@@ -37,9 +37,9 @@ static void	initialise_north_and_south(t_main *main)
 
 static void	initialise_east_and_west(t_main *main)
 {
-	double	fov;
+	float	fov;
 
-	fov = (double)FOV / 100;
+	fov = (float)FOV / 100;
 	if (ft_strncmp(main->player.cardinal_direction, "E", 1) == 0)
 	{
 		main->player.dir_x = 1;

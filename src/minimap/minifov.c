@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   minifov.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:28:55 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/26 22:03:51 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/12 16:36:55 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	print_mini_vector_from_angle(t_main *main, double angle)
+static void	print_mini_vector_from_angle(t_main *main, float angle)
 {
-	double	magnitude;
+	float	magnitude;
 	t_vec2	vector;
 
 	magnitude = sqrt(pow(main->map_struct.height, 2)
@@ -26,8 +26,8 @@ static void	print_mini_vector_from_angle(t_main *main, double angle)
 
 void	print_minifov(t_main *main)
 {
-	double	start_fov;
-	double	end_fov;
+	float	start_fov;
+	float	end_fov;
 
 	start_fov = main->player.angle - main->cal.pre_fov;
 	end_fov = main->player.angle + main->cal.pre_fov;

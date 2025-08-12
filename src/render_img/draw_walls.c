@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_walls.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:29:29 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/08 11:43:48 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/12 16:36:55 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 static void	get_texture_position(t_main *main, t_texture t, t_params *p)
 {
 	int				tex_pos_y;
-	double			step;
-	double			texture_pos;
+	float			step;
+	float			texture_pos;
 	int				screen_y;
 	int				color;
 
 	screen_y = 0;
-	step = (double)t.height / p->wall_height;
+	step = (float)t.height / p->wall_height;
 	texture_pos = (p->draw_start - main->cal.half_wh + p->wall_height / 2)
 		* step;
 	while (main->texture_bank.ceiling.texture_ptr && screen_y < p->draw_start)
@@ -42,8 +42,8 @@ static void	get_texture_position(t_main *main, t_texture t, t_params *p)
 static	int	get_hit_position(t_main *main, t_dda_struct *dda_s,
 	t_texture texture, t_params *p)
 {
-	double	width_pourcentage;
-	double	width_pos_x;
+	float	width_pourcentage;
+	float	width_pos_x;
 
 	if (dda_s->side == 0)
 		width_pos_x = main->player.y + dda_s->ray_diry * dda_s->perpwalldist;

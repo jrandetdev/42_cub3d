@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:54:48 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/12 15:45:57 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 16:36:55 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ typedef union s_coulour
 
 typedef struct s_vec2
 {
-	double	x;
-	double	y;
+	float	x;
+	float	y;
 }			t_vec2;
 typedef struct s_ray
 {
-	double	dirx;
-	double	diry;
+	float	dirx;
+	float	diry;
 }			t_ray;
 
 typedef struct s_debug
@@ -91,20 +91,20 @@ typedef struct s_params
 	int		texture_x;
 	int		draw_start;
 	int		wall_height;
-	double	step;
+	float	step;
 }			t_params;
 
 typedef struct s_cal
 {
 	int		half_wh;
 	int		half_ww;
-	double	pre_fov;
-	double	cf_ray_dirx_left;
-	double	cf_ray_diry_left;
-	double	cf_ray_dirx_right;
-	double	cf_ray_diry_right;
-	double	cf_pre_step_right;
-	double	cf_pre_step_down;
+	float	pre_fov;
+	float	cf_ray_dirx_left;
+	float	cf_ray_diry_left;
+	float	cf_ray_dirx_right;
+	float	cf_ray_diry_right;
+	float	cf_pre_step_right;
+	float	cf_pre_step_down;
 }			t_cal;
 
 typedef struct s_myimage
@@ -129,15 +129,15 @@ typedef struct s_texture
 
 typedef struct s_player
 {
-	double	x;
-	double	y;
-	double	angle;
-	double	dir_x;
-	double	dir_y;
-	double	plane_x;
-	double	plane_y;
-	double	camera_x;
-	double	camera_y;
+	float	x;
+	float	y;
+	float	angle;
+	float	dir_x;
+	float	dir_y;
+	float	plane_x;
+	float	plane_y;
+	float	camera_x;
+	float	camera_y;
 	char	*cardinal_direction;
 }			t_player;
 
@@ -154,13 +154,13 @@ typedef struct s_texture_bank
 
 typedef struct s_mini_dda_struct
 {
-	double	m;
-	double	x_1;
-	double	y_1;
-	double	x_2;
-	double	y_2;
-	double	delta_x;
-	double	delta_y;
+	float	m;
+	float	x_1;
+	float	y_1;
+	float	x_2;
+	float	y_2;
+	float	delta_x;
+	float	delta_y;
 }			t_mini_dda_struct;
 
 typedef struct s_guide
@@ -188,15 +188,15 @@ typedef struct s_dda_struct
 	int			side;
 	int			step_x;
 	int			step_y;
-	double		delta_x;
-	double		delta_y;
-	double		ray_dirx;
-	double		ray_diry;
-	double		camera_x;
-	double		sidedistx;
-	double		sidedisty;
-	double		perpwalldist;
-	double		door_hit_percentage;
+	float		delta_x;
+	float		delta_y;
+	float		ray_dirx;
+	float		ray_diry;
+	float		camera_x;
+	float		sidedistx;
+	float		sidedisty;
+	float		perpwalldist;
+	float		door_hit_percentage;
 }				t_dda_struct;
 
 typedef struct s_keys

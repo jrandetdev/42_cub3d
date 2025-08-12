@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:47:04 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 14:59:42 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 16:36:55 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void		print_minimap(t_main *main);
 void		mini_raycasting(t_main *main);
 void		print_minimap_base(t_main *main);
 
-t_vec2		mini_dda(t_main *main, double dst_x, double dst_y);
+t_vec2		mini_dda(t_main *main, float dst_x, float dst_y);
 
 /*------------------------------- RENDERING ----------------------------------*/
 
@@ -92,13 +92,13 @@ int			game_loop(t_main *main);
 void		init_img(t_main *main);
 void		player_movement(t_main *main);
 void		put_pixel_to_image(t_main *main, int x, int y, int colour);
-void		valid_next_movement_up(t_main *main, double next_x, double next_y);
-void		valid_next_movement_down(t_main *main, double next_x,
-				double next_y);
-void		valid_next_movement_left(t_main *main, double next_x,
-				double next_y);
-void		valid_next_movement_right(t_main *main, double next_x,
-				double next_y);
+void		valid_next_movement_up(t_main *main, float next_x, float next_y);
+void		valid_next_movement_down(t_main *main, float next_x,
+				float next_y);
+void		valid_next_movement_left(t_main *main, float next_x,
+				float next_y);
+void		valid_next_movement_right(t_main *main, float next_x,
+				float next_y);
 
 /*-------------------------------- GAMELOOP ----------------------------------*/
 
@@ -126,13 +126,13 @@ char		*get_next_line(int fd);
 char		*join_and_free(char *line, char *tmp2);
 
 void		print_array(char **array);
-void		normalize_angle(double *angle);
+void		normalize_angle(float *angle);
 void		calcule_constants(t_main *main);
 void		ft_strcpy(char *dest, char *src, int start, int end);
 void		digital_differential_analyzer(t_main *main,
 				t_dda_struct *dda_struct);
 
-double		get_vector_norm(t_vec2 vec1, t_vec2 vec2);
+float		get_vector_norm(t_vec2 vec1, t_vec2 vec2);
 
 size_t		string_array_len(char **str);
 

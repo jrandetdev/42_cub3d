@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   door.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 11:30:17 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/08 13:12:21 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/12 16:36:55 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ void	playing_door_animation(t_main *main)
 
 bool	is_in_door_half(t_main *main, t_dda_struct *dda)
 {
-	double		width_pourcentage;
-	double		width_pos_x;
+	float		width_pourcentage;
+	float		width_pos_x;
 
 	if (dda->side == 0)
 		width_pos_x = main->player.y + dda->ray_diry * dda->perpwalldist;

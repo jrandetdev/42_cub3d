@@ -6,13 +6,13 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:19:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/08 11:55:04 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 16:36:55 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static bool	check_outside_minimap(t_main *main, double x, double y)
+static bool	check_outside_minimap(t_main *main, float x, float y)
 {
 	int	xm;
 	int	ym;
@@ -33,7 +33,7 @@ static bool	check_outside_minimap(t_main *main, double x, double y)
 	return (true);
 }
 
-static bool	check_outside_and_corner(t_main *main, double x, double y)
+static bool	check_outside_and_corner(t_main *main, float x, float y)
 {
 	if (!check_outside_minimap(main, x, y))
 		return (false);
@@ -48,8 +48,8 @@ static t_vec2	dda_case_1(t_main *main, t_mini_dda_struct *mini_dda_struct)
 {
 	int		count_steps;
 	int		step_in_x;
-	double	x;
-	double	y;
+	float	x;
+	float	y;
 	t_vec2	vector;
 
 	step_in_x = 1;
@@ -76,8 +76,8 @@ static t_vec2	dda_case_2(t_main *main, t_mini_dda_struct *mini_dda_struct)
 {
 	int		count_steps;
 	int		step_in_y;
-	double	x;
-	double	y;
+	float	x;
+	float	y;
 	t_vec2	vector;
 
 	step_in_y = 1;
@@ -100,7 +100,7 @@ static t_vec2	dda_case_2(t_main *main, t_mini_dda_struct *mini_dda_struct)
 	return (vector);
 }
 
-t_vec2	mini_dda(t_main *main, double dst_x, double dst_y)
+t_vec2	mini_dda(t_main *main, float dst_x, float dst_y)
 {
 	int					size;
 	t_mini_dda_struct	*mini_dda_struct;

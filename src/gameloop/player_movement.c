@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_movement.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:06:09 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/06 11:47:31 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/12 16:36:55 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	player_key_rotation(t_main *main)
 {
-	double	old_dir_x;
-	double	rotation_speed;
-	double	old_plane_x;
+	float	old_dir_x;
+	float	rotation_speed;
+	float	old_plane_x;
 
 	if (main->keys.left || main->keys.right)
 	{
@@ -42,9 +42,9 @@ static void	player_key_rotation(t_main *main)
 
 static void	player_mouse_rotation(t_main *main)
 {
-	double	old_dir_x;
-	double	rotation_speed;
-	double	old_plane_x;
+	float	old_dir_x;
+	float	rotation_speed;
+	float	old_plane_x;
 
 	rotation_speed = 0;
 	if (main->mouse.dist)
@@ -70,8 +70,8 @@ static void	player_mouse_rotation(t_main *main)
 
 static void	player_right_and_left(t_main *main)
 {
-	double	new_x;
-	double	new_y;
+	float	new_x;
+	float	new_y;
 
 	if (main->keys.d == 1)
 	{
@@ -89,9 +89,9 @@ static void	player_right_and_left(t_main *main)
 
 static void	player_up_and_down(t_main *main)
 {
-	double	new_x;
-	double	new_y;
-	double	player_speed;
+	float	new_x;
+	float	new_y;
+	float	player_speed;
 
 	player_speed = PLAYER_SPEED;
 	if (main->keys.shift)
