@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_colour.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:06 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/07 12:25:18 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/12 14:49:55 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ bool	validate_colour(t_main *main, char **splitted_colours)
 		if (!is_only_digit(splitted_colours[i]))
 		{
 			free_string_array(&splitted_colours);
-			exit_cub3d(main, "Colour contains other characters than digits.");
+			print_error_message(main, "Colour contains other characters than digits");
 		}
 		if (!is_in_char_range(splitted_colours[i]))
 		{
 			free_string_array(&splitted_colours);
-			exit_cub3d(main, "RGB values must be between 0 - 255");
+			print_error_message(main, "RGB values must be between 0 - 255");
 		}
 		i++;
 	}

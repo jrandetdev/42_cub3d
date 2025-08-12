@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:21:06 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/08 15:38:06 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 14:59:07 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	get_fd(t_main *main, char *file_relative_path)
 	if (fd == -1)
 	{
 		if (errno == EACCES)
-			exit_cub3d(main, "No permissions for file.");
+			print_error_syscall(main, "Open fd failed");
 	}
 	return (fd);
 }
@@ -28,15 +28,15 @@ int	get_fd(t_main *main, char *file_relative_path)
 bool	parsing(t_main *main, char *file_relative_path)
 {
 	int		fd;
+	char	**file_content;
 
-	if (is_dir(file_relative_path))
-		exit_cub3d(main, "Input is a directory.");
+	is_dir(main, file_relative_path);
 	fd = get_fd(main, file_relative_path);
-	main->file_content = get_file_content(main, fd, file_relative_path);
+	file_content = get_file_content(main, fd, file_relative_path);
 	close(fd);
-	parse_map_elements(main);
+	parse_map_elements(main, file_content);
 	load_personal_textures(main);
-	get_map_descritpion(main);
+	get_map_descritpion(main, file_content);
 	free_string_array(&main->file_content);
 	is_map_valid(main);
 	return (true);

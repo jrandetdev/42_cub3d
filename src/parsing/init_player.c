@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:21:00 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/06 15:37:44 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/12 14:49:55 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static bool	get_players(t_main *main, int *x, int *y, int *player)
 		while (map[j][i])
 		{
 			if (!ft_strchr("0123NSWE' ", map[j][i]))
-				return (print_error_and_message("unknown character"), false);
+				return (print_error_message(main, "Map characters needs to be NSEW or 012"), false);
 			if (map[j][i] == 'N' || map[j][i] == 'S'
 				|| map[j][i] == 'W' || map[j][i] == 'E')
 			{
@@ -101,9 +101,9 @@ bool	find_player_position(t_main *main, int *x, int *y, int *player)
 	if (*player != 1)
 	{
 		if (*player < 1)
-			exit_cub3d(main, "No player found");
+			print_error_message(main, "No player found");
 		else if (*player > 1)
-			exit_cub3d(main, "Too many players, it's a single-player game");
+			print_error_message(main, "Too many players, it's a single-player game");
 		return (false);
 	}
 	main->player.x = *x + 0.5;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:55:18 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/08 11:50:45 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/12 14:49:59 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static void	create_threads(t_main *main)
 	}
 	wait_threads(threads, i);
 	if (i != N_THREAD)
-		exit_cub3d(main, "One or more threads failed");
+		print_error_syscall(main, "One or more threads failed");
 }
 
 void	cast_rays(t_main *main)

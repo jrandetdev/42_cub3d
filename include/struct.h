@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:54:48 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/08 15:59:18 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/12 15:45:57 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ typedef union s_coulour
 	int	value;
 	struct
 	{
-		unsigned char	r;
-		unsigned char	g;
-		unsigned char	b;
-		unsigned char	a;
+		char	r;
+		char	g;
+		char	b;
+		char	a;
 	};
 }	t_colour;
 

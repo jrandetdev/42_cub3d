@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:47 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/08 14:42:50 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 14:46:59 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ static void	print_current_sensitivity(t_main *main, int last_y)
 	param.idx = 1;
 	sensitvity = ft_itoa(main->mouse.sensitivity);
 	if (!sensitvity)
-		exit_cub3d(main, "malloc failed in print current seinsitvity fonction");
+		print_error_syscall(main, "malloc failed in print current seinsitvity");
 	if (main->mouse.sensitivity >= 10)
 		menu_name = ft_strjoin("CURRENT SENSITIVTY ", sensitvity);
 	else
 		menu_name = ft_strjoin("CURRENT SENSITIVTY 0", sensitvity);
 	free(sensitvity);
 	if (!menu_name)
-		exit_cub3d(main, "malloc failed in print current seinsitvity fonction");
+		print_error_syscall(main, "malloc failed in print current seinsitvity");
 	print_menu_section(main, &param, menu_name);
 	free(menu_name);
 }
@@ -62,10 +62,9 @@ static void	print_minus_logo(t_main *main, int selection, int last_y)
 		filename = "Assets/fonts/logo/minus_gold.xpm";
 	else
 		filename = "Assets/fonts/logo/minus_white.xpm";
-	if (!logo.texture_ptr)
-		exit_cub3d(main, "mlx load image failed in minus logo");
 	logo.texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, filename,
 			&logo.width, &logo.height);
+
 	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, logo.texture_ptr,
 		main->cal.half_ww + 50, last_y - 200);
 	mlx_destroy_image(main->mlx_ptr, logo.texture_ptr);
@@ -80,10 +79,10 @@ static void	print_plus_logo(t_main *main, int selection, int last_y)
 		filename = "Assets/fonts/logo/plus_gold.xpm";
 	else
 		filename = "Assets/fonts/logo/plus_white.xpm";
-	if (!logo.texture_ptr)
-		exit_cub3d(main, "mlx load image failed in minus logo");
 	logo.texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, filename,
 			&logo.width, &logo.height);
+	if (!logo.texture_ptr)
+		print_error_syscall(main, "mlx load image failed in print minus logo");
 	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, logo.texture_ptr,
 		main->cal.half_ww + 50 - 228, last_y - 200);
 	mlx_destroy_image(main->mlx_ptr, logo.texture_ptr);

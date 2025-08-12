@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:47 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/07 15:31:46 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/12 14:49:58 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,19 +81,19 @@ void	is_map_valid(t_main *main)
 	x = 0;
 	y = 0;
 	if (main->map_struct.height == 0 || main->map_struct.width == 0)
-		exit_cub3d(main, "No map, please input a valid map.");
+		print_error_message(main, "No map, please input a valid map.");
 	if (main->map_struct.height < 3 || main->map_struct.width < 3)
-		exit_cub3d(main, "Map too small, must be 3 x 3 minimum.");
+		print_error_message(main, "Map too small, must be 3 x 3 minimum.");
 	ft_bzero(&parsing, sizeof(t_parsing));
 	if (!find_player_position(main, &x, &y, &parsing.player))
-		exit_cub3d(main, "Player not found.");
+		print_error_message(main, "Player not found.");
 	parsing.map_height = main->map_struct.height;
 	parsing.map_width = main->map_struct.width;
 	parsing.map = copy_map(main->map_struct.map, &parsing);
 	if (!parsing.map)
-		exit_cub3d(main, "Map could not be copied in is_map_valid.");
+		print_error_message(main, "Map could not be copied in is_map_valid.");
 	flood_fill(&parsing, x, y);
 	safe_free_tab((void ***)&parsing.map);
 	if ((parsing.patern) == 1)
-		exit_cub3d(main, "Map invalid");
+		print_error_message(main, "Map invalid");
 }

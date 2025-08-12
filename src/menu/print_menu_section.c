@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:39 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/08 14:32:20 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 14:49:57 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char	*get_letter(t_main *main, char letter, int i, int selected)
 
 	first_part = ft_charjoin(path, letter);
 	if (!first_part)
-		exit_cub3d(main, "'get_letter' malloc falied");
+		print_error_syscall(main, "ft_charjoin failed in \"get_letter\"");
 	if (selected == i)
 		filename = ft_strjoin(first_part, gold);
 	else
@@ -30,7 +30,7 @@ static char	*get_letter(t_main *main, char letter, int i, int selected)
 	if (!filename)
 	{
 		free(first_part);
-		exit_cub3d(main, "'get_letter' malloc falied");
+		print_error_syscall(main, "ft_strjoin failed in \"get_letter\"");
 	}
 	free(first_part);
 	return (filename);
@@ -74,7 +74,7 @@ void	print_box(t_main *main, t_menu_struct *menu, int param, char *str)
 	cross.texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, filename,
 			&cross.width, &cross.height);
 	if (!cross.texture_ptr)
-		exit_cub3d(main, "failed to load box logo");
+		print_error_syscall(main, "mlx_xpm_file_to_image failed in print_box");
 	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win,
 		cross.texture_ptr, x, menu->y);
 	mlx_destroy_image(main->mlx_ptr, cross.texture_ptr);

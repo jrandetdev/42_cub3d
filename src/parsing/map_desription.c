@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_desription.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:21:10 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/05 14:42:14 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/12 15:01:14 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,39 +54,39 @@ char	*max_strdup(const char *s1, int max_size)
 	return (pointer);
 }
 
-void	fill_map(t_main *main, int width)
+void	fill_map(t_main *main, int width, char **file_content)
 {
 	int		i;
 	int		j;
 
 	i = 6;
 	j = 0;
-	while (main->file_content[i])
+	while (file_content[i])
 	{
-		main->map_struct.map[j] = max_strdup(main->file_content[i], width);
+		main->map_struct.map[j] = max_strdup(file_content[i], width);
 		if (!main->map_struct.map[j])
 		{
 			safe_free_tab((void ***)&main->map_struct.map);
-			return (exit_cub3d(main, "Max_strdup failed in get_map_des."));
+			print_error_message(main, "Max_strdup failed in get_map_des.");
 		}
 		j++;
 		i++;
 	}
 }
 
-void	get_map_descritpion(t_main *main)
+void	get_map_descritpion(t_main *main, char **file_content)
 {
 	int		height;
 	int		width;
 
-	height = count_map_height(main->file_content);
-	width = get_max_row_size(main->file_content);
+	height = count_map_height(file_content);
+	width = get_max_row_size(file_content);
 	if (height > 200 || width > 200)
-		exit_cub3d(main, "Map is too big.");
+		print_error_message(main, "Map is too big.");
 	main->map_struct.map = ft_calloc(height + 2, sizeof(char *));
 	if (!main->map_struct.map)
-		return (exit_cub3d(main, "Malloc failed in get_map_description."));
-	fill_map(main, width);
+		print_error_message(main, "Malloc failed in get_map_description.");
+	fill_map(main, width, file_content);
 	main->map_struct.width = width;
 	main->map_struct.height = height;
 }

@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:55:50 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/23 12:56:49 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 14:27:17 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	put_pixel_to_image(t_main *main, int x, int y, int colour)
 	img = &main->image;
 	pixel_offset = y * img->size_line + x * img->bytespp;
 	if (pixel_offset > img->total_bytes)
-		return (exit_cub3d(main, "Coordinates are outside of map capacity."));
+		print_error_message(main, "Coordinates are outside of map capacity.");
 	dst = img->addr + pixel_offset;
 	*(unsigned int *)dst = colour;
 }
@@ -67,14 +67,14 @@ void	init_img(t_main *main)
 	img = &main->image;
 	img->data_img = mlx_new_image(main->mlx_ptr, WIN_WIDTH, WIN_HEIGHT);
 	if (!main->image.data_img)
-		return (exit_cub3d(main, "Mlx_new_image failed."));
+		print_error_syscall(main, "Mlx_new_image failed");
 	img->addr = mlx_get_data_addr(
 			img->data_img,
 			&img->bitspp,
 			&img->size_line,
 			&img->endian);
 	if (!img->addr)
-		return (exit_cub3d(main, "Mlx_get_data_addr failed."));
+		print_error_syscall(main, "Mlx_get_data_addr failed");
 	img->bytespp = img->bitspp / 8;
 	img->pixels_per_line = img->size_line / img->bytespp;
 	img->total_bytes = img->size_line * WIN_HEIGHT;

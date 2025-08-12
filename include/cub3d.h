@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:47:04 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/08 15:54:21 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 14:59:42 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct s_texture	t_texture;
 
 /*-------------------------------- PARSING -----------------------------------*/
 
-bool		is_dir(char *file_relative_path);
+void		is_dir(t_main *main, char *file_relative_path);
 bool		parsing(t_main *main, char *file);
 bool		cub_extension_is_valid(char	*s, int len);
 bool		xmp_extension_is_valid(char	*s, int len);
@@ -63,8 +63,8 @@ char		*max_strdup(const char *s1, int max_size);
 char		**get_file_content(t_main *main, int fd, char *file);
 
 void		is_map_valid(t_main *main);
-void		parse_map_elements(t_main *main);
-void		get_map_descritpion(t_main *main);
+void		parse_map_elements(t_main *main, char **file_content);
+void		get_map_descritpion(t_main *main, char **file_content);
 void		load_personal_textures(t_main *main);
 void		extract_colour(t_main *main, char *id, char *info);
 void		extract_texture(t_main *main, char *id, char *xpm_f);
@@ -114,9 +114,10 @@ t_texture	get_corresp_texture(t_main *main, t_dda_struct *dda_struct);
 
 /*---------------------------- ERROR HANDELING -------------------------------*/
 
-void		print_error_and_message(char *error_message);
-
-/*--------------------------------- UTILS ------------------------------------*/
+void		print_error();
+void		print_error_syscall(t_main *main, char *error_message);
+void		print_error_message(t_main *main, char *error_message);
+	/*--------------------------------- UTILS ------------------------------------*/
 
 int			has_new_line(char *buffer);
 int			get_fd(t_main *main, char *file_relative_path);
@@ -144,6 +145,6 @@ void		free_mlx_pointers(t_main *main);
 void		free_string_array(char ***array);
 void		free_ptr_and_set_to_null(char *ptr);
 void		free_all_pointer_arrays(t_main *main);
-void		exit_cub3d(t_main *main, char *error_message);
+void		exit_cub3d(t_main *main, int exit_code);
 
 #endif

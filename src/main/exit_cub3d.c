@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_cub3d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:24:31 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/07 15:29:37 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/12 14:49:56 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	free_all_pointer_arrays(t_main *main)
 {
 	if (main->map_struct.map)
 		free_string_array(&main->map_struct.map);
-	if (main->file_content)
-		free_string_array(&main->file_content);
 	if (main->id_and_info)
 		free_string_array(&main->id_and_info);
 }
@@ -57,7 +55,7 @@ void	free_mlx_pointers(t_main *main)
 	}
 }
 
-void	exit_cub3d(t_main *main, char *error_message)
+void	exit_cub3d(t_main *main, int exit_code)
 {
 	if (main)
 	{
@@ -65,14 +63,7 @@ void	exit_cub3d(t_main *main, char *error_message)
 		free_all_textures(main);
 		free_mlx_pointers(main);
 	}
-	if (error_message)
-	{
-		print_error_and_message(error_message);
-		if (errno)
-			perror("Cub3d: ");
-		exit(1);
-	}
-	exit(0);
+	exit(exit_code);
 }
 
 int	handle_destroy(t_main *main)

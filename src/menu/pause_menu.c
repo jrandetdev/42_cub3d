@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:55 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/08 14:26:28 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 14:49:58 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	selection(t_main *main, int *main_menu, int selection)
 		mlx_clear_window(main->mlx_ptr, main->mlx_win);
 	}
 	else if (selection == 3)
-		exit_cub3d(main, NULL);
+		exit_cub3d(main, 0);
 }
 
 void	show_pause_menu(t_main *main, int *main_menu)

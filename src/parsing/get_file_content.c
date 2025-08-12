@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:34:57 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/08 15:38:53 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 14:53:00 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,22 +93,18 @@ char	**get_file_content(t_main *main, int fd, char *file)
 	count_lines(file, &line_counter);
 	file_content = ft_calloc(line_counter + 1, sizeof(char *));
 	if (!file_content)
-	{
-		exit_cub3d(main, "Malloc failed in get_file_content.");
-		return (NULL);
-	}
+		print_error_syscall(main, "Malloc failed in get_file_content.");
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{
 		free_string_array(&file_content);
-		exit_cub3d(main, "Open failed in get_file_content");
-		return (NULL);
+		print_error_syscall(main, "Open failed in get_file_content");
 	}
 	if (!fill_parse_buffer(&file_content, fd))
 	{
 		close(fd);
-		exit_cub3d(main, "Malloc failed in fill parse buffer.");
-		return (NULL);
+		free_string_array(&file_content);
+		print_error_syscall(main, "Malloc failed in fill parse buffer.");
 	}
 	close(fd);
 	return (file_content);

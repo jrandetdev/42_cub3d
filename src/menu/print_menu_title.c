@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:34 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/08 14:22:23 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 14:49:59 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ static char	*get_letter_title(t_main *main, char letter)
 
 	first_part = ft_charjoin(path, letter);
 	if (!first_part)
-		exit_cub3d(main, "'get_letter' malloc falied");
+		print_error_syscall(main, "ft_charjoin failed in \"get_letter_title\"");
 	filename = ft_strjoin(first_part, white);
 	if (!filename)
 	{
 		free(first_part);
-		exit_cub3d(main, "'get_letter' malloc falied");
+		print_error_syscall(main, "ft_strjoin failed in \"get_letter_title\"");
 	}
 	free(first_part);
 	return (filename);

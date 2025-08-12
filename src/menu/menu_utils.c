@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:51 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/08 14:21:17 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 14:53:51 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	put_letter(t_main *main, t_menu_struct *param, char *file, int x)
 	letter.texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, file,
 			&letter.width, &letter.height);
 	if (!letter.texture_ptr)
-		exit_cub3d(main, "failed to load a letter int 'print_menu_title'");
+		print_error_syscall(main, "failed to load a letter int 'put_letter'");
 	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win,
 		letter.texture_ptr, x, param->y);
 	mlx_destroy_image(main->mlx_ptr, letter.texture_ptr);

@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:33 by jrandet           #+#    #+#             */
-/*   Updated: 2025/07/22 15:20:35 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 14:49:59 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,16 @@
  * is a directory. In this case we return true because it is dir.
  * We close the fd only if it is dir, otherwise open failed
  */
-bool	is_dir(char *file_relative_path)
+void	is_dir(t_main *main, char *file_relative_path)
 {
 	int	fd;
 
 	fd = open(file_relative_path, O_DIRECTORY);
 	if (fd > 0)
-	{
-		print_error_and_message("The file is a directory.\n");
+	{	
 		close(fd);
-		return (true);
+		print_error_syscall(main, "The file is a directory.");
 	}
-	return (false);
 }
 
 /**
