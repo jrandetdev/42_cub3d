@@ -6,13 +6,14 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:54:48 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/12 17:24:50 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 18:24:25 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
+# include "dda.h"
 # include "bonus_struct.h"
 
 /*---------------------------------- ENUM ------------------------------------*/
@@ -49,12 +50,6 @@ typedef struct s_ray
 	float	dirx;
 	float	diry;
 }			t_ray;
-
-typedef struct s_debug
-{
-	bool	debug;
-	int		last_keycode;
-}			t_debug;
 
 typedef struct s_map
 {
@@ -117,14 +112,14 @@ typedef struct s_myimage
 	int		total_bytes;
 	int		pixels_per_line;
 	int		endian;
-}			t_myimage;
+}			t_image;
 
 typedef struct s_texture
 {
 	void		*texture_ptr;
 	int			width;
 	int			height;
-	t_myimage	texture;
+	t_image		texture;
 }				t_texture;
 
 typedef struct s_player
@@ -152,17 +147,6 @@ typedef struct s_texture_bank
 	t_texture		ceiling;
 }					t_texture_bank;
 
-typedef struct s_mini_dda_struct
-{
-	float	m;
-	float	x_1;
-	float	y_1;
-	float	x_2;
-	float	y_2;
-	float	delta_x;
-	float	delta_y;
-}			t_mini_dda_struct;
-
 typedef struct s_guide
 {
 	int		texture_x;
@@ -179,25 +163,6 @@ typedef struct s_guide
 	int		floor_grid_x;
 	int		floor_grid_y;
 }			t_guide;
-
-typedef struct s_dda_struct
-{
-	int			mapx;
-	int			mapy;
-	int			hit;
-	int			side;
-	int			step_x;
-	int			step_y;
-	float		delta_x;
-	float		delta_y;
-	float		ray_dirx;
-	float		ray_diry;
-	float		camera_x;
-	float		sidedistx;
-	float		sidedisty;
-	float		perpwalldist;
-	float		door_hit_percentage;
-}				t_dda_struct;
 
 typedef struct s_keys
 {
@@ -218,7 +183,6 @@ typedef struct s_keys
 	int	shift;
 }		t_keys;
 
-
 typedef struct s_assets
 {
 	t_door				door;
@@ -227,27 +191,27 @@ typedef struct s_assets
 	t_colour			f_colour;
 }		t_assets;
 
+typedef struct s_interactions
+{
+	t_mouse				mouse;
+	t_keys				keys;
+}		t_interactions;
+
 typedef struct s_main
 {
 	int					menu;
-	int					rotation;
 	int					game_start;
 	void				*mlx_ptr;
 	void				*mlx_win;
-	char				**id_and_info;
 	t_assets			assets;
 	t_cal				cal;
-	t_ray				ray;
-	t_keys				keys;
 	t_bonus				bonus;
-	t_debug				debug;
-	t_mouse				mouse;
-	t_myimage			image;
+	t_image				image;
+	t_interactions		interaction;
 	t_menu_param		param;
 	t_player			player;
 	t_minimap			minimap;
-	t_mini_dda_struct	mini_dda_struct;
-
+	t_mini_dda			mini_dda;
 	t_map				map_struct;
 	
 }						t_main;

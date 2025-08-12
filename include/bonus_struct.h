@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:09:52 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/12 16:36:55 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 17:33:52 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_menu_struct
 	int	selection;
 	int	menu_size;
 }	t_menu_struct;
+
 
 typedef struct s_menu_param
 {

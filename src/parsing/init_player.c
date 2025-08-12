@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:21:00 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 16:36:55 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 17:28:50 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void	initialise_north_and_south(t_main *main)
 		main->player.dir_y = -1;
 		main->player.plane_x = fov;
 		main->player.plane_y = 0;
-		main->rotation = 0;
 	}
 	if (ft_strncmp(main->player.cardinal_direction, "S", 1) == 0)
 	{
@@ -31,7 +30,6 @@ static void	initialise_north_and_south(t_main *main)
 		main->player.dir_y = 1;
 		main->player.plane_x = -fov;
 		main->player.plane_y = 0;
-		main->rotation = 2;
 	}
 }
 
@@ -46,7 +44,6 @@ static void	initialise_east_and_west(t_main *main)
 		main->player.dir_y = 0;
 		main->player.plane_x = 0;
 		main->player.plane_y = fov;
-		main->rotation = 1;
 	}
 	if (ft_strncmp(main->player.cardinal_direction, "W", 1) == 0)
 	{
@@ -54,7 +51,6 @@ static void	initialise_east_and_west(t_main *main)
 		main->player.dir_y = 0;
 		main->player.plane_x = 0;
 		main->player.plane_y = -fov;
-		main->rotation = 3;
 	}
 }
 

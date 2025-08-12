@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:23:58 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/12 17:02:39 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 18:01:49 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ static void	init_cub3d(t_main *main)
 	main->menu = 1;
 	main->param.fov = 1;
 	main->param.show_minimap = 1;
-	main->mouse.sensitivity = 25;
+	main->interaction.mouse.sensitivity = 25;
 	calcule_constants(main);
 	main->mlx_win = mlx_new_window(main->mlx_ptr, WIN_WIDTH,
 			WIN_HEIGHT, "Cub3d");
 	if (!main->mlx_win)
 		print_error_syscall(main, "Mlx window failed");
 	init_img(main);
-	main->mouse.x = main->cal.half_ww;
+	main->interaction.mouse.x = main->cal.half_ww;
 	mlx_mouse_hide(main->mlx_ptr, main->mlx_win);
 	if (gettimeofday(&main->bonus.last_sec, NULL))
 		print_error_syscall(main, "GetTimeOfDay failed in init_cub3d");

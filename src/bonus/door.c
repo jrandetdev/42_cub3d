@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 11:30:17 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 17:20:08 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 18:02:05 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	playing_door_animation(t_main *main)
 	main->assets.door.state = NONE;
 }
 
-bool	is_in_door_half(t_main *main, t_dda_struct *dda)
+bool	is_in_door_half(t_main *main, t_dda *dda)
 {
 	float		width_pourcentage;
 	float		width_pos_x;
@@ -80,7 +80,7 @@ void	change_door_state(t_main *main)
 	int		y;
 	char	**map;
 
-	main->keys.e = 0;
+	main->interaction.keys.e = 0;
 	map = main->map_struct.map;
 	x = (int)trunc(main->player.x + (main->player.dir_x * 1.0));
 	y = (int)trunc(main->player.y + (main->player.dir_y * 1.0));

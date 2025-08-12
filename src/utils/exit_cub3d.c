@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:24:31 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/12 17:20:40 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 17:46:55 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	free_all_pointer_arrays(t_main *main)
 {
 	if (main->map_struct.map)
 		free_string_array(&main->map_struct.map);
-	if (main->id_and_info)
-		free_string_array(&main->id_and_info);
 }
 
 void	free_all_textures(t_main *main)

@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:55 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/12 14:49:57 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 18:02:05 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	selection(t_main *main, int *main_menu, int selection)
 {
-	main->keys.enter = 0;
+	main->interaction.keys.enter = 0;
 	if (selection == 0)
 	{
 		main->game_start = 1;
@@ -50,9 +50,9 @@ void	show_main_menu(t_main *main, int *main_menu)
 	print_menu_section(main, &param, "OPTION");
 	print_menu_section(main, &param, "DEBUG");
 	print_menu_section(main, &param, "QUIT");
-	if (main->keys.enter)
+	if (main->interaction.keys.enter)
 		selection(main, main_menu, param.selection);
-	else if (main->keys.up || main->keys.down)
+	else if (main->interaction.keys.up || main->interaction.keys.down)
 		menu_up_and_down(main, &menu_title);
 	mlx_string_put(main->mlx_ptr, main->mlx_win, 10, WIN_HEIGHT - 20, 0xFFFFFF,
 		"by : jrandet and hdougoud");

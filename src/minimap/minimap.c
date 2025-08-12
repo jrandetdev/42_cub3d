@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:30:44 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/08 11:45:06 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 18:02:05 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	init_minimap(t_main *main)
 
 void	print_minimap(t_main *main)
 {
-	if (main->keys.m)
+	if (main->interaction.keys.m)
 		init_fullscreen_minimap(main);
 	else
 		init_minimap(main);

@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 14:25:17 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/08 14:28:23 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 18:02:05 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	selection(t_main *main, int *menu, int selection, int *menu_section)
 {
-	main->keys.enter = 0;
+	main->interaction.keys.enter = 0;
 	if (selection == 0)
 		main->param.show_minimap_grid = !main->param.show_minimap_grid;
 	else if (selection == 1)
@@ -45,8 +45,8 @@ void	show_debug_menu(t_main *main, int *menu)
 	print_box(main, &param, main->param.show_minimap_grid, "MINIMAP GRID");
 	print_box(main, &param, main->param.fov, "MINIMAP FOV");
 	print_menu_section(main, &param, "RETURN");
-	if (main->keys.enter)
+	if (main->interaction.keys.enter)
 		selection(main, menu, param.selection, &menu_title);
-	else if (main->keys.up || main->keys.down)
+	else if (main->interaction.keys.up || main->interaction.keys.down)
 		menu_up_and_down(main, &menu_title);
 }

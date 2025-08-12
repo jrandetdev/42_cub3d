@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   dda_algorithm.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:07:51 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/08 15:58:58 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/12 18:14:43 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	get_perpwall_dist(t_dda_struct *dda)
+static void	get_perpwall_dist(t_dda *dda)
 {
 	if (dda->side == 0)
 		dda->perpwalldist = (dda->sidedistx - dda->delta_x);
@@ -20,7 +20,7 @@ static void	get_perpwall_dist(t_dda_struct *dda)
 		dda->perpwalldist = (dda->sidedisty - dda->delta_y);
 }
 
-static void	handle_door_state(t_main *main, t_dda_struct *dda)
+static void	handle_door_state(t_main *main, t_dda *dda)
 {
 	if (main->map_struct.map[dda->mapy][dda->mapx] == DA)
 	{
@@ -39,7 +39,7 @@ static void	handle_door_state(t_main *main, t_dda_struct *dda)
  */
 // t_vec2	vector;
 // continue tant que mur n'est pas hit
-static void	dda_main_loop(t_main *main, t_dda_struct *dda)
+static void	dda_main_loop(t_main *main, t_dda *dda)
 {
 	while (dda->hit == 0)
 	{
@@ -68,7 +68,7 @@ static void	dda_main_loop(t_main *main, t_dda_struct *dda)
 }
 
 // si le rayon est dans la partie gauche de l'ecrann, step x sera -1
-static void	get_step_and_sidedist(t_main *main, t_dda_struct *dda)
+static void	get_step_and_sidedist(t_main *main, t_dda *dda)
 {
 	if (dda->ray_dirx < 0)
 	{
@@ -92,20 +92,20 @@ static void	get_step_and_sidedist(t_main *main, t_dda_struct *dda)
 	}
 }
 
-void	digital_differential_analyzer(t_main *main, t_dda_struct *dda_struct)
+void	digital_differential_analyzer(t_main *main, t_dda *dda)
 {
-	dda_struct->mapx = main->player.x;
-	dda_struct->mapy = main->player.y;
-	if (dda_struct->ray_dirx == 0)
-		dda_struct->delta_x = pow(10, 30);
+	dda->mapx = main->player.x;
+	dda->mapy = main->player.y;
+	if (dda->ray_dirx == 0)
+		dda->delta_x = pow(10, 30);
 	else
-		dda_struct->delta_x = fabs(1 / dda_struct->ray_dirx);
-	if (dda_struct->ray_diry == 0)
-		dda_struct->delta_y = pow(10, 30);
+		dda->delta_x = fabs(1 / dda->ray_dirx);
+	if (dda->ray_diry == 0)
+		dda->delta_y = pow(10, 30);
 	else
-		dda_struct->delta_y = fabs(1 / dda_struct->ray_diry);
-	dda_struct->hit = 0;
-	get_step_and_sidedist(main, dda_struct);
-	dda_main_loop(main, dda_struct);
-	get_perpwall_dist(dda_struct);
+		dda->delta_y = fabs(1 / dda->ray_diry);
+	dda->hit = 0;
+	get_step_and_sidedist(main, dda);
+	dda_main_loop(main, dda);
+	get_perpwall_dist(dda);
 }

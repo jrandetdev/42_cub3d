@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:47:37 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/08 16:00:24 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/12 17:38:48 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	fps_counter(t_main *main);
 void	change_door_state(t_main *main);
 void	player_action(t_main *main);
 void	playing_door_animation(t_main *main);
-bool	is_in_door_half(t_main *main, t_dda_struct *dda);
+bool	is_in_door_half(t_main *main, t_dda *dda);
 
 /*----------------------------- FLOOR CEILING --------------------------------*/
 void	draw_floor_and_ceiling(t_main *main, int x, int y, float z);

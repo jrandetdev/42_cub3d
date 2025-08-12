@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:47 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/12 14:46:59 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 18:02:05 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static void	selection(t_main *main, int *menu, int selection, int *menu_title)
 {
-	main->keys.enter = 0;
-	if (selection == 0 && main->mouse.sensitivity < MAX_SENSITIVITY - 50)
-		main->mouse.sensitivity += 1;
-	else if (selection == 1 && main->mouse.sensitivity > MIN_SENSITIVITY)
-		main->mouse.sensitivity -= 1;
+	main->interaction.keys.enter = 0;
+	if (selection == 0 && main->interaction.mouse.sensitivity < MAX_SENSITIVITY - 50)
+		main->interaction.mouse.sensitivity += 1;
+	else if (selection == 1 && main->interaction.mouse.sensitivity > MIN_SENSITIVITY)
+		main->interaction.mouse.sensitivity -= 1;
 	else if (selection == 2)
 	{
 		*(menu_title) = 0;
@@ -39,10 +39,10 @@ static void	print_current_sensitivity(t_main *main, int last_y)
 	ft_bzero(&param, sizeof(t_menu_struct));
 	param.y = last_y - 300;
 	param.idx = 1;
-	sensitvity = ft_itoa(main->mouse.sensitivity);
+	sensitvity = ft_itoa(main->interaction.mouse.sensitivity);
 	if (!sensitvity)
 		print_error_syscall(main, "malloc failed in print current seinsitvity");
-	if (main->mouse.sensitivity >= 10)
+	if (main->interaction.mouse.sensitivity >= 10)
 		menu_name = ft_strjoin("CURRENT SENSITIVTY ", sensitvity);
 	else
 		menu_name = ft_strjoin("CURRENT SENSITIVTY 0", sensitvity);
@@ -105,8 +105,8 @@ void	show_mouse_sensitivity_menu(t_main *main, int *menu)
 	print_plus_logo(main, param.selection, param.y);
 	param.idx = 2;
 	print_menu_section(main, &param, "RETURN");
-	if (main->keys.enter)
+	if (main->interaction.keys.enter)
 		selection(main, menu, param.selection, &menu_title);
-	else if (main->keys.up || main->keys.down)
+	else if (main->interaction.keys.up || main->interaction.keys.down)
 		menu_up_and_down(main, &menu_title);
 }

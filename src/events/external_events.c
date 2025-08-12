@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   external_events.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:52:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/07 15:30:18 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/12 18:02:05 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 int	mouse_move(int x, int y, t_main *main)
 {
 	mlx_mouse_get_pos(main->mlx_ptr, main->mlx_win, &x, &y);
-	if (x != main->mouse.x)
+	if (x != main->interaction.mouse.x)
 	{
-		if (x > main->mouse.x)
-			main->mouse.dist = (x - main->mouse.x)
-				/ (MAX_SENSITIVITY - main->mouse.sensitivity + 1);
+		if (x > main->interaction.mouse.x)
+			main->interaction.mouse.dist = (x - main->interaction.mouse.x)
+				/ (MAX_SENSITIVITY - main->interaction.mouse.sensitivity + 1);
 		else
 		{
-			main->mouse.dist = (main->mouse.x - x)
-				/ (MAX_SENSITIVITY - main->mouse.sensitivity + 1);
-			main->mouse.dist = -main->mouse.dist;
+			main->interaction.mouse.dist = (main->interaction.mouse.x - x)
+				/ (MAX_SENSITIVITY - main->interaction.mouse.sensitivity + 1);
+			main->interaction.mouse.dist = -main->interaction.mouse.dist;
 		}
 		mlx_mouse_move(main->mlx_ptr, main->mlx_win,
 			main->cal.half_ww, main->cal.half_wh);
@@ -37,9 +37,9 @@ static void	key_hit(int keycode, t_main *main)
 	if (keycode == K_ESCP)
 		exit_cub3d(main, 0);
 	else if (keycode == K_G)
-		main->keys.g = !main->keys.g;
+		main->interaction.keys.g = !main->interaction.keys.g;
 	else if (keycode == K_M)
-		main->keys.m = !main->keys.m;
+		main->interaction.keys.m = !main->interaction.keys.m;
 	else if (keycode == K_P && main->game_start && !main->menu)
 	{
 		mlx_clear_window(main->mlx_ptr, main->mlx_win);
@@ -47,38 +47,32 @@ static void	key_hit(int keycode, t_main *main)
 	}
 	else if (keycode == K_P && main->game_start && main->menu > 0)
 		main->menu = NO_MENU;
-	if (DEBUG)
-	{
-		if (main->debug.last_keycode != keycode)
-			printf("keycode : %d\n", keycode);
-		main->debug.last_keycode = keycode;
-	}
 }
 
 static int	key_pressed(int keycode, t_main *main)
 {
 	if (keycode == K_W)
-		main->keys.w = 1;
+		main->interaction.keys.w = 1;
 	else if (keycode == K_A)
-		main->keys.a = 1;
+		main->interaction.keys.a = 1;
 	else if (keycode == K_S)
-		main->keys.s = 1;
+		main->interaction.keys.s = 1;
 	else if (keycode == K_D)
-		main->keys.d = 1;
+		main->interaction.keys.d = 1;
 	else if (keycode == K_E)
-		main->keys.e = 1;
+		main->interaction.keys.e = 1;
 	else if (keycode == K_LEFT)
-		main->keys.left = 1;
+		main->interaction.keys.left = 1;
 	else if (keycode == K_RIGHT)
-		main->keys.right = 1;
+		main->interaction.keys.right = 1;
 	else if (keycode == K_ENTER)
-		main->keys.enter = 1;
+		main->interaction.keys.enter = 1;
 	else if (keycode == K_UP)
-		main->keys.up = 1;
+		main->interaction.keys.up = 1;
 	else if (keycode == K_DOWN)
-		main->keys.down = 1;
+		main->interaction.keys.down = 1;
 	else if (keycode == K_SHIFT)
-		main->keys.shift = 1;
+		main->interaction.keys.shift = 1;
 	key_hit(keycode, main);
 	return (1);
 }
@@ -86,27 +80,27 @@ static int	key_pressed(int keycode, t_main *main)
 static int	key_released(int keycode, t_main *main)
 {
 	if (keycode == K_W)
-		main->keys.w = 0;
+		main->interaction.keys.w = 0;
 	else if (keycode == K_A)
-		main->keys.a = 0;
+		main->interaction.keys.a = 0;
 	else if (keycode == K_S)
-		main->keys.s = 0;
+		main->interaction.keys.s = 0;
 	else if (keycode == K_D)
-		main->keys.d = 0;
+		main->interaction.keys.d = 0;
 	else if (keycode == K_E)
-		main->keys.e = 0;
+		main->interaction.keys.e = 0;
 	else if (keycode == K_LEFT)
-		main->keys.left = 0;
+		main->interaction.keys.left = 0;
 	else if (keycode == K_RIGHT)
-		main->keys.right = 0;
+		main->interaction.keys.right = 0;
 	else if (keycode == K_ENTER)
-		main->keys.enter = 0;
+		main->interaction.keys.enter = 0;
 	else if (keycode == K_UP)
-		main->keys.up = 0;
+		main->interaction.keys.up = 0;
 	else if (keycode == K_DOWN)
-		main->keys.down = 0;
+		main->interaction.keys.down = 0;
 	else if (keycode == K_SHIFT)
-		main->keys.shift = 0;
+		main->interaction.keys.shift = 0;
 	return (0);
 }
 

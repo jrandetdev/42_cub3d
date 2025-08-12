@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:47:04 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 17:25:31 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 18:13:57 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include "struct.h"
 # include "parameter.h"
 # include "bonus_struct.h"
+# include "dda.h"
 
 # define RED	"\x1b[31;1m"
 # define GREEN	"\x1b[32;1m"
@@ -106,11 +107,11 @@ int			key_handler(int key_code, t_main *main);
 
 void		cast_rays(t_main *main);
 void		init_external_events(t_main *main);
-void		draw_texture(t_main *main, t_dda_struct *dda_struct, int x,
+void		draw_texture(t_main *main, t_dda *dda, int x,
 				t_texture texture);
 
 size_t		count_map_height(char **map);
-t_texture	get_corresp_texture(t_main *main, t_dda_struct *dda_struct);
+t_texture	get_corresp_texture(t_main *main, t_dda *dda);
 
 /*---------------------------- ERROR HANDELING -------------------------------*/
 
@@ -130,7 +131,7 @@ void		normalize_angle(float *angle);
 void		calcule_constants(t_main *main);
 void		ft_strcpy(char *dest, char *src, int start, int end);
 void		digital_differential_analyzer(t_main *main,
-				t_dda_struct *dda_struct);
+				t_dda *dda);
 
 float		get_vec2_norm(t_vec2 vec1, t_vec2 vec2);
 

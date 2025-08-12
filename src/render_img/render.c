@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:55:18 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 16:36:55 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 18:12:14 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	*multi_cast_rays(void *data)
 {
 	t_threads		*thread;
-	t_dda_struct	dda;
+	t_dda	dda;
 	t_texture		cardinal_texture;
 	t_main			*main;
 
@@ -90,7 +90,7 @@ static void	create_threads(t_main *main)
 void	cast_rays(t_main *main)
 {
 	int				x;
-	t_dda_struct	dda_struct;
+	t_dda	dda;
 	t_texture		cardinal_texture;
 
 	pre_calc(main);
@@ -102,15 +102,15 @@ void	cast_rays(t_main *main)
 	x = 0;
 	while (x < WIN_WIDTH)
 	{
-		ft_bzero(&dda_struct, sizeof(t_dda_struct));
-		dda_struct.camera_x = 2 * x / (float)WIN_WIDTH - 1;
-		dda_struct.ray_dirx = main->player.dir_x
-			+ main->player.plane_x * dda_struct.camera_x;
-		dda_struct.ray_diry = main->player.dir_y
-			+ main->player.plane_y * dda_struct.camera_x;
-		digital_differential_analyzer(main, &dda_struct);
-		cardinal_texture = get_corresp_texture(main, &dda_struct);
-		draw_texture(main, &dda_struct, x, cardinal_texture);
+		ft_bzero(&dda, sizeof(t_dda));
+		dda.camera_x = 2 * x / (float)WIN_WIDTH - 1;
+		dda.ray_dirx = main->player.dir_x
+			+ main->player.plane_x * dda.camera_x;
+		dda.ray_diry = main->player.dir_y
+			+ main->player.plane_y * dda.camera_x;
+		digital_differential_analyzer(main, &dda);
+		cardinal_texture = get_corresp_texture(main, &dda);
+		draw_texture(main, &dda, x, cardinal_texture);
 		x++;
 	}
 }

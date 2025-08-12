@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:55:50 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 14:27:17 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 17:58:54 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	put_pixel_to_image(t_main *main, int x, int y, int colour)
 {
 	unsigned char		*dst;
 	long				pixel_offset;
-	t_myimage			*img;
+	t_image			*img;
 
 	img = &main->image;
 	pixel_offset = y * img->size_line + x * img->bytespp;
@@ -62,7 +62,7 @@ void	put_pixel_to_image(t_main *main, int x, int y, int colour)
  */
 void	init_img(t_main *main)
 {
-	t_myimage	*img;
+	t_image	*img;
 
 	img = &main->image;
 	img->data_img = mlx_new_image(main->mlx_ptr, WIN_WIDTH, WIN_HEIGHT);

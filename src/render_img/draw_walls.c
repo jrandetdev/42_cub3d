@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:29:29 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 17:20:40 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 17:42:44 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,44 +39,44 @@ static void	get_texture_position(t_main *main, t_texture t, t_params *p)
 		draw_floor_and_ceiling(main, p->screen_x, screen_y++, 0.5);
 }
 
-static	int	get_hit_position(t_main *main, t_dda_struct *dda_s,
+static	int	get_hit_position(t_main *main, t_dda *dda,
 	t_texture texture, t_params *p)
 {
 	float	width_pourcentage;
 	float	width_pos_x;
 
-	if (dda_s->side == 0)
-		width_pos_x = main->player.y + dda_s->ray_diry * dda_s->perpwalldist;
+	if (dda->side == 0)
+		width_pos_x = main->player.y + dda->ray_diry * dda->perpwalldist;
 	else
-		width_pos_x = main->player.x + dda_s->ray_dirx * dda_s->perpwalldist;
+		width_pos_x = main->player.x + dda->ray_dirx * dda->perpwalldist;
 	width_pourcentage = width_pos_x - floor(width_pos_x);
-	if (dda_s->hit == 3)
+	if (dda->hit == 3)
 	{
-		if (dda_s->door_hit_percentage <= 0.5)
+		if (dda->door_hit_percentage <= 0.5)
 			p->texture_x = ((width_pourcentage
 						+ main->assets.door.opening_pourcent / 2) * texture.width);
-		if (dda_s->door_hit_percentage > 0.5)
+		if (dda->door_hit_percentage > 0.5)
 			p->texture_x = ((width_pourcentage
 						- main->assets.door.opening_pourcent / 2) * texture.width);
 	}
 	else
 		p->texture_x = (width_pourcentage * texture.width);
-	if (dda_s->side == 0 && dda_s->ray_dirx > 0)
+	if (dda->side == 0 && dda->ray_dirx > 0)
 		p->texture_x = texture.width - p->texture_x - 1;
-	if (dda_s->side == 1 && dda_s->ray_diry < 0)
+	if (dda->side == 1 && dda->ray_diry < 0)
 		p->texture_x = texture.width - p->texture_x - 1;
 	return (p->texture_x);
 }
 
-void	draw_texture(t_main *main, t_dda_struct *dda_struct, int x,
+void	draw_texture(t_main *main, t_dda *dda, int x,
 	t_texture texture)
 {
 	t_params	params;
 
 	ft_bzero(&params, sizeof(t_params));
 	params.screen_x = x;
-	params.texture_x = get_hit_position(main, dda_struct, texture, &params);
-	params.wall_height = (int)(WIN_HEIGHT / dda_struct->perpwalldist);
+	params.texture_x = get_hit_position(main, dda, texture, &params);
+	params.wall_height = (int)(WIN_HEIGHT / dda->perpwalldist);
 	params.draw_start = (main->cal.half_wh) - (params.wall_height / 2);
 	if (params.draw_start < 0)
 		params.draw_start = 0;
@@ -86,25 +86,25 @@ void	draw_texture(t_main *main, t_dda_struct *dda_struct, int x,
 	get_texture_position(main, texture, &params);
 }
 
-t_texture	get_corresp_texture(t_main *main, t_dda_struct *dda_struct)
+t_texture	get_corresp_texture(t_main *main, t_dda *dda)
 {
 	t_texture	texture;
 
-	if (dda_struct->hit == 2 || dda_struct->hit == 3)
+	if (dda->hit == 2 || dda->hit == 3)
 	{
 		texture = main->assets.texture_bank.door;
 		return (texture);
 	}
-	if (dda_struct->side == 0)
+	if (dda->side == 0)
 	{
-		if (dda_struct->ray_dirx > 0)
+		if (dda->ray_dirx > 0)
 			texture = main->assets.texture_bank.ea;
 		else
 			texture = main->assets.texture_bank.we;
 	}
 	else
 	{
-		if (dda_struct->ray_diry < 0)
+		if (dda->ray_diry < 0)
 			texture = main->assets.texture_bank.no;
 		else
 			texture = main->assets.texture_bank.so;

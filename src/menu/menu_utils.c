@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:51 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/12 14:53:51 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 18:02:05 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ char	*ft_charjoin(char const *s1, char const s2)
 
 void	menu_up_and_down(t_main *main, int *selection)
 {
-	if (main->keys.up)
+	if (main->interaction.keys.up)
 	{
 		*(selection) -= 1;
-		main->keys.up = 0;
+		main->interaction.keys.up = 0;
 	}
 	else
 	{
 		*(selection) += 1;
-		main->keys.down = 0;
+		main->interaction.keys.down = 0;
 	}
 }
 
