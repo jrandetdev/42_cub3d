@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:40 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 15:26:13 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 16:05:50 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	get_texture_data(t_main *main, t_texture *direc, char *xpm_file)
 {
 	direc->texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, xpm_file,
 			&direc->width, &direc->height);
+	if (direc->width != direc->height)
+		print_error_message(main, "Texture height and width need to be identical.");
 	if (!direc->texture_ptr)
 		print_error_message(main, "Texture path not found or invalid.");
 	direc->texture.addr = mlx_get_data_addr(

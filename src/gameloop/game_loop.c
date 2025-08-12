@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:06:37 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/08 14:52:40 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/12 16:01:42 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	backgroud_color(t_main *main)
 		{
 			x = 0;
 			while (x <= WIN_WIDTH)
-				put_pixel_to_image(main, x++, y, main->f_colour.value);
+				put_pixel_to_image(main, x++, y, main->c_colour.value);
 			y++;
 		}
 	}
@@ -35,7 +35,7 @@ static void	backgroud_color(t_main *main)
 		{
 			x = 0;
 			while (x <= WIN_WIDTH)
-				put_pixel_to_image(main, x++, y, main->c_colour.value);
+				put_pixel_to_image(main, x++, y, main->f_colour.value);
 			y++;
 		}
 	}
