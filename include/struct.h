@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:54:48 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/12 18:24:25 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 18:50:13 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_vec2
 	float	x;
 	float	y;
 }			t_vec2;
+
 typedef struct s_ray
 {
 	float	dirx;

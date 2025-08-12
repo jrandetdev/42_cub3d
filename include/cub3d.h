@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:47:04 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 18:13:57 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 18:50:20 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # include "parameter.h"
 # include "bonus_struct.h"
 # include "dda.h"
+// # include "assets.h"
 
 # define RED	"\x1b[31;1m"
 # define GREEN	"\x1b[32;1m"
@@ -48,8 +49,6 @@
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846
 # endif
-
-typedef struct s_texture	t_texture;
 
 /*-------------------------------- PARSING -----------------------------------*/
 

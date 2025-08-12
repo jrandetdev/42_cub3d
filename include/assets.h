@@ -1,8 +1,6 @@
 #ifndef ASSETS_H
 # define ASSETS_H
 
-typedef struct s_image t_image;
-
 typedef struct s_texture
 {
 	void		*texture_ptr;
