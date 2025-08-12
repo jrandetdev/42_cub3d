@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:23:58 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/12 14:21:54 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 17:02:39 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 static void	arguments_are_valid(t_main *main, int argc, char **argv)
 {
 	if (argc != 2)
-		print_error_message(main, "Please give only one file as input.\n");
+		print_error_message(main, "Please give only one file as input.");
 	else if (!cub_extension_is_valid(argv[1], 3))
-		print_error_message(main, ".cub extenssion is missing.\n");
+		print_error_message(main, ".cub extenssion is missing.");
 	else if (WIN_HEIGHT < MIN_RESOLTION_Y || WIN_WIDTH < MIN_RESOLUTION_X)
-		print_error_message(main, "Resolution too small\n");
+		print_error_message(main, "Resolution too small");
 }
 
 static void	init_mlx(t_main *main)
@@ -52,8 +52,8 @@ int	main(int argc, char **argv)
 {
 	t_main	main;
 
-	arguments_are_valid(&main, argc, argv);
 	ft_bzero(&main, sizeof(t_main));
+	arguments_are_valid(&main, argc, argv);
 	init_mlx(&main);
 	parsing(&main, argv[1]);
 	init_cub3d(&main);

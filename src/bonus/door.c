@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 11:30:17 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 16:36:55 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 17:20:08 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 static void	opening_door(t_main *main, int x, int y)
 {
 	main->map_struct.map[y][x] = DA;
-	main->door.opening_pourcent = 0;
-	main->door.state = OPENING;
-	main->door.pos_x = x;
-	main->door.pos_y = y;
+	main->assets.door.opening_pourcent = 0;
+	main->assets.door.state = OPENING;
+	main->assets.door.pos_x = x;
+	main->assets.door.pos_y = y;
 }
 
 static void	closing_door(t_main *main, char **map, int x, int y)
@@ -27,33 +27,33 @@ static void	closing_door(t_main *main, char **map, int x, int y)
 		[(int)trunc(main->player.x)] == map[y][x])
 		return ;
 	main->map_struct.map[y][x] = DA;
-	main->door.opening_pourcent = 1;
-	main->door.state = CLOSING;
-	main->door.pos_x = x;
-	main->door.pos_y = y;
+	main->assets.door.opening_pourcent = 1;
+	main->assets.door.state = CLOSING;
+	main->assets.door.pos_x = x;
+	main->assets.door.pos_y = y;
 }
 
 void	playing_door_animation(t_main *main)
 {
-	if (main->door.state == OPENING)
+	if (main->assets.door.state == OPENING)
 	{
-		if (main->door.opening_pourcent < 1)
+		if (main->assets.door.opening_pourcent < 1)
 		{
-			main->door.opening_pourcent += DOOR_ANIMATION_SPEED;
+			main->assets.door.opening_pourcent += DOOR_ANIMATION_SPEED;
 			return ;
 		}
-		main->map_struct.map[main->door.pos_y][main->door.pos_x] = DO;
+		main->map_struct.map[main->assets.door.pos_y][main->assets.door.pos_x] = DO;
 	}
-	else if (main->door.state == CLOSING)
+	else if (main->assets.door.state == CLOSING)
 	{
-		if (main->door.opening_pourcent > 0)
+		if (main->assets.door.opening_pourcent > 0)
 		{
-			main->door.opening_pourcent -= DOOR_ANIMATION_SPEED;
+			main->assets.door.opening_pourcent -= DOOR_ANIMATION_SPEED;
 			return ;
 		}
-		main->map_struct.map[main->door.pos_y][main->door.pos_x] = DC;
+		main->map_struct.map[main->assets.door.pos_y][main->assets.door.pos_x] = DC;
 	}
-	main->door.state = NONE;
+	main->assets.door.state = NONE;
 }
 
 bool	is_in_door_half(t_main *main, t_dda_struct *dda)
@@ -67,9 +67,9 @@ bool	is_in_door_half(t_main *main, t_dda_struct *dda)
 		width_pos_x = main->player.x + dda->ray_dirx * dda->perpwalldist;
 	width_pourcentage = width_pos_x - floor(width_pos_x);
 	dda->door_hit_percentage = width_pourcentage;
-	if (width_pourcentage > (0.5 + (main->door.opening_pourcent / 2)))
+	if (width_pourcentage > (0.5 + (main->assets.door.opening_pourcent / 2)))
 		return (true);
-	else if (width_pourcentage <= (0.5 - (main->door.opening_pourcent / 2)))
+	else if (width_pourcentage <= (0.5 - (main->assets.door.opening_pourcent / 2)))
 		return (true);
 	return (false);
 }

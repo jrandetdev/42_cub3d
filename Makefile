@@ -32,33 +32,31 @@ MLX = $(MLX_PATH)$(MLX_NAME)
 
 #------------ SOURCES ------------#
 
-DIR_MAIN		=			./src/main
-SRC_MAIN		=			main.c \
-							exit_cub3d.c \
-							error_handling.c \
-							free_utils.c \
-							pre_calculate.c
-MAIN			=			$(addprefix $(DIR_MAIN)/, $(SRC_MAIN))
+DIR_MAIN			=			./src
+MAIN_SRC		=			$(addprefix $(DIR_MAIN)/, main.c)
 
 DIR_PARSING		=			./src/parsing
 SRC_PARSING		=			flood_fill.c \
-							map_desription.c \
-							main_parsing.c \
-							check_file.c \
 							init_player.c \
+							main_parsing.c \
+							map_desription.c \
 							extract_texture.c \
 							extract_colour.c \
 							validate_colour.c \
 							get_file_content.c \
-							parse_texture_and_colour.c
+							get_next_line.c \
+							get_next_line_utils.c \
+							parse_texture_and_colour.c \
+							check_extension_and_file_type.c
 PARSING			=			$(addprefix $(DIR_PARSING)/, $(SRC_PARSING))
 
 DIR_UTILS		=			./src/utils
 SRC_UTILS		=			vector.c \
-							get_next_line.c \
-							get_next_line_utils.c \
 							string_array_len.c \
-							dda_algorithm.c
+							exit_cub3d.c \
+							error_handling.c \
+							free_utils.c \
+							pre_calculate.c
 UTILS			=			$(addprefix $(DIR_UTILS)/, $(SRC_UTILS))
 
 DIR_DEBUG		=			./src/debug
@@ -94,6 +92,7 @@ BONUS			=			$(addprefix $(DIR_BONUS)/, $(SRC_BONUS))
 DIR_RENDER_IMG	=			./src/render_img
 SRC_RENDER_IMG	=			render.c \
 							draw_walls.c \
+							dda_algorithm.c \
 							draw_floor_and_ceiling.c
 RENDER_IMG 		=			$(addprefix $(DIR_RENDER_IMG)/, $(SRC_RENDER_IMG))
 
@@ -109,8 +108,8 @@ SRC_MENU		=			main_menu.c \
 							print_menu_section.c
 MENU			=			$(addprefix $(DIR_MENU)/, $(SRC_MENU))
 
-SOURCES			=			$(MAIN) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(GAMELOOP) $(MINIMAP) $(RENDER_IMG) $(MENU) $(BONUS)
-vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS) $(DIR_GAMELOOP) $(DIR_GAMELOOP) $(DIR_MINIMAP) $(DIR_RENDER_IMG) $(DIR_MENU) $(DIR_BONUS)
+SOURCES			=			$(MAIN_SRC) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(GAMELOOP) $(MINIMAP) $(RENDER_IMG) $(MENU) $(BONUS)
+vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS) $(DIR_GAMELOOP) $(DIR_GAMELOOP) $(DIR_MINIMAP) $(DIR_RENDER_IMG) $(DIR_MENU) $(DIR_BONUS) 
 
 OBJECTS			:= 			$(addprefix $(DIR_BUILD)/, $(notdir $(SOURCES:.c=.o)))
 DEPS			:=			$(OBJECTS:.o=.d)

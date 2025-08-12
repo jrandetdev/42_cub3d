@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:06:37 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 16:01:42 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 17:21:12 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,24 @@ static void	backgroud_color(t_main *main)
 	int	y;
 
 	y = 0;
-	if (!main->texture_bank.ceiling.texture_ptr)
+	if (!main->assets.texture_bank.ceiling.texture_ptr)
 	{
 		while (y <= main->cal.half_wh)
 		{
 			x = 0;
 			while (x <= WIN_WIDTH)
-				put_pixel_to_image(main, x++, y, main->c_colour.value);
+				put_pixel_to_image(main, x++, y, main->assets.c_colour.value);
 			y++;
 		}
 	}
 	y = main->cal.half_wh;
-	if (!main->texture_bank.floor.texture_ptr)
+	if (!main->assets.texture_bank.floor.texture_ptr)
 	{
 		while (y < WIN_HEIGHT)
 		{
 			x = 0;
 			while (x <= WIN_WIDTH)
-				put_pixel_to_image(main, x++, y, main->f_colour.value);
+				put_pixel_to_image(main, x++, y, main->assets.f_colour.value);
 			y++;
 		}
 	}
@@ -50,7 +50,7 @@ int	game_loop(t_main *main)
 	}
 	mlx_destroy_image(main->mlx_ptr, main->image.data_img);
 	init_img(main);
-	if (!main->door.state)
+	if (!main->assets.door.state)
 		player_movement(main);
 	else
 		playing_door_animation(main);

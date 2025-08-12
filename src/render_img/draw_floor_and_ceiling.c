@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_floor_and_ceiling.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:38:19 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/08 11:49:01 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/12 17:20:40 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ static void	get_texture_position_floor(t_main *main, int x, int y, t_guide *g)
 	t_texture	*texture;
 
 	if (g->pos_z < 0)
-		texture = &main->texture_bank.ceiling;
+		texture = &main->assets.texture_bank.ceiling;
 	else
-		texture = &main->texture_bank.floor;
+		texture = &main->assets.texture_bank.floor;
 	_x = g->floor_coor_x + ((float)x * g->x_step_right);
 	_y = g->floor_coor_y + ((float)x * g->y_step_down);
 	texture_width = texture->width;

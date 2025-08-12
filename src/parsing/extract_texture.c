@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:40 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 16:05:50 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 17:20:40 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,17 @@ void	extract_texture(t_main *main, char *id, char *xpm_f)
 	if (!xmp_extension_is_valid(xpm_f, 3))
 		print_error_message(main, "Texture file needs xpm extension.");
 	if (ft_strncmp(id, "NO", 2) == 0
-		&& check_texture_id(main, main->texture_bank.no.texture_ptr))
-		get_texture_data(main, &main->texture_bank.no, xpm_f);
-	else if (ft_strncmp(id, "SO", 2) == 0  && !main->texture_bank.so.texture_ptr
-		&& check_texture_id(main, main->texture_bank.so.texture_ptr))
-		get_texture_data(main, &main->texture_bank.so, xpm_f);
-	else if (ft_strncmp(id, "WE", 2) == 0 && !main->texture_bank.we.texture_ptr
-		&& check_texture_id(main, main->texture_bank.we.texture_ptr))
-		get_texture_data(main, &main->texture_bank.we, xpm_f);
-	else if (ft_strncmp(id, "EA", 2) == 0 && !main->texture_bank.ea.texture_ptr
-		&& check_texture_id(main, main->texture_bank.ea.texture_ptr))
-		get_texture_data(main, &main->texture_bank.ea, xpm_f);
+		&& check_texture_id(main, main->assets.texture_bank.no.texture_ptr))
+		get_texture_data(main, &main->assets.texture_bank.no, xpm_f);
+	else if (ft_strncmp(id, "SO", 2) == 0  && !main->assets.texture_bank.so.texture_ptr
+		&& check_texture_id(main, main->assets.texture_bank.so.texture_ptr))
+		get_texture_data(main, &main->assets.texture_bank.so, xpm_f);
+	else if (ft_strncmp(id, "WE", 2) == 0 && !main->assets.texture_bank.we.texture_ptr
+		&& check_texture_id(main, main->assets.texture_bank.we.texture_ptr))
+		get_texture_data(main, &main->assets.texture_bank.we, xpm_f);
+	else if (ft_strncmp(id, "EA", 2) == 0 && !main->assets.texture_bank.ea.texture_ptr
+		&& check_texture_id(main, main->assets.texture_bank.ea.texture_ptr))
+		get_texture_data(main, &main->assets.texture_bank.ea, xpm_f);
 	else
 		print_error_message(main, "Texture id needs to be NO, SO, WE, EA");
 }
@@ -69,6 +69,6 @@ void	check_and_get_texture(t_main *main, t_texture *pannel, char *filename)
 
 void	load_personal_textures(t_main *main)
 {
-	check_and_get_texture(main, &main->texture_bank.door,
+	check_and_get_texture(main, &main->assets.texture_bank.door,
 		"./Assets/textures/cool_door.xpm");
 }

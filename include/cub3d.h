@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:47:04 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 16:36:55 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 17:25:31 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ void		ft_strcpy(char *dest, char *src, int start, int end);
 void		digital_differential_analyzer(t_main *main,
 				t_dda_struct *dda_struct);
 
-float		get_vector_norm(t_vec2 vec1, t_vec2 vec2);
+float		get_vec2_norm(t_vec2 vec1, t_vec2 vec2);
 
 size_t		string_array_len(char **str);
 

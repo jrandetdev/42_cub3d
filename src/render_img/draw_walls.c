@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:29:29 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 16:36:55 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 17:20:40 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	get_texture_position(t_main *main, t_texture t, t_params *p)
 	step = (float)t.height / p->wall_height;
 	texture_pos = (p->draw_start - main->cal.half_wh + p->wall_height / 2)
 		* step;
-	while (main->texture_bank.ceiling.texture_ptr && screen_y < p->draw_start)
+	while (main->assets.texture_bank.ceiling.texture_ptr && screen_y < p->draw_start)
 		draw_floor_and_ceiling(main, p->screen_x, screen_y++, -0.5);
 	screen_y = p->draw_start;
 	while (screen_y < p->draw_end)
@@ -35,7 +35,7 @@ static void	get_texture_position(t_main *main, t_texture t, t_params *p)
 		texture_pos += step;
 		screen_y++;
 	}
-	while (main->texture_bank.floor.texture_ptr && screen_y < WIN_HEIGHT)
+	while (main->assets.texture_bank.floor.texture_ptr && screen_y < WIN_HEIGHT)
 		draw_floor_and_ceiling(main, p->screen_x, screen_y++, 0.5);
 }
 
@@ -54,10 +54,10 @@ static	int	get_hit_position(t_main *main, t_dda_struct *dda_s,
 	{
 		if (dda_s->door_hit_percentage <= 0.5)
 			p->texture_x = ((width_pourcentage
-						+ main->door.opening_pourcent / 2) * texture.width);
+						+ main->assets.door.opening_pourcent / 2) * texture.width);
 		if (dda_s->door_hit_percentage > 0.5)
 			p->texture_x = ((width_pourcentage
-						- main->door.opening_pourcent / 2) * texture.width);
+						- main->assets.door.opening_pourcent / 2) * texture.width);
 	}
 	else
 		p->texture_x = (width_pourcentage * texture.width);
@@ -92,22 +92,22 @@ t_texture	get_corresp_texture(t_main *main, t_dda_struct *dda_struct)
 
 	if (dda_struct->hit == 2 || dda_struct->hit == 3)
 	{
-		texture = main->texture_bank.door;
+		texture = main->assets.texture_bank.door;
 		return (texture);
 	}
 	if (dda_struct->side == 0)
 	{
 		if (dda_struct->ray_dirx > 0)
-			texture = main->texture_bank.ea;
+			texture = main->assets.texture_bank.ea;
 		else
-			texture = main->texture_bank.we;
+			texture = main->assets.texture_bank.we;
 	}
 	else
 	{
 		if (dda_struct->ray_diry < 0)
-			texture = main->texture_bank.no;
+			texture = main->assets.texture_bank.no;
 		else
-			texture = main->texture_bank.so;
+			texture = main->assets.texture_bank.so;
 	}
 	return (texture);
 }

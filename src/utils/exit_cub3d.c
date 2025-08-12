@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:24:31 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/12 14:49:56 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 17:20:40 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,21 @@ void	free_all_pointer_arrays(t_main *main)
 
 void	free_all_textures(t_main *main)
 {
-	if (main->texture_bank.ea.texture_ptr)
-		mlx_destroy_image(main->mlx_ptr, main->texture_bank.ea.texture_ptr);
-	if (main->texture_bank.so.texture_ptr)
-		mlx_destroy_image(main->mlx_ptr, main->texture_bank.so.texture_ptr);
-	if (main->texture_bank.no.texture_ptr)
-		mlx_destroy_image(main->mlx_ptr, main->texture_bank.no.texture_ptr);
-	if (main->texture_bank.we.texture_ptr)
-		mlx_destroy_image(main->mlx_ptr, main->texture_bank.we.texture_ptr);
-	if (main->texture_bank.door.texture_ptr)
-		mlx_destroy_image(main->mlx_ptr, main->texture_bank.door.texture_ptr);
-	if (main->texture_bank.floor.texture_ptr)
-		mlx_destroy_image(main->mlx_ptr, main->texture_bank.floor.texture_ptr);
-	if (main->texture_bank.ceiling.texture_ptr)
+	if (main->assets.texture_bank.ea.texture_ptr)
+		mlx_destroy_image(main->mlx_ptr, main->assets.texture_bank.ea.texture_ptr);
+	if (main->assets.texture_bank.so.texture_ptr)
+		mlx_destroy_image(main->mlx_ptr, main->assets.texture_bank.so.texture_ptr);
+	if (main->assets.texture_bank.no.texture_ptr)
+		mlx_destroy_image(main->mlx_ptr, main->assets.texture_bank.no.texture_ptr);
+	if (main->assets.texture_bank.we.texture_ptr)
+		mlx_destroy_image(main->mlx_ptr, main->assets.texture_bank.we.texture_ptr);
+	if (main->assets.texture_bank.door.texture_ptr)
+		mlx_destroy_image(main->mlx_ptr, main->assets.texture_bank.door.texture_ptr);
+	if (main->assets.texture_bank.floor.texture_ptr)
+		mlx_destroy_image(main->mlx_ptr, main->assets.texture_bank.floor.texture_ptr);
+	if (main->assets.texture_bank.ceiling.texture_ptr)
 		mlx_destroy_image(main->mlx_ptr,
-			main->texture_bank.ceiling.texture_ptr);
+			main->assets.texture_bank.ceiling.texture_ptr);
 }
 
 void	free_mlx_pointers(t_main *main)

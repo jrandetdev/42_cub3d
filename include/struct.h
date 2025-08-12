@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:54:48 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/12 16:36:55 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 17:24:50 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,6 +218,15 @@ typedef struct s_keys
 	int	shift;
 }		t_keys;
 
+
+typedef struct s_assets
+{
+	t_door				door;
+	t_texture_bank		texture_bank;
+	t_colour			c_colour;
+	t_colour			f_colour;
+}		t_assets;
+
 typedef struct s_main
 {
 	int					menu;
@@ -226,10 +235,9 @@ typedef struct s_main
 	void				*mlx_ptr;
 	void				*mlx_win;
 	char				**id_and_info;
-	char				**file_content;
+	t_assets			assets;
 	t_cal				cal;
 	t_ray				ray;
-	t_door				door;
 	t_keys				keys;
 	t_bonus				bonus;
 	t_debug				debug;
@@ -239,10 +247,9 @@ typedef struct s_main
 	t_player			player;
 	t_minimap			minimap;
 	t_mini_dda_struct	mini_dda_struct;
-	t_colour			c_colour;
-	t_colour			f_colour;
+
 	t_map				map_struct;
-	t_texture_bank		texture_bank;
+	
 }						t_main;
 
 typedef struct s_threads

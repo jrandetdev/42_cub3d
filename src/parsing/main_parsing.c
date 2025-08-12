@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:21:06 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 14:59:07 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 17:22:18 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ bool	parsing(t_main *main, char *file_relative_path)
 	parse_map_elements(main, file_content);
 	load_personal_textures(main);
 	get_map_descritpion(main, file_content);
-	free_string_array(&main->file_content);
 	is_map_valid(main);
 	return (true);
 }

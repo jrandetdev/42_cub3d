@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 15:10:27 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 16:00:03 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/12 17:21:48 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ static void	load_ceiling_texture(t_main *main, char *filename)
 {
 	printf(YELLOW"Incorrect color format for ceiling... "
 		"Trying to load texture\n"RESET);
-	check_and_get_texture(main, &main->texture_bank.ceiling, filename);
+	check_and_get_texture(main, &main->assets.texture_bank.ceiling, filename);
 }
 
 static void	load_floor_texture(t_main *main, char *filename)
 {
 	printf(YELLOW"Incorrect color format for floor... "
 		"Trying to load texture\n"RESET);
-	check_and_get_texture(main, &main->texture_bank.floor, filename);
+	check_and_get_texture(main, &main->assets.texture_bank.floor, filename);
 }
 
 static void	assign_colour(t_main *main, t_colour *pannel, char **rgb_colours)
@@ -60,6 +60,6 @@ void	extract_colour(t_main *main, char *id, char *info)
 		return ;
 	}
 	if (ft_strncmp(id, "F", 1) == 0)
-		return (assign_colour(main, &main->f_colour, rgb_colours));
-	return (assign_colour(main, &main->c_colour, rgb_colours));
+		return (assign_colour(main, &main->assets.f_colour, rgb_colours));
+	return (assign_colour(main, &main->assets.c_colour, rgb_colours));
 }
