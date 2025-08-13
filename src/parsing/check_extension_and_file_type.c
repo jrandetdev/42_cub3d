@@ -1,36 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_file.c                                       :+:      :+:    :+:   */
+/*   check_extension_and_file_type.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:33 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 14:49:59 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 21:40:08 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-/**
- * @param file_relative_path is the relative path to the file you are checking
- * the access to. 
- * GOAL: use the open function with O_DIRECTORY to check if the file is a dir.
- * if it opens the file and the fd is positive, then it succeeded and the file
- * is a directory. In this case we return true because it is dir.
- * We close the fd only if it is dir, otherwise open failed
- */
-void	is_dir(t_main *main, char *file_relative_path)
-{
-	int	fd;
-
-	fd = open(file_relative_path, O_DIRECTORY);
-	if (fd > 0)
-	{	
-		close(fd);
-		print_error_syscall(main, "The file is a directory.");
-	}
-}
 
 /**
  * Both the functions check the extension of the file to know if it is the

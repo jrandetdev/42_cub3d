@@ -1,40 +1,81 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_file_content.c                                 :+:      :+:    :+:   */
+/*   extract_file_elements.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:34:57 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/12 14:53:00 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 22:05:36 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static bool	is_only_spaces(char *line)
+static void	prepare_file_buffer(t_main *main, char *file, char ***fc);
+static void	count_file_lines(t_main *main, char *file, int *line_counter);
+static void	open_and_fill_buffer(t_main *main, char *file, char ***file_content);
+static bool	fill_buffer(char ***file_content, int fd);
+
+void	extract_file_elements(t_main *main, char *file, char ***fc)
 {
-	while (*line)
+	prepare_file_buffer(main, file, fc);
+	open_and_fill_buffer(main, file, fc);
+}
+
+static void	prepare_file_buffer(t_main *main, char *file, char ***fc)
+{
+	int		line_counter;
+	
+	count_file_lines(main, file, &line_counter);
+	*fc = ft_calloc(line_counter + 1, sizeof(char *));
+	if (!(*fc))
+		print_error_syscall(main, "Malloc failed in extract_file_elements.");
+}
+
+static void	count_file_lines(t_main *main, char *file, int *line_counter)
+{
+	int		fd;
+	char	*line;
+
+	fd = get_fd(main, file);
+	*line_counter = 0;
+	while (1)
 	{
-		if ((9 <= *line && *line <= 13) || *line == ' ')
-			line++;
-		else
-			return (false);
+		line = get_next_line(fd);
+		if (line == NULL)
+		{
+			break ;
+		}
+		if (*line_counter > 5 && is_only_space(line))
+			(*line_counter)++;
+		else if (!is_only_space(line))
+			(*line_counter)++;
+		free(line);
 	}
-	return (true);
+	close (fd);
 }
 
-static void	null_terminate_line(char **line)
+static void	open_and_fill_buffer(t_main *main, char *file, char ***file_content)
 {
-	char	*cursor;
+	int		fd;
 
-	cursor = *line;
-	while (*cursor && *cursor != '\n')
-		cursor++;
-	*cursor = '\0';
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+	{
+		free_string_array(file_content);
+		print_error_syscall(main, "Open failed in extract_file_elements");
+	}
+	if (!fill_buffer(file_content, fd))
+	{
+		close(fd);
+		free_string_array(file_content);
+		print_error_syscall(main, "Malloc failed in fill parse buffer.");
+	}
+	close(fd);
 }
 
-static bool	fill_parse_buffer(char ***file_content, int fd)
+static bool	fill_buffer(char ***file_content, int fd)
 {
 	char	*line;
 	int		i;
@@ -46,7 +87,7 @@ static bool	fill_parse_buffer(char ***file_content, int fd)
 		if (line == NULL)
 			break ;
 		null_terminate_line(&line);
-		if (!is_only_spaces(line) || (i > 5 && is_only_spaces(line)))
+		if (!is_only_space(line) || (i > 5 && is_only_space(line)))
 		{
 			(*file_content)[i] = ft_strdup(line);
 			if (!(*file_content)[i])
@@ -62,50 +103,5 @@ static bool	fill_parse_buffer(char ***file_content, int fd)
 	return (true);
 }
 
-static void	count_lines(char *file, int *line_counter)
-{
-	int		fd;
-	char	*line;
 
-	fd = open(file, O_RDONLY);
-	*line_counter = 0;
-	while (1)
-	{
-		line = get_next_line(fd);
-		if (line == NULL)
-		{
-			break ;
-		}
-		if (*line_counter > 5 && is_only_spaces(line))
-			(*line_counter)++;
-		else if (!is_only_spaces(line))
-			(*line_counter)++;
-		free(line);
-	}
-	close (fd);
-}
 
-char	**get_file_content(t_main *main, int fd, char *file)
-{
-	int		line_counter;
-	char	**file_content;
-
-	count_lines(file, &line_counter);
-	file_content = ft_calloc(line_counter + 1, sizeof(char *));
-	if (!file_content)
-		print_error_syscall(main, "Malloc failed in get_file_content.");
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-	{
-		free_string_array(&file_content);
-		print_error_syscall(main, "Open failed in get_file_content");
-	}
-	if (!fill_parse_buffer(&file_content, fd))
-	{
-		close(fd);
-		free_string_array(&file_content);
-		print_error_syscall(main, "Malloc failed in fill parse buffer.");
-	}
-	close(fd);
-	return (file_content);
-}

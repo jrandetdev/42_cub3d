@@ -45,6 +45,7 @@ INIT		=				$(addprefix $(DIR_INIT)/, $(SRC_INIT))
 
 DIR_PARSING		=			./src/parsing
 SRC_PARSING		=			flood_fill.c \
+							check_if_dir.c \
 							init_player.c \
 							parsing.c \
 							map_desription.c \
@@ -62,6 +63,8 @@ DIR_UTILS		=			./src/utils
 SRC_UTILS		=			vector.c \
 							string_array_len.c \
 							exit_cub3d.c \
+							is_only_spaces.c \
+							null_terminate_line.c \
 							error_handling.c \
 							free_utils.c
 UTILS			=			$(addprefix $(DIR_UTILS)/, $(SRC_UTILS))

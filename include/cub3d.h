@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:47:04 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/13 21:04:36 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 22:23:47 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # include "parsing.h"
 # include "minimap.h"
 # include "init.h"
+# include "utils.h"
 // # include "assets.h"
 
 # define RED	"\x1b[31;1m"
