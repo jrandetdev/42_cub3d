@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:47:37 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/12 17:38:48 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 18:08:24 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define DC '2'
 # define DO '3'
 # define DA '4'
-# define DOOR_ANIMATION_SPEED 0.05
+# define DOOR_ANIMATION_SPEED 0.001 //old 0.05
 
 # include "struct.h"
 # include "bonus_struct.h"

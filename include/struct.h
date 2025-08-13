@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:54:48 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/12 18:50:13 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 18:03:34 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ enum e_start_angle
 };
 
 /*---------------------------------- UNION -----------------------------------*/
-typedef union s_coulour
+typedef union u_coulour
 {
 	int	value;
 	struct
@@ -165,24 +165,47 @@ typedef struct s_guide
 	int		floor_grid_y;
 }			t_guide;
 
+// typedef union u_keys
+// {
+// 	unsigned short	raw_value;
+// 	enum
+// 	{
+// 		W = 16,
+// 		A = 15,
+// 		S = 14,
+// 		D = 13,
+// 		G = 12,
+// 		M = 11,
+// 		E = 10,
+// 		P = 9,
+// 		UP = 8,
+// 		ESCP = 7,
+// 		DOWN = 6,
+// 		LEFT = 5,
+// 		RIGHT = 4,
+// 		ENTER = 3,
+// 		SHIFT = 2,
+// 	};
+// }	t_keys;
+
 typedef struct s_keys
 {
-	int	w;
-	int	a;
-	int	s;
-	int	d;
-	int	g;
-	int	m;
-	int	e;
-	int	p;
-	int	up;
-	int	escp;
-	int	down;
-	int	left;
-	int	right;
-	int	enter;
-	int	shift;
-}		t_keys;
+	unsigned int	w:1;
+	unsigned int	a:1;
+	unsigned int	s:1;
+	unsigned int	d:1;
+	unsigned int	g:1;
+	unsigned int	m:1;
+	unsigned int	e:1;
+	unsigned int	p:1;
+	unsigned int	up:1;
+	unsigned int	escp:1;
+	unsigned int	down:1;
+	unsigned int	left:1;
+	unsigned int	right:1;
+	unsigned int	enter:1;
+	unsigned int	shift:1;
+}	t_keys;
 
 typedef struct s_assets
 {

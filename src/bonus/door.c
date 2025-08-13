@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   door.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 11:30:17 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 18:02:05 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 18:12:08 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static void	opening_door(t_main *main, int x, int y)
 {
+	if (main->assets.door.state)
+		return ;
 	main->map_struct.map[y][x] = DA;
 	main->assets.door.opening_pourcent = 0;
 	main->assets.door.state = OPENING;
@@ -23,6 +25,8 @@ static void	opening_door(t_main *main, int x, int y)
 
 static void	closing_door(t_main *main, char **map, int x, int y)
 {
+	if (main->assets.door.state)
+		return ;
 	if (map[(int)trunc(main->player.y)]
 		[(int)trunc(main->player.x)] == map[y][x])
 		return ;

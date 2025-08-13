@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:49:05 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/08 15:50:50 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/13 16:55:24 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PARAMETER_H
 
 # include "cub3d.h"
-# include <X11/X.h>
 
 /* Common window dimensions */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:06:37 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 17:21:12 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 18:07:04 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,8 @@ int	game_loop(t_main *main)
 	}
 	mlx_destroy_image(main->mlx_ptr, main->image.data_img);
 	init_img(main);
-	if (!main->assets.door.state)
 		player_movement(main);
-	else
+	if (main->assets.door.state)
 		playing_door_animation(main);
 	backgroud_color(main);
 	cast_rays(main);
