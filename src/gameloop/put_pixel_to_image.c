@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:55:50 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 17:58:54 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 21:18:11 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,36 +46,4 @@ void	put_pixel_to_image(t_main *main, int x, int y, int colour)
 		print_error_message(main, "Coordinates are outside of map capacity.");
 	dst = img->addr + pixel_offset;
 	*(unsigned int *)dst = colour;
-}
-
-/**
- * @param addr contains all the information about the image. 
- * @struct t_my_image contains bitspp 
- * After creating an image, we can call `mlx_get_data_addr`, we pass
-	bits_per_pixel`, `line_length`, and `endian` by reference. These will
-	then be set accordingly for the *current* data address.
-
-	We need to calculate the memory offset of the line length compared to 
-	the actual window width (the image buffer vs window). To do this 
-	img->bytespp is the unit we want to use 
-	total bytes is the total amoutn of memory used  by the img buffer
- */
-void	init_img(t_main *main)
-{
-	t_image	*img;
-
-	img = &main->image;
-	img->data_img = mlx_new_image(main->mlx_ptr, WIN_WIDTH, WIN_HEIGHT);
-	if (!main->image.data_img)
-		print_error_syscall(main, "Mlx_new_image failed");
-	img->addr = mlx_get_data_addr(
-			img->data_img,
-			&img->bitspp,
-			&img->size_line,
-			&img->endian);
-	if (!img->addr)
-		print_error_syscall(main, "Mlx_get_data_addr failed");
-	img->bytespp = img->bitspp / 8;
-	img->pixels_per_line = img->size_line / img->bytespp;
-	img->total_bytes = img->size_line * WIN_HEIGHT;
 }

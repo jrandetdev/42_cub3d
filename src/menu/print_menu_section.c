@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:39 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/12 14:49:57 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 20:51:08 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	print_menu_section(t_main *main, t_menu_struct *param, char *str)
 	int				x;
 	char			*filename;
 
-	x = main->cal.half_ww - (ft_strlen(str) * 48 / 2);
+	x = WIN_WIDTH / 2 - (ft_strlen(str) * 48 / 2);
 	while (*str)
 	{
 		if (*str == ' ')
@@ -66,7 +66,7 @@ void	print_box(t_main *main, t_menu_struct *menu, int param, char *str)
 	char		*filename;
 	t_texture	cross;
 
-	x = main->cal.half_ww + 7 * 48;
+	x = WIN_WIDTH / 2 + 7 * 48;
 	if (param)
 		filename = "Assets/fonts/logo/checked_box_white.xpm";
 	else

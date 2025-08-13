@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_parsing.c                                     :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:21:06 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 17:22:18 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 20:39:15 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	get_fd(t_main *main, char *file_relative_path)
 	return (fd);
 }
 
-bool	parsing(t_main *main, char *file_relative_path)
+void	parsing(t_main *main, char *file_relative_path)
 {
 	int		fd;
 	char	**file_content;
@@ -38,5 +38,4 @@ bool	parsing(t_main *main, char *file_relative_path)
 	load_personal_textures(main);
 	get_map_descritpion(main, file_content);
 	is_map_valid(main);
-	return (true);
 }

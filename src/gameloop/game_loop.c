@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:06:37 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 17:21:12 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 20:50:47 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	backgroud_color(t_main *main)
 	y = 0;
 	if (!main->assets.texture_bank.ceiling.texture_ptr)
 	{
-		while (y <= main->cal.half_wh)
+		while (y <= WIN_HEIGHT / 2)
 		{
 			x = 0;
 			while (x <= WIN_WIDTH)
@@ -28,7 +28,7 @@ static void	backgroud_color(t_main *main)
 			y++;
 		}
 	}
-	y = main->cal.half_wh;
+	y = WIN_HEIGHT / 2;
 	if (!main->assets.texture_bank.floor.texture_ptr)
 	{
 		while (y < WIN_HEIGHT)

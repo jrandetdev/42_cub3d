@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:47:04 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/13 18:28:37 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 21:04:36 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@
 # include "events.h"
 # include "bonus_struct.h"
 # include "dda.h"
+# include "parsing.h"
+# include "minimap.h"
+# include "init.h"
 // # include "assets.h"
 
 # define RED	"\x1b[31;1m"
@@ -52,38 +55,11 @@
 
 /*-------------------------------- PARSING -----------------------------------*/
 
-void		is_dir(t_main *main, char *file_relative_path);
-bool		parsing(t_main *main, char *file);
-bool		cub_extension_is_valid(char	*s, int len);
-bool		xmp_extension_is_valid(char	*s, int len);
-bool		validate_colour(t_main *main, char **splitted_colours);
-bool		find_player_position(t_main *main, int *x, int *y, int *player);
 
-char		*max_strdup(const char *s1, int max_size);
-char		**get_file_content(t_main *main, int fd, char *file);
-
-void		is_map_valid(t_main *main);
-void		parse_map_elements(t_main *main, char **file_content);
-void		get_map_descritpion(t_main *main, char **file_content);
-void		load_personal_textures(t_main *main);
-void		extract_colour(t_main *main, char *id, char *info);
-void		extract_texture(t_main *main, char *id, char *xpm_f);
-void		get_texture_data(t_main *main, t_texture *direc, char *xpm_file);
-void		check_and_get_texture(t_main *main, t_texture *pannel,
-				char *filename);
 
 /*-------------------------------- MINIMAP -----------------------------------*/
 
-void		print_fov(t_main *main);
-void		print_grid(t_main *main);
-void		draw_player(t_main *main);
-void		init_minimap(t_main *main);
-void		print_minifov(t_main *main);
-void		print_minimap(t_main *main);
-void		mini_raycasting(t_main *main);
-void		print_minimap_base(t_main *main);
 
-t_vector		mini_dda(t_main *main, float dst_x, float dst_y);
 
 /*------------------------------- RENDERING ----------------------------------*/
 

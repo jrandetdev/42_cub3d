@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pre_calculate.c                                    :+:      :+:    :+:   */
+/*   init_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/26 22:10:09 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/26 22:10:13 by hdougoud         ###   ########.fr       */
+/*   Created: 2025/08/13 20:57:29 by jrandet           #+#    #+#             */
+/*   Updated: 2025/08/13 21:17:30 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	calcule_constants(t_main *main)
+void	init_all(t_main *main, int argc, char **argv)
 {
-	main->cal.half_wh = WIN_HEIGHT / 2;
-	main->cal.half_ww = WIN_WIDTH / 2;
-	main->cal.pre_fov = (FOV / 2) * (M_PI / 180);
+	ft_bzero(main, sizeof(t_main));
+	init_args(main, argc, argv);
+	init_mlx(main);
+	init_cub(main);
+	init_img(main);
+	init_external_events(main);
 }

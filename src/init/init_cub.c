@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/22 16:23:58 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/13 21:13:30 by jrandet          ###   ########.fr       */
+/*   Created: 2025/08/13 21:11:00 by jrandet           #+#    #+#             */
+/*   Updated: 2025/08/13 21:17:25 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+void	init_cub(t_main *main)
 {
-	t_main	main;
-
-	init_all(&main, argc, argv);
-	parsing(&main, argv[1]);
-	mlx_hook(main.mlx_win, 17, 0, handle_destroy, &main);
-	mlx_loop_hook(main.mlx_ptr, game_loop, &main);
-	mlx_loop(main.mlx_ptr);
-	return (0);
+	main->menu = 1;
+	main->param.fov = 1;
+	main->param.show_minimap = 1;
+	main->interaction.mouse.sensitivity = 25;
+	main->interaction.mouse.x = WIN_WIDTH / 2;
+	if (gettimeofday(&main->bonus.last_sec, NULL))
+		print_error_syscall(main, "GetTimeOfDay failed in init_cub3d");
 }

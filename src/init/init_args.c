@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_args.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/22 16:23:58 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/13 21:13:30 by jrandet          ###   ########.fr       */
+/*   Created: 2025/08/13 21:03:16 by jrandet           #+#    #+#             */
+/*   Updated: 2025/08/13 21:05:13 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+void	init_args(t_main *main, int argc, char **argv)
 {
-	t_main	main;
-
-	init_all(&main, argc, argv);
-	parsing(&main, argv[1]);
-	mlx_hook(main.mlx_win, 17, 0, handle_destroy, &main);
-	mlx_loop_hook(main.mlx_ptr, game_loop, &main);
-	mlx_loop(main.mlx_ptr);
-	return (0);
+	if (argc != 2)
+		print_error_message(main, "Please give only one file as input.");
+	else if (!cub_extension_is_valid(argv[1], 3))
+		print_error_message(main, ".cub extenssion is missing.");
+	else if (WIN_HEIGHT < MIN_RESOLTION_Y || WIN_WIDTH < MIN_RESOLUTION_X)
+		print_error_message(main, "Resolution too small");
 }

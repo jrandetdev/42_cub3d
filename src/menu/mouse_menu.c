@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:47 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/12 18:02:05 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 20:51:08 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	print_minus_logo(t_main *main, int selection, int last_y)
 			&logo.width, &logo.height);
 
 	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, logo.texture_ptr,
-		main->cal.half_ww + 50, last_y - 200);
+		WIN_WIDTH / 2 + 50, last_y - 200);
 	mlx_destroy_image(main->mlx_ptr, logo.texture_ptr);
 }
 
@@ -84,7 +84,7 @@ static void	print_plus_logo(t_main *main, int selection, int last_y)
 	if (!logo.texture_ptr)
 		print_error_syscall(main, "mlx load image failed in print minus logo");
 	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, logo.texture_ptr,
-		main->cal.half_ww + 50 - 228, last_y - 200);
+		WIN_WIDTH / 2 + 50 - 228, last_y - 200);
 	mlx_destroy_image(main->mlx_ptr, logo.texture_ptr);
 }
 
@@ -97,7 +97,7 @@ void	show_mouse_sensitivity_menu(t_main *main, int *menu)
 	param.menu_size = 3;
 	if (menu_title < 0)
 		menu_title = 2;
-	param.y = main->cal.half_wh + WIN_HEIGHT / 5;
+	param.y = WIN_HEIGHT / 2 + WIN_HEIGHT / 5;
 	param.selection = (menu_title % param.menu_size);
 	print_menu_title(main, "MOUSE SENSITIVITY");
 	print_current_sensitivity(main, param.y);

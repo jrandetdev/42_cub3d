@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:29:29 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/13 17:00:02 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 20:50:47 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	get_texture_position(t_main *main, t_texture t, t_params *p)
 
 	screen_y = 0;
 	step = (float)t.height / p->wall_height;
-	texture_pos = (p->draw_start - main->cal.half_wh + p->wall_height / 2)
+	texture_pos = (p->draw_start - WIN_HEIGHT / 2 + p->wall_height / 2)
 		* step;
 	while (main->assets.texture_bank.ceiling.texture_ptr && screen_y < p->draw_start)
 		draw_floor_and_ceiling(main, p->screen_x, screen_y++, -0.5);
@@ -77,10 +77,10 @@ void	draw_texture(t_main *main, t_dda *dda, int x,
 	params.screen_x = x;
 	params.texture_x = get_hit_position(main, dda, texture, &params);
 	params.wall_height = (int)(WIN_HEIGHT / dda->correct_distance);
-	params.draw_start = (main->cal.half_wh) - (params.wall_height / 2);
+	params.draw_start = (WIN_HEIGHT / 2) - (params.wall_height / 2);
 	if (params.draw_start < 0)
 		params.draw_start = 0;
-	params.draw_end = (params.wall_height / 2) + (main->cal.half_wh);
+	params.draw_end = (params.wall_height / 2) + (WIN_HEIGHT / 2);
 	if (params.draw_end >= WIN_HEIGHT)
 		params.draw_end = WIN_HEIGHT - 1;
 	get_texture_position(main, texture, &params);

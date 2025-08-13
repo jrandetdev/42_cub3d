@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:34 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/12 14:49:59 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 20:51:08 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	print_menu_title(t_main *main, char *str)
 	char			*filename;
 	t_menu_struct	param;
 
-	x = main->cal.half_ww - (ft_strlen(str) * 64 / 2);
+	x = WIN_WIDTH / 2 - (ft_strlen(str) * 64 / 2);
 	param.y = 100;
 	while (*str)
 	{
