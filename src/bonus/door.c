@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 11:30:17 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 18:02:05 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 17:00:02 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ bool	is_in_door_half(t_main *main, t_dda *dda)
 	float		width_pos_x;
 
 	if (dda->side == 0)
-		width_pos_x = main->player.y + dda->ray_diry * dda->perpwalldist;
+		width_pos_x = main->player.y + dda->ray.y * dda->correct_distance;
 	else
-		width_pos_x = main->player.x + dda->ray_dirx * dda->perpwalldist;
+		width_pos_x = main->player.x + dda->ray.x * dda->correct_distance;
 	width_pourcentage = width_pos_x - floor(width_pos_x);
 	dda->door_hit_percentage = width_pourcentage;
 	if (width_pourcentage > (0.5 + (main->assets.door.opening_pourcent / 2)))

@@ -93,6 +93,7 @@ DIR_RENDER_IMG	=			./src/render_img
 SRC_RENDER_IMG	=			render.c \
 							draw_walls.c \
 							dda_algorithm.c \
+							compute_dda_params.c \
 							draw_floor_and_ceiling.c
 RENDER_IMG 		=			$(addprefix $(DIR_RENDER_IMG)/, $(SRC_RENDER_IMG))
 

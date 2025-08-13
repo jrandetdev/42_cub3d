@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:19:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/12 17:40:33 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 16:53:57 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ static bool	check_outside_and_corner(t_main *main, float x, float y)
 	return (true);
 }
 
-static t_vec2	dda_case_1(t_main *main, t_mini_dda *mini_dda)
+static t_vector	dda_case_1(t_main *main, t_mini_dda *mini_dda)
 {
 	int		count_steps;
 	int		step_in_x;
 	float	x;
 	float	y;
-	t_vec2	vector;
+	t_vector	vector;
 
 	step_in_x = 1;
 	x = mini_dda->x_1;
@@ -72,13 +72,13 @@ static t_vec2	dda_case_1(t_main *main, t_mini_dda *mini_dda)
 	return (vector);
 }
 
-static t_vec2	dda_case_2(t_main *main, t_mini_dda *mini_dda)
+static t_vector	dda_case_2(t_main *main, t_mini_dda *mini_dda)
 {
 	int		count_steps;
 	int		step_in_y;
 	float	x;
 	float	y;
-	t_vec2	vector;
+	t_vector	vector;
 
 	step_in_y = 1;
 	x = mini_dda->x_1;
@@ -100,11 +100,11 @@ static t_vec2	dda_case_2(t_main *main, t_mini_dda *mini_dda)
 	return (vector);
 }
 
-t_vec2	mini_dda(t_main *main, float dst_x, float dst_y)
+t_vector	mini_dda(t_main *main, float dst_x, float dst_y)
 {
 	int					size;
 	t_mini_dda	*mini_dda;
-	t_vec2				vector;
+	t_vector				vector;
 
 	mini_dda = &main->mini_dda;
 	size = main->minimap.tile_size;

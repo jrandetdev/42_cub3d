@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:47:04 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 18:50:20 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 18:28:37 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include "libft.h"
 # include "bonus.h"
 # include "struct.h"
-# include "parameter.h"
+# include "events.h"
 # include "bonus_struct.h"
 # include "dda.h"
 // # include "assets.h"
@@ -83,7 +83,7 @@ void		print_minimap(t_main *main);
 void		mini_raycasting(t_main *main);
 void		print_minimap_base(t_main *main);
 
-t_vec2		mini_dda(t_main *main, float dst_x, float dst_y);
+t_vector		mini_dda(t_main *main, float dst_x, float dst_y);
 
 /*------------------------------- RENDERING ----------------------------------*/
 
@@ -99,6 +99,9 @@ void		valid_next_movement_left(t_main *main, float next_x,
 				float next_y);
 void		valid_next_movement_right(t_main *main, float next_x,
 				float next_y);
+
+void	set_dda_params(t_main *main, t_dda *dda);
+void	digital_differential_analyzer(t_main *main, t_dda *dda);
 
 /*-------------------------------- GAMELOOP ----------------------------------*/
 
@@ -129,10 +132,8 @@ void		print_array(char **array);
 void		normalize_angle(float *angle);
 void		calcule_constants(t_main *main);
 void		ft_strcpy(char *dest, char *src, int start, int end);
-void		digital_differential_analyzer(t_main *main,
-				t_dda *dda);
 
-float		get_vec2_norm(t_vec2 vec1, t_vec2 vec2);
+float		get_vec2_norm(t_vector vec1, t_vector vec2);
 
 size_t		string_array_len(char **str);
 
