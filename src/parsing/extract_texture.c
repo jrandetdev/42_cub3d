@@ -6,26 +6,14 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:40 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/14 00:02:50 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 00:04:43 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static bool	is_available_text_ptr(void *ptr)
-{
-	if (!ptr)
-		return (true);
-	return (false);
-}
-
-void assign_texture(t_main *main, t_texture *texture, char *file)
-{
-	if (is_available_text_ptr(texture->ptr))
-		get_texture_data(main, texture, file);
-	else
-		print_error_message(main, "Direction cannot be used twice");
-}
+static void assign_texture(t_main *main, t_texture *texture, char *file);
+static bool	is_available_text_ptr(void *ptr);
 
 void	extract_texture(t_main *main, char *id, char *texture_file)
 {
@@ -44,4 +32,19 @@ void	extract_texture(t_main *main, char *id, char *texture_file)
 		assign_texture(main, &texture->we, texture_file);
 	else
 		print_error_message(main, "Texture id must be NO, SO, EA, or WE");
+}
+
+static void assign_texture(t_main *main, t_texture *texture, char *file)
+{
+	if (is_available_text_ptr(texture->ptr))
+		get_texture_data(main, texture, file);
+	else
+		print_error_message(main, "Direction cannot be used twice");
+}
+
+static bool	is_available_text_ptr(void *ptr)
+{
+	if (!ptr)
+		return (true);
+	return (false);
 }
