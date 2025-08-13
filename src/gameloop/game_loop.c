@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:06:37 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/13 20:50:47 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 23:55:25 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	backgroud_color(t_main *main)
 	int	y;
 
 	y = 0;
-	if (!main->assets.texture_bank.ceiling.texture_ptr)
+	if (!main->assets.texture_bank.ceiling.ptr)
 	{
 		while (y <= WIN_HEIGHT / 2)
 		{
@@ -29,7 +29,7 @@ static void	backgroud_color(t_main *main)
 		}
 	}
 	y = WIN_HEIGHT / 2;
-	if (!main->assets.texture_bank.floor.texture_ptr)
+	if (!main->assets.texture_bank.floor.ptr)
 	{
 		while (y < WIN_HEIGHT)
 		{

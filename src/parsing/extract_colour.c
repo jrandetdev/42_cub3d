@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 15:10:27 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/13 20:34:00 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 23:29:24 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ static void	assign_colour(t_main *main, char *id, char **colours)
 static void	assign_texture(t_main *main, char *id, char *filename)
 {
 	if (ft_strncmp(id, "F", 1) == 0)
-		check_and_get_texture(main, &main->assets.texture_bank.floor, filename);
+		load_personal_texture(main, &main->assets.texture_bank.floor, filename);
 	else
-		check_and_get_texture(main, &main->assets.texture_bank.ceiling, filename);
+		load_personal_texture(main, &main->assets.texture_bank.ceiling, filename);
 }
 
 static void	fill_colour(t_main *main, t_colour *pannel, char **colours)

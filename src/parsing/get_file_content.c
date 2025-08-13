@@ -21,6 +21,7 @@ void	extract_file_elements(t_main *main, char *file, char ***fc)
 {
 	prepare_file_buffer(main, file, fc);
 	open_and_fill_buffer(main, file, fc);
+	check_for_tabs(main, *fc);
 }
 
 static void	prepare_file_buffer(t_main *main, char *file, char ***fc)
@@ -102,6 +103,3 @@ static bool	fill_buffer(char ***file_content, int fd)
 	}
 	return (true);
 }
-
-
-

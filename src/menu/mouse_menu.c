@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:47 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/13 20:51:08 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 23:55:25 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,12 @@ static void	print_minus_logo(t_main *main, int selection, int last_y)
 		filename = "Assets/fonts/logo/minus_gold.xpm";
 	else
 		filename = "Assets/fonts/logo/minus_white.xpm";
-	logo.texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, filename,
+	logo.ptr = mlx_xpm_file_to_image(main->mlx_ptr, filename,
 			&logo.width, &logo.height);
 
-	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, logo.texture_ptr,
+	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, logo.ptr,
 		WIN_WIDTH / 2 + 50, last_y - 200);
-	mlx_destroy_image(main->mlx_ptr, logo.texture_ptr);
+	mlx_destroy_image(main->mlx_ptr, logo.ptr);
 }
 
 static void	print_plus_logo(t_main *main, int selection, int last_y)
@@ -79,13 +79,13 @@ static void	print_plus_logo(t_main *main, int selection, int last_y)
 		filename = "Assets/fonts/logo/plus_gold.xpm";
 	else
 		filename = "Assets/fonts/logo/plus_white.xpm";
-	logo.texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, filename,
+	logo.ptr = mlx_xpm_file_to_image(main->mlx_ptr, filename,
 			&logo.width, &logo.height);
-	if (!logo.texture_ptr)
+	if (!logo.ptr)
 		print_error_syscall(main, "mlx load image failed in print minus logo");
-	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, logo.texture_ptr,
+	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win, logo.ptr,
 		WIN_WIDTH / 2 + 50 - 228, last_y - 200);
-	mlx_destroy_image(main->mlx_ptr, logo.texture_ptr);
+	mlx_destroy_image(main->mlx_ptr, logo.ptr);
 }
 
 void	show_mouse_sensitivity_menu(t_main *main, int *menu)

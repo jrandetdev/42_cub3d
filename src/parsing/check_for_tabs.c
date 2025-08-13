@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_if_file_is_dir.c                                     :+:      :+:    :+:   */
+/*   check_for_tabs.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/13 21:39:46 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/13 21:49:52 by jrandet          ###   ########.fr       */
+/*   Created: 2025/08/13 22:56:46 by jrandet           #+#    #+#             */
+/*   Updated: 2025/08/13 22:57:37 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	check_if_file_is_dir(t_main *main, char *file_relative_path)
+void check_for_tabs(t_main *main, char **file_content)
 {
-	int	fd;
+	int	i;
+	int	j;
 
-	fd = open(file_relative_path, O_DIRECTORY);
-	if (fd > 0)
-	{	
-		close(fd);
-		print_error_message(main, "The file is a directory.");
+	j = 0;
+	while (file_content[j])
+	{
+		i = 0;
+		while (file_content[j][i])
+		{
+			if (file_content[j][i] == '\t')
+			{
+				free_string_array(&file_content);
+				print_error_message(main, "the program does not accepts tabs");
+			}
+			i++;
+		}
+		j++;
 	}
 }

@@ -48,13 +48,14 @@ SRC_PARSING		=			flood_fill.c \
 							check_if_dir.c \
 							init_player.c \
 							parsing.c \
+							check_for_tabs.c \
 							map_desription.c \
 							extract_texture.c \
+							get_texture_data.c \
+							load_personal_texture.c \
 							extract_colour.c \
 							validate_colour.c \
 							get_file_content.c \
-							get_next_line.c \
-							get_next_line_utils.c \
 							parse_texture_and_colour.c \
 							check_extension_and_file_type.c
 PARSING			=			$(addprefix $(DIR_PARSING)/, $(SRC_PARSING))
@@ -63,6 +64,8 @@ DIR_UTILS		=			./src/utils
 SRC_UTILS		=			vector.c \
 							string_array_len.c \
 							exit_cub3d.c \
+							get_next_line.c \
+							get_next_line_utils.c \
 							is_only_spaces.c \
 							null_terminate_line.c \
 							error_handling.c \

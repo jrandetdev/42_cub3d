@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:39 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/13 20:51:08 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 23:55:25 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,12 @@ void	print_box(t_main *main, t_menu_struct *menu, int param, char *str)
 		filename = "Assets/fonts/logo/checked_box_white.xpm";
 	else
 		filename = "Assets/fonts/logo/empty_box_white.xpm";
-	cross.texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, filename,
+	cross.ptr = mlx_xpm_file_to_image(main->mlx_ptr, filename,
 			&cross.width, &cross.height);
-	if (!cross.texture_ptr)
+	if (!cross.ptr)
 		print_error_syscall(main, "mlx_xpm_file_to_image failed in print_box");
 	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win,
-		cross.texture_ptr, x, menu->y);
-	mlx_destroy_image(main->mlx_ptr, cross.texture_ptr);
+		cross.ptr, x, menu->y);
+	mlx_destroy_image(main->mlx_ptr, cross.ptr);
 	print_menu_section(main, menu, str);
 }

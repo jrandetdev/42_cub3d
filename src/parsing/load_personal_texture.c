@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_if_file_is_dir.c                                     :+:      :+:    :+:   */
+/*   load_personal_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/13 21:39:46 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/13 21:49:52 by jrandet          ###   ########.fr       */
+/*   Created: 2025/08/13 23:26:49 by jrandet           #+#    #+#             */
+/*   Updated: 2025/08/13 23:29:01 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	check_if_file_is_dir(t_main *main, char *file_relative_path)
+void	load_personal_texture(t_main *main, t_texture *pannel, char *filename)
 {
-	int	fd;
-
-	fd = open(file_relative_path, O_DIRECTORY);
-	if (fd > 0)
-	{	
-		close(fd);
-		print_error_message(main, "The file is a directory.");
-	}
+	if (!xmp_extension_is_valid(filename, 3))
+		print_error_message(main, "Texture file needs xpm extension.");
+	get_texture_data(main, pannel, filename);
 }

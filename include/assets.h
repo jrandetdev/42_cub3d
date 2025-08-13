@@ -3,7 +3,7 @@
 
 typedef struct s_texture
 {
-	void		*texture_ptr;
+	void		*ptr;
 	int			width;
 	int			height;
 	t_image		texture;
