@@ -6,13 +6,14 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:19:53 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/13 23:05:00 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 11:01:35 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 static void	extract_colour_or_texture(t_main *main, char **id_and_info);
+static void	check_for_floor_or_ceiling(t_main *main, char *information, char *identifier);
 
 void	extract_colour_and_texture(t_main *main, char **file_content)
 {
@@ -54,6 +55,16 @@ static void	extract_colour_or_texture(t_main *main, char **id_and_info)
 	if (id_len == 2)
 		extract_texture(main, identifier, information);
 	else
-		extract_colour(main, identifier, information);
+		check_for_floor_or_ceiling(main, information, identifier);
 }
 
+static void	check_for_floor_or_ceiling(t_main *main, char *information, char *identifier)
+{
+	if (xmp_extension_is_valid(information, 3))
+	{
+		printf("\033[0;33m""Xpm detected for floor or ceiling, validating texture...\n""\033[0m");
+		assign_floor_or_ceiling_texture(main, identifier, information);
+	}
+	else
+		extract_colour(main, identifier, information);
+}
