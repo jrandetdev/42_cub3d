@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:52:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/13 21:13:51 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 12:10:38 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ static int	key_released(int keycode, t_main *main)
 
 void	init_external_events(t_main *main)
 {
+	mlx_hook(main->mlx_win, 17, 0, handle_destroy, main);
 	mlx_hook(main->mlx_win, ON_KEYDOWN, 1L << 0, key_pressed, main);
 	mlx_hook(main->mlx_win, ON_KEYUP, 1L << 1, key_released, main);
 	mlx_hook(main->mlx_win, ON_MOUSEMOVE, 1L << 6, mouse_move, main);

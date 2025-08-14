@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 20:57:29 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/13 21:37:02 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 12:10:01 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	init_all(t_main *main, int argc, char **argv)
 {
-	ft_bzero(main, sizeof(t_main));
 	init_args(main, argc, argv);
-	init_mlx(main);
+	init_mlx_ptr(main);
 	init_cub(main);
 	init_img(main);
-	init_external_events(main);
 }

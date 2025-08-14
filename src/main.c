@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:23:58 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/14 10:14:29 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/14 12:08:18 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ int	main(int argc, char **argv)
 {
 	t_main	main;
 
+	ft_bzero(&main, sizeof(t_main));
 	init_all(&main, argc, argv);
 	parsing(&main, argv[1]);
-	mlx_hook(main.mlx_win, 17, 0, handle_destroy, &main);
+	init_mmlx_window_and_mouse(&main);
+	init_external_events(&main);
 	mlx_loop_hook(main.mlx_ptr, game_loop, &main);
 	mlx_loop(main.mlx_ptr);
 	return (0);
