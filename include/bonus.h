@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:47:37 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/13 18:08:24 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/14 10:51:53 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define DC '2'
 # define DO '3'
 # define DA '4'
-# define DOOR_ANIMATION_SPEED 0.001 //old 0.05
+# define DOOR_ANIMATION_SPEED 0.05
 
 # include "struct.h"
 # include "bonus_struct.h"
@@ -58,7 +58,7 @@ void	put_letter(t_main *main, t_menu_struct *param, char *file, int x);
 void	fps_counter(t_main *main);
 
 /*--------------------------------- DOOR -------------------------------------*/
-void	change_door_state(t_main *main);
+void	change_door_state(t_main *main, int x, int y);
 void	player_action(t_main *main);
 void	playing_door_animation(t_main *main);
 bool	is_in_door_half(t_main *main, t_dda *dda);

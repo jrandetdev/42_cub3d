@@ -85,8 +85,7 @@ DIR_GAMELOOP	=			./src/gameloop
 SRC_GAMELOOP	=			game_loop.c \
 							put_pixel_to_image.c \
 							player_movement.c \
-							valid_next_movement.c \
-							player_interaction.c
+							valid_next_movement.c
 GAMELOOP		=			$(addprefix $(DIR_GAMELOOP)/, $(SRC_GAMELOOP))
 
 DIR_MINIMAP		=			./src/minimap

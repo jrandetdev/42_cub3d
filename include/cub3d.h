@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:47:04 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/13 22:23:47 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 10:23:38 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void		valid_next_movement_right(t_main *main, float next_x,
 				float next_y);
 
 void	set_dda_params(t_main *main, t_dda *dda);
-void	digital_differential_analyzer(t_main *main, t_dda *dda);
+void	digital_differential_analyzer(t_main *main, t_dda *dda, int x);
 
 /*-------------------------------- GAMELOOP ----------------------------------*/
 

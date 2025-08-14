@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:55:18 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/13 18:24:57 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 10:32:35 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	*multi_cast_rays(void *data)
 			+ main->player.plane_x * dda.camera_x;
 		dda.ray.y = main->player.dir_y
 			+ main->player.plane_y * dda.camera_x;
-		digital_differential_analyzer(main, &dda);
+		digital_differential_analyzer(main, &dda, thread->start);
 		cardinal_texture = get_corresp_texture(main, &dda);
 		draw_texture(main, &dda, thread->start, cardinal_texture);
 		thread->start++;
@@ -108,7 +108,7 @@ void	cast_rays(t_main *main)
 			+ main->player.plane_x * dda.camera_x;
 		dda.ray.y = main->player.dir_y
 			+ main->player.plane_y * dda.camera_x;
-		digital_differential_analyzer(main, &dda);
+		digital_differential_analyzer(main, &dda, x);
 		cardinal_texture = get_corresp_texture(main, &dda);
 		draw_texture(main, &dda, x, cardinal_texture);
 		x++;
