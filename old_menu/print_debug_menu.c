@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 14:25:17 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/13 20:50:47 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 17:20:09 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static void	selection(t_main *main, int *menu, int selection, int *menu_section)
 {
 	main->interaction.keys.enter = 0;
 	if (selection == 0)
-		main->param.show_minimap_grid = !main->param.show_minimap_grid;
+		main->menu.display.current_menu.option.show_minimap_grid = !main->menu.display.current_menu.option.show_minimap_grid;
 	else if (selection == 1)
-		main->param.fov = !main->param.fov;
+		main->menu.display.current_menu.option.fov = !main->menu.display.current_menu.option.fov;
 	else if (selection == 2)
 	{
 		*(menu_section) = 0;
@@ -42,8 +42,8 @@ void	show_debug_menu(t_main *main, int *menu)
 	param.y = WIN_HEIGHT / 2 - (param.menu_size + 1 * 48);
 	param.selection = menu_title % 4;
 	print_menu_title(main, "DEBUG");
-	print_box(main, &param, main->param.show_minimap_grid, "MINIMAP GRID");
-	print_box(main, &param, main->param.fov, "MINIMAP FOV");
+	print_box(main, &param, main->menu.display.current_menu.option.show_minimap_grid, "MINIMAP GRID");
+	print_box(main, &param, main->menu.display.current_menu.option.fov, "MINIMAP FOV");
 	print_menu_section(main, &param, "RETURN");
 	if (main->interaction.keys.enter)
 		selection(main, menu, param.selection, &menu_title);

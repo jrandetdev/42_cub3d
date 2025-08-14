@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:54:48 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/14 11:05:45 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 17:18:09 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,7 +212,6 @@ typedef struct s_interactions
 
 typedef struct s_main
 {
-	int					menu;
 	int					game_start;
 	void				*mlx_ptr;
 	void				*mlx_win;
@@ -221,12 +220,11 @@ typedef struct s_main
 	t_bonus				bonus;
 	t_image				image;
 	t_interactions		interaction;
-	t_menu_param		param;
 	t_player			player;
 	t_minimap			minimap;
 	t_mini_dda			mini_dda;
 	t_map				map_struct;
-	
+	t_menu				menu;
 }						t_main;
 
 typedef struct s_threads

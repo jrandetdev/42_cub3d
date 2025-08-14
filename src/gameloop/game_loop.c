@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:06:37 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/14 11:05:45 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 17:36:56 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ static void	backgroud_color(t_main *main)
 
 int	game_loop(t_main *main)
 {
-	if (main->menu)
-	{
-		print_correct_menu(main, &main->menu);
-		return (0);
-	}
+	// if (main->menu.current_menu)
+	// {
+	// 	print_correct_menu(main, &main->menu.current_menu);
+	// 	return (0);
+	// }
 	mlx_destroy_image(main->mlx_ptr, main->image.data_img);
 	init_img(main);
 	player_movement(main);
@@ -55,11 +55,11 @@ int	game_loop(t_main *main)
 		playing_door_animation(main);
 	backgroud_color(main);
 	cast_rays(main);
-	if (main->param.show_minimap)
+	if (main->menu.option.show_minimap)
 		print_minimap(main);
 	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win,
 		main->image.data_img, 0, 0);
-	if (main->param.show_fps)
+	if (main->menu.option.show_fps)
 		fps_counter(main);
 	return (0);
 }

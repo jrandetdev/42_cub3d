@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug.c                                            :+:      :+:    :+:   */
+/*   show_menu.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/22 15:56:56 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/22 15:56:57 by hdougoud         ###   ########.fr       */
+/*   Created: 2025/08/14 16:52:43 by jrandet           #+#    #+#             */
+/*   Updated: 2025/08/14 17:33:53 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	print_array(char **array)
+void	show_menu(t_main *main, t_menu_display *menu)
 {
-	int	i;
-
-	i = 0;
-	while (array[i])
-	{
-		printf("%s\n", array[i]);
-		i++;
-	}
+	init_menu_params()
 }

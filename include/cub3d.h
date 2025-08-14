@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:47:04 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/14 11:05:45 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 17:30:16 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@
 
 
 
-/*-------------------------------- MINIMAP -----------------------------------*/
+/*-------------------------------- TEXTURE -----------------------------------*/
 
 
 
@@ -77,8 +77,8 @@ void		valid_next_movement_left(t_main *main, float next_x,
 void		valid_next_movement_right(t_main *main, float next_x,
 				float next_y);
 
-void	set_dda_params(t_main *main, t_dda *dda);
-void	digital_differential_analyzer(t_main *main, t_dda *dda, int x);
+void		set_dda_params(t_main *main, t_dda *dda);
+void		digital_differential_analyzer(t_main *main, t_dda *dda, int x);
 
 /*-------------------------------- GAMELOOP ----------------------------------*/
 

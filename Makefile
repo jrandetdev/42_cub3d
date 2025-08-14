@@ -72,10 +72,11 @@ SRC_UTILS		=			vector.c \
 							free_utils.c
 UTILS			=			$(addprefix $(DIR_UTILS)/, $(SRC_UTILS))
 
-DIR_DEBUG		=			./src/debug
-SRC_DEBUG		=			debug.c \
-							print_grid.c
-DEBUG 			=			$(addprefix $(DIR_DEBUG)/, $(SRC_DEBUG))
+DIR_HANDLE_TEXTURES		=	./src/handle_textures
+SRC_HANDLE_TEXTURES		=	draw_walls.c \
+							draw_floor_and_ceiling.c \
+							get_texture.c
+HANDLE_TEXTURES			=	$(addprefix $(DIR_HANDLE_TEXTURES)/, $(SRC_HANDLE_TEXTURES))
 
 DIR_EVENTS		=			./src/events
 SRC_EVENTS		=			external_events.c
@@ -91,6 +92,7 @@ DIR_MINIMAP		=			./src/minimap
 SRC_MINIMAP		=			draw_player.c \
 							minimap.c \
 							print_minimap.c \
+							print_grid.c \
 							minifov.c \
 							mini_dda.c
 MINIMAP 		=			$(addprefix $(DIR_MINIMAP)/, $(SRC_MINIMAP))
@@ -102,28 +104,26 @@ BONUS			=			$(addprefix $(DIR_BONUS)/, $(SRC_BONUS))
 
 DIR_RENDER_IMG	=			./src/render_img
 SRC_RENDER_IMG	=			render.c \
-							draw_walls.c \
 							dda_algorithm.c \
 							compute_dda_params.c \
-							put_pixel_to_image.c \
-							draw_floor_and_ceiling.c
+							put_pixel_to_image.c
 RENDER_IMG 		=			$(addprefix $(DIR_RENDER_IMG)/, $(SRC_RENDER_IMG))
 
 
-DIR_MENU		=			./src/menu
-SRC_MENU		=			main_menu.c \
-							menu_utils.c \
-							mouse_menu.c \
-							pause_menu.c \
-							option_menu.c \
-							print_debug_menu.c \
-							print_menu_title.c \
-							print_correct_menu.c \
-							print_menu_section.c
-MENU			=			$(addprefix $(DIR_MENU)/, $(SRC_MENU))
+# DIR_MENU		=			./src/menu
+# SRC_MENU		=			main_menu.c \
+# 							menu_utils.c \
+# 							mouse_menu.c \
+# 							pause_menu.c \
+# 							option_menu.c \
+# 							print_debug_menu.c \
+# 							print_menu_title.c \
+# 							print_correct_menu.c \
+# 							print_menu_section.c
+# MENU			=			$(addprefix $(DIR_MENU)/, $(SRC_MENU))
 
-SOURCES			=			$(MAIN_SRC) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(GAMELOOP) $(MINIMAP) $(RENDER_IMG) $(MENU) $(BONUS) $(INIT)
-vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS) $(DIR_GAMELOOP) $(DIR_GAMELOOP) $(DIR_MINIMAP) $(DIR_RENDER_IMG) $(DIR_MENU) $(DIR_BONUS) $(DIR_INIT)
+SOURCES			=			$(MAIN_SRC) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(GAMELOOP) $(MINIMAP) $(RENDER_IMG) $(MENU) $(BONUS) $(INIT) $(HANDLE_TEXTURES)
+vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS) $(DIR_GAMELOOP) $(DIR_GAMELOOP) $(DIR_MINIMAP) $(DIR_RENDER_IMG) $(DIR_MENU) $(DIR_BONUS) $(DIR_INIT) $(DIR_HANDLE_TEXTURES)
 
 OBJECTS			:= 			$(addprefix $(DIR_BUILD)/, $(notdir $(SOURCES:.c=.o)))
 DEPS			:=			$(OBJECTS:.o=.d)

@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:29:29 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/14 13:50:20 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 17:29:02 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,30 +84,4 @@ void	draw_texture(t_main *main, t_dda *dda, int x,
 	if (params.draw_end >= WIN_HEIGHT)
 		params.draw_end = WIN_HEIGHT - 1;
 	get_texture_position(main, texture, &params);
-}
-
-t_texture	get_corresp_texture(t_main *main, t_dda *dda)
-{
-	t_texture	texture;
-
-	if (dda->hit == 2 || dda->hit == 3)
-	{
-		texture = main->assets.texture_bank.door;
-		return (texture);
-	}
-	if (dda->side == 0)
-	{
-		if (dda->ray.x > 0)
-			texture = main->assets.texture_bank.ea;
-		else
-			texture = main->assets.texture_bank.we;
-	}
-	else
-	{
-		if (dda->ray.y < 0)
-			texture = main->assets.texture_bank.no;
-		else
-			texture = main->assets.texture_bank.so;
-	}
-	return (texture);
 }

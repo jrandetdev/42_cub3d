@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:52:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/14 12:10:38 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 17:44:42 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ static void	key_hit(int keycode, t_main *main)
 		main->interaction.keys.g = !main->interaction.keys.g;
 	else if (keycode == K_M)
 		main->interaction.keys.m = !main->interaction.keys.m;
-	else if (keycode == K_P && main->game_start && !main->menu)
-	{
-		mlx_clear_window(main->mlx_ptr, main->mlx_win);
-		main->menu = PAUSE_MENU;
-	}
-	else if (keycode == K_P && main->game_start && main->menu > 0)
-		main->menu = NO_MENU;
+	// else if (keycode == K_P && main->game_start && !main->menu.current_menu)
+	// {
+	// 	mlx_clear_window(main->mlx_ptr, main->mlx_win);
+	// 	main->menu.current_menu = PAUSE_MENU;
+	// }
+	// else if (keycode == K_P && main->game_start && main->menu.current_menu > 0)
+	// 	main->menu.current_menu = NO_MENU;
 }
 
 static int	key_pressed(int keycode, t_main *main)

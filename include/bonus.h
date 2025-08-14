@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:47:37 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/14 10:51:53 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/14 17:02:33 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	show_main_menu(t_main *main, int *main_menu);
 void	show_pause_menu(t_main *main, int *main_menu);
 void	menu_up_and_down(t_main *main, int *selection);
 void	show_mouse_sensitivity_menu(t_main *main, int *menu);
-void	print_menu_section(t_main *main, t_menu_struct *param, char *str);
-void	print_box(t_main *main, t_menu_struct *menu, int param, char *str);
-void	put_letter(t_main *main, t_menu_struct *param, char *file, int x);
+void	print_menu_section(t_main *main, t_menu_display *param, char *str);
+void	print_box(t_main *main, t_menu_display *menu, int param, char *str);
+void	put_letter(t_main *main, t_menu_display *param, char *file, int x);
 
 /*--------------------------------- FPS --------------------------------------*/
 void	fps_counter(t_main *main);

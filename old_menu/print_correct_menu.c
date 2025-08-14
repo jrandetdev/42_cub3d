@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_correct_menu.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:42 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/01 23:49:26 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/14 17:10:43 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	print_correct_menu(t_main *main, int *menu)
 {
+
+
 	if (*menu == MAIN_MENU)
 		show_main_menu(main, menu);
 	else if (*menu == PAUSE_MENU)

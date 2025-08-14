@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:09:52 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/12 17:33:52 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 17:23:50 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,22 +59,31 @@ typedef struct s_door
 	int		pos_y;
 }	t_door;
 
-typedef struct s_menu_struct
+typedef struct s_menu_display
 {
-	int	y;
-	int	idx;
-	int	selection;
-	int	menu_size;
-}	t_menu_struct;
+	int		y;
+	int		option_amount;
+	int		option_selected;
+	int		size;
+	char	*top_menu_title;
+	char	**menu_sections;
+}	t_menu_display;
 
 
-typedef struct s_menu_param
+typedef struct s_menu_options
 {
 	bool		fov;
 	bool		show_fps;
 	bool		sensitivity;
 	bool		show_minimap;
 	bool		show_minimap_grid;
-}				t_menu_param;
+}				t_menu_options;
+
+typedef struct s_menu
+{
+	short			current_menu;
+	t_menu_options	option;
+	t_menu_display	display;
+}	t_menu;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:47 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/14 11:05:45 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 17:03:44 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ static void	print_current_sensitivity(t_main *main, int last_y)
 {
 	char			*sensitvity;
 	char			*menu_name;
-	t_menu_struct	param;
+	t_menu_display	param;
 
-	ft_bzero(&param, sizeof(t_menu_struct));
+	ft_bzero(&param, sizeof(t_menu_display));
 	param.y = last_y - 300;
-	param.idx = 1;
+	param.option_amount = 1;
 	sensitvity = ft_itoa(main->interaction.mouse.sensitivity);
 	if (!sensitvity)
 		print_error_syscall(main, "malloc failed in print current seinsitvity");
@@ -88,12 +88,12 @@ static void	print_plus_logo(t_main *main, int selection, int last_y)
 	mlx_destroy_image(main->mlx_ptr, logo.ptr);
 }
 
-void	show_mouse_sensitivity_menu(t_main *main, int *menu)
+void	show_mouse_sensitivity_menu(t_main *main, int *current_menu)
 {
-	t_menu_struct	param;
+	t_menu_display	param;
 	static int		menu_title = 0;
 
-	ft_bzero(&param, (sizeof(t_menu_struct)));
+	ft_bzero(&param, (sizeof(t_menu_display)));
 	param.menu_size = 3;
 	if (menu_title < 0)
 		menu_title = 2;
@@ -103,10 +103,10 @@ void	show_mouse_sensitivity_menu(t_main *main, int *menu)
 	print_current_sensitivity(main, param.y);
 	print_minus_logo(main, param.selection, param.y);
 	print_plus_logo(main, param.selection, param.y);
-	param.idx = 2;
+	param.option_amount = 2;
 	print_menu_section(main, &param, "RETURN");
 	if (main->interaction.keys.enter)
-		selection(main, menu, param.selection, &menu_title);
+		selection(main, current_menu, param.selection, &menu_title);
 	else if (main->interaction.keys.up || main->interaction.keys.down)
 		menu_up_and_down(main, &menu_title);
 }

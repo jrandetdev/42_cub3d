@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:51 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/13 23:55:25 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 17:02:33 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	menu_up_and_down(t_main *main, int *selection)
 	}
 }
 
-void	put_letter(t_main *main, t_menu_struct *param, char *file, int x)
+void	put_letter(t_main *main, t_menu_display *params, char *file, int x)
 {
 	t_texture		letter;
 
@@ -52,6 +52,6 @@ void	put_letter(t_main *main, t_menu_struct *param, char *file, int x)
 	if (!letter.ptr)
 		print_error_syscall(main, "failed to load a letter int 'put_letter'");
 	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win,
-		letter.ptr, x, param->y);
+		letter.ptr, x, params->y);
 	mlx_destroy_image(main->mlx_ptr, letter.ptr);
 }

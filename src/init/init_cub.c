@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 21:11:00 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/14 11:05:45 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 17:45:36 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	init_cub(t_main *main)
 {
 	char	*door_file;
 
-	main->menu = 1;
-	main->param.fov = 1;
-	main->param.show_minimap = 1;
+	// main->menu.current_menu = 1;
+	// main->menu.option.fov = 1;
+	// main->menu.option.show_minimap = 1;
 	main->interaction.mouse.sensitivity = 25;
 	main->interaction.mouse.x = WIN_WIDTH / 2;
 	if (gettimeofday(&main->bonus.last_sec, NULL))
