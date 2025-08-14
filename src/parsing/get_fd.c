@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   get_fd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/22 15:21:06 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/14 20:24:39 by jrandet          ###   ########.fr       */
+/*   Created: 2025/08/14 19:52:11 by jrandet           #+#    #+#             */
+/*   Updated: 2025/08/14 19:52:31 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	parsing(t_main *main, char *file)
+int	get_fd(t_main *main, char *file)
 {
-	char	**file_content;
+	int			fd;
 
-	check_if_file_is_dir(main, file);
-	extract_file_elements(main, file, &file_content);
-	extract_colour_and_texture(main, file_content);
-	extract_map_from_file(main, file_content);
-	free_string_array(&file_content);
-	check_if_map_is_valid(main);
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+	{
+		if (errno == EACCES)
+			print_error_syscall(main, "Open fd failed");
+	}
+	return (fd);
 }

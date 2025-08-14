@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 11:30:17 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/14 11:05:45 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 20:25:03 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ void	change_door_state(t_main *main, int x, int y)
 	char	**map;
 
 	main->interaction.keys.e = 0;
-	map = main->map_struct.map;
-	if (main->map_struct.map[y][x] == DC)
+	map = main->map.array;
+	if (main->map.array[y][x] == DC)
 	{
 		opening_door(main, x, y);
 	}
-	else if (main->map_struct.map[y][x] == DO)
+	else if (main->map.array[y][x] == DO)
 	{
 		closing_door(main, map, x, y);
 	}
@@ -35,7 +35,7 @@ static void	opening_door(t_main *main, int x, int y)
 {
 	if (main->assets.door.state)
 		return ;
-	main->map_struct.map[y][x] = DA;
+	main->map.array[y][x] = DA;
 	main->assets.door.opening_pourcent = 0;
 	main->assets.door.state = OPENING;
 	main->assets.door.pos_x = x;
@@ -49,7 +49,7 @@ static void	closing_door(t_main *main, char **map, int x, int y)
 	if (map[(int)trunc(main->player.y)]
 		[(int)trunc(main->player.x)] == map[y][x])
 		return ;
-	main->map_struct.map[y][x] = DA;
+	main->map.array[y][x] = DA;
 	main->assets.door.opening_pourcent = 1;
 	main->assets.door.state = CLOSING;
 	main->assets.door.pos_x = x;
@@ -65,7 +65,7 @@ void	playing_door_animation(t_main *main)
 			main->assets.door.opening_pourcent += DOOR_ANIMATION_SPEED;
 			return ;
 		}
-		main->map_struct.map[main->assets.door.pos_y][main->assets.door.pos_x] = DO;
+		main->map.array[main->assets.door.pos_y][main->assets.door.pos_x] = DO;
 	}
 	else if (main->assets.door.state == CLOSING)
 	{
@@ -74,7 +74,7 @@ void	playing_door_animation(t_main *main)
 			main->assets.door.opening_pourcent -= DOOR_ANIMATION_SPEED;
 			return ;
 		}
-		main->map_struct.map[main->assets.door.pos_y][main->assets.door.pos_x] = DC;
+		main->map.array[main->assets.door.pos_y][main->assets.door.pos_x] = DC;
 	}
 	main->assets.door.state = NONE;
 }

@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:19:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/13 16:53:57 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 21:47:38 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ static bool	check_outside_minimap(t_main *main, float x, float y)
 	int	map_height;
 
 	size = main->minimap.tile_size;
-	map_width = (int)trunc(main->map_struct.width);
-	map_height = (int)trunc(main->map_struct.height);
+	map_width = (int)trunc(main->map.width);
+	map_height = (int)trunc(main->map.height);
 	xm = (x - main->minimap.start_px) / size;
 	ym = (y - main->minimap.start_py) / size;
 	if (xm < 0 || ym < 0 || xm > map_width || ym > map_height)
 		return (false);
-	if (main->map_struct.map[ym][xm] == '1' ||
-		main->map_struct.map[ym][xm] == '2')
+	if (main->map.array[ym][xm] == '1' ||
+		main->map.array[ym][xm] == '2')
 		return (false);
 	return (true);
 }

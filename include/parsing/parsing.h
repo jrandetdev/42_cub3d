@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 20:40:25 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/14 10:59:16 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 21:53:04 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ void		assign_floor_or_ceiling_texture(t_main *main, char *id, char *filename);
 void		extract_colour_and_texture(t_main *main, char **file_content);
 void		get_texture_data(t_main *main, t_texture *direc, char *xpm_file);
 bool		is_valid_colour(t_main *main, char **splitted_colours);
+void		get_map_dimensions(t_main *main, t_map *map, char **file_cont);
 bool		find_player_position(t_main *main, int *x, int *y, int *player);
 char		*max_strdup(const char *s1, int max_size);
-void		is_map_valid(t_main *main);
-void		get_map_descritpion(t_main *main, char **file_content);
+void		check_if_map_is_valid(t_main *main);
+void		extract_map_from_file(t_main *main, char **file_cont);
+void		flood_fill(t_main *main, t_map *map, int x, int y);
 void		extract_colour(t_main *main, char *id, char *info);
 void		extract_texture(t_main *main, char *id, char *xpm_f);
 void		get_texture_data(t_main *main, t_texture *direc, char *xpm_file);

@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:30:44 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/14 17:37:18 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 21:47:05 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ static void	init_fullscreen_minimap(t_main *main)
 
 	maxwidth = WIN_WIDTH - 20;
 	maxheight = WIN_HEIGHT - 60;
-	tile_size_x = maxwidth / main->map_struct.width;
-	tile_size_y = maxheight / main->map_struct.height;
+	tile_size_x = maxwidth / main->map.width;
+	tile_size_y = maxheight / main->map.height;
 	if (tile_size_x < tile_size_y)
 		main->minimap.tile_size = tile_size_x;
 	else
 		main->minimap.tile_size = tile_size_y;
 	if (main->minimap.tile_size < 1)
 		main->minimap.tile_size = 1;
-	main->minimap.map_size_x = main->map_struct.width \
+	main->minimap.map_size_x = main->map.width \
 * main->minimap.tile_size;
-	main->minimap.map_size_y = main->map_struct.height \
+	main->minimap.map_size_y = main->map.height \
 * main->minimap.tile_size;
 	main->minimap.start_px = (WIN_WIDTH - main->minimap.map_size_x) / 2;
 	main->minimap.start_py = (WIN_HEIGHT - main->minimap.map_size_y) / 2;
@@ -42,17 +42,17 @@ void	init_minimap(t_main *main)
 	int	tile_size_x;
 	int	tile_size_y;
 
-	tile_size_x = (WIN_WIDTH / 3) / main->map_struct.width;
-	tile_size_y = (WIN_HEIGHT / 3) / main->map_struct.height;
+	tile_size_x = (WIN_WIDTH / 3) / main->map.width;
+	tile_size_y = (WIN_HEIGHT / 3) / main->map.height;
 	if (tile_size_x < tile_size_y)
 		main->minimap.tile_size = tile_size_x;
 	else
 		main->minimap.tile_size = tile_size_y;
 	if (main->minimap.tile_size > 10)
 		main->minimap.tile_size = 10;
-	main->minimap.map_size_x = main->map_struct.width \
+	main->minimap.map_size_x = main->map.width \
 * main->minimap.tile_size;
-	main->minimap.map_size_y = main->map_struct.height \
+	main->minimap.map_size_y = main->map.height \
 * main->minimap.tile_size;
 	main->minimap.start_px = WIN_WIDTH - main->minimap.map_size_x - 10;
 	main->minimap.start_py = WIN_HEIGHT - main->minimap.map_size_y - 10;

@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:28:55 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/13 20:51:31 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 21:47:23 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	print_mini_vector_from_angle(t_main *main, float angle)
 	float	magnitude;
 	t_vector	vector;
 
-	magnitude = sqrt(pow(main->map_struct.height, 2)
-			+ pow(main->map_struct.width, 2));
+	magnitude = sqrt(pow(main->map.height, 2)
+			+ pow(main->map.width, 2));
 	vector.x = main->player.x + (magnitude * cos(angle));
 	vector.y = main->player.y + (magnitude * sin(angle));
 	mini_dda(main, vector.x, vector.y);

@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:54:48 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/14 19:05:05 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 21:13:19 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,14 @@ enum e_start_angle
 	W = 270,
 };
 
-/*---------------------------------- UNION -----------------------------------*/
-// typedef union u_coulour
-// {
-// 	int	value;
-// 	struct
-// 	{
-// 		char	r;
-// 		char	g;
-// 		char	b;
-// 		char	a;
-// 	};
-// }	t_colour;
-
-/*--------------------------------- STRUCT -----------------------------------*/
 
 typedef struct s_map
 {
-	char			**map;
-	unsigned int	height;
-	unsigned int	width;
-
+	char	**array;
+	int		height;
+	int		width;
+	int		player;
+	bool	is_invalid;
 }					t_map;
 
 typedef struct s_minimap
@@ -61,14 +48,6 @@ typedef struct s_minimap
 	int	map_size_y;
 }		t_minimap;
 
-typedef struct s_parsing
-{
-	int		player;
-	int		patern;
-	char	**map;
-	int		map_width;
-	int		map_height;
-}			t_parsing;
 
 typedef struct s_params
 {
@@ -94,14 +73,6 @@ typedef struct s_cal
 	float	cf_pre_step_down;
 }			t_cal;
 
-// typedef struct s_texture
-// {
-// 	void		*ptr;
-// 	int			width;
-// 	int			height;
-// 	t_image		texture;
-// }				t_texture;
-
 typedef struct s_player
 {
 	float	x;
@@ -116,16 +87,6 @@ typedef struct s_player
 	char	*cardinal_direction;
 }			t_player;
 
-// typedef struct s_texture_bank
-// {
-// 	t_texture		no;
-// 	t_texture		so;
-// 	t_texture		ea;
-// 	t_texture		we;
-// 	t_texture		door;
-// 	t_texture		floor;
-// 	t_texture		ceiling;
-// }					t_texture_bank;
 
 typedef struct s_guide
 {
@@ -144,28 +105,6 @@ typedef struct s_guide
 	int		floor_grid_y;
 }			t_guide;
 
-// typedef union u_keys
-// {
-// 	unsigned short	raw_value;
-// 	enum
-// 	{
-// 		W = 16,
-// 		A = 15,
-// 		S = 14,
-// 		D = 13,
-// 		G = 12,
-// 		M = 11,
-// 		E = 10,
-// 		P = 9,
-// 		UP = 8,
-// 		ESCP = 7,
-// 		DOWN = 6,
-// 		LEFT = 5,
-// 		RIGHT = 4,
-// 		ENTER = 3,
-// 		SHIFT = 2,
-// 	};
-// }	t_keys;
 
 typedef struct s_keys
 {
@@ -213,7 +152,7 @@ typedef struct s_main
 	t_player			player;
 	t_minimap			minimap;
 	t_mini_dda			mini_dda;
-	t_map				map_struct;
+	t_map				map;
 	t_menu				menu;
 }						t_main;
 

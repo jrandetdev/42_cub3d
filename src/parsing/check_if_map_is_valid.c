@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   check_if_map_is_valid.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/22 15:21:06 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/14 20:24:39 by jrandet          ###   ########.fr       */
+/*   Created: 2025/08/14 20:08:53 by jrandet           #+#    #+#             */
+/*   Updated: 2025/08/14 23:07:16 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	parsing(t_main *main, char *file)
+void	check_if_map_is_valid(t_main *main)
 {
-	char	**file_content;
+	t_map	*map;
+	int		x;
+	int		y;
 
-	check_if_file_is_dir(main, file);
-	extract_file_elements(main, file, &file_content);
-	extract_colour_and_texture(main, file_content);
-	extract_map_from_file(main, file_content);
-	free_string_array(&file_content);
-	check_if_map_is_valid(main);
+	map = &main->map;
+	x = 0;
+	y = 0;
+	if (!find_player_position(main, &x, &y, &map->player))
+		print_error_message(main, "Player not found in given map->");
+	flood_fill(main, map, x, y);
+	if (map->is_invalid)
+		print_error_message(main, "Map is invalid.");
 }

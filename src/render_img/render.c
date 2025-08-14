@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:55:18 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/14 18:12:26 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 22:15:40 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	pre_calc(t_main *main)
 	cal->cf_pre_step_right = (main->cal.cf_ray_dirx_right
 			- main->cal.cf_ray_dirx_left) / WIN_WIDTH;
 	cal->cf_pre_step_down = (main->cal.cf_ray_diry_right
-			- main->cal.cf_ray_diry_left) / WIN_WIDTH;
+		- main->cal.cf_ray_diry_left) / WIN_WIDTH;
 }
 
 static void	wait_threads(t_threads *threads, int created_threads)

@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   max_strdup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/22 15:21:06 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/14 20:24:39 by jrandet          ###   ########.fr       */
+/*   Created: 2025/08/14 20:22:47 by jrandet           #+#    #+#             */
+/*   Updated: 2025/08/14 20:23:22 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include"cub3d.h"
 
-void	parsing(t_main *main, char *file)
+char	*max_strdup(const char *s1, int max_size)
 {
-	char	**file_content;
+	char	*pointer;
+	size_t	len;
 
-	check_if_file_is_dir(main, file);
-	extract_file_elements(main, file, &file_content);
-	extract_colour_and_texture(main, file_content);
-	extract_map_from_file(main, file_content);
-	free_string_array(&file_content);
-	check_if_map_is_valid(main);
+	if (*s1 == '\0')
+		return (ft_calloc(1, 1));
+	len = ft_strlen(s1);
+	pointer = ft_calloc(max_size + 1, sizeof(char));
+	if (!pointer)
+		return (NULL);
+	ft_memcpy(pointer, s1, len + 1);
+	return (pointer);
 }

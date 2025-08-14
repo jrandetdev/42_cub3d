@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda_algorithm.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:07:51 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/14 10:57:30 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/14 23:11:59 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,20 +48,20 @@ static void	ray_casting_loop(t_main *main, t_dda *dda, int x)
 			dda->y += dda->step_y;
 			dda->side = 1;
 		}
-		if (main->map_struct.map[dda->y][dda->x] != 0)
+		if (main->map.array[dda->y][dda->x] != 0)
 			handle_surface_hit(main, dda, x);
 	}
 }
 
 static void	handle_surface_hit(t_main *main, t_dda *dda, int x)
 {
-	if (main->map_struct.map[dda->y][dda->x] == '1')
+	if (main->map.array[dda->y][dda->x] == '1')
 	{
 		dda->hit = 1;
 	}
-	else if (main->map_struct.map[dda->y][dda->x] == DC
-		|| main->map_struct.map[dda->y][dda->x] == DO
-		|| main->map_struct.map[dda->y][dda->x] == DA)
+	else if (main->map.array[dda->y][dda->x] == DC
+		|| main->map.array[dda->y][dda->x] == DO
+		|| main->map.array[dda->y][dda->x] == DA)
 	{
 		handle_door_state(main, dda, x);
 	}
@@ -70,20 +70,20 @@ static void	handle_surface_hit(t_main *main, t_dda *dda, int x)
 static void	handle_door_state(t_main *main, t_dda *dda, int x)
 {
 	if (main->interaction.keys.e && x == WIN_WIDTH / 2
-		&& (main->map_struct.map[dda->y][dda->x] == DO
-		|| main->map_struct.map[dda->y][dda->x] == DC))
+		&& (main->map.array[dda->y][dda->x] == DO
+		|| main->map.array[dda->y][dda->x] == DC))
 	{
 		correct_fish_eye(dda);
 		if (dda->correct_distance < 3)
 			change_door_state(main, dda->x, dda->y);
 	}
-	if (main->map_struct.map[dda->y][dda->x] == DA)
+	if (main->map.array[dda->y][dda->x] == DA)
 	{
 		correct_fish_eye(dda);
 		if (is_in_door_half(main, dda))
 			dda->hit = 3;
 	}
-	if (main->map_struct.map[dda->y][dda->x] == DC)
+	if (main->map.array[dda->y][dda->x] == DC)
 		dda->hit = 2;
 }
 

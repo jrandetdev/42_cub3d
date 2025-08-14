@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:21:00 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/14 10:33:37 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 20:25:03 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static bool	get_players(t_main *main, int *x, int *y, int *player)
 	int		j;
 	char	**map;
 
-	map = main->map_struct.map;
+	map = main->map.array;
 	j = -1;
 	while (map[++j])
 	{
@@ -105,6 +105,6 @@ bool	find_player_position(t_main *main, int *x, int *y, int *player)
 	main->player.x = *x + 0.5;
 	main->player.y = *y + 0.5;
 	init_player_direction(main);
-	main->map_struct.map[*y][*x] = '0';
+	main->map.array[*y][*x] = '0';
 	return (true);
 }

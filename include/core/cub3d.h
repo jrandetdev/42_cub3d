@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:47:04 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/14 19:05:55 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 20:29:02 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,70 +55,29 @@
 #  define M_PI 3.14159265358979323846
 # endif
 
-/*-------------------------------- PARSING -----------------------------------*/
-
-
-
-/*-------------------------------- TEXTURE -----------------------------------*/
-
-
-
-/*------------------------------- RENDERING ----------------------------------*/
 
 int			game_loop(t_main *main);
-
 void		init_img(t_main *main);
-void		player_movement(t_main *main);
 void		put_pixel_to_image(t_main *main, int x, int y, int colour);
-void		valid_next_movement_up(t_main *main, float next_x, float next_y);
-void		valid_next_movement_down(t_main *main, float next_x,
-				float next_y);
-void		valid_next_movement_left(t_main *main, float next_x,
-				float next_y);
-void		valid_next_movement_right(t_main *main, float next_x,
-				float next_y);
-
 void		set_dda_params(t_main *main, t_dda *dda);
 void		digital_differential_analyzer(t_main *main, t_dda *dda, int x);
-
-/*-------------------------------- GAMELOOP ----------------------------------*/
-
 int			key_handler(int key_code, t_main *main);
-
 void		cast_rays(t_main *main);
 void		init_external_events(t_main *main);
 void		draw_texture(t_main *main, t_dda *dda, int x,
 				t_texture texture);
-
-size_t		count_map_height(char **map);
 t_texture	get_corresp_texture(t_main *main, t_dda *dda);
-
-/*---------------------------- ERROR HANDELING -------------------------------*/
-
 void		print_error();
 void		print_error_syscall(t_main *main, char *error_message);
 void		print_error_message(t_main *main, char *error_message);
-	/*--------------------------------- UTILS ------------------------------------*/
-
 int			has_new_line(char *buffer);
 int			get_fd(t_main *main, char *file_relative_path);
-
 char		*get_next_line(int fd);
 char		*join_and_free(char *line, char *tmp2);
-
-void		print_array(char **array);
-void		normalize_angle(float *angle);
-void		calcule_constants(t_main *main);
 void		ft_strcpy(char *dest, char *src, int start, int end);
-
 float		get_vec2_norm(t_vector vec1, t_vector vec2);
-
 size_t		string_array_len(char **str);
-
-/*----------------------------- FREE FUNCTIONS -------------------------------*/
-
 int			handle_destroy(t_main *main);
-
 void		safe_free_tab(void ***ptr);
 void		free_mlx_pointers(t_main *main);
 void		free_string_array(char ***array);

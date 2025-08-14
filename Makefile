@@ -51,18 +51,21 @@ SRC_INIT		=			init_all.c \
 INIT		=				$(addprefix $(DIR_INIT)/, $(SRC_INIT))
 
 DIR_PARSING		=			./src/parsing
-SRC_PARSING		=			flood_fill.c \
+SRC_PARSING		=			parsing.c \
+							check_if_map_is_valid.c \
+							flood_fill.c \
+							get_fd.c \
 							check_if_dir.c \
 							init_player.c \
-							parsing.c \
 							check_for_tabs.c \
-							map_desription.c \
 							extract_texture.c \
+							get_map_dimensions.c \
 							get_texture_data.c \
 							load_personal_texture.c \
 							extract_colour.c \
+							extract_file_content.c \
+							extract_map_from_file.c \
 							validate_colour.c \
-							get_file_content.c \
 							parse_texture_and_colour.c \
 							check_extension_and_file_type.c
 PARSING			=			$(addprefix $(DIR_PARSING)/, $(SRC_PARSING))
@@ -75,12 +78,14 @@ SRC_HANDLE_TEXTURES		=	draw_walls.c \
 HANDLE_TEXTURES			=	$(addprefix $(DIR_HANDLE_TEXTURES)/, $(SRC_HANDLE_TEXTURES))
 
 DIR_GAMELOOP	=			./src/gameloop
-SRC_GAMELOOP	=			game_loop.c \
-							valid_next_movement.c
+SRC_GAMELOOP	=			game_loop.c
 GAMELOOP		=			$(addprefix $(DIR_GAMELOOP)/, $(SRC_GAMELOOP))
 
 DIR_PLAYER		=			./src/player
-SRC_PLAYER		=			player_movement.c
+SRC_PLAYER		=			player_movement.c \
+							player_rotation.c \
+							validate_forward_and_backward.c \
+							validate_right_and_left.c
 PLAYER			=			$(addprefix $(DIR_PLAYER)/, $(SRC_PLAYER))
 
 DIR_EVENTS		=			./src/events
@@ -129,6 +134,7 @@ SRC_UTILS		=			vector.c \
 							get_next_line.c \
 							get_next_line_utils.c \
 							is_only_spaces.c \
+							max_strdup.c \
 							null_terminate_line.c \
 							error_handling.c \
 							free_utils.c
