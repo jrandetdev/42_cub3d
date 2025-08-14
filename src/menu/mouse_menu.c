@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:47 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/13 23:55:25 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 11:05:45 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ static void	print_minus_logo(t_main *main, int selection, int last_y)
 	char		*filename;
 
 	if (selection == 1)
-		filename = "Assets/fonts/logo/minus_gold.xpm";
+		filename = "assets/fonts/logo/minus_gold.xpm";
 	else
-		filename = "Assets/fonts/logo/minus_white.xpm";
+		filename = "assets/fonts/logo/minus_white.xpm";
 	logo.ptr = mlx_xpm_file_to_image(main->mlx_ptr, filename,
 			&logo.width, &logo.height);
 
@@ -76,9 +76,9 @@ static void	print_plus_logo(t_main *main, int selection, int last_y)
 	char		*filename;
 
 	if (selection == 0)
-		filename = "Assets/fonts/logo/plus_gold.xpm";
+		filename = "assets/fonts/logo/plus_gold.xpm";
 	else
-		filename = "Assets/fonts/logo/plus_white.xpm";
+		filename = "assets/fonts/logo/plus_white.xpm";
 	logo.ptr = mlx_xpm_file_to_image(main->mlx_ptr, filename,
 			&logo.width, &logo.height);
 	if (!logo.ptr)

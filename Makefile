@@ -83,7 +83,6 @@ EVENTS			=			$(addprefix $(DIR_EVENTS)/, $(SRC_EVENTS))
 
 DIR_GAMELOOP	=			./src/gameloop
 SRC_GAMELOOP	=			game_loop.c \
-							put_pixel_to_image.c \
 							player_movement.c \
 							valid_next_movement.c
 GAMELOOP		=			$(addprefix $(DIR_GAMELOOP)/, $(SRC_GAMELOOP))
@@ -106,6 +105,7 @@ SRC_RENDER_IMG	=			render.c \
 							draw_walls.c \
 							dda_algorithm.c \
 							compute_dda_params.c \
+							put_pixel_to_image.c \
 							draw_floor_and_ceiling.c
 RENDER_IMG 		=			$(addprefix $(DIR_RENDER_IMG)/, $(SRC_RENDER_IMG))
 

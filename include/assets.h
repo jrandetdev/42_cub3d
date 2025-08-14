@@ -1,5 +1,5 @@
-#ifndef ASSETS_H
-# define ASSETS_H
+#ifndef assets_H
+# define assets_H
 
 typedef struct s_texture
 {

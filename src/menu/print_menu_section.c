@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:39 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/13 23:55:25 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 11:05:45 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	*get_letter(t_main *main, char letter, int i, int selected)
 {
-	const char	*path = "Assets/fonts/xpm_48/";
+	const char	*path = "assets/fonts/xpm_48/";
 	const char	*white = "_white.xpm";
 	const char	*gold = "_gold.xpm";
 	char		*first_part;
@@ -68,9 +68,9 @@ void	print_box(t_main *main, t_menu_struct *menu, int param, char *str)
 
 	x = WIN_WIDTH / 2 + 7 * 48;
 	if (param)
-		filename = "Assets/fonts/logo/checked_box_white.xpm";
+		filename = "assets/fonts/logo/checked_box_white.xpm";
 	else
-		filename = "Assets/fonts/logo/empty_box_white.xpm";
+		filename = "assets/fonts/logo/empty_box_white.xpm";
 	cross.ptr = mlx_xpm_file_to_image(main->mlx_ptr, filename,
 			&cross.width, &cross.height);
 	if (!cross.ptr)

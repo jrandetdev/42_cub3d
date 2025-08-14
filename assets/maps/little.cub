@@ -1,7 +1,7 @@
-NO ./Assets/textures/brushed-metal-north.xpm
-SO ./Assets/textures/brushed-metal-south.xpm
-WE ./Assets/textures/brushed-metal-west.xpm
-EA ./Assets/textures/brushed-metal-east.xpm
+NO ./assets/textures/brushed-metal-north.xpm
+SO ./assets/textures/brushed-metal-south.xpm
+WE ./assets/textures/brushed-metal-west.xpm
+EA ./assets/textures/brushed-metal-east.xpm
 
 C 67,161,232
 F 151,101,201

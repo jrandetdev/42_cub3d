@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:34 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/13 20:51:08 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 11:05:45 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	*get_letter_title(t_main *main, char letter)
 {
-	const char	*path = "Assets/fonts/xpm_80/";
+	const char	*path = "assets/fonts/xpm_80/";
 	const char	*white = "_white.xpm";
 	char		*first_part;
 	char		*filename;
