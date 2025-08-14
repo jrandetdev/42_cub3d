@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_movement.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:06:09 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 18:02:05 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 10:19:06 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,4 @@ void	player_movement(t_main *main)
 	player_right_and_left(main);
 	player_key_rotation(main);
 	player_mouse_rotation(main);
-	player_action(main);
 }

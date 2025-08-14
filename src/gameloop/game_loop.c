@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:06:37 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/14 09:47:54 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/14 10:20:21 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	game_loop(t_main *main)
 	}
 	mlx_destroy_image(main->mlx_ptr, main->image.data_img);
 	init_img(main);
-		player_movement(main);
+	player_movement(main);
 	if (main->assets.door.state)
 		playing_door_animation(main);
 	backgroud_color(main);
