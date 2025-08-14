@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:55:18 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/14 10:32:35 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/14 18:12:26 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static void	create_threads(t_main *main)
 void	cast_rays(t_main *main)
 {
 	int				x;
-	t_dda	dda;
+	t_dda			dda;
 	t_texture		cardinal_texture;
 
 	pre_calc(main);

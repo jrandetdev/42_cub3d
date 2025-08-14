@@ -1,6 +1,18 @@
 #ifndef assets_H
 # define assets_H
 
+typedef struct s_image
+{
+	void	*data_img;
+	void	*addr;
+	int		bitspp;
+	int		bytespp;
+	int		size_line;
+	int		total_bytes;
+	int		pixels_per_line;
+	int		endian;
+}			t_image;
+
 typedef struct s_texture
 {
 	void		*ptr;

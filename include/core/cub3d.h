@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:47:04 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/14 17:30:16 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 19:05:55 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,18 @@
 # include <stdlib.h>
 # include <string.h>
 # include <stdbool.h>
-# include "libft.h"
-# include "bonus.h"
-# include "struct.h"
-# include "events.h"
-# include "bonus_struct.h"
-# include "dda.h"
-# include "parsing.h"
-# include "minimap.h"
 # include "init.h"
-# include "utils.h"
-// # include "assets.h"
+# include "struct.h"
+# include "../libft.h"
+# include "../bonus/bonus.h"
+# include "../game/player.h"
+# include "../game/dda.h"
+# include "../game/events.h"
+# include "../bonus/bonus_struct.h"
+# include "../parsing/parsing.h"
+# include "../graphics/minimap.h"
+# include "../utils/utils.h"
+# include "../graphics/assets.h"
 
 # define RED	"\x1b[31;1m"
 # define GREEN	"\x1b[32;1m"

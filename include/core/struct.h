@@ -6,16 +6,19 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:54:48 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/14 17:18:09 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/14 19:05:05 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
+# include "assets.h"
 # include "dda.h"
 # include "bonus_struct.h"
 # include <pthread.h>
+
+typedef struct s_image t_image;
 
 /*---------------------------------- ENUM ------------------------------------*/
 enum e_start_angle
@@ -27,17 +30,17 @@ enum e_start_angle
 };
 
 /*---------------------------------- UNION -----------------------------------*/
-typedef union u_coulour
-{
-	int	value;
-	struct
-	{
-		char	r;
-		char	g;
-		char	b;
-		char	a;
-	};
-}	t_colour;
+// typedef union u_coulour
+// {
+// 	int	value;
+// 	struct
+// 	{
+// 		char	r;
+// 		char	g;
+// 		char	b;
+// 		char	a;
+// 	};
+// }	t_colour;
 
 /*--------------------------------- STRUCT -----------------------------------*/
 
@@ -69,7 +72,6 @@ typedef struct s_parsing
 
 typedef struct s_params
 {
-	int		start;
 	int		screen_x;
 	int		screen_y;
 	int		draw_end;
@@ -92,25 +94,13 @@ typedef struct s_cal
 	float	cf_pre_step_down;
 }			t_cal;
 
-typedef struct s_myimage
-{
-	void	*data_img;
-	void	*addr;
-	int		bitspp;
-	int		bytespp;
-	int		size_line;
-	int		total_bytes;
-	int		pixels_per_line;
-	int		endian;
-}			t_image;
-
-typedef struct s_texture
-{
-	void		*ptr;
-	int			width;
-	int			height;
-	t_image		texture;
-}				t_texture;
+// typedef struct s_texture
+// {
+// 	void		*ptr;
+// 	int			width;
+// 	int			height;
+// 	t_image		texture;
+// }				t_texture;
 
 typedef struct s_player
 {
@@ -126,16 +116,16 @@ typedef struct s_player
 	char	*cardinal_direction;
 }			t_player;
 
-typedef struct s_texture_bank
-{
-	t_texture		no;
-	t_texture		so;
-	t_texture		ea;
-	t_texture		we;
-	t_texture		door;
-	t_texture		floor;
-	t_texture		ceiling;
-}					t_texture_bank;
+// typedef struct s_texture_bank
+// {
+// 	t_texture		no;
+// 	t_texture		so;
+// 	t_texture		ea;
+// 	t_texture		we;
+// 	t_texture		door;
+// 	t_texture		floor;
+// 	t_texture		ceiling;
+// }					t_texture_bank;
 
 typedef struct s_guide
 {

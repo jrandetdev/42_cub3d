@@ -9,6 +9,13 @@ UNAME			=			$(shell uname)
 DIR_BUILD		=			./build
 DIR_INCLUDE		=			./include
 
+INCLUDE_SUBDIRS	=			$(DIR_INCLUDE)/bonus \
+							$(DIR_INCLUDE)/core \
+							$(DIR_INCLUDE)/game \
+							$(DIR_INCLUDE)/graphics \
+							$(DIR_INCLUDE)/parsing \
+							$(DIR_INCLUDE)/utils
+
 MLX_PATH_UNIX	:=			./libs/minilibx-linux/
 MLX_NAME_UNIX	:=			libmlx.a
 MLX_PATH_OSX	:=			./libs/minilibx-macos/
@@ -60,17 +67,6 @@ SRC_PARSING		=			flood_fill.c \
 							check_extension_and_file_type.c
 PARSING			=			$(addprefix $(DIR_PARSING)/, $(SRC_PARSING))
 
-DIR_UTILS		=			./src/utils
-SRC_UTILS		=			vector.c \
-							string_array_len.c \
-							exit_cub3d.c \
-							get_next_line.c \
-							get_next_line_utils.c \
-							is_only_spaces.c \
-							null_terminate_line.c \
-							error_handling.c \
-							free_utils.c
-UTILS			=			$(addprefix $(DIR_UTILS)/, $(SRC_UTILS))
 
 DIR_HANDLE_TEXTURES		=	./src/handle_textures
 SRC_HANDLE_TEXTURES		=	draw_walls.c \
@@ -78,15 +74,19 @@ SRC_HANDLE_TEXTURES		=	draw_walls.c \
 							get_texture.c
 HANDLE_TEXTURES			=	$(addprefix $(DIR_HANDLE_TEXTURES)/, $(SRC_HANDLE_TEXTURES))
 
+DIR_GAMELOOP	=			./src/gameloop
+SRC_GAMELOOP	=			game_loop.c \
+							valid_next_movement.c
+GAMELOOP		=			$(addprefix $(DIR_GAMELOOP)/, $(SRC_GAMELOOP))
+
+DIR_PLAYER		=			./src/player
+SRC_PLAYER		=			player_movement.c
+PLAYER			=			$(addprefix $(DIR_PLAYER)/, $(SRC_PLAYER))
+
 DIR_EVENTS		=			./src/events
 SRC_EVENTS		=			external_events.c
 EVENTS			=			$(addprefix $(DIR_EVENTS)/, $(SRC_EVENTS))
 
-DIR_GAMELOOP	=			./src/gameloop
-SRC_GAMELOOP	=			game_loop.c \
-							player_movement.c \
-							valid_next_movement.c
-GAMELOOP		=			$(addprefix $(DIR_GAMELOOP)/, $(SRC_GAMELOOP))
 
 DIR_MINIMAP		=			./src/minimap
 SRC_MINIMAP		=			draw_player.c \
@@ -122,14 +122,30 @@ RENDER_IMG 		=			$(addprefix $(DIR_RENDER_IMG)/, $(SRC_RENDER_IMG))
 # 							print_menu_section.c
 # MENU			=			$(addprefix $(DIR_MENU)/, $(SRC_MENU))
 
-SOURCES			=			$(MAIN_SRC) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(GAMELOOP) $(MINIMAP) $(RENDER_IMG) $(MENU) $(BONUS) $(INIT) $(HANDLE_TEXTURES)
-vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS) $(DIR_GAMELOOP) $(DIR_GAMELOOP) $(DIR_MINIMAP) $(DIR_RENDER_IMG) $(DIR_MENU) $(DIR_BONUS) $(DIR_INIT) $(DIR_HANDLE_TEXTURES)
+DIR_UTILS		=			./src/utils
+SRC_UTILS		=			vector.c \
+							string_array_len.c \
+							exit_cub3d.c \
+							get_next_line.c \
+							get_next_line_utils.c \
+							is_only_spaces.c \
+							null_terminate_line.c \
+							error_handling.c \
+							free_utils.c
+UTILS			=			$(addprefix $(DIR_UTILS)/, $(SRC_UTILS))
+
+SOURCES			=			$(MAIN_SRC) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) \
+							$(GAMELOOP) $(MINIMAP) $(RENDER_IMG) $(MENU) $(BONUS) \
+							$(INIT) $(HANDLE_TEXTURES) $(PLAYER)
+vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS) $(DIR_GAMELOOP) $(DIR_GAMELOOP) $(DIR_MINIMAP) $(DIR_RENDER_IMG) $(DIR_MENU) $(DIR_BONUS) $(DIR_INIT) $(DIR_HANDLE_TEXTURES) $(DIR_PLAYER)
 
 OBJECTS			:= 			$(addprefix $(DIR_BUILD)/, $(notdir $(SOURCES:.c=.o)))
 DEPS			:=			$(OBJECTS:.o=.d)
 
 CFLAGS			=			-Wall -Werror -Wextra $(INC_FLAGS) -g -MMD -MP -O3
-INC_FLAGS		:=			-I $(DIR_INCLUDE) -I $(LIBFT_PATH) -I $(MLX_PATH)
+INC_FLAGS		:=			$(addprefix -I , $(INCLUDE_SUBDIRS)) \
+							-I $(LIBFT_PATH) \
+							-I $(MLX_PATH)
 LIBRARY_PATHS	:=			-L$(LIBFT_PATH) -L$(MLX_PATH)
 
 #------------- RULES -------------#
