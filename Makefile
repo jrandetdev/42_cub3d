@@ -32,11 +32,11 @@ MLX = $(MLX_PATH)$(MLX_NAME)
 
 #------------ SOURCES ------------#
 
-DIR_MAIN			=			./src
+DIR_MAIN		=			./src
 MAIN_SRC		=			$(addprefix $(DIR_MAIN)/, main.c)
 
-DIR_INIT	=				./src/init
-SRC_INIT	=				init_all.c \
+DIR_INIT		=			./src/init
+SRC_INIT		=			init_all.c \
 							init_args.c \
 							init_cub.c \
 							init_img.c \
