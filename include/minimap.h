@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   minimap.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/22 16:23:58 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/13 21:36:48 by jrandet          ###   ########.fr       */
+/*   Created: 2025/08/13 20:44:20 by jrandet           #+#    #+#             */
+/*   Updated: 2025/08/13 20:47:15 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef MINIMAP_H
+# define MINIMAP_H
 
-int	main(int argc, char **argv)
-{
-	t_main	main;
+typedef struct s_vector t_vector;
+typedef struct s_main t_main;
 
-	init_all(&main, argc, argv);
-	parsing(&main, argv[1]);
-	mlx_hook(main.mlx_win, 17, 0, handle_destroy, &main);
-	mlx_loop_hook(main.mlx_ptr, game_loop, &main);
-	mlx_loop(main.mlx_ptr);
-	return (0);
-}
+void		print_grid(t_main *main);
+void		draw_player(t_main *main);
+void		init_minimap(t_main *main);
+void		print_minifov(t_main *main);
+void		print_minimap(t_main *main);
+void		print_minimap_base(t_main *main);
+t_vector	mini_dda(t_main *main, float dst_x, float dst_y);
+
+#endif

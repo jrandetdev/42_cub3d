@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 15:38:19 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/12 17:20:40 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 20:50:47 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	get_guide_info(t_main *main, t_guide *g, int y)
 	t_player	*player;
 
 	player = &main->player;
-	g->pixel_distance_down = y - main->cal.half_wh;
+	g->pixel_distance_down = y - WIN_HEIGHT / 2;
 	g->floor_pannel_distance = g->pos_z / g->pixel_distance_down;
 	g->x_step_right = g->floor_pannel_distance * main->cal.cf_pre_step_right;
 	g->y_step_down = g->floor_pannel_distance * main->cal.cf_pre_step_down;

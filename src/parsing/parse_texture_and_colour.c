@@ -6,61 +6,20 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:19:53 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 17:47:28 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 23:05:00 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void check_tabs(t_main *main, char **file_content)
-{
-	int	i;
-	int	j;
+static void	extract_colour_or_texture(t_main *main, char **id_and_info);
 
-	j = 0;
-	while (file_content[j])
-	{
-		i = 0;
-		while (file_content[j][i])
-		{
-			if (file_content[j][i] == '\t')
-			{
-				free_string_array(&file_content);
-				print_error_message(main, "the program does not accepts tabs");
-			}
-			i++;
-		}
-		j++;
-	}
-}
-
-static void	extract_colour_or_texture(t_main *main, char **id_and_info)
-{
-	char	*identifier;
-	char	*information;
-	int		id_len;
-
-	identifier = id_and_info[0];
-	information = id_and_info[1];
-	id_len = ft_strlen(identifier);
-	if (id_len > 2 || id_len < 1)
-	{
-		free_string_array(&id_and_info);
-		print_error_message(main, "Identifier 2 char max.");
-	}
-	if (id_len == 2)
-		extract_texture(main, identifier, information);
-	else
-		extract_colour(main, identifier, information);
-}
-
-void	parse_map_elements(t_main *main, char **file_content)
+void	extract_colour_and_texture(t_main *main, char **file_content)
 {
 	int		i;
 	char	**id_and_info;
 
 	i = 0;
-	check_tabs(main, file_content);
 	while (i <= 5)
 	{
 		id_and_info = ft_split(file_content[i], ' ');
@@ -76,3 +35,25 @@ void	parse_map_elements(t_main *main, char **file_content)
 		i++;
 	}
 }
+
+static void	extract_colour_or_texture(t_main *main, char **id_and_info)
+{
+	char	*identifier;
+	char	*information;
+	int		id_len;
+	
+
+	identifier = id_and_info[0];
+	information = id_and_info[1];
+	id_len = ft_strlen(identifier);
+	if (id_len > 2 || id_len < 1)
+	{
+		free_string_array(&id_and_info);
+		print_error_message(main, "Identifier 2 char max.");
+	}
+	if (id_len == 2)
+		extract_texture(main, identifier, information);
+	else
+		extract_colour(main, identifier, information);
+}
+

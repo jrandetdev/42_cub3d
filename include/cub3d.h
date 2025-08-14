@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:47:04 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 18:50:20 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 22:23:47 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,13 @@
 # include "libft.h"
 # include "bonus.h"
 # include "struct.h"
-# include "parameter.h"
+# include "events.h"
 # include "bonus_struct.h"
 # include "dda.h"
+# include "parsing.h"
+# include "minimap.h"
+# include "init.h"
+# include "utils.h"
 // # include "assets.h"
 
 # define RED	"\x1b[31;1m"
@@ -52,38 +56,11 @@
 
 /*-------------------------------- PARSING -----------------------------------*/
 
-void		is_dir(t_main *main, char *file_relative_path);
-bool		parsing(t_main *main, char *file);
-bool		cub_extension_is_valid(char	*s, int len);
-bool		xmp_extension_is_valid(char	*s, int len);
-bool		validate_colour(t_main *main, char **splitted_colours);
-bool		find_player_position(t_main *main, int *x, int *y, int *player);
 
-char		*max_strdup(const char *s1, int max_size);
-char		**get_file_content(t_main *main, int fd, char *file);
-
-void		is_map_valid(t_main *main);
-void		parse_map_elements(t_main *main, char **file_content);
-void		get_map_descritpion(t_main *main, char **file_content);
-void		load_personal_textures(t_main *main);
-void		extract_colour(t_main *main, char *id, char *info);
-void		extract_texture(t_main *main, char *id, char *xpm_f);
-void		get_texture_data(t_main *main, t_texture *direc, char *xpm_file);
-void		check_and_get_texture(t_main *main, t_texture *pannel,
-				char *filename);
 
 /*-------------------------------- MINIMAP -----------------------------------*/
 
-void		print_fov(t_main *main);
-void		print_grid(t_main *main);
-void		draw_player(t_main *main);
-void		init_minimap(t_main *main);
-void		print_minifov(t_main *main);
-void		print_minimap(t_main *main);
-void		mini_raycasting(t_main *main);
-void		print_minimap_base(t_main *main);
 
-t_vec2		mini_dda(t_main *main, float dst_x, float dst_y);
 
 /*------------------------------- RENDERING ----------------------------------*/
 
@@ -99,6 +76,9 @@ void		valid_next_movement_left(t_main *main, float next_x,
 				float next_y);
 void		valid_next_movement_right(t_main *main, float next_x,
 				float next_y);
+
+void	set_dda_params(t_main *main, t_dda *dda);
+void	digital_differential_analyzer(t_main *main, t_dda *dda);
 
 /*-------------------------------- GAMELOOP ----------------------------------*/
 
@@ -129,10 +109,8 @@ void		print_array(char **array);
 void		normalize_angle(float *angle);
 void		calcule_constants(t_main *main);
 void		ft_strcpy(char *dest, char *src, int start, int end);
-void		digital_differential_analyzer(t_main *main,
-				t_dda *dda);
 
-float		get_vec2_norm(t_vec2 vec1, t_vec2 vec2);
+float		get_vec2_norm(t_vector vec1, t_vector vec2);
 
 size_t		string_array_len(char **str);
 

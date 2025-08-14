@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   load_personal_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/22 16:23:58 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/13 21:36:48 by jrandet          ###   ########.fr       */
+/*   Created: 2025/08/13 23:26:49 by jrandet           #+#    #+#             */
+/*   Updated: 2025/08/13 23:29:01 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+void	load_personal_texture(t_main *main, t_texture *pannel, char *filename)
 {
-	t_main	main;
-
-	init_all(&main, argc, argv);
-	parsing(&main, argv[1]);
-	mlx_hook(main.mlx_win, 17, 0, handle_destroy, &main);
-	mlx_loop_hook(main.mlx_ptr, game_loop, &main);
-	mlx_loop(main.mlx_ptr);
-	return (0);
+	if (!xmp_extension_is_valid(filename, 3))
+		print_error_message(main, "Texture file needs xpm extension.");
+	get_texture_data(main, pannel, filename);
 }

@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:55:18 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 18:12:14 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 18:24:57 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	*multi_cast_rays(void *data)
 {
 	t_threads		*thread;
-	t_dda	dda;
+	t_dda			dda;
 	t_texture		cardinal_texture;
 	t_main			*main;
 
@@ -24,9 +24,9 @@ static void	*multi_cast_rays(void *data)
 	while (thread->start < thread->end)
 	{
 		dda.camera_x = 2 * thread->start / (float)WIN_WIDTH - 1;
-		dda.ray_dirx = main->player.dir_x
+		dda.ray.x= main->player.dir_x
 			+ main->player.plane_x * dda.camera_x;
-		dda.ray_diry = main->player.dir_y
+		dda.ray.y = main->player.dir_y
 			+ main->player.plane_y * dda.camera_x;
 		digital_differential_analyzer(main, &dda);
 		cardinal_texture = get_corresp_texture(main, &dda);
@@ -104,9 +104,9 @@ void	cast_rays(t_main *main)
 	{
 		ft_bzero(&dda, sizeof(t_dda));
 		dda.camera_x = 2 * x / (float)WIN_WIDTH - 1;
-		dda.ray_dirx = main->player.dir_x
+		dda.ray.x = main->player.dir_x
 			+ main->player.plane_x * dda.camera_x;
-		dda.ray_diry = main->player.dir_y
+		dda.ray.y = main->player.dir_y
 			+ main->player.plane_y * dda.camera_x;
 		digital_differential_analyzer(main, &dda);
 		cardinal_texture = get_corresp_texture(main, &dda);

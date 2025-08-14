@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_for_tabs.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/22 16:23:58 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/13 21:36:48 by jrandet          ###   ########.fr       */
+/*   Created: 2025/08/13 22:56:46 by jrandet           #+#    #+#             */
+/*   Updated: 2025/08/13 22:57:37 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+void check_for_tabs(t_main *main, char **file_content)
 {
-	t_main	main;
+	int	i;
+	int	j;
 
-	init_all(&main, argc, argv);
-	parsing(&main, argv[1]);
-	mlx_hook(main.mlx_win, 17, 0, handle_destroy, &main);
-	mlx_loop_hook(main.mlx_ptr, game_loop, &main);
-	mlx_loop(main.mlx_ptr);
-	return (0);
+	j = 0;
+	while (file_content[j])
+	{
+		i = 0;
+		while (file_content[j][i])
+		{
+			if (file_content[j][i] == '\t')
+			{
+				free_string_array(&file_content);
+				print_error_message(main, "the program does not accepts tabs");
+			}
+			i++;
+		}
+		j++;
+	}
 }

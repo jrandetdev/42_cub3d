@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:54:48 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/13 18:03:34 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/14 09:46:51 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "dda.h"
 # include "bonus_struct.h"
+# include <pthread.h>
 
 /*---------------------------------- ENUM ------------------------------------*/
 enum e_start_angle
@@ -39,18 +40,6 @@ typedef union u_coulour
 }	t_colour;
 
 /*--------------------------------- STRUCT -----------------------------------*/
-
-typedef struct s_vec2
-{
-	float	x;
-	float	y;
-}			t_vec2;
-
-typedef struct s_ray
-{
-	float	dirx;
-	float	diry;
-}			t_ray;
 
 typedef struct s_map
 {
@@ -117,7 +106,7 @@ typedef struct s_myimage
 
 typedef struct s_texture
 {
-	void		*texture_ptr;
+	void		*ptr;
 	int			width;
 	int			height;
 	t_image		texture;

@@ -6,41 +6,17 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:06 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 14:49:55 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 20:16:40 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static bool	is_in_char_range(char *s)
-{
-	if (ft_atoi(s) > 255)
-		return (false);
-	return (true);
-}
+static bool	is_valid_len(char *colour);
+static bool	is_only_digit(char *colour);
+static bool	is_in_char_range(char *s);
 
-static bool	is_only_digit(char *colour)
-{
-	while (*colour)
-	{
-		if (!ft_isdigit(*colour))
-			return (false);
-		colour++;
-	}
-	return (true);
-}
-
-static bool	is_valid_len(char *colour)
-{
-	int	len;
-
-	len = ft_strlen(colour);
-	if (1 <= len && len <= 3)
-		return (true);
-	return (false);
-}
-
-bool	validate_colour(t_main *main, char **splitted_colours)
+bool	is_valid_colour(t_main *main, char **splitted_colours)
 {
 	int	i;
 
@@ -64,5 +40,33 @@ bool	validate_colour(t_main *main, char **splitted_colours)
 		}
 		i++;
 	}
+	return (true);
+}
+
+static bool	is_valid_len(char *colour)
+{
+	int	len;
+
+	len = ft_strlen(colour);
+	if (1 <= len && len <= 3)
+		return (true);
+	return (false);
+}
+
+static bool	is_only_digit(char *colour)
+{
+	while (*colour)
+	{
+		if (!ft_isdigit(*colour))
+			return (false);
+		colour++;
+	}
+	return (true);
+}
+
+static bool	is_in_char_range(char *s)
+{
+	if (ft_atoi(s) > 255)
+		return (false);
 	return (true);
 }

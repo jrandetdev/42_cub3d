@@ -32,20 +32,30 @@ MLX = $(MLX_PATH)$(MLX_NAME)
 
 #------------ SOURCES ------------#
 
-DIR_MAIN			=			./src
+DIR_MAIN		=			./src
 MAIN_SRC		=			$(addprefix $(DIR_MAIN)/, main.c)
+
+DIR_INIT		=			./src/init
+SRC_INIT		=			init_all.c \
+							init_args.c \
+							init_cub.c \
+							init_img.c \
+							init_mlx.c
+INIT		=				$(addprefix $(DIR_INIT)/, $(SRC_INIT))
 
 DIR_PARSING		=			./src/parsing
 SRC_PARSING		=			flood_fill.c \
+							check_if_dir.c \
 							init_player.c \
-							main_parsing.c \
+							parsing.c \
+							check_for_tabs.c \
 							map_desription.c \
 							extract_texture.c \
+							get_texture_data.c \
+							load_personal_texture.c \
 							extract_colour.c \
 							validate_colour.c \
 							get_file_content.c \
-							get_next_line.c \
-							get_next_line_utils.c \
 							parse_texture_and_colour.c \
 							check_extension_and_file_type.c
 PARSING			=			$(addprefix $(DIR_PARSING)/, $(SRC_PARSING))
@@ -54,9 +64,12 @@ DIR_UTILS		=			./src/utils
 SRC_UTILS		=			vector.c \
 							string_array_len.c \
 							exit_cub3d.c \
+							get_next_line.c \
+							get_next_line_utils.c \
+							is_only_spaces.c \
+							null_terminate_line.c \
 							error_handling.c \
-							free_utils.c \
-							pre_calculate.c
+							free_utils.c
 UTILS			=			$(addprefix $(DIR_UTILS)/, $(SRC_UTILS))
 
 DIR_DEBUG		=			./src/debug
@@ -69,8 +82,8 @@ SRC_EVENTS		=			external_events.c
 EVENTS			=			$(addprefix $(DIR_EVENTS)/, $(SRC_EVENTS))
 
 DIR_GAMELOOP	=			./src/gameloop
-SRC_GAMELOOP	=			init_img.c \
-							game_loop.c \
+SRC_GAMELOOP	=			game_loop.c \
+							put_pixel_to_image.c \
 							player_movement.c \
 							valid_next_movement.c \
 							player_interaction.c
@@ -93,8 +106,10 @@ DIR_RENDER_IMG	=			./src/render_img
 SRC_RENDER_IMG	=			render.c \
 							draw_walls.c \
 							dda_algorithm.c \
+							compute_dda_params.c \
 							draw_floor_and_ceiling.c
 RENDER_IMG 		=			$(addprefix $(DIR_RENDER_IMG)/, $(SRC_RENDER_IMG))
+
 
 DIR_MENU		=			./src/menu
 SRC_MENU		=			main_menu.c \
@@ -108,8 +123,8 @@ SRC_MENU		=			main_menu.c \
 							print_menu_section.c
 MENU			=			$(addprefix $(DIR_MENU)/, $(SRC_MENU))
 
-SOURCES			=			$(MAIN_SRC) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(GAMELOOP) $(MINIMAP) $(RENDER_IMG) $(MENU) $(BONUS)
-vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS) $(DIR_GAMELOOP) $(DIR_GAMELOOP) $(DIR_MINIMAP) $(DIR_RENDER_IMG) $(DIR_MENU) $(DIR_BONUS) 
+SOURCES			=			$(MAIN_SRC) $(PARSING) $(UTILS) $(DEBUG) $(EVENTS) $(GAMELOOP) $(MINIMAP) $(RENDER_IMG) $(MENU) $(BONUS) $(INIT)
+vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS) $(DIR_GAMELOOP) $(DIR_GAMELOOP) $(DIR_MINIMAP) $(DIR_RENDER_IMG) $(DIR_MENU) $(DIR_BONUS) $(DIR_INIT)
 
 OBJECTS			:= 			$(addprefix $(DIR_BUILD)/, $(notdir $(SOURCES:.c=.o)))
 DEPS			:=			$(OBJECTS:.o=.d)

@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:39 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/12 14:49:57 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 23:55:25 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	print_menu_section(t_main *main, t_menu_struct *param, char *str)
 	int				x;
 	char			*filename;
 
-	x = main->cal.half_ww - (ft_strlen(str) * 48 / 2);
+	x = WIN_WIDTH / 2 - (ft_strlen(str) * 48 / 2);
 	while (*str)
 	{
 		if (*str == ' ')
@@ -66,17 +66,17 @@ void	print_box(t_main *main, t_menu_struct *menu, int param, char *str)
 	char		*filename;
 	t_texture	cross;
 
-	x = main->cal.half_ww + 7 * 48;
+	x = WIN_WIDTH / 2 + 7 * 48;
 	if (param)
 		filename = "Assets/fonts/logo/checked_box_white.xpm";
 	else
 		filename = "Assets/fonts/logo/empty_box_white.xpm";
-	cross.texture_ptr = mlx_xpm_file_to_image(main->mlx_ptr, filename,
+	cross.ptr = mlx_xpm_file_to_image(main->mlx_ptr, filename,
 			&cross.width, &cross.height);
-	if (!cross.texture_ptr)
+	if (!cross.ptr)
 		print_error_syscall(main, "mlx_xpm_file_to_image failed in print_box");
 	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win,
-		cross.texture_ptr, x, menu->y);
-	mlx_destroy_image(main->mlx_ptr, cross.texture_ptr);
+		cross.ptr, x, menu->y);
+	mlx_destroy_image(main->mlx_ptr, cross.ptr);
 	print_menu_section(main, menu, str);
 }

@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pre_calculate.c                                    :+:      :+:    :+:   */
+/*   check_if_file_is_dir.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/26 22:10:09 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/07/26 22:10:13 by hdougoud         ###   ########.fr       */
+/*   Created: 2025/08/13 21:39:46 by jrandet           #+#    #+#             */
+/*   Updated: 2025/08/13 21:49:52 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	calcule_constants(t_main *main)
+void	check_if_file_is_dir(t_main *main, char *file_relative_path)
 {
-	main->cal.half_wh = WIN_HEIGHT / 2;
-	main->cal.half_ww = WIN_WIDTH / 2;
-	main->cal.pre_fov = (FOV / 2) * (M_PI / 180);
+	int	fd;
+
+	fd = open(file_relative_path, O_DIRECTORY);
+	if (fd > 0)
+	{	
+		close(fd);
+		print_error_message(main, "The file is a directory.");
+	}
 }

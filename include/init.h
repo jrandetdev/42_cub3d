@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/22 16:23:58 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/13 21:36:48 by jrandet          ###   ########.fr       */
+/*   Created: 2025/08/13 21:03:49 by jrandet           #+#    #+#             */
+/*   Updated: 2025/08/13 23:25:05 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef INIT_H
+# define INIT_H
 
-int	main(int argc, char **argv)
-{
-	t_main	main;
+typedef struct s_main t_main;
 
-	init_all(&main, argc, argv);
-	parsing(&main, argv[1]);
-	mlx_hook(main.mlx_win, 17, 0, handle_destroy, &main);
-	mlx_loop_hook(main.mlx_ptr, game_loop, &main);
-	mlx_loop(main.mlx_ptr);
-	return (0);
-}
+void	init_all(t_main *main, int argc, char **argv);
+void	init_args(t_main *main, int argc, char **argv);
+void	init_mlx(t_main *main);
+void	init_cub(t_main *main);
+void	init_img(t_main *main);
+
+#endif

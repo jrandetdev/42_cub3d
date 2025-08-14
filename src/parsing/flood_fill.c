@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:47 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/12 14:49:58 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/13 20:37:06 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	is_map_valid(t_main *main)
 		print_error_message(main, "Map too small, must be 3 x 3 minimum.");
 	ft_bzero(&parsing, sizeof(t_parsing));
 	if (!find_player_position(main, &x, &y, &parsing.player))
-		print_error_message(main, "Player not found.");
+		print_error_message(main, "Player not found in given map.");
 	parsing.map_height = main->map_struct.height;
 	parsing.map_width = main->map_struct.width;
 	parsing.map = copy_map(main->map_struct.map, &parsing);
