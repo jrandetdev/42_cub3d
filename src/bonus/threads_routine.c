@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 15:43:57 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/15 15:51:19 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/15 17:10:10 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	*is_this_the_end(t_main *main)
 	if (main->global_threads.is_end.value == 1)
 	{
 		pthread_mutex_unlock(&main->global_threads.is_end.mutex);
-			exit(EXIT_SUCCESS);
+			return (NULL);
 	}
 	pthread_mutex_unlock(&main->global_threads.is_end.mutex);
 	return (NULL);
