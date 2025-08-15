@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_menu_section.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:39 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/14 11:05:45 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:38:01 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static char	*get_letter(t_main *main, char letter, int i, int selected)
 	return (filename);
 }
 
-void	print_menu_section(t_main *main, t_menu_struct *param, char *str)
+void	print_menu_section(t_main *main, t_menu_display *display, char *str)
 {
 	int				x;
 	char			*filename;
@@ -50,17 +50,18 @@ void	print_menu_section(t_main *main, t_menu_struct *param, char *str)
 			x += 64;
 			continue ;
 		}
-		filename = get_letter(main, *str, param->idx, param->selection);
-		put_letter(main, param, filename, x);
+		filename = get_letter(main, *str, display->option_amount, display->option_selected);
+		printf("%c\n", str[0]);
+		put_letter(main, display, filename, x);
 		free(filename);
 		x += 48;
 		str++;
 	}
-	param->y += 64;
-	param->idx++;
+	display->y += 64;
+	display->option_amount++;
 }
 
-void	print_box(t_main *main, t_menu_struct *menu, int param, char *str)
+void	print_box(t_main *main, t_menu_display *menu, int param, char *str)
 {
 	int			x;
 	char		*filename;

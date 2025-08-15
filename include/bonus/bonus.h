@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:47:37 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/14 17:02:33 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:11:35 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*ft_charjoin(char const *s1, char const s2);
 void	print_correct_menu(t_main *main, int *menu);
 void	show_main_menu(t_main *main, int *main_menu);
 void	show_pause_menu(t_main *main, int *main_menu);
-void	menu_up_and_down(t_main *main, int *selection);
+void	menu_up_and_down(t_main *main, int *option_selected);
 void	show_mouse_sensitivity_menu(t_main *main, int *menu);
 void	print_menu_section(t_main *main, t_menu_display *param, char *str);
 void	print_box(t_main *main, t_menu_display *menu, int param, char *str);

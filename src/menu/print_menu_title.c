@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_menu_title.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:34 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/14 11:05:45 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:12:19 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	print_menu_title(t_main *main, char *str)
 {
 	int				x;
 	char			*filename;
-	t_menu_struct	param;
+	t_menu_display	param;
 
 	x = WIN_WIDTH / 2 - (ft_strlen(str) * 64 / 2);
 	param.y = 100;

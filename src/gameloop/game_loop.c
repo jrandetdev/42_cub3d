@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:06:37 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/14 22:20:30 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:16:49 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,8 @@ static void	backgroud_color(t_main *main)
 
 int	game_loop(t_main *main)
 {
-	// if (main->menu.current_menu)
-	// {
-	// 	print_correct_menu(main, &main->menu.current_menu);
-	// 	return (0);
-	// }
+	if (main->menu.current_menu)
+		return (print_correct_menu(main, &main->menu.current_menu), 0);
 	mlx_destroy_image(main->mlx_ptr, main->image.data_img);
 	init_img(main);
 	player_movement(main);

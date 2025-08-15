@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 22:51:41 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/14 23:50:16 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/15 16:00:32 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	safe_destroy_mutex(t_mutex *mutex)
 	// 	return ;
 	errno = pthread_mutex_destroy(&mutex->mutex);
 	if (errno)
-		print_error_and_skip("pthread_mutex_destroy failed"); //add strjoin for mutex name ?
+		print_error_and_skip("pthread_mutex_destroy failed");
 }
 
 static void	print_error_and_skip(char *error_message)
