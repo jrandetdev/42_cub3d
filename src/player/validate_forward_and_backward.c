@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:03:07 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/15 16:23:45 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:35:33 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,3 @@ void	valid_next_movement_down(t_main *main, float next_x, float next_y)
 		[(int)trunc(current_x)] == '3')
 		main->player.y = next_y;
 }
-
-
-
-

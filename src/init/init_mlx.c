@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 21:06:13 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/15 12:34:15 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:33:29 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	init_mlx_ptr(t_main *main)
 void	init_mmlx_window_and_mouse(t_main *main)
 {
 	main->mlx_win = mlx_new_window(main->mlx_ptr, WIN_WIDTH,
-				WIN_HEIGHT, "Cub3d");
+			WIN_HEIGHT, "Cub3d");
 	if (!main->mlx_win)
 		print_error_syscall(main, "Mlx window failed");
 	//mlx_mouse_hide(main->mlx_ptr, main->mlx_win);

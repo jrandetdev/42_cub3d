@@ -6,11 +6,11 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 20:22:47 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/14 20:23:22 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:37:48 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"cub3d.h"
+#include "cub3d.h"
 
 char	*max_strdup(const char *s1, int max_size)
 {

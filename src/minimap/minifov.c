@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:28:55 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/14 21:47:23 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:35:09 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	print_mini_vector_from_angle(t_main *main, float angle)
 {
-	float	magnitude;
+	float		magnitude;
 	t_vector	vector;
 
 	magnitude = sqrt(pow(main->map.height, 2)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_img.c                                         :+:      :+:    :+:   */
+/*   put_pixel_to_image.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:55:50 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/13 21:18:11 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:41:28 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@
  */
 void	put_pixel_to_image(t_main *main, int x, int y, int colour)
 {
-	unsigned char		*dst;
-	long				pixel_offset;
+	unsigned char	*dst;
+	long			pixel_offset;
 	t_image			*img;
 
 	img = &main->image;
