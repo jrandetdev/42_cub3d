@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:30:44 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/14 21:47:05 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:50:53 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ void	print_minimap(t_main *main)
 	else
 		init_minimap(main);
 	print_minimap_base(main);
-	// if (main->menu.display.current_menu.option.fov)
-	// 	print_minifov(main);
+	if (main->menu.option.fov)
+		print_minifov(main);
 	draw_player(main);
-	// if (main->menu.display.current_menu.option.show_minimap_grid)
-	// 	print_grid(main);
+	if (main->menu.option.show_minimap_grid)
+		print_grid(main);
 }
