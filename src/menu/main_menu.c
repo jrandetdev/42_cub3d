@@ -6,13 +6,14 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:55 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/15 16:11:35 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/15 17:54:14 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	option_selected(t_main *main, int *current_menu, int option_selected)
+static void	option_selected(t_main *main, int *current_menu,
+	int option_selected)
 {
 	main->interaction.keys.enter = 0;
 	if (option_selected == 0)
