@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 13:28:40 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/15 16:46:51 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/15 17:58:01 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ static void	creates_threads(t_main *main)
 		main->global_threads.thread[i].start = current_pos;
 		current_pos += segment;
 		main->global_threads.thread[i].end = current_pos;
-		errno = pthread_create(&main->global_threads.thread[i].thread_id, NULL
-				, threads_routine, &main->global_threads.thread[i]);
+		errno = pthread_create(&main->global_threads.thread[i].thread_id, NULL,
+				threads_routine, &main->global_threads.thread[i]);
 		if (errno)
 			print_error_syscall(main, "pthread_create failed");
 		i++;

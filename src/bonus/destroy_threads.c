@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 22:51:41 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/15 16:00:32 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/15 17:57:48 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	destroy_all_mutex(t_main *main)
 
 static void	safe_destroy_mutex(t_mutex *mutex)
 {
-	// if (!mutex->is_created) // KEEP IT OR NO ??
-	// 	return ;
+	if (!mutex->is_created)
+		return ;
 	errno = pthread_mutex_destroy(&mutex->mutex);
 	if (errno)
 		print_error_and_skip("pthread_mutex_destroy failed");
@@ -54,6 +54,6 @@ static void	print_error_and_skip(char *error_message)
 	print_error();
 	perror(error_message);
 	ft_putendl_fd("\033[0;33m""the program will continue to try"
-		" to release the rest of the resources correctly""\033[0m" ,2);
+		" to release the rest of the resources correctly""\033[0m", 2);
 	errno = 0;
 }
