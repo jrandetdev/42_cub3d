@@ -3,7 +3,7 @@
 *.a
 *.swp
 *.DS_Store
-cub3d
+cub3D
 *.swiftmodule
 *.swiftsourceinfo
 *.swiftinfo

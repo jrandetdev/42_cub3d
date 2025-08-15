@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:55 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/15 16:12:19 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/15 17:00:27 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ static void	option_selected(t_main *main, int *main_menu, int option_selected)
 {
 	main->interaction.keys.enter = 0;
 	if (option_selected == 0)
+	{
 		*(main_menu) = NO_MENU;
+	}
 	if (option_selected == 1)
 	{
 		*(main_menu) = OPTION_MENU;
