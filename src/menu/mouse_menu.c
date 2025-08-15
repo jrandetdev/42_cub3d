@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_menu.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:47 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/14 17:03:44 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:29:37 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	selection(t_main *main, int *menu, int selection, int *menu_title)
+static void	option_selected(t_main *main, int *menu, int option_selected, int *menu_title)
 {
 	main->interaction.keys.enter = 0;
-	if (selection == 0 && main->interaction.mouse.sensitivity < MAX_SENSITIVITY - 50)
+	if (option_selected == 0 && main->interaction.mouse.sensitivity < MAX_SENSITIVITY - 50)
 		main->interaction.mouse.sensitivity += 1;
-	else if (selection == 1 && main->interaction.mouse.sensitivity > MIN_SENSITIVITY)
+	else if (option_selected == 1 && main->interaction.mouse.sensitivity > MIN_SENSITIVITY)
 		main->interaction.mouse.sensitivity -= 1;
-	else if (selection == 2)
+	else if (option_selected == 2)
 	{
 		*(menu_title) = 0;
 		if (!main->game_start)
@@ -46,6 +46,7 @@ static void	print_current_sensitivity(t_main *main, int last_y)
 		menu_name = ft_strjoin("CURRENT SENSITIVTY ", sensitvity);
 	else
 		menu_name = ft_strjoin("CURRENT SENSITIVTY 0", sensitvity);
+	printf("%s\n", menu_name);
 	free(sensitvity);
 	if (!menu_name)
 		print_error_syscall(main, "malloc failed in print current seinsitvity");
@@ -53,12 +54,12 @@ static void	print_current_sensitivity(t_main *main, int last_y)
 	free(menu_name);
 }
 
-static void	print_minus_logo(t_main *main, int selection, int last_y)
+static void	print_minus_logo(t_main *main, int option_selected, int last_y)
 {
 	t_texture	logo;
 	char		*filename;
 
-	if (selection == 1)
+	if (option_selected == 1)
 		filename = "assets/fonts/logo/minus_gold.xpm";
 	else
 		filename = "assets/fonts/logo/minus_white.xpm";
@@ -70,12 +71,12 @@ static void	print_minus_logo(t_main *main, int selection, int last_y)
 	mlx_destroy_image(main->mlx_ptr, logo.ptr);
 }
 
-static void	print_plus_logo(t_main *main, int selection, int last_y)
+static void	print_plus_logo(t_main *main, int option_selected, int last_y)
 {
 	t_texture	logo;
 	char		*filename;
 
-	if (selection == 0)
+	if (option_selected == 0)
 		filename = "assets/fonts/logo/plus_gold.xpm";
 	else
 		filename = "assets/fonts/logo/plus_white.xpm";
@@ -94,19 +95,19 @@ void	show_mouse_sensitivity_menu(t_main *main, int *current_menu)
 	static int		menu_title = 0;
 
 	ft_bzero(&param, (sizeof(t_menu_display)));
-	param.menu_size = 3;
+	param.size = 3;
 	if (menu_title < 0)
 		menu_title = 2;
 	param.y = WIN_HEIGHT / 2 + WIN_HEIGHT / 5;
-	param.selection = (menu_title % param.menu_size);
+	param.option_selected = (menu_title % param.size);
 	print_menu_title(main, "MOUSE SENSITIVITY");
 	print_current_sensitivity(main, param.y);
-	print_minus_logo(main, param.selection, param.y);
-	print_plus_logo(main, param.selection, param.y);
+	print_minus_logo(main, param.option_selected, param.y);
+	print_plus_logo(main, param.option_selected, param.y);
 	param.option_amount = 2;
 	print_menu_section(main, &param, "RETURN");
 	if (main->interaction.keys.enter)
-		selection(main, current_menu, param.selection, &menu_title);
+		option_selected(main, current_menu, param.option_selected, &menu_title);
 	else if (main->interaction.keys.up || main->interaction.keys.down)
 		menu_up_and_down(main, &menu_title);
 }

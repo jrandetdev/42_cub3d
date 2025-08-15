@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:51 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/14 17:02:33 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:20:15 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ char	*ft_charjoin(char const *s1, char const s2)
 	return (result);
 }
 
-void	menu_up_and_down(t_main *main, int *selection)
+void	menu_up_and_down(t_main *main, int *option_selected)
 {
 	if (main->interaction.keys.up)
 	{
-		*(selection) -= 1;
+		*(option_selected) -= 1;
 		main->interaction.keys.up = 0;
 	}
 	else
 	{
-		*(selection) += 1;
+		*(option_selected) += 1;
 		main->interaction.keys.down = 0;
 	}
 }
@@ -50,7 +50,7 @@ void	put_letter(t_main *main, t_menu_display *params, char *file, int x)
 	letter.ptr = mlx_xpm_file_to_image(main->mlx_ptr, file,
 			&letter.width, &letter.height);
 	if (!letter.ptr)
-		print_error_syscall(main, "failed to load a letter int 'put_letter'");
+		print_error_syscall(main, "failed to load a letter in 'put_letter'");
 	mlx_put_image_to_window(main->mlx_ptr, main->mlx_win,
 		letter.ptr, x, params->y);
 	mlx_destroy_image(main->mlx_ptr, letter.ptr);

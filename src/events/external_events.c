@@ -3,34 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   external_events.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:52:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/15 12:33:54 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:30:01 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// int	mouse_move(int x, int y, t_main *main)
-// {
-// 	mlx_mouse_get_pos(main->mlx_ptr, main->mlx_win, &x, &y);
-// 	if (x != main->interaction.mouse.x)
-// 	{
-// 		if (x > main->interaction.mouse.x)
-// 			main->interaction.mouse.dist = (x - main->interaction.mouse.x)
-// 				/ (MAX_SENSITIVITY - main->interaction.mouse.sensitivity + 1);
-// 		else
-// 		{
-// 			main->interaction.mouse.dist = (main->interaction.mouse.x - x)
-// 				/ (MAX_SENSITIVITY - main->interaction.mouse.sensitivity + 1);
-// 			main->interaction.mouse.dist = -main->interaction.mouse.dist;
-// 		}
-// 		mlx_mouse_move(main->mlx_ptr, main->mlx_win,
-// 			WIN_WIDTH / 2, WIN_HEIGHT / 2);
-// 	}
-// 	return (0);
-// }
+int	mouse_move(int x, int y, t_main *main)
+{
+	mlx_mouse_get_pos(main->mlx_ptr, main->mlx_win, &x, &y);
+	if (x != main->interaction.mouse.x)
+	{
+		if (x > main->interaction.mouse.x)
+			main->interaction.mouse.dist = (x - main->interaction.mouse.x)
+				/ (MAX_SENSITIVITY - main->interaction.mouse.sensitivity + 1);
+		else
+		{
+			main->interaction.mouse.dist = (main->interaction.mouse.x - x)
+				/ (MAX_SENSITIVITY - main->interaction.mouse.sensitivity + 1);
+			main->interaction.mouse.dist = -main->interaction.mouse.dist;
+		}
+		mlx_mouse_move(main->mlx_ptr, main->mlx_win,
+			WIN_WIDTH / 2, WIN_HEIGHT / 2);
+	}
+	return (0);
+}
 
 static void	key_hit(int keycode, t_main *main)
 {
@@ -40,13 +40,13 @@ static void	key_hit(int keycode, t_main *main)
 		main->interaction.keys.g = !main->interaction.keys.g;
 	else if (keycode == K_M)
 		main->interaction.keys.m = !main->interaction.keys.m;
-	// else if (keycode == K_P && main->game_start && !main->menu.current_menu)
-	// {
-	// 	mlx_clear_window(main->mlx_ptr, main->mlx_win);
-	// 	main->menu.current_menu = PAUSE_MENU;
-	// }
-	// else if (keycode == K_P && main->game_start && main->menu.current_menu > 0)
-	// 	main->menu.current_menu = NO_MENU;
+	else if (keycode == K_P && main->game_start && !main->menu.current_menu)
+	{
+		mlx_clear_window(main->mlx_ptr, main->mlx_win);
+		main->menu.current_menu = PAUSE_MENU;
+	}
+	else if (keycode == K_P && main->game_start && main->menu.current_menu > 0)
+		main->menu.current_menu = NO_MENU;
 }
 
 static int	key_pressed(int keycode, t_main *main)
@@ -109,5 +109,5 @@ void	init_external_events(t_main *main)
 	mlx_hook(main->mlx_win, 17, 0, handle_destroy, main);
 	mlx_hook(main->mlx_win, ON_KEYDOWN, 1L << 0, key_pressed, main);
 	mlx_hook(main->mlx_win, ON_KEYUP, 1L << 1, key_released, main);
-	//mlx_hook(main->mlx_win, ON_MOUSEMOVE, 1L << 6, mouse_move, main);
+	mlx_hook(main->mlx_win, ON_MOUSEMOVE, 1L << 6, mouse_move, main);
 }
