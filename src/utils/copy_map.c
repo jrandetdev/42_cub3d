@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_mlx.c                                         :+:      :+:    :+:   */
+/*   copy_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/13 21:06:13 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/15 12:34:15 by jrandet          ###   ########.fr       */
+/*   Created: 2025/08/15 13:29:38 by jrandet           #+#    #+#             */
+/*   Updated: 2025/08/15 13:33:38 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_mlx_ptr(t_main *main)
+char	**copy_map(t_map *map)
 {
-	main->mlx_ptr = mlx_init();
-	if (!main->mlx_ptr)
-		print_error_syscall(main, "Mlx init failed.");
-}
+	int			i;
+	int			j;
+	char		**new_map;
 
-void	init_mmlx_window_and_mouse(t_main *main)
-{
-	main->mlx_win = mlx_new_window(main->mlx_ptr, WIN_WIDTH,
-				WIN_HEIGHT, "Cub3d");
-	if (!main->mlx_win)
-		print_error_syscall(main, "Mlx window failed");
-	//mlx_mouse_hide(main->mlx_ptr, main->mlx_win);
-	errno = 0;
+	i = 0;
+	j = 0;
+	new_map = ft_calloc(map->height + 1, sizeof(char *));
+	if (!new_map)
+		return (NULL);
+	while (map->array[i])
+	{
+		new_map[j] = max_strdup(map->array[i++], map->width);
+		if (!new_map[j])
+		{
+			safe_free_tab((void ***)&new_map);
+			return (NULL);
+		}
+		j++;
+	}
+	return (new_map);
 }

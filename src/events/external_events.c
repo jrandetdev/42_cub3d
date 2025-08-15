@@ -6,31 +6,31 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:52:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/14 23:20:09 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 12:33:54 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	mouse_move(int x, int y, t_main *main)
-{
-	mlx_mouse_get_pos(main->mlx_ptr, main->mlx_win, &x, &y);
-	if (x != main->interaction.mouse.x)
-	{
-		if (x > main->interaction.mouse.x)
-			main->interaction.mouse.dist = (x - main->interaction.mouse.x)
-				/ (MAX_SENSITIVITY - main->interaction.mouse.sensitivity + 1);
-		else
-		{
-			main->interaction.mouse.dist = (main->interaction.mouse.x - x)
-				/ (MAX_SENSITIVITY - main->interaction.mouse.sensitivity + 1);
-			main->interaction.mouse.dist = -main->interaction.mouse.dist;
-		}
-		mlx_mouse_move(main->mlx_ptr, main->mlx_win,
-			WIN_WIDTH / 2, WIN_HEIGHT / 2);
-	}
-	return (0);
-}
+// int	mouse_move(int x, int y, t_main *main)
+// {
+// 	mlx_mouse_get_pos(main->mlx_ptr, main->mlx_win, &x, &y);
+// 	if (x != main->interaction.mouse.x)
+// 	{
+// 		if (x > main->interaction.mouse.x)
+// 			main->interaction.mouse.dist = (x - main->interaction.mouse.x)
+// 				/ (MAX_SENSITIVITY - main->interaction.mouse.sensitivity + 1);
+// 		else
+// 		{
+// 			main->interaction.mouse.dist = (main->interaction.mouse.x - x)
+// 				/ (MAX_SENSITIVITY - main->interaction.mouse.sensitivity + 1);
+// 			main->interaction.mouse.dist = -main->interaction.mouse.dist;
+// 		}
+// 		mlx_mouse_move(main->mlx_ptr, main->mlx_win,
+// 			WIN_WIDTH / 2, WIN_HEIGHT / 2);
+// 	}
+// 	return (0);
+// }
 
 static void	key_hit(int keycode, t_main *main)
 {
@@ -109,5 +109,5 @@ void	init_external_events(t_main *main)
 	mlx_hook(main->mlx_win, 17, 0, handle_destroy, main);
 	mlx_hook(main->mlx_win, ON_KEYDOWN, 1L << 0, key_pressed, main);
 	mlx_hook(main->mlx_win, ON_KEYUP, 1L << 1, key_released, main);
-	mlx_hook(main->mlx_win, ON_MOUSEMOVE, 1L << 6, mouse_move, main);
+	//mlx_hook(main->mlx_win, ON_MOUSEMOVE, 1L << 6, mouse_move, main);
 }

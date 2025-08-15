@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:49:05 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/14 23:33:37 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 14:27:23 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,8 +126,8 @@ enum e_keys
 #  define FOV 75
 #  define PLAYER_SPEED 0.08
 #  define ROTATION_SPEED 0.04
-#  define WIN_WIDTH 1920
-#  define WIN_HEIGHT 1080
+#  define WIN_WIDTH 3850
+#  define WIN_HEIGHT 2100
 
 # endif
 

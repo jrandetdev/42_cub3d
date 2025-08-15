@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 20:40:25 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/14 21:53:04 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 14:10:14 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 # define PARSING_H
 
 typedef struct s_main t_main;
+
+typedef struct	s_flood_fill
+{
+	bool	is_invalid;
+	int		height;
+	int		width;
+	char	**map;
+}				t_flood_fill;
 
 void		parsing(t_main *main, char *file);
 void		check_if_file_is_dir(t_main *main, char *file_relative_path);
@@ -30,7 +38,7 @@ bool		find_player_position(t_main *main, int *x, int *y, int *player);
 char		*max_strdup(const char *s1, int max_size);
 void		check_if_map_is_valid(t_main *main);
 void		extract_map_from_file(t_main *main, char **file_cont);
-void		flood_fill(t_main *main, t_map *map, int x, int y);
+void		ft_flood_fill(t_main *main, t_flood_fill *flood_fill, int x, int y);
 void		extract_colour(t_main *main, char *id, char *info);
 void		extract_texture(t_main *main, char *id, char *xpm_f);
 void		get_texture_data(t_main *main, t_texture *direc, char *xpm_file);

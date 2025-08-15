@@ -6,61 +6,53 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 21:14:56 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/14 21:45:08 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 14:24:06 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	perform_checks_on_position(t_map *map, int x, int y);
+static void	perform_checks(t_flood_fill	*flood_fill, int x, int y);
 static bool	verify_door_position(char **map, int x, int y);
-static void	handle_invalid_map(t_map *map, char *message);
+static void	check_all_directions(t_main *main, t_flood_fill *ff, int x, int y);
+static void	handle_invalid_map(t_flood_fill *flood_fill, char *message);
 
-void	flood_fill(t_main *main, t_map *map, int x, int y)
+void	ft_flood_fill(t_main *main, t_flood_fill *flood_fill, int x, int y)
 {
-	if (map->is_invalid)
+	if (flood_fill->is_invalid == true)
 		return ;
-	perform_checks_on_position(map, x, y);
-	if (map->array[y][x] == '1' || map->array[y][x] == 'V')
+	perform_checks(flood_fill, x, y);
+	if (flood_fill->map[y][x] == '1' || flood_fill->map[y][x] == 'V')
 		return ;
-	if (map->array[y][x] == DO || map->array[y][x] == DC)
+	if (flood_fill->map[y][x] == DO || flood_fill->map[y][x] == DC)
 	{
-		if (!verify_door_position(map->array, x, y))
-			return ;
+		if (!verify_door_position(flood_fill->map, x, y))
+			flood_fill->is_invalid = true;
 	}
-	map->array[y][x] = 'V';
-	if (map->is_invalid == true)
-		return ;
-	flood_fill(main, map, x + 1, y);
-	flood_fill(main, map, x, y + 1);
-	flood_fill(main, map, x - 1, y);
-	flood_fill(main, map, x, y - 1);
-	flood_fill(main, map, x + 1, y + 1);
-	flood_fill(main, map, x - 1, y - 1);
-	flood_fill(main, map, x + 1, y - 1);
-	flood_fill(main, map, x - 1, y + 1);
+	flood_fill->map[y][x] = 'V';
+	check_all_directions(main, flood_fill, x, y);
 }
 
-static void	perform_checks_on_position(t_map *map, int x, int y)
+static void	perform_checks(t_flood_fill	*flood_fill, int x, int y)
 {
-		if (x < 0 || y < 0)
+	if (x < 0 || y < 0)
 	{
-		handle_invalid_map(map, "Map cannot have negative values");
+		handle_invalid_map(flood_fill, "Map cannot have negative values");
 		return ;
 	}
-	if (y >= map->height || x >= map->width)
+	if (y >= flood_fill->height || x >= flood_fill->width)
 	{
-		handle_invalid_map(map, "Player can escape map.");
+		handle_invalid_map(flood_fill, "Player can escape map.");
 		return ;
 	}
-	if (map->array[y][x] == ' ' || map->array[y][x] == '\t')
+	if (flood_fill->map[y][x] == ' ' || flood_fill->map[y][x] == '\t')
 	{
-		handle_invalid_map(map, "Map contains spaces and is not enclosed.");
+		handle_invalid_map(flood_fill, "Map contains spaces or tabs.");
 		return ;
 	}
-	if (map->array[y][x] == '\0')
+	if (flood_fill->map[y][x] == '\0')
 	{
-		handle_invalid_map(map, "Map contains null characters.");
+		handle_invalid_map(flood_fill, "Map contains null characters.");
 		return ;
 	}
 }
@@ -73,9 +65,21 @@ static bool	verify_door_position(char **map, int x, int y)
 	return (false);
 }
 
-static void	handle_invalid_map(t_map *map, char *message)
+static void	check_all_directions(t_main *main, t_flood_fill *ff, int x, int y)
 {
-	map->is_invalid = true;
+	ft_flood_fill(main, ff, x + 1, y);
+	ft_flood_fill(main, ff, x, y + 1);
+	ft_flood_fill(main, ff, x - 1, y);
+	ft_flood_fill(main, ff, x, y - 1);
+	ft_flood_fill(main, ff, x + 1, y + 1);
+	ft_flood_fill(main, ff, x - 1, y - 1);
+	ft_flood_fill(main, ff, x + 1, y - 1);
+	ft_flood_fill(main, ff, x - 1, y + 1);
+}
+
+static void	handle_invalid_map(t_flood_fill *flood_fill, char *message)
+{
+	flood_fill->is_invalid = true;
 	print_error();
 	ft_putendl_fd(message, 2);
 }

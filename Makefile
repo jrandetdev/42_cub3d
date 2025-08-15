@@ -132,6 +132,7 @@ SRC_UTILS		=			vector.c \
 							string_array_len.c \
 							exit_cub3d.c \
 							get_next_line.c \
+							copy_map.c \
 							get_next_line_utils.c \
 							is_only_spaces.c \
 							max_strdup.c \
