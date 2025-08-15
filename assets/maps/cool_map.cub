@@ -1,7 +1,7 @@
-NO ./assets/textures/nord_wall.xpm
+NO ./assets/textures/north_wall.xpm
 SO ./assets/textures/south_wall.xpm
 WE ./assets/textures/west_wall.xpm
-EA ./assets/textures/est_wall.xpm
+EA ./assets/textures/east_wall.xpm
 
 F ./assets/textures/wood_ceiling.xpm
 C ./assets/textures/grip_ceiling.xpm
@@ -17,7 +17,7 @@ C ./assets/textures/grip_ceiling.xpm
 11110121111111011101210010001
 11000000110101011100000010001
 10000000000000000000000000001
-10000000000000 00000000000001
+10000000000000000000000000001
 10000000000000001101010010001
 11000001110101011111011110001111
 11110111 1110101 101111010001

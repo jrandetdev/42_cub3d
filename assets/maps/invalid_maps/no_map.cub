@@ -1,7 +1,7 @@
-NO ./assets/textures/Brick_Wall_Cracked.xpm
-SO ./assets/textures/Brick_Wall.xpm
-WE ./assets/textures/Green_Wall_Rock.xpm
-EA ./assets/textures/Rocky_Road.xpm
+NO ./assets/textures/brushed-metal-north.xpm
+SO ./assets/textures/brushed-metal-south.xpm
+WE ./assets/textures/brushed-metal-west.xpm
+EA ./assets/textures/brushed-metal-east.xpm
 
 F 200,10,50
 C 225,30,10

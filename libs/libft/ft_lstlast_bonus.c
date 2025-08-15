@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 14:57:08 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/16 17:50:37 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 17:19:31 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,3 @@ t_list	*ft_lstlast(t_list *lst)
 		lst = lst->next;
 	return (lst);
 }
-
-/*int main()
-{
-	t_list *lst;
-
-	lst = NULL;
-	for (int i = 0; i < 3; i++)
-		ft_lstadd_back(&lst, ft_lstnew(NULL));
-	printf("the current adress in lst is %p\n", lst);
-	printf("the list is complete, the last node's add is %p\n", ft_lstlast(lst));
-
-	return (0);
-}*/

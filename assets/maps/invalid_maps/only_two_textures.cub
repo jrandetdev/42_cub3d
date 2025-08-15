@@ -1,5 +1,5 @@
-NO ./assets/textures/Brick_Wall_Cracked.xpm
-SO ./assets/textures/Brick_Wall.xpm
+NO ./assets/textures/brushed-metal-north.xpm
+SO ./assets/textures/brushed-metal-south.xpm
 
 F 220,100,0
 C 225,30,0

@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 15:09:11 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/16 17:50:37 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 17:19:27 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,3 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 	del(lst->content);
 	free(lst);
 }
-
-/*int main()
-{
-	t_list *lst;
-	t_list *el;
-
-	lst = NULL;
-	for (int i = 0; i < 3; i++)
-		ft_lstadd_back(&lst, ft_lstnew(malloc(42)));
-	printf("the length of the chained list is %d\n", ft_lstsize(lst));
-
-	el = lst->next;
-	lst->next = el->next;
-	ft_lstdelone(el, &free);
-	printf("the length of the chained list is %d\n", ft_lstsize(lst));
-
-	return (0);
-}*/

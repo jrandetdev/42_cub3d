@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 13:06:42 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/16 17:50:37 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 17:19:17 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,3 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		temp = temp->next;
 	temp->next = new;
 }
-
-/*int main()
-{
-	t_list *lst;
-
-	lst = NULL;
-	for (int d = 0; d < 5; d++)
-		ft_lstadd_back(&lst, ft_lstnew(NULL));
-	printf("the size of the linked chain is %d\n", ft_lstsize(lst));
-
-	return (0);
-}*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_menu_section.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:39 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/15 16:38:01 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/15 17:17:04 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	print_menu_section(t_main *main, t_menu_display *display, char *str)
 			continue ;
 		}
 		filename = get_letter(main, *str, display->option_amount, display->option_selected);
-		printf("%c\n", str[0]);
 		put_letter(main, display, filename, x);
 		free(filename);
 		x += 48;

@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:53:24 by jrandet           #+#    #+#             */
-/*   Updated: 2025/06/16 17:50:37 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 17:19:40 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,3 @@ t_list	*ft_lstnew(void *content)
 	new->next = NULL;
 	return (new);
 }
-
-/*int main( )
-{
-	int a;
-	int *tmp;
-
-	a = 42;
-	t_list	*element = ft_lstnew(&a);
-	tmp = element->content;
-	printf(" new content %d as we passed the value 42.\n", *(tmp));
-
-	return (0);
-}*/

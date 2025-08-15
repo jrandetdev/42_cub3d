@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 10:39:24 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/08 16:03:03 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/15 17:19:35 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,46 +73,3 @@ t_list	*ft_lstmap(t_list *head, void *(*f)(void *), void (*del)(void *))
 	}
 	return (new_head);
 }
-
-/*void *triple_int(void *content)
-{
-	int *result;
-
-	result = malloc(sizeof(int));
-	if (result == NULL)
-		return (NULL);
-	*result = (*(int *)content) * 3;
-	return (result);
-}
-
-int main()
-{
-	t_list	*head = NULL;
-	t_list	*mapped_head;
-	t_list	*current;
-	int *n;
-
-	for (int i = 0; i < 3; i++)
-	{
-		n = malloc(sizeof(int));
-		*n = i + 2;
-		ft_lstadd_front(&head, ft_lstnew(n));
-	}
-	current = head;
-	while (current)
-	{
-		printf("the content of the node is %d\n", *(int *)current->content);
-		current = current->next;
-	}
-	mapped_head = ft_lstmap(head, triple_int, free);
-	current = mapped_head;
-	while (current)
-	{
-		printf("the content of the node is %d\n", *(int *)current->content);
-		current = current->next;
-	}
-	ft_lstclear(&head, free);
-	ft_lstclear(&mapped_head, free);
-	
-	return (0);
-}*/

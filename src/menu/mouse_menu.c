@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_menu.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:47 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/15 16:29:37 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/15 17:16:31 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static void	print_current_sensitivity(t_main *main, int last_y)
 		menu_name = ft_strjoin("CURRENT SENSITIVTY ", sensitvity);
 	else
 		menu_name = ft_strjoin("CURRENT SENSITIVTY 0", sensitvity);
-	printf("%s\n", menu_name);
 	free(sensitvity);
 	if (!menu_name)
 		print_error_syscall(main, "malloc failed in print current seinsitvity");

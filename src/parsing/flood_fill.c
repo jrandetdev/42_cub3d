@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 21:14:56 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/15 14:24:06 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 17:15:05 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,14 @@ static void	perform_checks(t_flood_fill	*flood_fill, int x, int y)
 		handle_invalid_map(flood_fill, "Player can escape map.");
 		return ;
 	}
-	if (flood_fill->map[y][x] == ' ' || flood_fill->map[y][x] == '\t')
+	if (flood_fill->map[y][x] == ' ')
 	{
-		handle_invalid_map(flood_fill, "Map contains spaces or tabs.");
+		handle_invalid_map(flood_fill, "Map contains a space char.");
+		return ;
+	}
+	if (flood_fill->map[y][x] == '\t')
+	{
+		handle_invalid_map(flood_fill, "Map contains a tab char..");
 		return ;
 	}
 	if (flood_fill->map[y][x] == '\0')
