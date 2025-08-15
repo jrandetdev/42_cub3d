@@ -3,22 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:54:48 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/15 15:38:36 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/15 16:20:00 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
-
-# include "assets.h"
+# include "graphics.h"
 # include "dda.h"
 # include "bonus_struct.h"
 # include "threads.h"
 
-typedef struct s_image t_image;
+typedef struct s_image	t_image;
 
 /*---------------------------------- ENUM ------------------------------------*/
 enum e_start_angle
@@ -28,7 +27,6 @@ enum e_start_angle
 	S = 180,
 	W = 270,
 };
-
 
 typedef struct s_map
 {
@@ -47,7 +45,6 @@ typedef struct s_minimap
 	int	map_size_x;
 	int	map_size_y;
 }		t_minimap;
-
 
 typedef struct s_params
 {
@@ -87,7 +84,6 @@ typedef struct s_player
 	char	*cardinal_direction;
 }			t_player;
 
-
 typedef struct s_guide
 {
 	int		texture_x;
@@ -104,7 +100,6 @@ typedef struct s_guide
 	int		floor_grid_x;
 	int		floor_grid_y;
 }			t_guide;
-
 
 typedef struct s_keys
 {
@@ -156,6 +151,5 @@ typedef struct s_main
 	t_menu				menu;
 	t_global_threads	global_threads;
 }						t_main;
-
 
 #endif

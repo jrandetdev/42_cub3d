@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 20:08:53 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/15 14:25:31 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:12:46 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ void	check_if_map_is_valid(t_main *main)
 	ft_flood_fill(main, &flood_fill, x, y);
 	safe_free_tab((void ***)&flood_fill.map);
 	if (map->is_invalid)
-	 	exit_cub3d(main, EXIT_FAILURE);
+		exit_cub3d(main, EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:21:10 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/14 21:50:43 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:10:51 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	fill_map_array(t_main *main, int width, char **file_content);
 
 void	extract_map_from_file(t_main *main, char **file_cont)
 {
-	t_map *map;
+	t_map	*map;
 
 	map = &main->map;
 	get_map_dimensions(main, map, file_cont);

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:24:35 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/13 15:36:15 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/15 16:03:56 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	print_error()
+void	print_error(void)
 {
 	printf("\033[0;31m");
 	printf("Error\n");

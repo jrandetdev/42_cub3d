@@ -6,12 +6,12 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:49:05 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/15 14:27:23 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:05:54 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARAMETER_H
-# define PARAMETER_H
+#ifndef EVENTS_H
+# define EVENTS_H
 
 # include "cub3d.h"
 # if defined (__linux__)

@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:47:04 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/14 20:29:02 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:19:47 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # include <string.h>
 # include <stdbool.h>
 # include "init.h"
-# include "struct.h"
 # include "../libft.h"
 # include "../bonus/bonus.h"
 # include "../game/player.h"
@@ -36,7 +35,7 @@
 # include "../parsing/parsing.h"
 # include "../graphics/minimap.h"
 # include "../utils/utils.h"
-# include "../graphics/assets.h"
+# include "../graphics/graphics.h"
 
 # define RED	"\x1b[31;1m"
 # define GREEN	"\x1b[32;1m"
@@ -55,7 +54,6 @@
 #  define M_PI 3.14159265358979323846
 # endif
 
-
 int			game_loop(t_main *main);
 void		init_img(t_main *main);
 void		put_pixel_to_image(t_main *main, int x, int y, int colour);
@@ -67,7 +65,7 @@ void		init_external_events(t_main *main);
 void		draw_texture(t_main *main, t_dda *dda, int x,
 				t_texture texture);
 t_texture	get_corresp_texture(t_main *main, t_dda *dda);
-void		print_error();
+void		print_error(void);
 void		print_error_syscall(t_main *main, char *error_message);
 void		print_error_message(t_main *main, char *error_message);
 int			has_new_line(char *buffer);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   extract_file_elements.c                                 :+:      :+:    :+:   */
+/*   extract_file_content.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/07 15:34:57 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/13 22:05:36 by jrandet          ###   ########.fr       */
+/*   Created: 2025/08/15 16:13:43 by jrandet           #+#    #+#             */
+/*   Updated: 2025/08/15 16:13:57 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	prepare_file_buffer(t_main *main, char *file, char ***fc);
 static void	count_file_lines(t_main *main, char *file, int *line_counter);
-static void	open_and_fill_buffer(t_main *main, char *file, char ***file_content);
-static bool	fill_buffer(char ***file_content, int fd);
+static void	open_and_fill_buffer(t_main *main, char *file, char ***fc);
+static bool	fill_buffer(char ***fc, int fd);
 
 void	extract_file_elements(t_main *main, char *file, char ***fc)
 {
@@ -27,7 +27,7 @@ void	extract_file_elements(t_main *main, char *file, char ***fc)
 static void	prepare_file_buffer(t_main *main, char *file, char ***fc)
 {
 	int		line_counter;
-	
+
 	count_file_lines(main, file, &line_counter);
 	*fc = ft_calloc(line_counter + 1, sizeof(char *));
 	if (!(*fc))
@@ -57,26 +57,26 @@ static void	count_file_lines(t_main *main, char *file, int *line_counter)
 	close (fd);
 }
 
-static void	open_and_fill_buffer(t_main *main, char *file, char ***file_content)
+static void	open_and_fill_buffer(t_main *main, char *file, char ***fc)
 {
 	int		fd;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{
-		free_string_array(file_content);
+		free_string_array(fc);
 		print_error_syscall(main, "Open failed in extract_file_elements");
 	}
-	if (!fill_buffer(file_content, fd))
+	if (!fill_buffer(fc, fd))
 	{
 		close(fd);
-		free_string_array(file_content);
+		free_string_array(fc);
 		print_error_syscall(main, "Malloc failed in fill parse buffer.");
 	}
 	close(fd);
 }
 
-static bool	fill_buffer(char ***file_content, int fd)
+static bool	fill_buffer(char ***fc, int fd)
 {
 	char	*line;
 	int		i;
@@ -90,11 +90,11 @@ static bool	fill_buffer(char ***file_content, int fd)
 		null_terminate_line(&line);
 		if (!is_only_space(line) || (i > 5 && is_only_space(line)))
 		{
-			(*file_content)[i] = ft_strdup(line);
-			if (!(*file_content)[i])
+			(*fc)[i] = ft_strdup(line);
+			if (!(*fc)[i])
 			{
 				free(line);
-				free_string_array(file_content);
+				free_string_array(fc);
 				return (false);
 			}
 			i++;

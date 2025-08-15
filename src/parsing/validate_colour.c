@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:20:06 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/13 20:16:40 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:14:30 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ bool	is_valid_colour(t_main *main, char **splitted_colours)
 		if (!is_only_digit(splitted_colours[i]))
 		{
 			free_string_array(&splitted_colours);
-			print_error_message(main, "Colour contains other characters than digits");
+			print_error_message(main, "Colour can only be digits");
 		}
 		if (!is_in_char_range(splitted_colours[i]))
 		{

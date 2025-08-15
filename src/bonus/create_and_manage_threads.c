@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_and_manage_threads.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 13:28:40 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/15 15:52:25 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/15 16:18:06 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	init_mutex(t_main *main, t_mutex *mutex)
 {
 	errno = pthread_mutex_init(&mutex->mutex, NULL);
 	if (errno)
-		print_error_syscall(main, "pthreads_mutex_init failed"); //add strjoin for mutex name ?
+		print_error_syscall(main, "pthreads_mutex_init failed");
 	(*mutex).value = 0;
 	(*mutex).is_created = 1;
 }

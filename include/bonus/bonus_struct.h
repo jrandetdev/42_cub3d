@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:09:52 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/14 17:23:50 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:32:02 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_bonus
 typedef struct s_door
 {
 	int		state;
-	float	opening_pourcent;
+	float	open_percent;
 	int		pos_x;
 	int		pos_y;
 }	t_door;
@@ -68,7 +68,6 @@ typedef struct s_menu_display
 	char	*top_menu_title;
 	char	**menu_sections;
 }	t_menu_display;
-
 
 typedef struct s_menu_options
 {

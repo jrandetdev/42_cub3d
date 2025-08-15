@@ -6,13 +6,13 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 22:56:46 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/13 22:57:37 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:13:00 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void check_for_tabs(t_main *main, char **file_content)
+void	check_for_tabs(t_main *main, char **file_content)
 {
 	int	i;
 	int	j;

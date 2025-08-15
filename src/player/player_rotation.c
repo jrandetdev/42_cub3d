@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 19:38:43 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/15 12:24:35 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:24:08 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ static void	apply_player_rotation(t_main *main, float rotation_speed)
 	float	old_dir_x;
 
 	old_dir_x = main->player.dir_x;
-	printf("R dir x %f\n", main->player.dir_x);
-	printf("R dir y %f\n", main->player.dir_y);
 	main->player.dir_x = main->player.dir_x * cos(rotation_speed)
 		- main->player.dir_y * sin(rotation_speed);
 	main->player.dir_y = old_dir_x * sin(rotation_speed)

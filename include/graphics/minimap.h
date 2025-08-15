@@ -6,15 +6,15 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 20:44:20 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/13 20:47:15 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:07:45 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIMAP_H
 # define MINIMAP_H
 
-typedef struct s_vector t_vector;
-typedef struct s_main t_main;
+typedef struct s_vector	t_vector;
+typedef struct s_main	t_main;
 
 void		print_grid(t_main *main);
 void		draw_player(t_main *main);

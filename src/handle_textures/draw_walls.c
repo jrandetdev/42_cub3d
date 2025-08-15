@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:29:29 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/14 17:29:02 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 16:32:02 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ static	int	get_hit_position(t_main *main, t_dda *dda,
 	{
 		if (dda->door_hit_percentage <= 0.5)
 			p->texture_x = ((width_pourcentage
-						+ main->assets.door.opening_pourcent / 2) * texture.width);
+						+ main->assets.door.open_percent / 2) * texture.width);
 		if (dda->door_hit_percentage > 0.5)
 			p->texture_x = ((width_pourcentage
-						- main->assets.door.opening_pourcent / 2) * texture.width);
+						- main->assets.door.open_percent / 2) * texture.width);
 	}
 	else
 		p->texture_x = (width_pourcentage * texture.width);

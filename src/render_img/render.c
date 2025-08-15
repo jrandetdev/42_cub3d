@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:55:18 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/15 15:49:18 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/15 16:28:45 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ void	cast_rays(t_main *main)
 
 	x = 0;
 	pre_compute(main);
+	if (BONUS == 1 && N_THREAD >= 1)
+	{
+		start_multi_threads_render(main);
+		return ;
+	}
 	while (x < WIN_WIDTH)
 	{
 		ft_bzero(&dda, sizeof(t_dda));
