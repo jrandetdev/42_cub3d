@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 16:13:43 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/15 16:13:57 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 19:22:59 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ static void	prepare_file_buffer(t_main *main, char *file, char ***fc)
 	int		line_counter;
 
 	count_file_lines(main, file, &line_counter);
+	if (line_counter == 0)
+		print_error_message(main, "File is empty.");
+	if (line_counter <= 6)
+		print_error_message(main, "No map description.");
 	*fc = ft_calloc(line_counter + 1, sizeof(char *));
 	if (!(*fc))
 		print_error_syscall(main, "Malloc failed in extract_file_elements.");

@@ -6,13 +6,13 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 15:43:57 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/15 18:04:33 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 18:13:57 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	*is_this_the_end(t_main *main);
+static bool	is_this_the_end(t_main *main);
 
 void	*threads_routine(void *data)
 {
@@ -21,9 +21,8 @@ void	*threads_routine(void *data)
 
 	thread = (t_thread *)data;
 	main = thread->main;
-	while (1)
+	while (!is_this_the_end(main))
 	{
-		is_this_the_end(main);
 		pthread_mutex_lock(&main->global_threads.is_render.mutex);
 		if (main->global_threads.is_render.value == 1)
 		{
@@ -41,16 +40,17 @@ void	*threads_routine(void *data)
 		pthread_mutex_unlock(&main->global_threads.is_render.mutex);
 		usleep(50);
 	}
+	return (NULL);
 }
 
-static void	*is_this_the_end(t_main *main)
+static bool	is_this_the_end(t_main *main)
 {
 	pthread_mutex_lock(&main->global_threads.is_end.mutex);
 	if (main->global_threads.is_end.value == 1)
 	{
 		pthread_mutex_unlock(&main->global_threads.is_end.mutex);
-		return (NULL);
+		return (true);
 	}
 	pthread_mutex_unlock(&main->global_threads.is_end.mutex);
-	return (NULL);
+	return (false);
 }

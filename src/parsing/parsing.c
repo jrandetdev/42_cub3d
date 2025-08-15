@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:21:06 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/14 20:24:39 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 18:46:58 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 void	parsing(t_main *main, char *file)
 {
-	char	**file_content;
+	t_parsing	*parsing;
 
+	parsing = &main->parsing;
 	check_if_file_is_dir(main, file);
-	extract_file_elements(main, file, &file_content);
-	extract_colour_and_texture(main, file_content);
-	extract_map_from_file(main, file_content);
-	free_string_array(&file_content);
+	extract_file_elements(main, file, &parsing->file_content);
+	extract_colour_and_texture(main, parsing->file_content);
+	extract_map_from_file(main, parsing->file_content);
+	free_string_array(&parsing->file_content);
 	check_if_map_is_valid(main);
 }

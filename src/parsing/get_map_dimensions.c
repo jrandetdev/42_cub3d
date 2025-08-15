@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 20:36:57 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/15 16:14:40 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 19:08:49 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ void	get_map_dimensions(t_main *main, t_map *map, char **file_cont)
 	map->width = get_map_width(file_cont);
 	if (map->width > 200)
 		print_error_message(main, "Map cannot be more than 200 col wide");
+	if (map->height < 3)
+		print_error_message(main, "Map cannot be smaller than 3 lines high");
+	map->width = get_map_width(file_cont);
+	if (map->width < 3)
+		print_error_message(main, "Map cannot be smaller than 3 col wide");
 }
 
 static int	get_map_height(char **file)

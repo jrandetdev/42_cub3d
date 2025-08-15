@@ -6,13 +6,13 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 21:14:56 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/15 17:15:05 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 19:25:12 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	perform_checks(t_flood_fill	*flood_fill, int x, int y);
+static bool	perform_checks(t_flood_fill	*flood_fill, int x, int y);
 static bool	verify_door_position(char **map, int x, int y);
 static void	check_all_directions(t_main *main, t_flood_fill *ff, int x, int y);
 static void	handle_invalid_map(t_flood_fill *flood_fill, char *message);
@@ -21,7 +21,13 @@ void	ft_flood_fill(t_main *main, t_flood_fill *flood_fill, int x, int y)
 {
 	if (flood_fill->is_invalid == true)
 		return ;
-	perform_checks(flood_fill, x, y);
+	if (!flood_fill->map || !flood_fill->map[y] || !flood_fill->map[y][x])
+	{
+		handle_invalid_map(flood_fill, "Invalid map pointer");
+		return ;
+	}
+	if (!perform_checks(flood_fill, x, y))
+		return ;
 	if (flood_fill->map[y][x] == '1' || flood_fill->map[y][x] == 'V')
 		return ;
 	if (flood_fill->map[y][x] == DO || flood_fill->map[y][x] == DC)
@@ -33,33 +39,33 @@ void	ft_flood_fill(t_main *main, t_flood_fill *flood_fill, int x, int y)
 	check_all_directions(main, flood_fill, x, y);
 }
 
-static void	perform_checks(t_flood_fill	*flood_fill, int x, int y)
+static bool	perform_checks(t_flood_fill	*flood_fill, int x, int y)
 {
 	if (x < 0 || y < 0)
 	{
 		handle_invalid_map(flood_fill, "Map cannot have negative values");
-		return ;
+		return (false);
 	}
-	if (y >= flood_fill->height || x >= flood_fill->width)
+	if (y > flood_fill->height || x > flood_fill->width)
 	{
 		handle_invalid_map(flood_fill, "Player can escape map.");
-		return ;
 	}
 	if (flood_fill->map[y][x] == ' ')
 	{
 		handle_invalid_map(flood_fill, "Map contains a space char.");
-		return ;
+		return (false);
 	}
 	if (flood_fill->map[y][x] == '\t')
 	{
 		handle_invalid_map(flood_fill, "Map contains a tab char..");
-		return ;
+		return (false);
 	}
 	if (flood_fill->map[y][x] == '\0')
 	{
 		handle_invalid_map(flood_fill, "Map contains null characters.");
-		return ;
+		return (false);
 	}
+	return (true);
 }
 
 static bool	verify_door_position(char **map, int x, int y)

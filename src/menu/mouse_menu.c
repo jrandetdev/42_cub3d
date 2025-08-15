@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_menu.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:47 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/15 17:59:22 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/15 18:07:26 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	print_current_sensitivity(t_main *main, int last_y);
 static void	print_minus_logo(t_main *main, int option_selected, int last_y);
 static void	print_plus_logo(t_main *main, int option_selected, int last_y);
 static void	option_selected(t_main *main, int *menu, int option_selected,
-		int *menu_title);
+				int *menu_title);
 
 void	show_mouse_sensitivity_menu(t_main *main, int *current_menu)
 {

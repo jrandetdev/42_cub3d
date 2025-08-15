@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 22:51:41 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/15 18:04:16 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 18:14:55 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	join_threads(t_main *main)
 	pthread_mutex_lock(&main->global_threads.is_end.mutex);
 	main->global_threads.is_end.value = 1;
 	pthread_mutex_unlock(&main->global_threads.is_end.mutex);
-	while (i <= main->global_threads.created_threads)
+	while (i < main->global_threads.created_threads)
 	{
 		errno = pthread_join(main->global_threads.thread[i++].thread_id, NULL);
 		if (errno)

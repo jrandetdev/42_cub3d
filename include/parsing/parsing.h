@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 20:40:25 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/15 16:08:55 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 18:48:47 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PARSING_H
 
 typedef struct s_main	t_main;
+typedef struct s_map	t_map;
 
 typedef struct s_flood_fill
 {
@@ -22,6 +23,12 @@ typedef struct s_flood_fill
 	int		width;
 	char	**map;
 }		t_flood_fill;
+
+typedef struct s_parsing
+{
+	char	**file_content;
+	char	**id_and_info;
+}			t_parsing;
 
 void		parsing(t_main *main, char *file);
 void		check_if_file_is_dir(t_main *main, char *file_relative_path);

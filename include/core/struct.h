@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:54:48 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/15 16:20:00 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 18:46:04 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "dda.h"
 # include "bonus_struct.h"
 # include "threads.h"
+# include "../parsing/parsing.h"
 
 typedef struct s_image	t_image;
 
@@ -139,6 +140,7 @@ typedef struct s_main
 	int					game_start;
 	void				*mlx_ptr;
 	void				*mlx_win;
+	t_parsing			parsing;
 	t_assets			assets;
 	t_cal				cal;
 	t_bonus				bonus;

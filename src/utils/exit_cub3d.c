@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_cub3d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 16:24:31 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/15 16:03:13 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/15 19:43:16 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@ void	free_all_pointer_arrays(t_main *main)
 {
 	if (main->map.array)
 		free_string_array(&main->map.array);
+	if (main->parsing.file_content)
+		free_string_array(&main->parsing.file_content);
+	if (main->parsing.id_and_info)
+		free_string_array(&main->parsing.id_and_info);
 }
 
 void	free_all_textures(t_main *main)

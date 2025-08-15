@@ -1,0 +1,13 @@
+NO ./assets/textures/brushed-metal-north.xpm
+SO ./assets/textures/brushed-metal-south.xpm
+WE ./assets/textures/brushed-metal-west.xpm
+EA ./assets/textures/brushed-metal-east.xpm
+
+F 256,10,50
+C 225,30
+
+11111111
+10000001
+100N0001
+10010001
+11111111

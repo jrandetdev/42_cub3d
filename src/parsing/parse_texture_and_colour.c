@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:19:53 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/15 17:18:06 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 18:46:24 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,23 @@ static void	check_for_floor_or_ceiling(t_main *main, char *info, char *id);
 
 void	extract_colour_and_texture(t_main *main, char **file_content)
 {
-	int		i;
-	char	**id_and_info;
+	int			i;
+	t_parsing	*parsing;
 
+	parsing = &main->parsing;
 	i = 0;
 	while (i <= 5)
 	{
-		id_and_info = ft_split(file_content[i], ' ');
-		if (!id_and_info)
+		parsing->id_and_info = ft_split(file_content[i], ' ');
+		if (!parsing->id_and_info)
 			print_error_syscall(main, "Ft_split failed in texture function.");
-		if (string_array_len(id_and_info) != 2)
+		if (string_array_len(parsing->id_and_info) != 2)
 		{
-			free_string_array(&id_and_info);
+			free_string_array(&parsing->id_and_info);
 			print_error_message(main, "Incorrect texture or colour format.");
 		}
-		extract_colour_or_texture(main, id_and_info);
-		free_string_array(&id_and_info);
+		extract_colour_or_texture(main, parsing->id_and_info);
+		free_string_array(&parsing->id_and_info);
 		i++;
 	}
 }
