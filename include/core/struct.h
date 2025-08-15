@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:54:48 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/14 21:13:19 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 15:38:36 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "assets.h"
 # include "dda.h"
 # include "bonus_struct.h"
-# include <pthread.h>
+# include "threads.h"
 
 typedef struct s_image t_image;
 
@@ -154,14 +154,8 @@ typedef struct s_main
 	t_mini_dda			mini_dda;
 	t_map				map;
 	t_menu				menu;
+	t_global_threads	global_threads;
 }						t_main;
 
-typedef struct s_threads
-{
-	pthread_t	thread_id;
-	int			start;
-	int			end;
-	t_main		*main;
-}				t_threads;
 
 #endif

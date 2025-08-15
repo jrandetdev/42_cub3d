@@ -1,7 +1,7 @@
 GREEN = \033[0;32m
 RESET = \033[0m
 
-NAME			=			cub3d
+NAME			=			cub3D
 CC				=			cc
 
 UNAME			=			$(shell uname)
@@ -104,7 +104,10 @@ MINIMAP 		=			$(addprefix $(DIR_MINIMAP)/, $(SRC_MINIMAP))
 
 DIR_BONUS		=			./src/bonus
 SRC_BONUS		=			door.c \
-							fps_counter.c
+							fps_counter.c \
+							destroy_threads.c \
+							threads_routine.c \
+							create_and_manage_threads.c
 BONUS			=			$(addprefix $(DIR_BONUS)/, $(SRC_BONUS))
 
 DIR_RENDER_IMG	=			./src/render_img
