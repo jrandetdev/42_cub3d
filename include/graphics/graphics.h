@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   assets.h                                           :+:      :+:    :+:   */
+/*   graphics.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 16:06:04 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/15 16:06:48 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 17:48:55 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ASSETS_H
-# define ASSETS_H
+#ifndef GRAPHICS_H
+# define GRAPHICS_H
 
 typedef struct s_image
 {

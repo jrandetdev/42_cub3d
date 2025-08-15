@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_struct.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:09:52 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/15 16:46:34 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/15 17:48:06 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ typedef struct s_menu_options
 
 typedef struct s_menu
 {
-	int			current_menu;
+	int				current_menu;
 	t_menu_options	option;
 	t_menu_display	display;
 }	t_menu;
