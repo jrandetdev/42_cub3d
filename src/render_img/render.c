@@ -6,7 +6,7 @@
 /*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:55:18 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/15 16:28:45 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/15 17:47:30 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static void	pre_compute(t_main *main);
 
 void	cast_rays(t_main *main)
 {
-	int				x;
-	t_dda	dda;
-	t_texture		cardinal_texture;
+	int			x;
+	t_dda		dda;
+	t_texture	cardinal_texture;
 
 	x = 0;
 	pre_compute(main);
@@ -67,7 +67,7 @@ void	*multi_cast_rays(t_thread *thread, t_main *main)
 	while (x < thread->end)
 	{
 		dda.camera_x = 2 * x / (float)WIN_WIDTH - 1;
-		dda.ray.x= main->player.dir_x
+		dda.ray.x = main->player.dir_x
 			+ main->player.plane_x * dda.camera_x;
 		dda.ray.y = main->player.dir_y
 			+ main->player.plane_y * dda.camera_x;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   threads_routine.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 15:43:57 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/15 17:10:10 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/15 17:45:37 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	*is_this_the_end(t_main *main)
 	if (main->global_threads.is_end.value == 1)
 	{
 		pthread_mutex_unlock(&main->global_threads.is_end.mutex);
-			return (NULL);
+		return (NULL);
 	}
 	pthread_mutex_unlock(&main->global_threads.is_end.mutex);
 	return (NULL);
