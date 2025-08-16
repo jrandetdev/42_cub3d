@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_struct.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 10:09:52 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/15 17:48:06 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/16 15:26:30 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_mouse
 	float	x;
 	float	dist;
 	int		sensitivity;
+	bool	is_hide;
 }			t_mouse;
 
 typedef struct s_bonus

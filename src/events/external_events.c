@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:52:16 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/15 17:01:35 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/16 15:32:30 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@ int	mouse_move(int x, int y, t_main *main)
 {
 	if (main->menu.current_menu)
 		return (0);
-	mlx_mouse_hide(main->mlx_ptr, main->mlx_win);
+	if (!main->menu.current_menu && !main->interaction.mouse.is_hide)
+	{
+		mlx_mouse_hide(main->mlx_ptr, main->mlx_win);
+		main->interaction.mouse.is_hide = true;
+	}
 	mlx_mouse_get_pos(main->mlx_ptr, main->mlx_win, &x, &y);
 	if (x != main->interaction.mouse.x)
 	{

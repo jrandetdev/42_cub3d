@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_texture_and_colour.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:19:53 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/15 18:46:24 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/16 15:39:18 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,9 @@ static void	check_for_floor_or_ceiling(t_main *main, char *info, char *id)
 {
 	if (xmp_extension_is_valid(info, 3))
 	{
-		printf("\033[0;33m""Xpm detected for floor or ceiling, \
-validating texture...\n""\033[0m");
+		printf("\033[0;33m""[WARNING] The color format is incorrect. The \
+program will attempt to load an XPM file with the given argument...\
+""\033[0m""\n");
 		assign_floor_ceiling_text(main, id, info);
 	}
 	else

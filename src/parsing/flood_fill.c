@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 21:14:56 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/15 19:25:12 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/16 15:56:59 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 static bool	perform_checks(t_flood_fill	*flood_fill, int x, int y);
-static bool	verify_door_position(char **map, int x, int y);
+static bool	verify_door_position(t_flood_fill *flood_fill, int x, int y);
 static void	check_all_directions(t_main *main, t_flood_fill *ff, int x, int y);
 static void	handle_invalid_map(t_flood_fill *flood_fill, char *message);
 
@@ -32,8 +32,8 @@ void	ft_flood_fill(t_main *main, t_flood_fill *flood_fill, int x, int y)
 		return ;
 	if (flood_fill->map[y][x] == DO || flood_fill->map[y][x] == DC)
 	{
-		if (!verify_door_position(flood_fill->map, x, y))
-			flood_fill->is_invalid = true;
+		if (!verify_door_position(flood_fill, x, y))
+			return ;
 	}
 	flood_fill->map[y][x] = 'V';
 	check_all_directions(main, flood_fill, x, y);
@@ -68,11 +68,15 @@ static bool	perform_checks(t_flood_fill	*flood_fill, int x, int y)
 	return (true);
 }
 
-static bool	verify_door_position(char **map, int x, int y)
+static bool	verify_door_position(t_flood_fill *flood_fill, int x, int y)
 {
+	char **map;
+
+	map = flood_fill->map;
 	if ((map[y][x + 1] == '1' && map[y][x - 1] == '1')
 		|| (map[y + 1][x] == '1' && map[y - 1][x] == '1'))
 		return (true);
+	handle_invalid_map(flood_fill, "A door needs to be between two walls.");
 	return (false);
 }
 
@@ -82,10 +86,10 @@ static void	check_all_directions(t_main *main, t_flood_fill *ff, int x, int y)
 	ft_flood_fill(main, ff, x, y + 1);
 	ft_flood_fill(main, ff, x - 1, y);
 	ft_flood_fill(main, ff, x, y - 1);
-	ft_flood_fill(main, ff, x + 1, y + 1);
-	ft_flood_fill(main, ff, x - 1, y - 1);
-	ft_flood_fill(main, ff, x + 1, y - 1);
-	ft_flood_fill(main, ff, x - 1, y + 1);
+	// ft_flood_fill(main, ff, x + 1, y + 1);
+	// ft_flood_fill(main, ff, x - 1, y - 1);
+	// ft_flood_fill(main, ff, x + 1, y - 1);
+	// ft_flood_fill(main, ff, x - 1, y + 1);
 }
 
 static void	handle_invalid_map(t_flood_fill *flood_fill, char *message)

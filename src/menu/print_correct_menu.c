@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_correct_menu.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 15:38:42 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/08/15 18:05:06 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/16 15:31:59 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 void	print_correct_menu(t_main *main, int *menu)
 {
-	mlx_mouse_show(main->mlx_ptr, main->mlx_win);
+	if (main->interaction.mouse.is_hide)
+	{
+		mlx_mouse_show(main->mlx_ptr, main->mlx_win);
+		main->interaction.mouse.is_hide = false;
+	}
 	if (*menu == MAIN_MENU)
 		show_main_menu(main, menu);
 	else if (*menu == PAUSE_MENU)

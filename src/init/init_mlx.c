@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 21:06:13 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/15 19:35:38 by jrandet          ###   ########.fr       */
+/*   Updated: 2025/08/16 15:27:16 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ void	init_mlx_window_and_mouse(t_main *main)
 	if (!main->mlx_win)
 		print_error_syscall(main, "Mlx window failed");
 	mlx_mouse_hide(main->mlx_ptr, main->mlx_win);
+	main->interaction.mouse.is_hide = 1;
 	errno = 0;
 }
