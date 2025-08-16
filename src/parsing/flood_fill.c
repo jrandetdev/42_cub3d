@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrandet <jrandet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 21:14:56 by jrandet           #+#    #+#             */
-/*   Updated: 2025/08/16 15:56:59 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/08/16 16:26:12 by jrandet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static bool	perform_checks(t_flood_fill	*flood_fill, int x, int y)
 
 static bool	verify_door_position(t_flood_fill *flood_fill, int x, int y)
 {
-	char **map;
+	char	**map;
 
 	map = flood_fill->map;
 	if ((map[y][x + 1] == '1' && map[y][x - 1] == '1')
@@ -86,10 +86,6 @@ static void	check_all_directions(t_main *main, t_flood_fill *ff, int x, int y)
 	ft_flood_fill(main, ff, x, y + 1);
 	ft_flood_fill(main, ff, x - 1, y);
 	ft_flood_fill(main, ff, x, y - 1);
-	// ft_flood_fill(main, ff, x + 1, y + 1);
-	// ft_flood_fill(main, ff, x - 1, y - 1);
-	// ft_flood_fill(main, ff, x + 1, y - 1);
-	// ft_flood_fill(main, ff, x - 1, y + 1);
 }
 
 static void	handle_invalid_map(t_flood_fill *flood_fill, char *message)
